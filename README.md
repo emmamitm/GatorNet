@@ -37,11 +37,11 @@ Detailed contribution guidelines will be added as the project evolves.
 *(License information to be added)*
 
 ## Contact
-Emma Mitchell 
-Sophia Huerta
-Matis Luzi
-Adriano Arias
-Jake Rubin
+- Emma Mitchell 
+- Sophia Huerta
+- Matis Luzi
+- Adriano Arias
+- Jake Rubin
 
 
 
