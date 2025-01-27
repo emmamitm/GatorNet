@@ -23,7 +23,8 @@ As this project is in its early stages, setup instructions and documentation wil
 *(To be determined)*
 
 ### Installation
-*(Coming soon)*
+chmod +x run.py
+python run.py OR python3 run.py
 
 ## Contributing
 We welcome contributions to GatorNet! While we're still establishing our contribution guidelines, feel free to:
