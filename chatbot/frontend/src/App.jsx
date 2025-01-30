@@ -1,19 +1,24 @@
-import React, { useState, useEffect } from 'react';
-import './App.css';
+import React, { useState, useEffect } from "react";
+import "./css/output.css";
+
+import { ArrowCircleUp } from "@phosphor-icons/react";
+// component imports
+import Message from "./components/Message";
+import Suggestion from "./components/Suggestion";
 
 function App() {
   const [messages, setMessages] = useState([]);
-  const [input, setInput] = useState('');
+  const [input, setInput] = useState("");
   const [isConnected, setIsConnected] = useState(false);
 
   // Test backend connection on load
   useEffect(() => {
-    fetch('http://localhost:5001/')
-      .then(response => {
+    fetch("http://localhost:5001/")
+      .then((response) => {
         console.log("Backend connection test:", response.ok);
         setIsConnected(response.ok);
       })
-      .catch(error => {
+      .catch((error) => {
         console.error("Backend connection test failed:", error);
         setIsConnected(false);
       });
@@ -21,68 +26,132 @@ function App() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     if (!input.trim()) return;
 
     const userMessage = input.trim();
-    console.log("Sending message:", userMessage);  // Debug print
+    console.log("Sending message:", userMessage); // Debug print
 
     // Add user message
-    setMessages(prev => [...prev, { text: userMessage, isUser: true }]);
-    setInput('');
+    setMessages((prev) => [...prev, { text: userMessage, isUser: true }]);
+    setInput("");
+    document.querySelector('[contenteditable="true"]').textContent = "";
 
     // Get bot response
     try {
-      console.log("Making request to backend...");  // Debug print
-      const res = await fetch('http://localhost:5001/api/chat', {
-        method: 'POST',
-        headers: { 
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
+      console.log("Making request to backend..."); // Debug print
+      const res = await fetch("http://localhost:5001/api/chat", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
         },
-        body: JSON.stringify({ message: userMessage })
+        body: JSON.stringify({ message: userMessage }),
       });
-      
-      console.log("Response status:", res.status);  // Debug print
-      
+
+      console.log("Response status:", res.status); // Debug print
+
       if (!res.ok) {
         throw new Error(`HTTP error! status: ${res.status}`);
       }
-      
+
       const data = await res.json();
-      console.log("Received response:", data);  // Debug print
-      setMessages(prev => [...prev, { text: data.response, isUser: false }]);
+      console.log("Received response:", data); // Debug print
+      setMessages((prev) => [...prev, { text: data.response, isUser: false }]);
     } catch (err) {
       console.error("Detailed error:", err);
-      setMessages(prev => [...prev, { 
-        text: `Error: ${err.message}. Please try again.`, 
-        isUser: false 
-      }]);
+      setMessages((prev) => [
+        ...prev,
+        {
+          text: `Error: ${err.message}. Please try again.`,
+          isUser: false,
+        },
+      ]);
     }
   };
 
+  const handleSuggestion = (text) => () => {
+    setInput(text);
+    document.querySelector('[contenteditable="true"]').textContent = text;
+  };
+
   return (
-    <div className="app">
+    <div className="max-w-3xl mx-auto p-4 flex flex-col justify-center h-screen text-base">
       {!isConnected && (
         <div className="error-banner">
           Warning: Backend not connected. Messages won't be processed.
         </div>
       )}
-      <div className="chat-box">
-        {messages.map((msg, idx) => (
-          <div key={idx} className={msg.isUser ? 'message user' : 'message bot'}>
-            {msg.text}
+
+      {/* Header */}
+      <h1 className="text-4xl font-bold">GatorNet</h1>
+      <h2 className="text-2xl font-bold text-gray-500 mb-4">
+        What would you like to know?
+      </h2>
+
+      {/* Suggestions (if no messages) */}
+      {messages.length === 0 ? (
+        <div className="flex flex-wrap gap-4">
+          <Suggestion
+            text="What events are going on today at UF?"
+            func={handleSuggestion("What events are going on today at UF?")}
+          />
+          <Suggestion
+            text="What is the weather like in Gainesville?"
+            func={handleSuggestion("What is the weather like in Gainesville?")}
+          />
+          <Suggestion
+            text="What is the latest news in the world?"
+            func={handleSuggestion("What is the latest news in the world?")}
+          />
+
+          <Suggestion
+            text="What events are going on today at UF?"
+            func={handleSuggestion("What events are going on today at UF?")}
+          />
+        </div>
+      ) : (
+        <div className="flex flex-col h-[600px] border-2 rounded-2xl p-4 mb-4 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100">
+          <div className="overflow-y-auto scroll flex flex-col-reverse h-full">
+            {messages
+              .slice(0)
+              .reverse()
+              .map((msg, idx) => (
+                <Message key={idx} text={msg.text} isUser={msg.isUser} />
+              ))}
           </div>
-        ))}
-      </div>
-      <form onSubmit={handleSubmit} className="input-area">
-        <input
-          type="text"
-          value={input}
-          onChange={(e) => setInput(e.target.value)}
-          placeholder="Type a message..."
-          autoFocus
-        />
-        <button type="submit">Send</button>
+        </div>
+      )}
+
+      <hr className="my-4 border border-gray-300" />
+
+      <form
+        onSubmit={handleSubmit}
+        className="flex gap-2 border-2 rounded-2xl p-4 border-gray-300 bg-white"
+      >
+        <div
+          contentEditable="true"
+          suppressContentEditableWarning={true}
+          className="flex-1 outline-none flex items-center"
+          onInput={(e) => setInput(e.currentTarget.textContent)}
+          onFocus={(e) =>
+            e.currentTarget.textContent === "Type your message..." &&
+            (e.currentTarget.textContent = "")
+          }
+          onBlur={(e) =>
+            e.currentTarget.textContent === "" &&
+            (e.currentTarget.textContent = "Type your message...")
+          }
+        >
+          Type your message...
+        </div>
+        <button type="submit">
+          <ArrowCircleUp
+            size={32}
+            weight="fill"
+            className="fill-gray-700 hover:fill-gray-500 active:fill-black outline-none cursor-pointer transition-colors duration-200"
+          />
+        </button>
       </form>
     </div>
   );
