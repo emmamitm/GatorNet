@@ -23,7 +23,11 @@ def check_node():
     """Check if Node.js and npm are installed"""
     try:
         node_version = subprocess.run(['node', '--version'], capture_output=True, text=True).stdout.strip()
-        npm_version = subprocess.run(['npm', '--version'], capture_output=True, text=True).stdout.strip()
+        npm_version = ''
+        try: 
+            npm_version = subprocess.run(['npm.cmd', '--version'], capture_output=True, text=True).stdout.strip()
+        except FileNotFoundError:
+            npm_version = subprocess.run(['npm', '--version'], capture_output=True, text=True).stdout.strip()
         print(f"✓ Node.js {node_version} detected")
         print(f"✓ npm {npm_version} detected")
         return True
