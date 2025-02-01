@@ -142,6 +142,12 @@ function App() {
             e.currentTarget.textContent === "" &&
             (e.currentTarget.textContent = "Type your message...")
           }
+          onKeyDown={(e) => {
+            if (e.key === "Enter") {
+              e.preventDefault();
+              handleSubmit(e);
+            }
+          }}
         >
           Type your message...
         </div>
