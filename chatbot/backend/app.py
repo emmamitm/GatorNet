@@ -25,7 +25,7 @@ class User(db.Model):
     email = db.Column(db.String(120), unique=True, nullable=False)
     password_hash = db.Column(db.String(120), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
-    avatar = db.Column(db.String(255), nullable=False, default = 'avatars/default.png') #stores the path to the avatar image
+    avatar = db.Column(db.String(255), nullable=False, default = f'{AVATARS_DIR}/default.png') #stores the path to the avatar image
 
     def __repr__(self):
         return '<User %r>' % self.email
