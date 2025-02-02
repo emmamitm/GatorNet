@@ -1,65 +1,61 @@
 # backend/app.py
 from flask import Flask, request, jsonify
-from flask_sqlalchemy import SQLAlchemy
 from flask_cors import CORS
-import os
-import datetime
+from models import *
+from werkzeug.security import generate_password_hash
 
 
 app = Flask(__name__)
 CORS(app)
 
 
-############Database############
-
-
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-AVATARS_DIR = os.path.join(BASE_DIR, "avatars")
-db_path = os.path.join(BASE_DIR, "database.db")
-app.config['SQLALCHEMY_DATABASE_URI'] = f"sqlite:///{db_path}"
-
-db = SQLAlchemy(app)
-
-class User(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    email = db.Column(db.String(120), unique=True, nullable=False)
-    password_hash = db.Column(db.String(120), nullable=False)
-    created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
-    avatar = db.Column(db.String(255), nullable=False, default = f'{AVATARS_DIR}/default.png') #stores the path to the avatar image
-
-    def __repr__(self):
-        return '<User %r>' % self.email
-
-class Conversation(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    started_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
-    active = db.Column(db.Boolean, nullable=False, default=True)
-
-    def __repr__(self):
-        return '<Conversation %r>' % self.id
-
-class Message(db.Model):
-    id = db.Column(db.Integer, primary_key=True)
-    conversation_id = db.Column(db.Integer, db.ForeignKey('conversation.id'), nullable=False)
-    user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
-    text = db.Column(db.String(500), nullable=False)
-    sent_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
-
-    def __repr__(self):
-        return '<Message %r>' % self.text
-
-
-with app.app_context():
-    db.create_all()
-
-
-
-################################
-
 @app.route('/')
 def home():
     return "Chatbot backend is running!"
+
+@app.route('/api/users', methods=['GET'])
+def get_users():
+    users = User.query.all()
+    return jsonify([user.email for user in users])
+
+@app.route('/api/users', methods=['POST'])
+def add_user():
+    try:
+        data = request.json
+        new_user = User(email=data['email'], password_hash=generate_password_hash(data['password']), avatar=data.get('avatar', 'default.png'))
+        db.session.add(new_user)
+        db.session.commit()
+        return jsonify({'success': True})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 500
+
+@app.route('/api/users/<int:user_id>', methods=['GET'])
+def get_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        return jsonify({'email': user.email, 'avatar': user.avatar})
+    return jsonify({'error': 'User not found'}), 404
+
+@app.route('/api/users/<int:user_id>', methods=['DELETE'])
+def delete_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        db.session.delete(user)
+        db.session.commit()
+        return jsonify({'success': True})
+    return jsonify({'error': 'User not found'}), 404
+
+@app.route('/api/users/<int:user_id>', methods=['PUT'])
+def update_user(user_id):
+    user = User.query.get(user_id)
+    if user:
+        data = request.json
+        user.email = data.get('email', user.email)
+        user.password_hash = data.get('password', user.password_hash)
+        user.avatar = data.get('avatar', user.avatar)
+        db.session.commit()
+        return jsonify({'success': True})
+    return jsonify({'error': 'User not found'}), 404
 
 @app.route('/api/chat', methods=['POST'])
 def chat():
