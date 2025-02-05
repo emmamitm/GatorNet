@@ -8,7 +8,7 @@ import webbrowser
 
 def check_python_dependencies():
     """Install required Python packages"""
-    required_packages = ['flask', 'flask-cors']
+    required_packages = ['flask', 'flask-cors', 'flask-sqlalchemy']
     
     for package in required_packages:
         try:
