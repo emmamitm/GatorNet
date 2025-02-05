@@ -1,8 +1,0 @@
-<script>start("/Users/emmamitchell/Desktop/GatorNet/chatbot/models/");</script>
-<script>onHasParentDirectory();</script>
-<script>addRow(".venv",".venv",1,224,"224 B",1738797202,"2/5/25, 4:13:22 PM");</script>
-<script>addRow("AI_model.py","AI_model.py",0,9328,"9.1 kB",1738797423,"2/5/25, 4:17:03 PM");</script>
-<script>addRow("llama-2-7b.Q4_0.gguf","llama-2-7b.Q4_0.gguf",0,3825807040,"3.6 GB",1738796320,"2/5/25, 3:58:40 PM");</script>
-<script>addRow("mistral-7b-instruct.Q4_0.gguf","mistral-7b-instruct.Q4_0.gguf",0,4108917024,"3.8 GB",1738796325,"2/5/25, 3:58:45 PM");</script>
-<script>addRow("requirements.txt","requirements.txt",0,192,"192 B",1738796765,"2/5/25, 4:06:05 PM");</script>
-<script>addRow("uf_knowledge.cache","uf_knowledge.cache",0,42112,"41.1 kB",1738797021,"2/5/25, 4:10:21 PM");</script>
