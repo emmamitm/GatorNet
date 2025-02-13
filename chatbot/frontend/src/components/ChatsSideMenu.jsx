@@ -10,15 +10,16 @@ function ChatsSideMenu() {
     { name: "Weather in Gainesville" },
   ]);
 
-  if (isExpanded) {
-    return (
-      <motion.div
-        className="fixed left-0 p-2 h-full backdrop-blur-lg bg-gray-200/50 border-r-2 border-gray-200 rounded-r-xl"
-        onMouseOver={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
-        animate={{ width: 250 }}
-        transition={{ duration: 0.2 }}
-      >
+  return (
+    <div className="max-h-full">
+    <motion.div
+      className="fixed left-0 p-2 h-full backdrop-blur-lg bg-gray-200/50 border-r-2 border-gray-200 rounded-r-xl"
+      onMouseOver={() => setIsExpanded(true)}
+      onMouseLeave={() => setIsExpanded(false)}
+      animate={{ width: isExpanded ? 250 : 30 }}
+      transition={{ duration: 0.2 }}
+    >
+      {isExpanded ? (
         <motion.div
           className="flex flex-col gap-2"
           initial={{ opacity: 0 }}
@@ -38,12 +39,9 @@ function ChatsSideMenu() {
                 <ChatsCircle size={14} weight="bold" />
                 {chat.name}
               </div>
-
               <button
                 className="cursor-pointer"
-                onClick={() => {
-                  setChats(chats.filter((_, i) => i !== index));
-                }}
+                onClick={() => setChats(chats.filter((_, i) => i !== index))}
               >
                 <MinusCircle
                   size={18}
@@ -53,19 +51,11 @@ function ChatsSideMenu() {
             </div>
           ))}
         </motion.div>
-      </motion.div>
-    );
-  } else {
-    return (
-      <motion.div
-        className="fixed left-0 p-2 flex flex-col h-full backdrop-blur-lg bg-gray-200/50 border-r-2 border-gray-200 rounded-r-xl"
-        onMouseOver={() => setIsExpanded(true)}
-        onMouseLeave={() => setIsExpanded(false)}
-        animate={{ width: 30 }}
-        transition={{ duration: 0.2 }}
-      ></motion.div>
-    );
-  }
+      ) : null}
+    </motion.div>
+    </div>
+  );
+  
 }
 
 export default ChatsSideMenu;
