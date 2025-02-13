@@ -1,9 +1,10 @@
 import { React, useState } from "react";
 import { motion } from "motion/react";
-import { MinusCircle, ChatsCircle } from "@phosphor-icons/react";
+import { MinusCircle, ChatsCircle, PushPin, PushPinSlash } from "@phosphor-icons/react";
 
 function ChatsSideMenu() {
   const [isExpanded, setIsExpanded] = useState(false);
+  const [isPinned, setIsPinned] = useState(false)
   const [chats, setChats] = useState([
     { name: "Computer Science Clubs" },
     { name: "Bus Schedule" },
@@ -14,8 +15,8 @@ function ChatsSideMenu() {
     <div className="max-h-full">
     <motion.div
       className="fixed left-0 p-2 h-full backdrop-blur-lg bg-gray-200/50 border-r-2 border-gray-200 rounded-r-xl"
-      onMouseOver={() => setIsExpanded(true)}
-      onMouseLeave={() => setIsExpanded(false)}
+      onMouseOver={() => {if (!isPinned) setIsExpanded(true)}}
+      onMouseLeave={() => {if (!isPinned) setIsExpanded(false)}}
       animate={{ width: isExpanded ? 250 : 30 }}
       transition={{ duration: 0.2 }}
     >
@@ -26,7 +27,14 @@ function ChatsSideMenu() {
           animate={{ opacity: 1 }}
           transition={{ duration: 0.5, delay: 0.2 }}
         >
-          <h1 className="text-2xl font-bold">Chats</h1>
+          <div className="flex justify-between">
+            <h1 className="text-2xl font-bold">Chats</h1>
+            {isPinned ? (
+              <PushPinSlash onClick={() => setIsPinned(false)} weight="fill"/>
+            ) : (
+              <PushPin onClick={() => setIsPinned(true)} weight="fill"/>
+            )}
+            </div>
           {chats.map((chat, index) => (
             <div
               key={index}
