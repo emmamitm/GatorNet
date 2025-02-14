@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { motion } from "motion/react";
-import { MinusCircle, ChatsCircle, PushPin, PushPinSlash } from "@phosphor-icons/react";
+import { MinusCircle, ChatsCircle, PushPin, PushPinSlash, Plus, MagnifyingGlass } from "@phosphor-icons/react";
 
 function ChatsSideMenu() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -10,6 +10,8 @@ function ChatsSideMenu() {
     { name: "Bus Schedule" },
     { name: "Weather in Gainesville" },
   ]);
+
+  const iconSize = 25
 
   return (
     <div className="max-h-full">
@@ -28,13 +30,20 @@ function ChatsSideMenu() {
           transition={{ duration: 0.5, delay: 0.2 }}
         >
           <div className="flex justify-between">
-            <h1 className="text-2xl font-bold">Chats</h1>
+            {/* <h1 className="text-2xl font-bold">Chats</h1> */}
             {isPinned ? (
-              <PushPinSlash onClick={() => setIsPinned(false)} weight="fill"/>
+              <PushPinSlash onClick={() => setIsPinned(false)} weight="fill" size={iconSize}/>
             ) : (
-              <PushPin onClick={() => setIsPinned(true)} weight="fill"/>
+              <PushPin onClick={() => setIsPinned(true)} weight="fill" size={iconSize}/>
             )}
+            <div className="flex">
+              <MagnifyingGlass size={iconSize} />
+              <Plus size={iconSize} />
             </div>
+          </div>
+
+          <hr className=" border border-gray-300" />
+
           {chats.map((chat, index) => (
             <div
               key={index}

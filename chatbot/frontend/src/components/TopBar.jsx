@@ -1,4 +1,4 @@
-import { User } from "@phosphor-icons/react"
+import { UserCircle } from "@phosphor-icons/react"
 // import { children } from "react"
 
 export function TopBar({children}) {
@@ -7,8 +7,9 @@ export function TopBar({children}) {
             <div className="bg-blue-600 w-full flex justify-between items-center h-14">
                 <h1 className="text-4xl font-bold text-white pl-4 p-2">GatorNet</h1>
                 <div className="pr-4">
-                    <User 
+                    <UserCircle 
                         size={40} 
+                        weight="fill"
                         className="fill-orange-400"            
                     />
                 </div>
