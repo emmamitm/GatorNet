@@ -1,6 +1,7 @@
 .venv
 .prettierrc
 chatbot/frontend/node_modules
+chatbot/frontend/src/css/output.css
 # Ignore unzipped model files
 /models/
 /__MACOSX/
