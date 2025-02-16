@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import "./css/output.css";
+import "../css/output.css";
 
 import { ArrowCircleUp } from "@phosphor-icons/react";
 // component imports
