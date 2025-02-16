@@ -3,7 +3,7 @@ import "./css/output.css";
 import ChatsSideMenu from "./components/ChatsSideMenu";
 
 import { TopBar } from "./components/TopBar";
-import AppContent from "./AppContent";
+import AppContent from "./pages/AppContent";
 
 function App() {
   return (

@@ -3,9 +3,9 @@ import "./css/output.css";
 
 import { ArrowCircleUp } from "@phosphor-icons/react";
 // component imports
-import ChatsSideMenu from "./components/ChatsSideMenu";
-import Message from "./components/Message";
-import Suggestion from "./components/Suggestion";
+import ChatsSideMenu from "../components/ChatsSideMenu";
+import Message from "../components/Message";
+import Suggestion from "../components/Suggestion";
 
 function AppContent() {
   const [messages, setMessages] = useState([]);
@@ -112,7 +112,7 @@ function AppContent() {
           />
         </div>
       ) : (
-        <div className="flex flex-col flex-grow  border-2 rounded-2xl p-4 mb-4 border-gray-200 bg-gradient-to-br from-gray-50 to-gray-100">
+        <div className="flex flex-col flex-grow  border-2 rounded-2xl p-4 mb-4 border-neutral-200 bg-gradient-to-br from-neutral-50 to-neutral-100">
           <div className="overflow-y-auto scroll flex flex-col-reverse h-full">
             {messages
               .slice(0)
@@ -146,12 +146,12 @@ function AppContent() {
         </div>
       )}
 
-      <hr className="my-4 border border-gray-300" />
+      <hr className="my-4 border border-neutral-300" />
 
       {/* Message input */}
       <form
         onSubmit={handleSubmit}
-        className="flex gap-2 border-2 rounded-2xl p-4 border-gray-300 bg-white"
+        className="flex gap-2 border-2 rounded-2xl p-4 border-neutral-300 bg-white"
       >
         <div
           contentEditable="true"
@@ -179,7 +179,7 @@ function AppContent() {
           <ArrowCircleUp
             size={32}
             weight="fill"
-            className="fill-gray-700 hover:fill-gray-500 active:fill-black outline-none cursor-pointer transition-colors duration-200"
+            className="fill-neutral-700 hover:fill-neutral-500 active:fill-black outline-none cursor-pointer transition-colors duration-200"
           />
         </button>
       </form>
