@@ -16,3 +16,4 @@ __pycache__/
 *.py[cod]
 # Cache file
 uf_knowledge.cache
+AI/models/modelfiles.zip
