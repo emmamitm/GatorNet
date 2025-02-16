@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { motion } from "motion/react";
-import { MinusCircle, ChatsCircle } from "@phosphor-icons/react";
+import { MinusCircle, ChatsCircle, UserCircle } from "@phosphor-icons/react";
 
 function ChatsSideMenu() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -11,9 +11,10 @@ function ChatsSideMenu() {
   ]);
 
   if (isExpanded) {
+    // Expanded
     return (
       <motion.div
-        className="fixed left-0 p-2 h-full backdrop-blur-lg bg-gray-200/50 border-r-2 border-gray-200 rounded-r-xl"
+        className="fixed left-0 h-full flex flex-col justify-between p-2 border-r-2 border-neutral-200 rounded-r-xl bg-neutral-200/50 backdrop-blur-lg"
         onMouseOver={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
         animate={{ width: 250 }}
@@ -29,7 +30,7 @@ function ChatsSideMenu() {
           {chats.map((chat, index) => (
             <div
               key={index}
-              className="flex justify-between items-center text-sm text-left cursor-pointer hover:text-gray-500"
+              className="flex gap-2 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500"
             >
               <div
                 className="flex items-center gap-1"
@@ -53,12 +54,31 @@ function ChatsSideMenu() {
             </div>
           ))}
         </motion.div>
+
+        <motion.div
+          className="flex justify-between border-t-1 border-neutral-300 pt-2"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 0.5, delay: 0.2 }}
+        >
+          <div className="flex gap-1">
+            <UserCircle size={20} />
+            <button className="text-sm text-neutral-600 hover:text-neutral-400 transition-all cursor-pointer">
+              User Name
+            </button>
+          </div>
+
+          <button className="text-sm hover:text-neutral-500 transition-all underline cursor-pointer">
+            Log out
+          </button>
+        </motion.div>
       </motion.div>
     );
   } else {
+    // Collapsed
     return (
       <motion.div
-        className="fixed left-0 p-2 flex flex-col h-full backdrop-blur-lg bg-gray-200/50 border-r-2 border-gray-200 rounded-r-xl"
+        className="fixed left-0 p-2 flex flex-col h-full backdrop-blur-lg bg-neutral-200/50 border-r-2 border-neutral-200 rounded-r-xl"
         onMouseOver={() => setIsExpanded(true)}
         onMouseLeave={() => setIsExpanded(false)}
         animate={{ width: 30 }}
