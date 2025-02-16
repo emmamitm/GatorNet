@@ -8,14 +8,9 @@ function Message({ key, text, isUser }) {
         isUser ? "self-end ml-12 flex-row-reverse" : "mr-12"
       }`}
     >
-      <img
-        src={isUser ? "https://picsum.photos/200" : "https://picsum.photos/id/237/200/200"}
-        alt="avatar"
-        className="w-12 h-12 rounded-full mx-2"
-      />
       <div
         className={`flex items-center p-3 rounded-xl border ${
-          isUser ? "bg-blue-200 border-blue-400" : "bg-white border-gray-300"
+          isUser ? "bg-blue-200 border-blue-400" : "bg-white border-neutral-300"
         }`}
       >
         <div>{text}</div>

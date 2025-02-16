@@ -1,6 +1,6 @@
 import { React, useState } from "react";
 import { motion } from "motion/react";
-import { MinusCircle, ChatsCircle, PushPin, PushPinSlash, Plus, MagnifyingGlass } from "@phosphor-icons/react";
+import { MinusCircle, ChatsCircle, PushPin, PushPinSlash, Plus, MagnifyingGlass, UserCircle } from "@phosphor-icons/react";
 
 function ChatsSideMenu() {
   const [isExpanded, setIsExpanded] = useState(false);
@@ -47,7 +47,7 @@ function ChatsSideMenu() {
           {chats.map((chat, index) => (
             <div
               key={index}
-              className="flex justify-between items-center text-sm text-left cursor-pointer hover:text-gray-500"
+              className="flex gap-2 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500"
             >
               <div
                 className="flex items-center gap-1"
