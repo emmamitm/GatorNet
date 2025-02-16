@@ -7,7 +7,8 @@ chatbot/frontend/src/css/output.css
 /__MACOSX/
 
 # But don't ignore the AI/models directory itself
-!/AI/models/
+/AI/models/mistral-7b-instruct.Q4_0.gguf
+/AI/models/llama-2-7b.Q4_0.gguf
 
 # Ignore the large files inside AI/models
 /AI/models/*.gguf

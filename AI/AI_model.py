@@ -11,34 +11,25 @@ import logging
 import os
 import pickle
 import json
-import zipfile
+import gdown  # For downloading files from Google Drive
 
 class UFAssistant:
     def __init__(self):
         # Expanded source URLs for better coverage
         self.UF_BASE_URLS = [
-            # Academic Information
             'https://catalog.ufl.edu/UGRD/programs/',
             'https://catalog.ufl.edu/UGRD/colleges-schools/',
-            
-            # Campus Life & Facilities
-            'https://www.uflib.ufl.edu/about-us/',  # Library info
-            'https://housing.ufl.edu/living-options/apply/residence-halls/',  # Dorm info
-            'https://campusmap.ufl.edu/',  # Campus map
-            
-            # Student Services
-            'https://www.bsd.ufl.edu/g1c/campus_map/Buildings.aspx',  # Building directory
-            'https://rec.ufl.edu/facilities/',  # Recreation facilities
-            'https://www.dso.ufl.edu/departments',  # Student services
-            
-            # Current Information
+            'https://www.uflib.ufl.edu/about-us/',
+            'https://housing.ufl.edu/living-options/apply/residence-halls/',
+            'https://campusmap.ufl.edu/',
+            'https://www.bsd.ufl.edu/g1c/campus_map/Buildings.aspx',
+            'https://rec.ufl.edu/facilities/',
+            'https://www.dso.ufl.edu/departments',
             'https://news.ufl.edu/',
             'https://calendar.ufl.edu/',
-            
-            # Additional Resources
-            'https://www.uflib.ufl.edu/using/hours.html',  # Library hours
-            'https://businessservices.ufl.edu/services/gator-dining/locations/',  # Dining locations
-            'https://parking.ufl.edu/parking-at-uf/'  # Parking info
+            'https://www.uflib.ufl.edu/using/hours.html',
+            'https://businessservices.ufl.edu/services/gator-dining/locations/',
+            'https://parking.ufl.edu/parking-at-uf/'
         ]
         
         self.STATIC_KNOWLEDGE = {
@@ -75,45 +66,39 @@ class UFAssistant:
         self.SCRAPE_DEPTH = 2
         self.MAX_PAGES = 30  # Increased from 20
         
-        # Set the expected unzipped model file path.
-        # Update these lines in __init__
-        self.MODEL_PATH = "AI/models/mistral-7b-instruct.Q4_0.gguf"
-        self.ZIPPED_MODEL_PATH = "AI/models/modelfiles.zip" 
-        # Set the zipped model file path.
+        # Define the models directory and expected model file names.
+        self.MODELS_DIR = "AI/models"
+        self.MISTRAL_MODEL = os.path.join(self.MODELS_DIR, "mistral-7b-instruct.Q4_0.gguf")
+        self.LLAMA_MODEL = os.path.join(self.MODELS_DIR, "llama-2-7b.Q4_0.gguf")
+        
+        # Cache file for knowledge
         self.CACHE_FILE = "uf_knowledge.cache"
         
         logging.basicConfig(level=logging.INFO,
                             format='%(asctime)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger("UF Assistant")
         
-        # Ensure the model is unzipped before initializing components.
-        self.ensure_model_unzipped()
+        # Ensure that the model files are present by downloading them from Google Drive if necessary.
+        self.ensure_model_files_present()
         self.initialize_components()
 
-    def ensure_model_unzipped(self):
-        """Check if the unzipped model file exists; if not, unzip it from the provided zip file."""
-        if not os.path.exists(self.MODEL_PATH):
-            self.logger.info("Unzipped model file not found. Unzipping from {}...".format(self.ZIPPED_MODEL_PATH))
-            try:
-                # Create models directory if it doesn't exist
-                os.makedirs(os.path.dirname(self.MODEL_PATH), exist_ok=True)
-                
-                with zipfile.ZipFile(self.ZIPPED_MODEL_PATH, 'r') as zip_ref:
-                    # Extract only the specific model file we need
-                    for file in zip_ref.namelist():
-                        if file.endswith('mistral-7b-instruct.Q4_0.gguf'):
-                            # Read the file from zip
-                            data = zip_ref.read(file)
-                            # Write to correct location, removing any nested 'models' directory
-                            with open(self.MODEL_PATH, 'wb') as f:
-                                f.write(data)
-                            break
-                self.logger.info("Model unzipped successfully.")
-            except Exception as e:
-                self.logger.error(f"Failed to unzip model: {str(e)}")
-                raise
+    def ensure_model_files_present(self):
+        """
+        Check if both model files exist in the AI/models folder.
+        If either is missing, download the entire folder from Google Drive.
+        """
+        os.makedirs(self.MODELS_DIR, exist_ok=True)
+        if not os.path.exists(self.MISTRAL_MODEL) or not os.path.exists(self.LLAMA_MODEL):
+            self.logger.info("One or more model files not found. Downloading model files from Google Drive folder...")
+            folder_url = "https://drive.google.com/drive/folders/19PEtNSAyuNK2zOEZvljSVit19vfQBDgz?usp=sharing"
+            if hasattr(gdown, "download_folder"):
+                gdown.download_folder(url=folder_url, output=self.MODELS_DIR, quiet=False)
+                self.logger.info("Downloaded model files from Google Drive folder.")
+            else:
+                self.logger.error("Your gdown version does not support 'download_folder'. Please upgrade using: pip install --upgrade gdown")
+                raise AttributeError("gdown.download_folder not available")
         else:
-            self.logger.info("Model file already unzipped.")
+            self.logger.info("Both model files already exist.")
 
     def initialize_components(self):
         """Initialize LLM and encoder components with error handling."""
@@ -122,12 +107,13 @@ class UFAssistant:
             self.encoder = SentenceTransformer('all-MiniLM-L6-v2')
             
             self.logger.info("Initializing LLM...")
+            # Using the Mistral model by default; change to self.LLAMA_MODEL if needed.
             self.llm = Llama(
-                model_path=self.MODEL_PATH,
-                n_ctx=4096,  # Increased context window
-                n_threads=8,  # Increased threads
-                n_gpu_layers=32,  # Increased GPU layers
-                temperature=0.1,  # Reduced temperature for more focused responses
+                model_path=self.MISTRAL_MODEL,
+                n_ctx=4096,      # Increased context window
+                n_threads=8,     # Increased threads
+                n_gpu_layers=32, # Increased GPU layers
+                temperature=0.1, # Reduced temperature for more focused responses
                 verbose=False
             )
             
@@ -176,7 +162,6 @@ class UFAssistant:
                     knowledge.append(content)
                     self.logger.info(f"Added content from: {url[:50]}...")
                     
-                    # Extract new links if within depth limit.
                     if depth < self.SCRAPE_DEPTH:
                         try:
                             response = requests.get(url, timeout=5)
@@ -191,7 +176,6 @@ class UFAssistant:
                             self.logger.warning(f"Link extraction failed for {url}: {str(e)}")
                             continue
 
-        # Cache the knowledge.
         try:
             with open(self.CACHE_FILE, 'wb') as f:
                 pickle.dump(knowledge, f)
@@ -241,7 +225,6 @@ class UFAssistant:
             for element in soup(['script', 'style', 'nav', 'footer', 'header', 'aside']):
                 element.decompose()
                 
-            # Prioritize main content areas.
             main_content = soup.find('main') or soup.find('article') or soup.find('div', class_=re.compile(r'content|main'))
             
             if main_content:
@@ -267,15 +250,12 @@ class UFAssistant:
         query_lower = query.lower()
         additional_context = []
 
-        # Add library information if relevant.
         if any(word in query_lower for word in ['library', 'marston', 'lib west', 'study']):
             additional_context.append(str(self.STATIC_KNOWLEDGE['libraries']))
 
-        # Add building information if relevant.
         if any(word in query_lower for word in ['building', 'reitz', 'stadium', 'swamp']):
             additional_context.append(str(self.STATIC_KNOWLEDGE['buildings']))
 
-        # Add dining information if relevant.
         if any(word in query_lower for word in ['food', 'eat', 'dining', 'restaurant']):
             additional_context.append(str(self.STATIC_KNOWLEDGE['dining']))
 
@@ -287,7 +267,7 @@ class UFAssistant:
     def generate_response(self, query):
         """Generate improved responses with static knowledge integration."""
         try:
-            context = self.get_relevant_context(query, k=5)  # Increased context retrieval.
+            context = self.get_relevant_context(query, k=5)
             context = self.enrich_with_static_knowledge(query, context)
             
             prompt = f"""You are a knowledgeable assistant for the University of Florida (UF).
@@ -326,16 +306,12 @@ Detailed answer:"""
         while True:
             try:
                 query = input("\nQuestion: ").strip()
-                
                 if not query:
                     continue
-                    
                 if query.lower() in ('exit', 'quit'):
                     break
-                    
                 response = self.generate_response(query)
                 print(f"\nAnswer: {textwrap.fill(response, width=80)}")
-                
             except KeyboardInterrupt:
                 break
             except Exception as e:

@@ -8,3 +8,4 @@ tqdm==4.66.1
 huggingface-hub==0.19.4
 transformers==4.36.2
 urllib3<2.0.0
+gdown
