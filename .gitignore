@@ -1,3 +1,18 @@
 .venv
 .prettierrc
 chatbot/frontend/node_modules
+# Ignore unzipped model files
+/models/
+/__MACOSX/
+
+# But don't ignore the AI/models directory itself
+!/AI/models/
+
+# Ignore the large files inside AI/models
+/AI/models/*.gguf
+
+# Python artifacts
+__pycache__/
+*.py[cod]
+# Cache file
+uf_knowledge.cache
