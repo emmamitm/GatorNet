@@ -1,96 +1,102 @@
 import { React, useState } from "react";
 import { motion } from "motion/react";
 import {
-  MinusCircle,
-  ChatsCircle,
-  PushPin,
-  PushPinSlash,
-  Plus,
-  MagnifyingGlass,
+    MinusCircle,
+    ChatsCircle,
+    PushPin,
+    PushPinSlash,
+    Plus,
+    MagnifyingGlass,
 } from "@phosphor-icons/react";
 
 function ChatsSideMenu() {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const [isPinned, setIsPinned] = useState(false);
-  const [chats, setChats] = useState([
-    { name: "Computer Science Clubs" },
-    { name: "Bus Schedule" },
-    { name: "Weather in Gainesville" },
-  ]);
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [isPinned, setIsPinned] = useState(false);
+    const [chats, setChats] = useState([
+        { name: "Computer Science Clubs" },
+        { name: "Bus Schedule" },
+        { name: "Weather in Gainesville" },
+    ]);
 
-  const iconSize = 25;
+    const iconSize = 25;
 
-  return (
-    <div className="max-h-full">
-      <motion.div
-        className="fixed left-0 p-2 h-full backdrop-blur-lg bg-neutral-200/50 border-r-2 border-neutral-200 rounded-r-xl"
-        onMouseOver={() => {
-          if (!isPinned) setIsExpanded(true);
-        }}
-        onMouseLeave={() => {
-          if (!isPinned) setIsExpanded(false);
-        }}
-        animate={{ width: isExpanded ? 250 : 30 }}
-        transition={{ duration: 0.2 }}
-      >
-        {isExpanded ? (
-          <motion.div
-            className="flex flex-col gap-2"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="flex justify-between">
-              {/* <h1 className="text-2xl font-bold">Chats</h1> */}
-              {isPinned ? (
-                <PushPinSlash
-                  onClick={() => setIsPinned(false)}
-                  weight="fill"
-                  size={iconSize}
-                />
-              ) : (
-                <PushPin
-                  onClick={() => setIsPinned(true)}
-                  weight="fill"
-                  size={iconSize}
-                />
-              )}
-              <div className="flex">
-                <MagnifyingGlass size={iconSize} />
-                <Plus size={iconSize} />
-              </div>
-            </div>
+    return (
+        <div className="max-h-full">
+            <motion.div
+                className="fixed left-0 p-2 h-full backdrop-blur-lg bg-neutral-200/50 border-r-2 border-neutral-200 rounded-r-xl"
+                onMouseOver={() => {
+                    if (!isPinned) setIsExpanded(true);
+                }}
+                onMouseLeave={() => {
+                    if (!isPinned) setIsExpanded(false);
+                }}
+                animate={{ width: isExpanded ? 250 : 30 }}
+                transition={{ duration: 0.2 }}
+            >
+                {isExpanded ? (
+                    <motion.div
+                        className="flex flex-col gap-2"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.5, delay: 0.2 }}
+                    >
+                        <div className="flex justify-between">
+                            {/* <h1 className="text-2xl font-bold">Chats</h1> */}
+                            {isPinned ? (
+                                <PushPinSlash
+                                    onClick={() => setIsPinned(false)}
+                                    weight="fill"
+                                    size={iconSize}
+                                />
+                            ) : (
+                                <PushPin
+                                    onClick={() => setIsPinned(true)}
+                                    weight="fill"
+                                    size={iconSize}
+                                />
+                            )}
+                            <div className="flex">
+                                <MagnifyingGlass size={iconSize} />
+                                <Plus size={iconSize} />
+                            </div>
+                        </div>
 
-            <hr className=" border border-neutral-300" />
+                        <hr className=" border border-neutral-300" />
 
-            {chats.map((chat, index) => (
-              <div
-                key={index}
-                className="flex gap-2 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500"
-              >
-                <div
-                  className="flex items-center gap-1"
-                  onClick={() => console.log("Chat clicked: ", chat.name)}
-                >
-                  <ChatsCircle size={14} weight="bold" />
-                  {chat.name}
-                </div>
-                <button
-                  className="cursor-pointer"
-                  onClick={() => setChats(chats.filter((_, i) => i !== index))}
-                >
-                  <MinusCircle
-                    size={18}
-                    className="fill-red-600 hover:fill-red-400 transition-colors"
-                  />
-                </button>
-              </div>
-            ))}
-          </motion.div>
-        ) : null}
-      </motion.div>
-    </div>
-  );
+                        {chats.map((chat, index) => (
+                            <div
+                                key={index}
+                                className="flex gap-2 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500"
+                            >
+                                <div
+                                    className="flex items-center gap-1"
+                                    onClick={() =>
+                                        console.log("Chat clicked: ", chat.name)
+                                    }
+                                >
+                                    <ChatsCircle size={14} weight="bold" />
+                                    {chat.name}
+                                </div>
+                                <button
+                                    className="cursor-pointer"
+                                    onClick={() =>
+                                        setChats(
+                                            chats.filter((_, i) => i !== index)
+                                        )
+                                    }
+                                >
+                                    <MinusCircle
+                                        size={18}
+                                        className="fill-red-600 hover:fill-red-400 transition-colors"
+                                    />
+                                </button>
+                            </div>
+                        ))}
+                    </motion.div>
+                ) : null}
+            </motion.div>
+        </div>
+    );
 }
 
 export default ChatsSideMenu;

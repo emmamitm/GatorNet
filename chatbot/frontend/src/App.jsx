@@ -9,14 +9,14 @@ import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 
 function App() {
-  return (
-    <Routes>
-      <Route path="/" element={<Dashboard />} />
-      <Route path="/welcome" element={<Welcome />} />
-      <Route path="/login" element={<LogIn />} />
-      <Route path="/signup" element={<SignUp />} />
-    </Routes>
-  );
+    return (
+        <Routes>
+            <Route path="/" element={<Dashboard />} />
+            <Route path="/welcome" element={<Welcome />} />
+            <Route path="/login" element={<LogIn />} />
+            <Route path="/signup" element={<SignUp />} />
+        </Routes>
+    );
 }
 
 export default App;
