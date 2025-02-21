@@ -4,12 +4,13 @@ import sys
 import os
 import time
 import platform
-import webbrowser
+
+# import webbrowser
 
 
 def check_python_dependencies():
     """Install required Python packages"""
-    required_packages = ["flask", "flask-cors", "flask-sqlalchemy"]
+    required_packages = ["flask", "flask-cors", "flask-sqlalchemy", "PyJWT", "werkzeug"]
 
     for package in required_packages:
         try:
