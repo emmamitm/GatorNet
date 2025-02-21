@@ -1,24 +1,35 @@
 import { React, useState } from "react";
 import { motion } from "motion/react";
-import { MinusCircle, ChatsCircle, PushPin, PushPinSlash, Plus, MagnifyingGlass, UserCircle } from "@phosphor-icons/react";
+import {
+  MinusCircle,
+  ChatsCircle,
+  PushPin,
+  PushPinSlash,
+  Plus,
+  MagnifyingGlass,
+} from "@phosphor-icons/react";
 
 function ChatsSideMenu() {
   const [isExpanded, setIsExpanded] = useState(false);
-  const [isPinned, setIsPinned] = useState(false)
+  const [isPinned, setIsPinned] = useState(false);
   const [chats, setChats] = useState([
     { name: "Computer Science Clubs" },
     { name: "Bus Schedule" },
     { name: "Weather in Gainesville" },
   ]);
 
-  const iconSize = 25
+  const iconSize = 25;
 
   return (
     <div className="max-h-full">
       <motion.div
         className="fixed left-0 p-2 h-full backdrop-blur-lg bg-neutral-200/50 border-r-2 border-neutral-200 rounded-r-xl"
-        onMouseOver={() => {if (!isPinned) setIsExpanded(true)}}
-        onMouseLeave={() => {if (!isPinned) setIsExpanded(false)}}
+        onMouseOver={() => {
+          if (!isPinned) setIsExpanded(true);
+        }}
+        onMouseLeave={() => {
+          if (!isPinned) setIsExpanded(false);
+        }}
         animate={{ width: isExpanded ? 250 : 30 }}
         transition={{ duration: 0.2 }}
       >
@@ -32,9 +43,17 @@ function ChatsSideMenu() {
             <div className="flex justify-between">
               {/* <h1 className="text-2xl font-bold">Chats</h1> */}
               {isPinned ? (
-                <PushPinSlash onClick={() => setIsPinned(false)} weight="fill" size={iconSize}/>
+                <PushPinSlash
+                  onClick={() => setIsPinned(false)}
+                  weight="fill"
+                  size={iconSize}
+                />
               ) : (
-                <PushPin onClick={() => setIsPinned(true)} weight="fill" size={iconSize}/>
+                <PushPin
+                  onClick={() => setIsPinned(true)}
+                  weight="fill"
+                  size={iconSize}
+                />
               )}
               <div className="flex">
                 <MagnifyingGlass size={iconSize} />
@@ -72,7 +91,6 @@ function ChatsSideMenu() {
       </motion.div>
     </div>
   );
-  
 }
 
 export default ChatsSideMenu;

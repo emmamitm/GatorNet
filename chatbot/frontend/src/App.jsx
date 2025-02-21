@@ -1,18 +1,21 @@
 import React, { useState, useEffect } from "react";
 import "./css/output.css";
-import ChatsSideMenu from "./components/ChatsSideMenu";
+import { Routes, Route } from "react-router";
 
-import { TopBar } from "./components/TopBar";
-import AppContent from "./pages/AppContent";
+// pages
+import Welcome from "./pages/Welcome";
+import LogIn from "./pages/LogIn";
+import SignUp from "./pages/SignUp";
+import Dashboard from "./pages/Dashboard";
 
 function App() {
   return (
-    <div className="flex flex-col h-screen">
-      <TopBar>
-        <ChatsSideMenu chats={[{ name: "Chat 1" }, { name: "Chat 2" }]} />
-        <AppContent />
-      </TopBar>
-    </div>
+    <Routes>
+      <Route path="/" element={<Dashboard />} />
+      <Route path="/welcome" element={<Welcome />} />
+      <Route path="/login" element={<LogIn />} />
+      <Route path="/signup" element={<SignUp />} />
+    </Routes>
   );
 }
 
