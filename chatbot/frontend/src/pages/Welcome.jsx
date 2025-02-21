@@ -1,7 +1,17 @@
-import React from "react";
-import { Link } from "react-router";
+import React, { useEffect } from "react";
+import { Link, useNavigate } from "react-router";
+import { useAuth } from "../auth/AuthContext";
 
 function Welcome() {
+    const navigate = useNavigate();
+    const { isAuthenticated, loading } = useAuth();
+
+    useEffect(() => {
+        if (!loading && isAuthenticated) {
+            navigate("/dashboard");
+        }
+    }, [loading, isAuthenticated, navigate]);
+
     return (
         <div className="flex flex-col justify-center h-screen max-w-3xl mx-auto p-4">
             <h1 className="text-4xl font-bold text-neutral-700">
