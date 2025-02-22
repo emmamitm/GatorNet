@@ -81,14 +81,12 @@ function Dashboard() {
     };
 
     return (
-        <div className="flex flex-col h-screen">
+        <div className="flex flex-col">
             <TopBar>
                 <ChatsSideMenu
                     chats={[{ name: "Chat 1" }, { name: "Chat 2" }]}
                 />
-                <div className="max-w-3xl mx-auto p-4 pt-0 flex flex-col justify-center h-full text-base">
-                    {/* <ChatsSideMenu chats={[{ name: "Chat 1" }, { name: "Chat 2" }]} /> */}
-
+                <div className="md:max-w-3xl mx-auto px-4 md:px-0 flex flex-col flex-1 text-base">
                     {!isConnected && (
                         <div className="error-banner">
                             Warning: Backend not connected. Messages won't be
@@ -96,127 +94,114 @@ function Dashboard() {
                         </div>
                     )}
 
-                    {/* Header */}
-                    <h1 className="text-3xl font-bold m-2">
-                        What would you like to know?
-                    </h1>
+                    {/* Header (only if messages) */}
+                    {messages.length === 0 && (
+                        <h1 className="text-2xl md:text-3xl font-bold m-2 mt-auto mx-auto mb-4">
+                            What would you like to know?
+                        </h1>
+                    )}
 
                     {/* Suggestions (if no messages) */}
                     {messages.length === 0 ? (
-                        <div className="flex flex-wrap gap-4">
+                        <div className="flex justify-center mb-auto mx-auto whitespace-nowrap flex-wrap gap-2 md:gap-4 sm:max-w-md md:max-w-lg">
                             <Suggestion
-                                text="What events are going on today at UF?"
+                                text="Events at UF"
                                 func={handleSuggestion(
                                     "What events are going on today at UF?"
                                 )}
                             />
                             <Suggestion
-                                text="What is the weather like in Gainesville?"
+                                text="Gainesville Weather"
                                 func={handleSuggestion(
                                     "What is the weather like in Gainesville?"
                                 )}
                             />
                             <Suggestion
-                                text="What is the latest news in the world?"
+                                text="Dining on campus"
                                 func={handleSuggestion(
-                                    "What is the latest news in the world?"
+                                    "Tell me about dining options on campus."
                                 )}
                             />
                             <Suggestion
-                                text="What events are going on today at UF?"
+                                text="Room maintenance"
                                 func={handleSuggestion(
-                                    "What events are going on today at UF?"
+                                    "How do I request maintenance for my room?"
+                                )}
+                            />
+                            <Suggestion
+                                text="UF Health"
+                                func={handleSuggestion(
+                                    "How do I make an appointment at UF Health?"
+                                )}
+                            />
+                            <Suggestion
+                                text="UF Libraries"
+                                func={handleSuggestion(
+                                    "What are the library hours at UF?"
                                 )}
                             />
                         </div>
                     ) : (
-                        <div className="flex flex-col flex-grow  border-2 rounded-2xl p-4 mb-4 border-neutral-200 bg-gradient-to-br from-neutral-50 to-neutral-100">
-                            <div className="overflow-y-auto scroll flex flex-col-reverse h-full">
-                                {messages
-                                    .slice(0)
-                                    .reverse()
-                                    .map((msg, idx) => (
-                                        <Message
-                                            key={idx}
-                                            text={msg.text}
-                                            isUser={msg.isUser}
-                                        />
-                                    ))}
-                            </div>
+                        <div className="overflow-y-auto scroll flex flex-col-reverse h-full pb-2">
+                            {messages
+                                .slice(0)
+                                .reverse()
+                                .map((msg, idx) => (
+                                    <Message
+                                        key={idx}
+                                        text={msg.text}
+                                        isUser={msg.isUser}
+                                    />
+                                ))}
                         </div>
                     )}
 
                     {/* Generated Suggestions */}
                     {messages.length > 0 && (
-                        <div className="flex flex-wrap gap-2">
-                            <Suggestion
-                                text="What events are going on today at UF?"
-                                func={handleSuggestion(
-                                    "What events are going on today at UF?"
-                                )}
-                            />
-                            <Suggestion
-                                text="What is the weather like in Gainesville?"
-                                func={handleSuggestion(
-                                    "What is the weather like in Gainesville?"
-                                )}
-                            />
-                            <Suggestion
-                                text="What is the latest news in the world?"
-                                func={handleSuggestion(
-                                    "What is the latest news in the world?"
-                                )}
-                            />
-                            <Suggestion
-                                text="What events are going on today at UF?"
-                                func={handleSuggestion(
-                                    "What events are going on today at UF?"
-                                )}
-                            />
-                        </div>
+                        <div className="flex flex-wrap gap-2"></div>
                     )}
 
-                    <hr className="my-4 border border-neutral-300" />
-
-                    {/* Message input */}
-                    <form
-                        onSubmit={handleSubmit}
-                        className="flex gap-2 border-2 rounded-2xl p-4 border-neutral-300 bg-white"
-                    >
-                        <div
-                            contentEditable="true"
-                            suppressContentEditableWarning={true}
-                            className="flex-1 outline-none flex items-center"
-                            onInput={(e) =>
-                                setInput(e.currentTarget.textContent)
-                            }
-                            onFocus={(e) =>
-                                e.currentTarget.textContent ===
-                                    "Type your message..." &&
-                                (e.currentTarget.textContent = "")
-                            }
-                            onBlur={(e) =>
-                                e.currentTarget.textContent === "" &&
-                                (e.currentTarget.textContent =
-                                    "Type your message...")
-                            }
-                            onKeyDown={(e) => {
-                                if (e.key === "Enter") {
-                                    e.preventDefault();
-                                    handleSubmit(e);
-                                }
-                            }}
+                    <div className="fixed left-0 bottom-0 w-full p-4 pt-0">
+                        {/* Message input */}
+                        <form
+                            onSubmit={handleSubmit}
+                            className="flex justify-between gap-2 md:max-w-3xl mx-auto rounded-2xl p-4 bg-neutral-100"
                         >
-                            Type your message...
-                        </div>
-                        <button type="submit">
-                            <ArrowCircleUp
-                                size={32}
-                                weight="fill"
-                                className="fill-neutral-700 hover:fill-neutral-500 active:fill-black outline-none cursor-pointer transition-colors duration-200"
-                            />
-                        </button>
-                    </form>
+                            <div
+                                contentEditable="true"
+                                suppressContentEditableWarning={true}
+                                className="outline-none flex flex-1 items-center"
+                                onInput={(e) => {
+                                    setInput(e.currentTarget.textContent);
+                                }}
+                                onFocus={(e) =>
+                                    e.currentTarget.textContent ===
+                                        "Type your message..." &&
+                                    (e.currentTarget.textContent = "")
+                                }
+                                onBlur={(e) =>
+                                    e.currentTarget.textContent === "" &&
+                                    (e.currentTarget.textContent =
+                                        "Type your message...")
+                                }
+                                onKeyDown={(e) => {
+                                    if (e.key === "Enter") {
+                                        e.preventDefault();
+                                        handleSubmit(e);
+                                    }
+                                }}
+                            >
+                                Type your message...
+                            </div>
+                            <button type="submit">
+                                <ArrowCircleUp
+                                    size={32}
+                                    weight="fill"
+                                    className="fill-neutral-700 hover:fill-neutral-500 active:fill-black outline-none cursor-pointer transition-colors duration-200"
+                                />
+                            </button>
+                        </form>
+                    </div>
                 </div>
             </TopBar>
         </div>

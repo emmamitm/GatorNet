@@ -6,3 +6,7 @@ body {
         sans-serif;
     color: var(--color-neutral-700);
 }
+
+button {
+    cursor: pointer;
+}

@@ -9,10 +9,10 @@ function Message({ key, text, isUser }) {
             }`}
         >
             <div
-                className={`flex items-center p-3 rounded-xl border ${
+                className={`flex items-center p-3 rounded-xl bg-gradient-to-tr ${
                     isUser
-                        ? "bg-blue-200 border-blue-400"
-                        : "bg-white border-neutral-300"
+                        ? "from-blue-100 to-cyan-100"
+                        : "from-neutral-100 to-slate-100"
                 }`}
             >
                 <div>{text}</div>
