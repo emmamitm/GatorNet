@@ -226,76 +226,59 @@ class UFAssistant:
         
         self.CACHE_FILE = "uf_knowledge.cache"
         
-        logging.basicConfig(level=logging.INFO,
-                          format='%(asctime)s - %(levelname)s - %(message)s')
+        # Configure logging to be silent by default
+        logging.basicConfig(level=logging.ERROR,
+                        format='%(asctime)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger("UF Assistant")
-        
+        self.embedding_cache = {}
         self.ensure_model_files_present()
         self.initialize_components()
     def download_with_smartdl(self, url, dest):
         """Download a file using pySmartDL with optimized settings."""
         try:
-            self.logger.info(f"Starting optimized download of {os.path.basename(dest)}")
+            # Removed logging statement
             dl = SmartDL(
                 url, 
                 dest,
-                threads=16,                    # Increased thread count
-                timeout=20,                    # Increased timeout
-                connect_timeout=20,            # Connection timeout
-                fix_urls=True,                 # Try to fix broken URLs
-                progress_bar=False,            # Disable progress bar for speed
-                multipart_threshold=8 * 1024,  # Lower threshold for splitting
-                request_args={                 # Optimize request parameters
+                threads=16,                  
+                timeout=20,                  
+                connect_timeout=20,          
+                fix_urls=True,              
+                progress_bar=False,          # Keep this false to avoid printing batches
+                multipart_threshold=8 * 1024,
+                request_args={               
                     'headers': {
                         'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
                         'Accept': '*/*',
                         'Accept-Encoding': 'gzip, deflate',
                         'Connection': 'keep-alive'
                     },
-                    'verify': False,  # Skip SSL verification for speed
+                    'verify': False,
                     'allow_redirects': True
                 }
             )
             
-            dl.start(blocking=False)  # Non-blocking download
+            dl.start(blocking=True)  # Use blocking mode to avoid progress updates
             
-            # Custom progress monitoring with less frequent updates
-            last_progress = 0
-            while not dl.isFinished():
-                progress = int(dl.get_progress() * 100)
-                if progress - last_progress >= 5:  # Only log every 5% progress
-                    speed = dl.get_speed(human=True)
-                    eta = dl.get_eta(human=True)
-                    self.logger.info(f"Progress: {progress}%, Speed: {speed}, ETA: {eta}")
-                    last_progress = progress
-                time.sleep(0.5)  # Reduced sleep time
-                
-            if dl.isSuccessful():
-                self.logger.info(f"Successfully downloaded {os.path.basename(dest)}")
-                return True
-            else:
-                self.logger.error(f"Download failed: {dl.get_errors()}")
-                return False
+            return dl.isSuccessful()
                 
         except Exception as e:
             self.logger.error(f"Download error: {str(e)}")
             return False
-
     def ensure_model_files_present(self):
-        """
-        Optimized model file download with improved error handling and caching.
-        """
+        """Ensure model files are present with minimal output."""
         os.makedirs(self.MODELS_DIR, exist_ok=True)
         
-        # Define chunk size for faster downloads (32MB)
-        CHUNK_SIZE = 32 * 1024 * 1024
+        # Define chunk size for faster downloads (64MB)
+        CHUNK_SIZE = 64 * 1024 * 1024
         
         if not os.path.exists(self.MISTRAL_MODEL) or not os.path.exists(self.LLAMA_MODEL):
-            self.logger.info("One or more model files not found. Initiating optimized download...")
+            # Single message to user instead of continuous updates
+            print("Model files not found. Downloading (this may take a while)...")
             folder_url = "https://drive.google.com/drive/folders/19PEtNSAyuNK2zOEZvljSVit19vfQBDgz?usp=sharing"
             
             try:
-                # Use gdown to get direct download URLs with optimized settings
+                # Use gdown quietly
                 folder_info = gdown.parse_url(folder_url)
                 file_ids = gdown.folder_ids(folder_info['id'])
                 
@@ -329,7 +312,6 @@ class UFAssistant:
                                 expected_size = int(response.headers.get('content-length', 0))
                                 actual_size = os.path.getsize(dest_path)
                                 if expected_size == actual_size:
-                                    self.logger.info(f"File {file_name} already exists with correct size")
                                     continue
                             except:
                                 pass
@@ -337,61 +319,64 @@ class UFAssistant:
                         # Try pySmartDL first
                         if not self.download_with_smartdl(direct_url, dest_path):
                             # Fallback to gdown with optimized settings
-                            self.logger.warning(f"Falling back to optimized gdown for {file_name}")
                             gdown.download(
                                 direct_url, 
                                 dest_path, 
-                                quiet=False,
+                                quiet=True,  # Keep quiet to avoid progress updates
                                 use_cookies=False,
-                                speed=None,  # Disable speed limit
+                                speed=None,
                                 chunk_size=CHUNK_SIZE
                             )
                 
-                self.logger.info("All model files downloaded successfully")
-                
+                print("Download complete.")
+            
             except Exception as e:
                 self.logger.error(f"Download error: {str(e)}")
                 # Final fallback to regular gdown folder download
                 if hasattr(gdown, "download_folder"):
-                    self.logger.info("Falling back to gdown folder download...")
+                    print("Downloading model files (please wait)...")
                     gdown.download_folder(
                         url=folder_url, 
                         output=self.MODELS_DIR, 
-                        quiet=False,
+                        quiet=True,  # Keep quiet
                         use_cookies=False
                     )
                 else:
                     raise AttributeError("gdown.download_folder not available")
-        else:
-            self.logger.info("Both model files already exist.")
-
     def initialize_components(self):
-        """Initialize LLM and encoder components with error handling."""
+        """Initialize LLM and encoder components with optimized settings."""
         try:
-            self.logger.info("Initializing encoder...")
+            # Loading message instead of logging
+            print("Loading AI models...", end="", flush=True)
+            
+            # Use a faster, smaller encoder model
             self.encoder = SentenceTransformer('all-MiniLM-L6-v2')
             
-            self.logger.info("Initializing LLM...")
+            # Load LLM with optimized settings
             self.llm = Llama(
                 model_path=self.MISTRAL_MODEL,
-                n_ctx=4096,
-                n_threads=8,
-                n_gpu_layers=32,
+                n_ctx=2048,         
+                n_threads=8,         # Increased for better performance
+                n_gpu_layers=32,     # Maximize GPU usage if available
                 temperature=0.1,
                 verbose=False
             )
             
+            # Cache static knowledge embeddings
+            for category, data in self.STATIC_KNOWLEDGE.items():
+                text = json.dumps(data)
+                self.embedding_cache[f"static_{category}"] = self.encoder.encode([text])[0]
+                
             self.knowledge_base = self.load_or_build_knowledge()
             
+            print(" Ready!")
+                
         except Exception as e:
-            self.logger.error(f"Initialization error: {str(e)}")
+            print(f"\nError initializing AI components: {str(e)}")
             raise
-
-
     def load_or_build_knowledge(self):
         """Load cached knowledge or build new knowledge base."""
         if os.path.exists(self.CACHE_FILE):
-            self.logger.info("Loading cached knowledge...")
             try:
                 with open(self.CACHE_FILE, 'rb') as f:
                     return pickle.load(f)
@@ -399,16 +384,13 @@ class UFAssistant:
                 self.logger.error(f"Cache loading failed: {str(e)}")
                 os.remove(self.CACHE_FILE)
         
-        self.logger.info("Building new knowledge base from sources...")
+        print("Building knowledge base (this may take a few minutes)...")
         knowledge = []
         visited = set()
         
         # Add static knowledge first.
-        knowledge.extend([
-            json.dumps(self.STATIC_KNOWLEDGE['libraries']),
-            json.dumps(self.STATIC_KNOWLEDGE['buildings']),
-            json.dumps(self.STATIC_KNOWLEDGE['dining'])
-        ])
+        for category, data in self.STATIC_KNOWLEDGE.items():
+            knowledge.append(json.dumps(data))
         
         # Scrape dynamic content.
         for base_url in self.UF_BASE_URLS:
@@ -425,7 +407,6 @@ class UFAssistant:
                 
                 if content:
                     knowledge.append(content)
-                    self.logger.info(f"Added content from: {url[:50]}...")
                     
                     if depth < self.SCRAPE_DEPTH:
                         try:
@@ -438,7 +419,6 @@ class UFAssistant:
                                 if href.startswith('http') and 'ufl.edu' in href:
                                     queue.append((href, depth + 1))
                         except Exception as e:
-                            self.logger.warning(f"Link extraction failed for {url}: {str(e)}")
                             continue
 
         try:
@@ -448,31 +428,40 @@ class UFAssistant:
             self.logger.error(f"Cache saving failed: {str(e)}")
 
         return knowledge
-
     def get_relevant_context(self, query, k=5):
-        """Find most relevant context for a query."""
+        """Find most relevant context with caching."""
         try:
-            query_embedding = self.encoder.encode([query])[0]
+            # Cache query embedding
+            if query not in self.embedding_cache:
+                self.embedding_cache[query] = self.encoder.encode([query])[0]
+            query_embedding = self.embedding_cache[query]
+            
             contexts = []
             
+            # First check static knowledge
+            for category, data in self.STATIC_KNOWLEDGE.items():
+                cache_key = f"static_{category}"
+                if cache_key in self.embedding_cache:
+                    similarity = np.dot(query_embedding, self.embedding_cache[cache_key])
+                    contexts.append((similarity, json.dumps(data)))
+            
+            # Then check dynamic knowledge
             for text in self.knowledge_base:
-                text_embedding = self.encoder.encode([text])[0]
-                similarity = np.dot(query_embedding, text_embedding)
+                if text not in self.embedding_cache:
+                    self.embedding_cache[text] = self.encoder.encode([text])[0]
+                similarity = np.dot(query_embedding, self.embedding_cache[text])
                 contexts.append((similarity, text))
             
             contexts.sort(reverse=True)
-            relevant_texts = [text for _, text in contexts[:k]]
-            
-            return "\n".join(relevant_texts)
+            return "\n".join(text for _, text in contexts[:k])
             
         except Exception as e:
             self.logger.error(f"Context retrieval error: {str(e)}")
             return ""
-
     def safe_scrape(self, url):
         """Enhanced scraping with better content extraction."""
         try:
-            time.sleep(1)
+            time.sleep(0.5)  # Reduced sleep time for faster scraping
             headers = {
                 'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7)',
                 'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
@@ -481,7 +470,7 @@ class UFAssistant:
                 'Connection': 'keep-alive'
             }
             
-            response = requests.get(url, headers=headers, timeout=15)
+            response = requests.get(url, headers=headers, timeout=10)
             response.raise_for_status()
             
             soup = BeautifulSoup(response.text, 'html.parser')
@@ -501,15 +490,13 @@ class UFAssistant:
             text = re.sub(r'\s+', ' ', text)
             text = re.sub(r'[^\w\s.,!?-]', '', text)
             
-            # Add metadata.
-            text = f"[Source: {url}]\n[Last Updated: {time.strftime('%Y-%m-%d')}]\n\n{text[:3000]}"
+            # Add metadata but keep it minimal
+            text = f"[Source: {url}]\n{text[:3000]}"
             
             return text
             
         except Exception as e:
-            self.logger.warning(f"Scraping failed for {url}: {str(e)}")
             return None
-
     def enrich_with_static_knowledge(self, query, context):
         """Add relevant static knowledge to the context based on query keywords."""
         query_lower = query.lower()
@@ -553,39 +540,23 @@ class UFAssistant:
         return context
 
     def generate_response(self, query):
-        """Generate improved responses with enhanced static knowledge integration."""
+        """Generate faster responses with optimized prompt."""
         try:
             context = self.get_relevant_context(query, k=5)
             context = self.enrich_with_static_knowledge(query, context)
             
-            # Create a more specific prompt based on the query type
-            prompt_additions = ""
-            query_lower = query.lower()
-            
-            if 'where' in query_lower or 'location' in query_lower:
-                prompt_additions = "Focus on providing specific location details and directions."
-            elif 'how' in query_lower:
-                prompt_additions = "Provide step-by-step information when applicable."
-            elif 'when' in query_lower:
-                prompt_additions = "Include relevant timing and scheduling information."
-            elif any(word in query_lower for word in ['compare', 'difference', 'better']):
-                prompt_additions = "Provide a balanced comparison of the options."
-            
-            prompt = f"""You are a knowledgeable assistant for the University of Florida (UF).
-Answer the following question using the provided context. Be specific and detailed.
-{prompt_additions}
-If you're not certain about something, say so, but provide any relevant information you do have.
+            prompt = f"""You are a knowledgeable UF assistant. Give helpful but concise answers.
 
-Context: {context}
+    Context: {context}
 
-Question: {query}
+    Question: {query}
 
-Detailed answer:"""
+    Answer:"""
             
             response = self.llm(
                 prompt,
-                max_tokens=750,
-                stop=["Question:", "\n\n\n"],
+                max_tokens=300,    # Reduced from 750
+                stop=["Question:", "\n\n"],
                 echo=False
             )
             
@@ -594,6 +565,7 @@ Detailed answer:"""
         except Exception as e:
             self.logger.error(f"Response generation error: {str(e)}")
             return "I apologize, but I encountered an error. Please try asking your question again."
+
 
 
     def suggest_related_topics(self, query):
@@ -621,46 +593,33 @@ Detailed answer:"""
                 print(f"- {suggestion}")
 
     def run(self):
-        """Interactive assistant with improved UI and topic suggestions."""
+        """Streamlined interactive assistant with no batches printing."""
         print("\n=== UF Campus Assistant ===")
-        print("Ready to answer questions about UF! Try asking about:")
-        print("- Campus locations and buildings")
-        print("- Libraries and study spaces")
-        print("- Dining options and facilities")
-        print("- Transportation and parking")
-        print("- Recreation and fitness facilities")
-        print("- Academic programs and colleges")
-        print("- Student services and healthcare")
-        print("- Campus traditions and events")
-        print("\nType 'quit' to exit")
+        print("Ask me anything about UF! Type 'quit' to exit.\n")
         
         while True:
             try:
-                query = input("\nQuestion: ").strip()
+                query = input("> ").strip()
                 if not query:
                     continue
-                if query.lower() in ('exit', 'quit'):
+                if query.lower() == 'quit':
                     break
                 
-                # Generate and format response
+                # Simple thinking indicator
+                print("Thinking...", end="\r", flush=True)
+                
+                # Generate response and clear the thinking indicator
                 response = self.generate_response(query)
-                print("\nAnswer:", end=" ")
-                
-                # Print response with proper wrapping
-                wrapped_response = textwrap.fill(response, width=80, initial_indent="", subsequent_indent="  ")
-                print(wrapped_response)
-                
-                # Suggest related topics based on the query
-                self.suggest_related_topics(query)
+                print(" " * 10, end="\r")  # Clear the "Thinking..." text
+                print("\n" + response + "\n")
                 
             except KeyboardInterrupt:
                 break
             except Exception as e:
-                self.logger.error(f"Runtime error: {str(e)}")
-                print("\nAn error occurred. Please try again.")
+                print("\nAn error occurred. Please try again.\n")
         
+        print("Goodbye!")
         self.llm.close()
-
 if __name__ == "__main__":
     try:
         assistant = UFAssistant()
