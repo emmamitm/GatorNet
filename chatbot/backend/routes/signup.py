@@ -1,3 +1,4 @@
+#signup.py
 from flask import Blueprint, request, jsonify, current_app as app
 from database_tables import db, User
 from werkzeug.security import generate_password_hash
