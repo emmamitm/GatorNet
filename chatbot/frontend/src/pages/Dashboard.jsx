@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
 import "../css/output.css";
-
 import { ArrowCircleUp } from "@phosphor-icons/react";
 // component imports
 import TopBar from "../components/TopBar";
 import ChatsSideMenu from "../components/ChatsSideMenu";
 import Message from "../components/Message";
 import Suggestion from "../components/Suggestion";
+import { useAuth } from "../auth/AuthContext";
 
 function Dashboard() {
     const [messages, setMessages] = useState([]);
     const [input, setInput] = useState("");
     const [isConnected, setIsConnected] = useState(false);
+    const [currentConversationId, setCurrentConversationId] = useState(null);
+    const [isFetchingMessages, setIsFetchingMessages] = useState(false);
+    const { user } = useAuth();
 
     // Test backend connection on load
     useEffect(() => {
@@ -26,50 +29,145 @@ function Dashboard() {
             });
     }, []);
 
+    // Load messages when conversation changes
+    useEffect(() => {
+        if (currentConversationId) {
+            loadConversationMessages(currentConversationId);
+        } else {
+            // Clear messages if no conversation is selected
+            setMessages([]);
+        }
+    }, [currentConversationId]);
+
+    // Function to load messages for a conversation
+    const loadConversationMessages = async (conversationId) => {
+        if (!conversationId) return;
+        
+        setIsFetchingMessages(true);
+        
+        try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(`http://localhost:5001/api/conversations/${conversationId}/messages`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Failed to load messages: ${response.status}`);
+            }
+            
+            const messagesData = await response.json();
+            setMessages(messagesData);
+        } catch (error) {
+            console.error("Error loading conversation messages:", error);
+        } finally {
+            setIsFetchingMessages(false);
+        }
+    };
+
+    // Handle conversation selection from sidebar
+    const handleSelectConversation = (conversationId) => {
+        setCurrentConversationId(conversationId);
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-
         if (!input.trim()) return;
-
+        
         const userMessage = input.trim();
         console.log("Sending message:", userMessage); // Debug print
-
-        // Add user message
-        setMessages((prev) => [...prev, { text: userMessage, isUser: true }]);
+        
+        // Clear input field first
         setInput("");
         document.querySelector('[contenteditable="true"]').textContent = "";
-
+        
+        // Get user ID from authentication
+        const userId = user ? user.user_id : localStorage.getItem("userId");
+        
+        // If no conversation is selected, we need to create one
+        if (!currentConversationId) {
+            try {
+                const token = localStorage.getItem("token");
+                const response = await fetch("http://localhost:5001/api/conversations", {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json"
+                    }
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`Failed to create conversation: ${response.status}`);
+                }
+                
+                const newConversation = await response.json();
+                setCurrentConversationId(newConversation.id);
+                
+                // Continue with the message sending...
+            } catch (error) {
+                console.error("Error creating conversation:", error);
+                return;
+            }
+        }
+        
+        // Add user message to UI immediately (optimistic update)
+        const tempUserMessage = { 
+            id: 'temp-' + Date.now(),
+            text: userMessage, 
+            isUser: true,
+            sent_at: new Date().toISOString()
+        };
+        setMessages(prev => [...prev, tempUserMessage]);
+        
         // Get bot response
         try {
             console.log("Making request to backend..."); // Debug print
+            console.log("Using conversation ID:", currentConversationId);
+            
             const res = await fetch("http://localhost:5001/api/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    Accept: "application/json",
+                    "Accept": "application/json",
+                    "Authorization": `Bearer ${localStorage.getItem("token")}`
                 },
-                body: JSON.stringify({ message: userMessage }),
+                body: JSON.stringify({ 
+                    message: userMessage,
+                    user_id: parseInt(userId),
+                    conversation_id: currentConversationId
+                }),
             });
-
+            
             console.log("Response status:", res.status); // Debug print
-
+            
             if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
             }
-
+            
             const data = await res.json();
             console.log("Received response:", data); // Debug print
-            setMessages((prev) => [
-                ...prev,
-                { text: data.response, isUser: false },
-            ]);
+            
+            // Update the conversation ID from the response if provided
+            if (data.conversation_id) {
+                setCurrentConversationId(data.conversation_id);
+                console.log("Updated conversation ID:", data.conversation_id);
+            }
+            
+            // After getting response, reload the full conversation to ensure we have all messages
+            await loadConversationMessages(data.conversation_id || currentConversationId);
+            
         } catch (err) {
             console.error("Detailed error:", err);
-            setMessages((prev) => [
+            
+            // Show error in message list
+            setMessages(prev => [
                 ...prev,
                 {
+                    id: 'error-' + Date.now(),
                     text: `Error: ${err.message}. Please try again.`,
                     isUser: false,
+                    sent_at: new Date().toISOString()
                 },
             ]);
         }
@@ -84,7 +182,8 @@ function Dashboard() {
         <div className="flex flex-col">
             <TopBar>
                 <ChatsSideMenu
-                    chats={[{ name: "Chat 1" }, { name: "Chat 2" }]}
+                    onSelectConversation={handleSelectConversation}
+                    currentConversationId={currentConversationId}
                 />
                 <div className="md:max-w-3xl mx-auto px-4 md:px-0 flex flex-col flex-1 text-base">
                     {!isConnected && (
@@ -93,16 +192,20 @@ function Dashboard() {
                             processed.
                         </div>
                     )}
-
+                    
+                    {isFetchingMessages && (
+                        <div className="text-center py-4">Loading messages...</div>
+                    )}
+                    
                     {/* Header (only if messages) */}
-                    {messages.length === 0 && (
+                    {messages.length === 0 && !isFetchingMessages && (
                         <h1 className="text-2xl md:text-3xl font-bold m-2 mt-auto mx-auto mb-4">
                             What would you like to know?
                         </h1>
                     )}
-
+                    
                     {/* Suggestions (if no messages) */}
-                    {messages.length === 0 ? (
+                    {messages.length === 0 && !isFetchingMessages ? (
                         <div className="flex justify-center mb-auto mx-auto whitespace-nowrap flex-wrap gap-2 md:gap-4 sm:max-w-md md:max-w-lg">
                             <Suggestion
                                 text="Events at UF"
@@ -143,26 +246,21 @@ function Dashboard() {
                         </div>
                     ) : (
                         <div className="overflow-y-auto scroll flex flex-col-reverse h-full pb-2">
-                            {messages
+                            {!isFetchingMessages && messages
                                 .slice(0)
                                 .reverse()
                                 .map((msg, idx) => (
                                     <Message
-                                        key={idx}
+                                        key={msg.id || idx}
                                         text={msg.text}
                                         isUser={msg.isUser}
                                     />
                                 ))}
                         </div>
                     )}
-
-                    {/* Generated Suggestions */}
-                    {messages.length > 0 && (
-                        <div className="flex flex-wrap gap-2"></div>
-                    )}
-
+                    
+                    {/* Message input */}
                     <div className="fixed left-0 bottom-0 w-full p-4 pt-0">
-                        {/* Message input */}
                         <form
                             onSubmit={handleSubmit}
                             className="flex justify-between gap-2 md:max-w-3xl mx-auto rounded-2xl p-4 bg-neutral-100"

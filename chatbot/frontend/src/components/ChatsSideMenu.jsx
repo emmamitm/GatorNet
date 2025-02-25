@@ -10,19 +10,125 @@ import {
     MagnifyingGlass,
     X,
 } from "@phosphor-icons/react";
+import { useAuth } from "../auth/AuthContext";
 
-function ChatsSideMenu() {
+function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
     const [isExpanded, setIsExpanded] = useState(false);
     const [isPinned, setIsPinned] = useState(false);
-    const [chats, setChats] = useState([
-        { name: "Computer Science Clubs" },
-        { name: "Bus Schedule" },
-        { name: "Weather in Gainesville" },
-    ]);
+    const [conversations, setConversations] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [error, setError] = useState(null);
+    const { user } = useAuth();
+
     const [screenSize, setScreenSize] = useState({
         width: window.innerWidth,
         height: window.innerHeight,
     });
+
+    // Fetch user conversations
+    const fetchConversations = async () => {
+        if (!user) return;
+        
+        setIsLoading(true);
+        setError(null);
+        
+        try {
+            const token = localStorage.getItem("token");
+            const response = await fetch("http://localhost:5001/api/conversations", {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Failed to fetch conversations: ${response.status}`);
+            }
+            
+            const data = await response.json();
+            setConversations(data);
+        } catch (err) {
+            console.error("Error fetching conversations:", err);
+            setError("Failed to load conversations");
+        } finally {
+            setIsLoading(false);
+        }
+    };
+
+    // Create a new conversation
+    const createNewConversation = async () => {
+        if (!user) return;
+        
+        try {
+            const token = localStorage.getItem("token");
+            const response = await fetch("http://localhost:5001/api/conversations", {
+                method: "POST",
+                headers: {
+                    Authorization: `Bearer ${token}`,
+                    "Content-Type": "application/json"
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Failed to create conversation: ${response.status}`);
+            }
+            
+            const newConversation = await response.json();
+            
+            // Add to conversation list
+            setConversations(prev => [newConversation, ...prev]);
+            
+            // Select the new conversation
+            if (onSelectConversation) {
+                onSelectConversation(newConversation.id);
+            }
+        } catch (err) {
+            console.error("Error creating conversation:", err);
+            setError("Failed to create new conversation");
+        }
+    };
+
+    // Delete a conversation
+    const deleteConversation = async (conversationId, e) => {
+        e.stopPropagation(); // Prevent selecting the conversation when deleting
+        
+        if (!user) return;
+        
+        try {
+            const token = localStorage.getItem("token");
+            const response = await fetch(`http://localhost:5001/api/conversations/${conversationId}`, {
+                method: "DELETE",
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Failed to delete conversation: ${response.status}`);
+            }
+            
+            // Remove from conversation list
+            setConversations(prev => prev.filter(conv => conv.id !== conversationId));
+            
+            // If the deleted conversation was the current one, select a new one or clear
+            if (currentConversationId === conversationId) {
+                // Select the first available conversation or null if none left
+                const nextConversation = conversations.find(conv => conv.id !== conversationId);
+                if (onSelectConversation) {
+                    onSelectConversation(nextConversation ? nextConversation.id : null);
+                }
+            }
+        } catch (err) {
+            console.error("Error deleting conversation:", err);
+            setError("Failed to delete conversation");
+        }
+    };
+
+    // Load conversations on component mount and when user changes
+    useEffect(() => {
+        if (user) {
+            fetchConversations();
+        }
+    }, [user]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -113,6 +219,7 @@ function ChatsSideMenu() {
                                     <Plus
                                         size={iconSize}
                                         className="cursor-pointer hover:fill-neutral-950 transition-colors"
+                                        onClick={createNewConversation}
                                     />
                                 </div>
                                 {screenSize.width < 768 && (
@@ -128,32 +235,42 @@ function ChatsSideMenu() {
                             </div>
 
                             <hr className="border border-neutral-300" />
+                            
+                            {isLoading && (
+                                <div className="text-sm text-center py-2">Loading conversations...</div>
+                            )}
+                            
+                            {error && (
+                                <div className="text-sm text-red-500 text-center py-2">{error}</div>
+                            )}
+                            
+                            {!isLoading && conversations.length === 0 && (
+                                <div className="text-sm text-center py-2">No conversations yet</div>
+                            )}
 
-                            {chats.map((chat, index) => (
+                            {conversations.map((conversation) => (
                                 <div
-                                    key={index}
-                                    className="flex gap-2 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500"
+                                    key={conversation.id}
+                                    className={`flex gap-2 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500 ${
+                                        currentConversationId === conversation.id ? 'bg-blue-100 rounded-md' : ''
+                                    }`}
                                 >
                                     <div
-                                        className="flex items-center gap-1"
-                                        onClick={() =>
-                                            console.log(
-                                                "Chat clicked: ",
-                                                chat.name
-                                            )
-                                        }
+                                        className="flex items-center gap-1 p-1"
+                                        onClick={() => {
+                                            if (onSelectConversation) {
+                                                onSelectConversation(conversation.id);
+                                            }
+                                            if (screenSize.width < 768) {
+                                                setIsExpanded(false);
+                                            }
+                                        }}
                                     >
                                         <ChatsCircle size={14} weight="bold" />
-                                        {chat.name}
+                                        {conversation.title}
                                     </div>
                                     <button
-                                        onClick={() =>
-                                            setChats(
-                                                chats.filter(
-                                                    (_, i) => i !== index
-                                                )
-                                            )
-                                        }
+                                        onClick={(e) => deleteConversation(conversation.id, e)}
                                     >
                                         <MinusCircle
                                             size={18}
