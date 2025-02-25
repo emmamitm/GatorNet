@@ -10,6 +10,10 @@ chatbot/frontend/src/css/output.css
 /AI/models/mistral-7b-instruct.Q4_0.gguf
 /AI/models/llama-2-7b.Q4_0.gguf
 
+/chatbot/backend/AI/models/mistral-7b-instruct.Q4_0.gguf
+/chatbot/backend/AI/models/llama-2-7b.Q4_0.gguf
+/chatbot/backend/AI/models/*.gguf
+/chatbot/backend/AI/models/*.part
 # Ignore the large files inside AI/models
 /AI/models/*.gguf
 
