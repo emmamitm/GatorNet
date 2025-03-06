@@ -34,12 +34,12 @@ function LogIn() {
 
     return (
         <div className="flex flex-col max-w-sm h-svh justify-center mx-auto p-4">
+            {error && (
+                <div className="my-2 py-2 px-4 bg-red-100 text-red-800 rounded-lg">
+                    {error}
+                </div>
+            )}
             <div className="flex flex-col gap-2 p-6 sm:p-8 md:p-12 bg-neutral-100/60 rounded-xl">
-                {error && (
-                    <div className="py-2 px-4 bg-red-100 text-red-800 rounded-lg">
-                        {error}
-                    </div>
-                )}
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold">
                     Log In
                 </h1>

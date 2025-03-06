@@ -1,4 +1,5 @@
-from flask import Blueprint, request, jsonify, current_app as app
+# login.py
+from flask import Blueprint, request, jsonify
 from database_tables import User
 from werkzeug.security import check_password_hash
 from datetime import datetime, timedelta
