@@ -190,7 +190,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
             )}
             <motion.div className="max-h-fit md:max-h-full z-20 relative">
                 <motion.div
-                    className="fixed md:top-0 left-0 md:p-1 h-full backdrop-blur-2xl bg-neutral-200/60 border-r-2 border-neutral-200 rounded-r-xl"
+                    className="fixed md:top-0 left-0 md:p-1 h-full backdrop-blur-2xl bg-neutral-200/60 border-r-2 border-neutral-200 rounded-r-xl overflow-y-scroll"
                     {...(screenSize.width >= 768 && {
                         onMouseOver: () => {
                             if (!isPinned) setIsExpanded(true);
@@ -265,7 +265,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                                 <div className="text-sm text-center py-2">
                                     Loading conversations...
                                 </div>
-                            )}
+                            )}  
 
                             {error && (
                                 <div className="text-sm text-red-500 text-center py-2">
@@ -274,8 +274,8 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                             )}
 
                             {!isLoading && conversations.length === 0 && (
-                                <div className="text-sm text-center py-2">
-                                    No conversations yet
+                                <div className="text-sm text-left text-neutral-600 my-2 ml-2">
+                                    No conversations yet.
                                 </div>
                             )}
 
