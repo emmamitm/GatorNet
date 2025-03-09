@@ -1,3 +1,4 @@
+import React, { useState, useEffect } from "react";
 import { UserCircle } from "@phosphor-icons/react";
 import { useAuth } from "../auth/AuthContext";
 import { Link } from "react-router";
@@ -5,6 +6,19 @@ import { Link } from "react-router";
 export function TopBar({ children }) {
     const { logout } = useAuth();
     const { user } = useAuth();
+
+    const [avatarSrc, setAvatarSrc] = useState(null);
+
+    useEffect(() => {
+        if (user?.avatar) {
+            const src = user.avatar.startsWith("data:image/")
+                ? user.avatar
+                : `data:image/png;base64,${user.avatar}`;
+            setAvatarSrc(src);
+        } else {
+            setAvatarSrc(null);
+        }
+    }, [user]);
 
     return (
         <div className="flex flex-col w-screen h-screen">
@@ -17,11 +31,19 @@ export function TopBar({ children }) {
                 </Link>
                 <div className="flex flex-col justify-center items-center p-2">
                     <button className="" onClick={logout}>
-                        <UserCircle
-                            size={32}
-                            weight="fill"
-                            className="fill-orange-400"
-                        />
+                        {user?.avatar ? (
+                            <img
+                                src={avatarSrc}
+                                alt="Avatar"
+                                className="w-8 h-8 object-cover rounded-full "
+                            />
+                        ) : (
+                            <UserCircle
+                                size={32}
+                                weight="fill"
+                                className="fill-orange-400"
+                            />
+                        )}
                     </button>
                     <p className="text-neutral-200 text-xs -mt-0.5">
                         {user?.name || ""}

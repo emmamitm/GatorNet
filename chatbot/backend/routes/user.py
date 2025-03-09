@@ -1,4 +1,4 @@
-#user.py
+# user.py
 from flask import Blueprint, request, jsonify
 from database_tables import db, User
 from werkzeug.security import generate_password_hash
@@ -7,13 +7,14 @@ import os, base64
 
 user_routes = Blueprint("user_routes", __name__)
 
+
 @user_routes.route("/api/user/profile", methods=["GET"])
 @token_required
 def get_profile(current_user):
     avatar_base64 = None
 
-    if current_user.avatar:
-        avatar_path = current_user.avatar
+    if hasattr(current_user, "avatar_path") and current_user.avatar_path:
+        avatar_path = current_user.avatar_path
 
         if os.path.exists(avatar_path):
             try:
@@ -34,6 +35,7 @@ def get_profile(current_user):
         200,
     )
 
+
 @user_routes.route("/api/user/update", methods=["PUT"])
 @token_required
 def update_profile(current_user):
@@ -43,13 +45,13 @@ def update_profile(current_user):
     if "name" in data:
         current_user.name = data["name"]
     if "avatar" in data:
-            try:
-                avatar_data = base64.b64decode(data["avatar"].split(",")[1])
-                with open(current_user.avatar_path, "wb") as avatar_file:
-                    avatar_file.write(avatar_data)
-            except Exception as img_error:
-                print(f"Failed to save avatar: {img_error}")
-                return jsonify({"error": "Failed to save avatar"}), 500
+        try:
+            avatar_data = base64.b64decode(data["avatar"].split(",")[1])
+            with open(current_user.avatar_path, "wb") as avatar_file:
+                avatar_file.write(avatar_data)
+        except Exception as img_error:
+            print(f"Failed to save avatar: {img_error}")
+            return jsonify({"error": "Failed to save avatar"}), 500
     if "password" in data:
         current_user.password_hash = generate_password_hash(data["password"])
 
@@ -69,10 +71,12 @@ def update_profile(current_user):
         200,
     )
 
+
 @user_routes.route("/api/users", methods=["GET"])
 def get_users():
     users = User.query.all()
     return jsonify([user.email for user in users])
+
 
 @user_routes.route("/api/users/<int:user_id>", methods=["DELETE"])
 def delete_user(user_id):

@@ -23,3 +23,6 @@ __pycache__/
 # Cache file
 uf_knowledge.cache
 AI/AI/models/mistral-7b-instruct.Q4_0.gguf
+
+# user avatars
+chatbot/backend/static/avatars/*
