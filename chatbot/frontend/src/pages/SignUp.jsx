@@ -12,11 +12,34 @@ function SignUp() {
         email: "",
         password: "",
         confirm_password: "",
+        avatar: "", 
     });
     const [success, setSuccess] = useState(false);
 
     const handleChange = (e) => {
         setUserData({ ...userData, [e.target.name]: e.target.value });
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onloadend = () => {
+            const img = new Image();
+            img.src = reader.result;
+            img.onload = () => {
+                const canvas = document.createElement('canvas');
+                const ctx = canvas.getContext('2d');
+                canvas.width = 512;
+                canvas.height = 512;
+                ctx.drawImage(img, 0, 0, 512, 512);
+                const resizedImage = canvas.toDataURL('image/png');
+                setUserData({ ...userData, avatar: resizedImage });
+            };
+            };
+        }
     };
 
     const handleSubmit = async (e) => {
@@ -54,6 +77,15 @@ function SignUp() {
                     Sign Up
                 </h1>
                 <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
+                <label className="flex flex-col gap-2">
+                    <span>Profile Picture</span>
+                    <input
+                        type="file"
+                        accept="image/*"
+                        className="border-2 border-neutral-200 rounded-lg p-2"
+                        onChange={handleFileChange}
+                    />
+                </label>
                     <label className="flex flex-col gap-2">
                         <span>Name</span>
                         <input

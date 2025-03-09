@@ -6,7 +6,7 @@ import os
 db = SQLAlchemy()
 
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-AVATARS_DIR = os.path.join(BASE_DIR, "static/avatars")
+AVATAR_DIR = os.path.join(BASE_DIR, "static/avatars")
 
 
 class User(db.Model):
@@ -15,12 +15,9 @@ class User(db.Model):
     password_hash = db.Column(db.String(120), nullable=False)
     name = db.Column(db.String(120), nullable=False)
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
-    avatar = db.Column(db.String(255), nullable=False, default="default.png")
+    avatar_path = db.Column(db.String(240), nullable=True)
 
     @property
-    def avatar_path(self):
-        return os.path.join(AVATARS_DIR, self.avatar)
-
     def __repr__(self):
         return f"<User {self.email}>"
 
