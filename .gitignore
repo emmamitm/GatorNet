@@ -9,11 +9,23 @@ chatbot/frontend/src/css/output.css
 # But don't ignore the AI/models directory itself
 /AI/models/mistral-7b-instruct.Q4_0.gguf
 /AI/models/llama-2-7b.Q4_0.gguf
+/venv
+/venv/bin/activate
+/venv/bin/activate.csh
+/venv/bin/activate.fish
+/venv/bin/activate.ps1
+/venv/bin/activate_this.py
+/venv/bin/activate.fish
+/venv/bin/activate.ps1
+/venv/bin/activate_this.py
 
 /chatbot/backend/AI/models/mistral-7b-instruct.Q4_0.gguf
 /chatbot/backend/AI/models/llama-2-7b.Q4_0.gguf
 /chatbot/backend/AI/models/*.gguf
 /chatbot/backend/AI/models/*.part
+
+/chatbot/backend/AI/cache
+/chatbot/backend/AI/logs
 # Ignore the large files inside AI/models
 /AI/models/*.gguf
 
