@@ -82,17 +82,3 @@ def delete_user(user_id):
         db.session.commit()
         return jsonify({"success": True})
     return jsonify({"error": "User not found"}), 404
-
-
-@user_routes.route("/api/users/<int:user_id>", methods=["PUT"])
-def update_user(user_id):
-    user = User.query.get(user_id)
-    if user:
-        data = request.json
-        user.email = data.get("email", user.email)
-        user.password_hash = data.get("password", user.password_hash)
-        user.name = data.get("name", user.name)
-        user.avatar = data.get("avatar", user.avatar)
-        db.session.commit()
-        return jsonify({"success": True})
-    return jsonify({"error": "User not found"}), 404
