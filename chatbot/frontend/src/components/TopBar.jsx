@@ -1,5 +1,6 @@
 import { UserCircle } from "@phosphor-icons/react";
 import { useAuth } from "../auth/AuthContext";
+import { Link } from "react-router";
 
 export function TopBar({ children }) {
     const { logout } = useAuth();
@@ -8,9 +9,12 @@ export function TopBar({ children }) {
     return (
         <div className="flex flex-col w-screen h-screen">
             <div className="bg-blue-800/95 w-full flex justify-between items-center h-14 pl-12 md:pl-8">
-                <h1 className="text-4xl font-bold text-white pl-4 p-2">
+                <Link
+                    to={"/"}
+                    className="text-4xl font-bold text-white pl-4 p-2"
+                >
                     GatorNet
-                </h1>
+                </Link>
                 <div className="flex flex-col justify-center items-center p-2">
                     <button className="" onClick={logout}>
                         <UserCircle
