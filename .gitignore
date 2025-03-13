@@ -38,3 +38,5 @@ AI/AI/models/mistral-7b-instruct.Q4_0.gguf
 
 # user avatars
 chatbot/backend/static/avatars/*
+AI/AI/models/llama-2-7b.Q4_0.gguf
+AI/AI/models/mistral-7b-instruct.Q4_0.ggufbp3u9tvr.part

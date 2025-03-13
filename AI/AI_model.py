@@ -595,12 +595,12 @@ class UFAssistant:
             
             response = self.llm(
                 prompt,
-                max_tokens=200,    # Reduced from 300
+                max_tokens=250,    # Reduced from 300
                 stop=["Question:", "\n\n"],
                 echo=False
             )
             
-            return response['choices'][0]['text'].strip()
+            return response['choices'][0]['text'].strip()[:250] # enforcing a response length limit
             
         except Exception as e:
             self.logger.error(f"Response generation error: {str(e)}")
