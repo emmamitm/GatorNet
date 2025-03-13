@@ -8,7 +8,6 @@ import { withAuth } from "./auth/ProtectedRoute";
 
 // pages
 import Welcome from "./pages/Welcome";
-import LogIn from "./pages/LogIn";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
 
@@ -22,7 +21,6 @@ function App() {
             <BrowserRouter>
                 <Routes>
                     <Route path="/" element={<Welcome />} />
-                    <Route path="/login" element={<LogIn />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/dashboard" element={<ProtectedDashboard />} />
                     <Route path="*" element={<Navigate to="/" />} />

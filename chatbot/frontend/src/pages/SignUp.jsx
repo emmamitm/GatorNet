@@ -76,7 +76,7 @@ function SignUp() {
             {success && (
                 <div className="py-2 px-4 bg-green-100 text-green-800 rounded-lg">
                     Account created successfully!{" "}
-                    <Link className="underline" to="/login">
+                    <Link className="underline" to={`/?em=${userData.email}`}>
                         Log in
                     </Link>
                 </div>

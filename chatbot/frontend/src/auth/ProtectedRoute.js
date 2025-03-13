@@ -10,7 +10,7 @@ export const withAuth = (Component) => {
         }
 
         if (!isAuthenticated) {
-            return <Navigate to="/login" replace />;
+            return <Navigate to="/" replace />;
         }
 
         return <Component {...props} />;
