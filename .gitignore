@@ -40,3 +40,6 @@ AI/AI/models/mistral-7b-instruct.Q4_0.gguf
 chatbot/backend/static/avatars/*
 AI/AI/models/llama-2-7b.Q4_0.gguf
 AI/AI/models/mistral-7b-instruct.Q4_0.ggufbp3u9tvr.part
+AI/models/AI/llama-2-7b.Q4_0.gguf
+AI/models/AI/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf
+AI/models/AI/mistral-7b-instruct.Q4_0.gguf
