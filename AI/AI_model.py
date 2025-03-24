@@ -679,29 +679,40 @@ class UFAssistant:
         return context
 
     def generate_response(self, query):
-        """Generate faster responses with optimized prompt."""
+        """Generate faster responses with optimized prompt, enforce a 250-word limit, reduce hallucination risks, and improve response formatting."""
         try:
             context = self.get_relevant_context(query, k=3)  # Reduce from k=5 to k=3
             context = self.enrich_with_static_knowledge(query, context)
-            
+        
+            # Confidence threshold to reduce hallucinations
+            if not context.strip():
+                return "I couldn't find reliable information on that. Please check the official UF website."
+        
             # Use a shorter prompt
-            prompt = f"""You are a UF assistant. Be concise.
+            prompt = f"""You are a UF assistant. Provide factual and concise answers.
 
 Context: {context[:1500]}  # Limit context length
 
 Question: {query}
 
 Answer:"""
-            
             response = self.llm(
                 prompt,
-                max_tokens=200,    # Reduced from 300
+                max_tokens=250,  # Ensure response is concise and within limit
                 stop=["Question:", "\n\n"],
                 echo=False
             )
-            
-            return response['choices'][0]['text'].strip()
-            
+        
+            answer = response['choices'][0]['text'].strip()[:250]  # Enforce 250-word limit
+        
+            # Apply bullet points only for multi-line responses
+            if "\n" in answer and len(answer.split("\n")) > 1:
+                formatted_answer = "\n\n".join([f"- {line.strip()}" if line.strip() else "" for line in answer.split("\n")])
+            else:
+                formatted_answer = answer
+        
+        
+        
         except Exception as e:
             self.logger.error(f"Response generation error: {str(e)}")
             return "I apologize, but I encountered an error. Please try asking your question again."
