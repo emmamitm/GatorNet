@@ -1,10 +1,9 @@
-#AI_model.py
+# AI_model.py
 import requests
 from bs4 import BeautifulSoup
 from llama_cpp import Llama
 import re
 import numpy as np
-import textwrap
 import time
 from collections import deque
 from sentence_transformers import SentenceTransformer
@@ -14,9 +13,11 @@ import pickle
 import json
 import gdown
 from pySmartDL import SmartDL
+import sys
+import argparse
 
 class UFAssistant:
-    def __init__(self):
+    def __init__(self, check_only=False):
         # Expanded source URLs for better coverage
         self.UF_BASE_URLS = [
             'https://catalog.ufl.edu/UGRD/programs/',
@@ -259,7 +260,8 @@ class UFAssistant:
         self.SCRAPE_DEPTH = 2
         self.MAX_PAGES = 30
         
-        self.MODELS_DIR = "AI/models"
+        # Model files are in models
+        self.MODELS_DIR = "models"
         self.MISTRAL_MODEL = os.path.join(self.MODELS_DIR, "mistral-7b-instruct.Q4_0.gguf")
         self.LLAMA_MODEL = os.path.join(self.MODELS_DIR, "llama-2-7b.Q4_0.gguf")
         
@@ -270,8 +272,27 @@ class UFAssistant:
                         format='%(asctime)s - %(levelname)s - %(message)s')
         self.logger = logging.getLogger("UF Assistant")
         self.embedding_cache = {}
-        self.ensure_model_files_present()
+        
+        # Check for models without downloading
+        if check_only:
+            models_exist = self.ensure_model_files_present(check_only=True)
+            if not models_exist:
+                print("Model files not found in AI/models/ directory.")
+                return
+            else:
+                print("All model files are present.")
+                return
+        else:
+            # Just check if models exist without trying to download
+            models_exist = self.ensure_model_files_present(check_only=True)
+            if not models_exist:
+                print("Model files not found in AI/models/ directory. Please ensure they are present.")
+                sys.exit(1)
+        
+        # Add organization data to static knowledge
+        self.STATIC_KNOWLEDGE["organizations"] = self.load_organization_data()
         self.initialize_components()
+    
     def download_with_smartdl(self, url, dest):
         """Download a file using pySmartDL with optimized settings."""
         try:
@@ -304,84 +325,132 @@ class UFAssistant:
         except Exception as e:
             self.logger.error(f"Download error: {str(e)}")
             return False
-    def ensure_model_files_present(self):
-        """Ensure model files are present with minimal output."""
+    
+    def ensure_model_files_present(self, check_only=False):
+        """
+        Ensure model files are present. 
+        
+        Args:
+            check_only (bool): If True, only check if files exist without downloading.
+                           Returns True if files exist, False otherwise.
+        
+        Returns:
+            bool: True if files exist, False if check_only=True and files are missing
+        """
         os.makedirs(self.MODELS_DIR, exist_ok=True)
         
-        # Define chunk size for faster downloads (64MB)
-        CHUNK_SIZE = 64 * 1024 * 1024
+        # Check if model files exist
+        models_exist = (
+            os.path.exists(self.MISTRAL_MODEL) and 
+            os.path.exists(self.LLAMA_MODEL)
+        )
         
-        if not os.path.exists(self.MISTRAL_MODEL) or not os.path.exists(self.LLAMA_MODEL):
-            # Single message to user instead of continuous updates
-            print("Model files not found. Downloading (this may take a while)...")
-            folder_url = "https://drive.google.com/drive/folders/19PEtNSAyuNK2zOEZvljSVit19vfQBDgz?usp=sharing"
-            
+        # If just checking, return the result without downloading
+        if check_only:
+            return models_exist
+        
+        # If models don't exist and we're not in check-only mode, we would download them
+        # But per your request, we're just checking if they're in the models/ folder
+        if not models_exist:
+            print(f"Model files not found in {self.MODELS_DIR}. Please ensure they are present.")
+            return False
+        
+        return True
+    
+    def load_organization_data(self):
+        """Load scraped organization data from the results folder"""
+        print("Loading organization data...")
+        
+        org_data = {
+            "organizations": [],
+            "categories": {},
+            "sources": ["https://orgs.studentinvolvement.ufl.edu/organizations"]
+        }
+        
+        # Try to load JSON data first (most complete)
+        json_path = os.path.join("results", "uf_organizations.json")
+        
+        if os.path.exists(json_path):
             try:
-                # Use gdown quietly
-                folder_info = gdown.parse_url(folder_url)
-                file_ids = gdown.folder_ids(folder_info['id'])
-                
-                for file_id in file_ids:
-                    direct_url = f"https://drive.google.com/uc?id={file_id}&confirm=t"
-                    
-                    # Try to get cached filename first
-                    cache_path = os.path.join(self.MODELS_DIR, f"{file_id}.cache")
-                    if os.path.exists(cache_path):
-                        with open(cache_path, 'r') as f:
-                            file_name = f.read().strip()
-                    else:
-                        file_name = gdown.download(
-                            direct_url, 
-                            quiet=True, 
-                            fuzzy=True,
-                            use_cookies=False,
-                            speed=None  # Disable speed limit
-                        )
-                        # Cache the filename
-                        with open(cache_path, 'w') as f:
-                            f.write(file_name)
-                    
-                    if file_name:
-                        dest_path = os.path.join(self.MODELS_DIR, file_name)
-                        
-                        # Skip if file exists and size matches
-                        if os.path.exists(dest_path):
-                            try:
-                                response = requests.head(direct_url)
-                                expected_size = int(response.headers.get('content-length', 0))
-                                actual_size = os.path.getsize(dest_path)
-                                if expected_size == actual_size:
-                                    continue
-                            except:
-                                pass
-                        
-                        # Try pySmartDL first
-                        if not self.download_with_smartdl(direct_url, dest_path):
-                            # Fallback to gdown with optimized settings
-                            gdown.download(
-                                direct_url, 
-                                dest_path, 
-                                quiet=True,  # Keep quiet to avoid progress updates
-                                use_cookies=False,
-                                speed=None,
-                                chunk_size=CHUNK_SIZE
-                            )
-                
-                print("Download complete.")
-            
+                with open(json_path, 'r', encoding='utf-8') as f:
+                    orgs = json.load(f)
+                    if isinstance(orgs, list) and len(orgs) > 0:
+                        org_data["organizations"] = orgs
+                        print(f"Loaded {len(orgs)} organizations from JSON")
+                        return org_data
             except Exception as e:
-                self.logger.error(f"Download error: {str(e)}")
-                # Final fallback to regular gdown folder download
-                if hasattr(gdown, "download_folder"):
-                    print("Downloading model files (please wait)...")
-                    gdown.download_folder(
-                        url=folder_url, 
-                        output=self.MODELS_DIR, 
-                        quiet=True,  # Keep quiet
-                        use_cookies=False
-                    )
-                else:
-                    raise AttributeError("gdown.download_folder not available")
+                print(f"Error loading JSON: {str(e)}")
+        
+        # Try CSV next
+        csv_path = os.path.join("results", "uf_organizations.csv")
+        if os.path.exists(csv_path):
+            try:
+                import csv
+                orgs = []
+                with open(csv_path, 'r', encoding='utf-8', newline='') as f:
+                    reader = csv.reader(f)
+                    next(reader)  # Skip header
+                    for row in reader:
+                        if len(row) > 1:
+                            orgs.append(row[1])  # Assuming second column is name
+                
+                if orgs:
+                    org_data["organizations"] = orgs
+                    print(f"Loaded {len(orgs)} organizations from CSV")
+                    return org_data
+            except Exception as e:
+                print(f"Error loading CSV: {str(e)}")
+        
+        # Try text file as last resort
+        txt_path = os.path.join("results", "uf_organizations.txt")
+        if os.path.exists(txt_path):
+            try:
+                orgs = []
+                with open(txt_path, 'r', encoding='utf-8') as f:
+                    for line in f:
+                        # Extract org name from format like "1. Organization Name"
+                        match = re.match(r'^\d+\.\s+(.+)$', line.strip())
+                        if match:
+                            orgs.append(match.group(1))
+                
+                if orgs:
+                    org_data["organizations"] = orgs
+                    print(f"Loaded {len(orgs)} organizations from text file")
+                    return org_data
+            except Exception as e:
+                print(f"Error loading text file: {str(e)}")
+        
+        # Try loading from HTML as absolute last resort
+        html_path = os.path.join("results", "page_source.html")
+        if os.path.exists(html_path):
+            try:
+                from bs4 import BeautifulSoup
+                with open(html_path, 'r', encoding='utf-8') as f:
+                    html = f.read()
+                
+                soup = BeautifulSoup(html, 'html.parser')
+                orgs = []
+                
+                # Try to find organization titles
+                for selector in ['.box-title a', 'h2.box-title', '.box-body h2', 'h2']:
+                    elements = soup.select(selector)
+                    if elements:
+                        for element in elements:
+                            name = element.text.strip()
+                            if name:
+                                orgs.append(name)
+                        break
+                
+                if orgs:
+                    org_data["organizations"] = orgs
+                    print(f"Extracted {len(orgs)} organizations from cached HTML")
+                    return org_data
+            except Exception as e:
+                print(f"Error processing HTML: {str(e)}")
+        
+        print("No organization data found")
+        return org_data
+    
     def initialize_components(self):
         """Initialize LLM and encoder components with optimized settings."""
         try:
@@ -413,6 +482,7 @@ class UFAssistant:
         except Exception as e:
             print(f"\nError initializing AI components: {str(e)}")
             raise
+    
     def load_or_build_knowledge(self):
         """Load cached knowledge or build new knowledge base."""
         if os.path.exists(self.CACHE_FILE):
@@ -467,6 +537,7 @@ class UFAssistant:
             self.logger.error(f"Cache saving failed: {str(e)}")
 
         return knowledge
+    
     def get_relevant_context(self, query, k=5):
         """Find most relevant context with caching."""
         try:
@@ -497,6 +568,7 @@ class UFAssistant:
         except Exception as e:
             self.logger.error(f"Context retrieval error: {str(e)}")
             return ""
+    
     def safe_scrape(self, url):
         """Enhanced scraping with better content extraction."""
         try:
@@ -536,10 +608,38 @@ class UFAssistant:
             
         except Exception as e:
             return None
+    
     def enrich_with_static_knowledge(self, query, context):
         """Add relevant static knowledge to the context based on query keywords."""
         query_lower = query.lower()
         additional_context = []
+
+        # Organization related queries
+        if any(word in query_lower for word in ['organization', 'club', 'society', 'group', 'join', 'member', 'student org']):
+            orgs = self.STATIC_KNOWLEDGE.get('organizations', {})
+            if orgs and orgs.get('organizations'):
+                # If the query contains a specific term, try to filter relevant organizations
+                specific_terms = [word for word in query_lower.split() if len(word) > 3]
+                
+                if specific_terms:
+                    relevant_orgs = []
+                    for org in orgs['organizations']:
+                        if any(term in org.lower() for term in specific_terms):
+                            relevant_orgs.append(org)
+                    
+                    if relevant_orgs:
+                        org_sample = relevant_orgs[:20]  # Limit to avoid context overflow
+                        additional_context.append(f"Relevant Organizations: {org_sample}")
+                    else:
+                        # If no specific matches, provide a sample
+                        org_sample = orgs['organizations'][:20]  # First 20 orgs as a sample
+                        additional_context.append(f"Example Organizations: {org_sample}")
+                        additional_context.append(f"Total Organizations: {len(orgs['organizations'])}")
+                else:
+                    # No specific terms, just provide a sample
+                    org_sample = orgs['organizations'][:20]  # First 20 orgs as a sample
+                    additional_context.append(f"Example Organizations: {org_sample}")
+                    additional_context.append(f"Total Organizations: {len(orgs['organizations'])}")
 
         # Library related queries
         if any(word in query_lower for word in ['library', 'marston', 'lib west', 'study', 'book', 'research']):
@@ -591,12 +691,11 @@ class UFAssistant:
             # Use a shorter prompt
             prompt = f"""You are a UF assistant. Provide factual and concise answers.
 
-    Context: {context[:1500]}  # Limit context length
+Context: {context[:1500]}  # Limit context length
 
-    Question: {query}
+Question: {query}
 
-    Answer:"""
-        
+Answer:"""
             response = self.llm(
                 prompt,
                 max_tokens=250,  # Ensure response is concise and within limit
@@ -617,7 +716,6 @@ class UFAssistant:
         except Exception as e:
             self.logger.error(f"Response generation error: {str(e)}")
             return "I apologize, but I encountered an error. Please try asking your question again."
-
 
     def suggest_related_topics(self, query):
         """Suggest related topics based on the user's query."""
@@ -671,17 +769,30 @@ class UFAssistant:
         
         print("Goodbye!")
         self.llm.close()
+
 if __name__ == "__main__":
-    import sys
-    if "--preload-only" in sys.argv:
-        # Just initialize the model and exit
-        assistant = UFAssistant()
-        print("AI models loaded successfully")
-        sys.exit(0)
-    else:
-        # Normal execution
-        try:
-            assistant = UFAssistant()
-            assistant.run()
-        except Exception as e:
-            print(f"Failed to start assistant: {str(e)}")
+    parser = argparse.ArgumentParser(description='UF Assistant with organization data')
+    parser.add_argument('--check-only', action='store_true', 
+                        help='Only check if model files exist without downloading')
+    parser.add_argument('--preload-only', action='store_true',
+                        help='Initialize models but exit without starting interactive mode')
+    
+    args = parser.parse_args()
+    
+    try:
+        assistant = UFAssistant(check_only=args.check_only)
+        
+        # If check_only is True, the assistant already reported the status
+        if args.check_only:
+            sys.exit(0)
+            
+        # Exit after preloading if requested
+        if args.preload_only:
+            print("AI models loaded successfully")
+            sys.exit(0)
+            
+        # Otherwise run the assistant
+        assistant.run()
+    except Exception as e:
+        print(f"Failed to start assistant: {str(e)}")
+        sys.exit(1)

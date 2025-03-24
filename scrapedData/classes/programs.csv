@@ -1,0 +1,811 @@
+department,name,url,type
+Marketing,Marketing,/UGRD/colleges-schools/UGBUS/MKG_BSBA/,Major
+Marketing,Professional Selling Minor,/UGRD/colleges-schools/UGBUS/SEL_UMN/,Minor
+Marketing,Retailing Minor,/UGRD/colleges-schools/UGBUS/RET_UMN/,Minor
+Fine Arts,Art Education Certificate,/UGRD/colleges-schools/UGART/ART_UCT06/,Certificate
+Fine Arts,Art History,/UGRD/colleges-schools/UGART/ARH_BAHA/,Major
+Fine Arts,Art History Minor,/UGRD/colleges-schools/UGART/ARH_UMN/,Minor
+Fine Arts,Art Minor,/UGRD/colleges-schools/UGART/STR_UMN/,Minor
+Fine Arts,Art | BA,/UGRD/colleges-schools/UGART/VAS_BA/,Major
+Fine Arts,Art | BFA,/UGRD/colleges-schools/UGART/ART_BFA/,Major
+Fine Arts,Ceramics Certificate,/UGRD/colleges-schools/UGART/ART_UCT02/,Certificate
+Fine Arts,Graphic Design,/UGRD/colleges-schools/UGART/GRD_BFAG/,Major
+Accounting,Accounting,/UGRD/colleges-schools/UGACT/ACT_BSAC/,Major
+Accounting,Accounting Minor,/UGRD/colleges-schools/UGACT/ACT_UMN/,Minor
+Accounting,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Animal Sciences,Animal Genetics Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT15/,Certificate
+Animal Sciences,Animal Sciences,/UGRD/colleges-schools/UGAGL/ANS_BS/,Major
+Animal Sciences,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Arabic | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Arabic | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Arabic | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Arabic | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Arabic | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Arabic | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Arabic | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Arabic | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Arabic | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Arabic | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Arabic | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Architecture,Architecture,/UGRD/colleges-schools/UGDCP/ARC_BDES/,Major
+Architecture,Architecture Minor,/UGRD/colleges-schools/UGDCP/ARC_UMN/,Minor
+English,English,/UGRD/colleges-schools/UGLAS/EH_BA/,Major
+English,English Minor,/UGRD/colleges-schools/UGLAS/EH_UMN/,Minor
+Food Science and Human Nutrition,Dietetics,/UGRD/colleges-schools/UGAGL/DTS_BS/,Major
+Food Science and Human Nutrition,Food Science,/UGRD/colleges-schools/UGAGL/FOS_BS/,Major
+Food Science and Human Nutrition,Food Science Minor,/UGRD/colleges-schools/UGAGL/FOS_UMN/,Minor
+Food Science and Human Nutrition,Nutritional Sciences,/UGRD/colleges-schools/UGAGL/NUT_BS/,Major
+Food Science and Human Nutrition,Nutritional Sciences Minor,/UGRD/colleges-schools/UGAGL/NUT_UMN/,Minor
+"French | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"French | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"French | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"French | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"French | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"French | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"French | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"French | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"French | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"French | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"French | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"French | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"French | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"French | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"French | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"French | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"French | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"French | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"French | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"French | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"French | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+"Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+African American Studies,African American Studies,/UGRD/colleges-schools/UGLAS/AFA_BA/,Major
+African American Studies,African American Studies Minor,/UGRD/colleges-schools/UGLAS/AFA_UMN/,Minor
+Chemistry,Chemistry Minor,/UGRD/colleges-schools/UGLAS/CHY_UMN/,Minor
+Chemistry,Chemistry | Biochemistry,/UGRD/colleges-schools/UGLAS/CHY_BS/,Major
+Spanish | Spanish and Portuguese Studies,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Spanish | Spanish and Portuguese Studies,"Hispanic and Latin American Languages, Literatures and Linguistics",/UGRD/colleges-schools/UGLAS/HLL_BA/,Major
+Spanish | Spanish and Portuguese Studies,Portuguese,/UGRD/colleges-schools/UGLAS/HLL_BA01/,Major
+Spanish | Spanish and Portuguese Studies,Portuguese Minor,/UGRD/colleges-schools/UGLAS/POR_UMN/,Minor
+Spanish | Spanish and Portuguese Studies,Spanish,/UGRD/colleges-schools/UGLAS/HLL_BA02/,Major
+Spanish | Spanish and Portuguese Studies,Spanish and Portuguese,/UGRD/colleges-schools/UGLAS/HLL_BA/HLL_BA03/,Major
+Spanish | Spanish and Portuguese Studies,Spanish for the Professions Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT15/,Certificate
+Spanish | Spanish and Portuguese Studies,Spanish Minor,/UGRD/colleges-schools/UGLAS/SPN_UMN/,Minor
+Spanish and Portuguese Studies,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Spanish and Portuguese Studies,"Hispanic and Latin American Languages, Literatures and Linguistics",/UGRD/colleges-schools/UGLAS/HLL_BA/,Major
+Spanish and Portuguese Studies,Portuguese,/UGRD/colleges-schools/UGLAS/HLL_BA01/,Major
+Spanish and Portuguese Studies,Portuguese Minor,/UGRD/colleges-schools/UGLAS/POR_UMN/,Minor
+Spanish and Portuguese Studies,Spanish,/UGRD/colleges-schools/UGLAS/HLL_BA02/,Major
+Spanish and Portuguese Studies,Spanish and Portuguese,/UGRD/colleges-schools/UGLAS/HLL_BA/HLL_BA03/,Major
+Spanish and Portuguese Studies,Spanish for the Professions Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT15/,Certificate
+Spanish and Portuguese Studies,Spanish Minor,/UGRD/colleges-schools/UGLAS/SPN_UMN/,Minor
+"Polish | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Polish | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Polish | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Polish | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Polish | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Polish | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Polish | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Polish | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Polish | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Polish | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Polish | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Polish | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Polish | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Polish | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Polish | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Polish | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Polish | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Polish | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Polish | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Polish | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Polish | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Geography,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Geography,Geographic Artificial Intelligence and Big Data Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT24/,Certificate
+Geography,Geography,/UGRD/colleges-schools/UGLAS/GPY_BA_BS/,Major
+Geography,Geography Minor,/UGRD/colleges-schools/UGLAS/GPY_UMN/,Minor
+Geography,Geography Minor UF Online,/UGRD/colleges-schools/UGLAS/GPY_UMN_UFO/,Minor
+Geography,Geography UF Online,/UGRD/colleges-schools/UGLAS/GPY_UFO/,Major
+Geography,Geospatial Information Analysis Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT04/,Certificate
+Geography,Medical Geography Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT19/,Certificate
+Geography,Medical Geography in Global Health Minor,/UGRD/colleges-schools/UGLAS/MGH_UMN/,Minor
+Geography,Meteorology and Climatology Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT10/,Certificate
+Fire and Emergency Services,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Fire and Emergency Services,Construction Management,/UGRD/colleges-schools/UGCMN/CM_BSCM/,Major
+Fire and Emergency Services,Construction Management Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT04/,Certificate
+Fire and Emergency Services,Emergency Management Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT05/,Certificate
+Fire and Emergency Services,Emergency Medical Services Management Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT06/,Certificate
+Fire and Emergency Services,Fire and Emergency Services UF Online,/UGRD/colleges-schools/UGCMN/FES_BSFE_UFO/,Major
+Fire and Emergency Services,Senior Fire Officer Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT08/,Certificate
+History,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+History,History,/UGRD/colleges-schools/UGLAS/HY_BA/,Major
+History,History Minor,/UGRD/colleges-schools/UGLAS/HY_UMN/,Minor
+History,Legal History Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT20/,Certificate
+Entomology and Nematology,Beekeeping Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT21/,Certificate
+Entomology and Nematology,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Entomology and Nematology,Entomology and Nematology,/UGRD/colleges-schools/UGAGL/ENY_BS/,Major
+Entomology and Nematology,Entomology and Nematology Minor,/UGRD/colleges-schools/UGAGL/ENY_UMN/,Minor
+Entomology and Nematology,Entomology and Nematology Minor UF Online,/UGRD/colleges-schools/UGAGL/ENY_UMN_UFO/,Minor
+Entomology and Nematology,Landscape Pest Management Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT07/,Certificate
+Entomology and Nematology,Medical Entomology Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT08/,Certificate
+Entomology and Nematology,Pest Control Technology Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT09/,Certificate
+Entomology and Nematology,Urban Pest Management Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT10/,Certificate
+William & Grace Dial Center for Speech and Communication Studies,Communication Studies Minor,/UGRD/colleges-schools/UGLAS/CMS_UMN/,Minor
+Business,Business Administration Minor,/UGRD/colleges-schools/UGBUS/BUS_UMN/,Minor
+Business,Business Administration Minor UF Online,/UGRD/colleges-schools/UGBUS/BUS_UMN_UFO/,Minor
+Business,Business Administration | General Business | BSBA UF Online,/UGRD/colleges-schools/UGBUS/BAG_BSBA_UFO/,Major
+Business,Business Administration | General Studies | BABA,/UGRD/colleges-schools/UGBUS/BAG_BABA/,Major
+Business,Business Administration | General Studies | BABA UF Online,/UGRD/colleges-schools/UGBUS/BAG_BABA_UFO/,Major
+Business,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Business,Wealth Management Minor,/UGRD/colleges-schools/UGBUS/WMT_UMN/,Minor
+Health Science,Disability Science Minor,/UGRD/colleges-schools/UGPBH/DSC_UMN/,Minor
+Health Science,Health Science,/UGRD/colleges-schools/UGPBH/HES_BHS/,Major
+Health Science,Health Science Minor,/UGRD/colleges-schools/UGPBH/HES_UMN/,Minor
+Pharmacy,Pharmacy | Preprofessional,/UGRD/academic-programs/UGPHM/PHA_NOD/,Major
+Innovation Academy,Innovation Minor,/UGRD/colleges-schools/UGLAS/INV_UMN/,Minor
+Turkish | European Studies,East-Central European Studies Minor,/UGRD/colleges-schools/UGLAS/EEU_UMN/,Minor
+Turkish | European Studies,European Union Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT03/,Certificate
+Turkish | European Studies,European Union Studies Minor,/UGRD/colleges-schools/UGLAS/EUS_UMN/,Minor
+Turkish | European Studies,Medieval and Early Modern Studies | IDS,/UGRD/colleges-schools/UGLAS/IDS_BA_BS/IDS_BA16/,Major
+Zoology,Biology UF Online,/UGRD/colleges-schools/UGLAS/BIO_BA_UFO/,Major
+Zoology,Biology | CALS,/UGRD/colleges-schools/UGAGL/BLY_BS/,Major
+Zoology,Biology | CLAS,/UGRD/colleges-schools/UGLAS/BIO_BA_BS/,Major
+Zoology,Botany Minor,/UGRD/colleges-schools/UGLAS/BOT_UMN/,Minor
+Zoology,Botany | CALS,/UGRD/colleges-schools/UGAGL/BTY_BS/,Major
+Zoology,Botany | CLAS,/UGRD/colleges-schools/UGLAS/BOT_BS/,Major
+Zoology,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Zoology,Zoology,/UGRD/colleges-schools/UGLAS/ZLY_BS/,Major
+Zoology,Zoology Minor,/UGRD/colleges-schools/UGLAS/ZLY_UMN/,Minor
+Economics,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Economics,Economics,/UGRD/colleges-schools/UGLAS/ECO_BA/,Major
+Economics,Economics Minor,/UGRD/colleges-schools/UGLAS/ECO_UMN/,Minor
+Agricultural and Biological Engineering,Agricultural Operations Management,/UGRD/colleges-schools/UGAGL/AOM_BS/,Major
+Agricultural and Biological Engineering,Biological Engineering,/UGRD/colleges-schools/UGENG/BE_BSBE/,Major
+Agricultural and Biological Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Agricultural and Biological Engineering,Packaging Engineering Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT10/,Certificate
+Agricultural and Biological Engineering,Packaging Science Minor,/UGRD/colleges-schools/UGAGL/PKS_UMN/,Minor
+Agricultural and Biological Engineering,Precision Agriculture Minor,/UGRD/colleges-schools/UGAGL/PCA_UMN/,Minor
+African Studies,African Studies Minor,/UGRD/colleges-schools/UGLAS/AFS_UMN/,Minor
+"Chinese | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Chinese | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Chinese | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Chinese | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Chinese | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Chinese | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Chinese | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Chinese | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Chinese | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Chinese | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Chinese | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Environmental Science,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Environmental Science,Environmental Science,/UGRD/colleges-schools/UGNTR/EVS_BA_BS/,Major
+Environmental Science,Environmental Science Minor,/UGRD/colleges-schools/UGNTR/ENV_UMN/,Minor
+Anthropology,American Indian and Indigenous Studies | IDS,/UGRD/colleges-schools/UGLAS/IDS_BA_BS/IDS_BA20/,Major
+Anthropology,Anthropology,/UGRD/colleges-schools/UGLAS/APY_BA_BS/,Major
+Anthropology,Anthropology Minor,/UGRD/colleges-schools/UGLAS/APY_UMN/,Minor
+Anthropology,Anthropology Minor UF Online,/UGRD/colleges-schools/UGLAS/APY_UMN_UFO/,Minor
+Anthropology,Anthropology UF Online,/UGRD/colleges-schools/UGLAS/APY_BA_UFO/,Major
+Anthropology,Medical Anthropology Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT09/,Certificate
+Sport Management,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Sport Management,Sport and Entertainment Law and Risk Management Certificate,/UGRD/colleges-schools/UGHHU/HHU_UCT03/,Certificate
+Sport Management,Sport Management,/UGRD/colleges-schools/UGHHU/SPM_BSSP/,Major
+Sport Management,Sport Management Certificate,/UGRD/colleges-schools/UGHHU/HHU_UCT01/,Certificate
+Sport Management,Sport Management UF Online,/UGRD/colleges-schools/UGHHU/SPM_BSSP_UFO/,Major
+Biomedical Engineering,Biomedical Engineering,/UGRD/colleges-schools/UGENG/BME_BSBM/,Major
+Biomedical Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Hungarian | European Studies,East-Central European Studies Minor,/UGRD/colleges-schools/UGLAS/EEU_UMN/,Minor
+Hungarian | European Studies,European Union Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT03/,Certificate
+Hungarian | European Studies,European Union Studies Minor,/UGRD/colleges-schools/UGLAS/EUS_UMN/,Minor
+Hungarian | European Studies,Medieval and Early Modern Studies | IDS,/UGRD/colleges-schools/UGLAS/IDS_BA_BS/IDS_BA16/,Major
+"Latin American Studies, Center for",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Latin American Studies, Center for",Latin American Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT08/,Certificate
+"Latin American Studies, Center for",Latin American Studies Minor,/UGRD/colleges-schools/UGLAS/LAM_UMN/,Minor
+"Latin American Studies, Center for",Latin American Studies | IDS,/UGRD/colleges-schools/UGLAS/IDS_BA_BS/IDS_BA12/,Major
+"German | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"German | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"German | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"German | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"German | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"German | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"German | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"German | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"German | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"German | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"German | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"German | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"German | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"German | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"German | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"German | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"German | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"German | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"German | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"German | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"German | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Industrial and Systems Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Industrial and Systems Engineering,Industrial and Systems Engineering,/UGRD/colleges-schools/UGENG/ISE_BSIS/,Major
+Mechanical & Aerospace Engineering,Aerospace Engineering,/UGRD/colleges-schools/UGENG/ARO_BSAE/,Major
+Mechanical & Aerospace Engineering,Biomechanics Minor,/UGRD/colleges-schools/UGENG/BIM_UMN/,Minor
+Mechanical & Aerospace Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Mechanical & Aerospace Engineering,Mechanical Engineering,/UGRD/colleges-schools/UGENG/MCE_BSME/,Major
+Mechanical & Aerospace Engineering,Sustainable and Resilient Energy Engineering Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT13/,Certificate
+Advertising,Advertising,/UGRD/colleges-schools/UGJRC/ADV_BSAD/,Major
+Advertising,Advertising | Persuasive Messaging UF Online,/UGRD/colleges-schools/UGJRC/ADV_BSAD02_UFO/,Major
+Advertising,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Sociology,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Sociology,Criminology,/UGRD/colleges-schools/UGLAS/CRI_BA/,Major
+Sociology,Criminology UF Online,/UGRD/colleges-schools/UGLAS/CRI_BA_UFO/,Major
+Sociology,Sociology,/UGRD/colleges-schools/UGLAS/SOC_BA/,Major
+Sociology,Sociology Minor,/UGRD/colleges-schools/UGLAS/SOC_UMN/,Minor
+Sociology,Sociology Minor UF Online,/UGRD/colleges-schools/UGLAS/SOC_UMN_UFO/,Minor
+Sociology,Sociology of Social Justice and Policy Minor,/UGRD/colleges-schools/UGLAS/SJP_UMN/,Minor
+Sociology,Sociology UF Online,/UGRD/colleges-schools/UGLAS/SOC_BA_UFO/,Major
+Food and Resource Economics,Agricultural and Natural Resource Ethics and Policy Minor,/UGRD/colleges-schools/UGAGL/AEP_UMN/,Minor
+Food and Resource Economics,Agricultural and Natural Resource Law Minor,/UGRD/colleges-schools/UGAGL/ANL_UMN/,Minor
+Food and Resource Economics,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Food and Resource Economics,Food and Resource Economics,/UGRD/colleges-schools/UGAGL/FRE_BS/,Major
+Food and Resource Economics,Food and Resource Economics Minor,/UGRD/colleges-schools/UGAGL/FRE_UMN/,Minor
+Food and Resource Economics,International Development and Humanitarian Assistance Minor,/UGRD/colleges-schools/UGAGL/IDH_UMN/,Minor
+Sustainability and the Built Environment,Sustainability and the Built Environment,/UGRD/colleges-schools/UGDCP/SUB_BSUB_BSUB01/,Major
+Sustainability and the Built Environment,Sustainability and the Built Environment Minor,/UGRD/colleges-schools/UGDCP/SUB_UMN/,Minor
+Greek Studies,African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+Greek Studies,Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+Greek Studies,Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+Greek Studies,Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+Greek Studies,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Greek Studies,Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+Greek Studies,East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+Greek Studies,Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+Greek Studies,French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+Greek Studies,French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+Greek Studies,German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+Greek Studies,German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+Greek Studies,German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+Greek Studies,Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+Greek Studies,Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+Greek Studies,Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+Greek Studies,Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+Greek Studies,Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+Greek Studies,Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+Greek Studies,Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+Greek Studies,Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Environmental Horticulture,Environmental Horticulture Management Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT02/,Certificate
+Environmental Horticulture,Environmental Horticulture Minor,/UGRD/colleges-schools/UGAGL/EVH_UMN/,Minor
+Environmental Horticulture,Horticultural Therapy Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT12/,Certificate
+"Japanese | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Japanese | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Japanese | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Japanese | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Japanese | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Japanese | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Japanese | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Japanese | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Japanese | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Japanese | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Japanese | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Religion,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Religion,Religion,/UGRD/colleges-schools/UGLAS/RLN_BA/,Major
+Religion,Religion Minor,/UGRD/colleges-schools/UGLAS/RLN_UMN/,Minor
+Chemical Engineering,Biomolecular Engineering Minor,/UGRD/colleges-schools/UGENG/BMO_UMN/,Minor
+Chemical Engineering,Chemical Engineering,/UGRD/colleges-schools/UGENG/CHE_BSCH/,Major
+Chemical Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Korean | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Korean | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Korean | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Korean | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Korean | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Korean | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Korean | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Korean | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Korean | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Korean | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Korean | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Korean | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Korean | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Korean | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Korean | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Korean | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Korean | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Korean | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Korean | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Korean | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Korean | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Urban and Regional Planning,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Urban and Regional Planning,Urban and Regional Planning Minor,/UGRD/colleges-schools/UGDCP/URP_UMN/,Minor
+"Tourism, Hospitality and Event Management","Artificial Intelligence and Data Analytics in Tourism, Hospitality and Event Management Certificate",/UGRD/colleges-schools/UGHHU/HHU_UCT02/,Certificate
+"Tourism, Hospitality and Event Management",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Tourism, Hospitality and Event Management","Entrepreneurship in Tourism, Hospitality and Event Management Certificate",/UGRD/colleges-schools/UGHHU/HHU_UCT04/,Certificate
+"Tourism, Hospitality and Event Management",Event Management Minor,/UGRD/colleges-schools/UGHHU/EVM_UMN/,Minor
+"Tourism, Hospitality and Event Management",Event Management Minor UF Online,/UGRD/colleges-schools/UGHHU/EVM_UMN_UFO/,Minor
+"Tourism, Hospitality and Event Management","Tourism, Hospitality and Event Management",/UGRD/colleges-schools/UGHHU/TRM_BSTM/,Major
+"Tourism, Hospitality and Event Management","Tourism, Hospitality and Event Management UF Online",/UGRD/colleges-schools/UGHHU/TRM_BSTM_UFO/,Major
+Horticultural Sciences,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Horticultural Sciences,Horticultural Science Minor,/UGRD/colleges-schools/UGAGL/HOS_UMN/,Minor
+Horticultural Sciences,Horticultural Therapy Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT12/,Certificate
+Horticultural Sciences,Organic and Sustainable Crop Production Minor,/UGRD/colleges-schools/UGAGL/OSCP_UMN/,Minor
+Horticultural Sciences,Plant Molecular and Cellular Biology Minor,/UGRD/colleges-schools/UGAGL/PMB_UMN/,Minor
+Landscape Architecture,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Landscape Architecture,Landscape Architecture Minor,/UGRD/colleges-schools/UGDCP/LAE_UMN/,Minor
+Landscape Architecture,Landscape Architecture | 4-Year Professional Program,/UGRD/colleges-schools/UGDCP/LAE_BLAE/,Major
+Civil and Coastal Engineering,Civil Engineering,/UGRD/colleges-schools/UGENG/CVE_BSCE/,Major
+Civil and Coastal Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Czech | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Czech | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Czech | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Czech | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Czech | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Czech | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Czech | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Czech | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Czech | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Czech | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Czech | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Czech | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Czech | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Czech | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Czech | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Czech | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Czech | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Czech | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Czech | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Czech | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Czech | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Applied Physiology and Kinesiology,Applied Physiology and Kinesiology,/UGRD/colleges-schools/UGHHU/APK_BSAP/,Major
+Music,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Music,Jazz Studies Minor,/UGRD/colleges-schools/UGART/JZS_UMN/,Minor
+Music,Music Business and Entrepreneurship,/UGRD/colleges-schools/UGART/MBE_BS/,Major
+Music,Music Education,/UGRD/colleges-schools/UGART/MUE_BMUE/,Major
+Music,Music History | Ethnomusicology Minor,/UGRD/colleges-schools/UGART/MHE_UMN/,Minor
+Music,Music in Medicine Certificate,/UGRD/colleges-schools/UGART/ART_UCT04/,Certificate
+Music,Music Performance Certificate,/UGRD/colleges-schools/UGART/ART_UCT05/,Certificate
+Music,Music Performance Minor,/UGRD/colleges-schools/UGART/MUP_UMN/,Minor
+Music,Music Theory Minor,/UGRD/colleges-schools/UGART/MUT_UMN/,Minor
+Music,Music | Bachelor of Arts,/UGRD/colleges-schools/UGART/MUS_BA/,Major
+Music,Music | Bachelor of Music,/UGRD/colleges-schools/UGART/MUS_BMUS/,Major
+Nuclear and Radiological Engineering,Advanced Engineering Ceramics Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT01/,Certificate
+Nuclear and Radiological Engineering,Biomaterials Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT02/,Certificate
+Nuclear and Radiological Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Nuclear and Radiological Engineering,Materials Science and Engineering,/UGRD/colleges-schools/UGENG/MSE_BSMS/,Major
+Nuclear and Radiological Engineering,Materials Science and Engineering Minor,/UGRD/colleges-schools/UGENG/MSE_UMN/,Minor
+Nuclear and Radiological Engineering,Metallurgical Engineering Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT03/,Certificate
+Nuclear and Radiological Engineering,Nuclear and Radiological Engineering Minor,/UGRD/colleges-schools/UGENG/NURE_UMN/,Minor
+Nuclear and Radiological Engineering,Nuclear Engineering,/UGRD/colleges-schools/UGENG/NUE_BSNE/,Major
+Nuclear and Radiological Engineering,Polymer Science and Engineering Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT06/,Certificate
+Nuclear and Radiological Engineering,Semiconductor Materials Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT07/,Certificate
+Military Science,Aerospace Leadership Minor,/UGRD/academic-programs/military-science/aerospace-leadership/,Minor
+Military Science,Military Science and Leadership Minor,/UGRD/academic-programs/military-science/military-science-leadership/,Minor
+Psychology,Psychology,/UGRD/colleges-schools/UGLAS/PSY_BS_BS01/,Major
+Psychology,Psychology UF Online,/UGRD/colleges-schools/UGLAS/PSY_BA_UFO/,Major
+Public Health,Artificial Intelligence in Public Health and Healthcare Certificate,/UGRD/colleges-schools/UGPBH/PBH_UCT02/,Certificate
+Public Health,Public Health,/UGRD/colleges-schools/UGPBH/PBH_BPH/,Major
+Public Health,Public Health Minor,/UGRD/colleges-schools/UGPBH/PBH_UMN/,Minor
+Interior Design,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Interior Design,Interior Design,/UGRD/colleges-schools/UGDCP/IND_BDES/,Major
+Philosophy,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Philosophy,Philosophy,/UGRD/colleges-schools/UGLAS/PPY_BA/,Major
+Philosophy,Philosophy Minor,/UGRD/colleges-schools/UGLAS/PPY_UMN/,Minor
+Geomatics,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Geomatics,Fire Ecology and Management Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT17/,Certificate
+Geomatics,Fisheries and Aquatic Sciences Minor,/UGRD/colleges-schools/UGAGL/FAS_UMN/,Minor
+Geomatics,Forest Resources and Conservation,/UGRD/colleges-schools/UGAGL/FRC_BSF/,Major
+Geomatics,Forest Resources and Conservation Minor,/UGRD/colleges-schools/UGAGL/FRC_UMN/,Minor
+Geomatics,Geomatics,/UGRD/colleges-schools/UGAGL/GEM_BSGE/,Major
+Geomatics,Geomatics Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT06/,Certificate
+Geomatics,Mapping with Small Unmanned Aerial Systems Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT11/,Certificate
+Geomatics,Natural Resource Conservation,/UGRD/colleges-schools/UGAGL/NRC_BSF/,Major
+"Finance, Insurance, and Real Estate",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Finance, Insurance, and Real Estate",Entrepreneurship Minor,/UGRD/colleges-schools/UGBUS/ENT_UMN/,Minor
+"Finance, Insurance, and Real Estate",Finance,/UGRD/colleges-schools/UGBUS/FIN_BSBA/,Major
+"Finance, Insurance, and Real Estate",Real Estate Minor,/UGRD/colleges-schools/UGBUS/REA_UMN/,Minor
+Journalism,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Journalism,Creative Advertising Certificate,/UGRD/colleges-schools/UGJRC/JRC_UCT04/,Certificate
+Journalism,International Communication Certificate,/UGRD/colleges-schools/UGJRC/JRC_UCT07/,Certificate
+Journalism,Journalism,/UGRD/colleges-schools/UGJRC/JM_BSJ/,Major
+Journalism,Journalism | Sports and Media UF Online,/UGRD/colleges-schools/UGJRC/JM_BSJ01_UFO/,Major
+Journalism,Mass Communication Studies Minor,/UGRD/colleges-schools/UGJRC/COM_UMN/,Minor
+Journalism,Mass Communication Studies Minor UF Online,/UGRD/colleges-schools/UGJRC/COM_UMN_UFO/,Minor
+Journalism,Media Sales Certificate,/UGRD/colleges-schools/UGJRC/JRC_UCT01/,Certificate
+Journalism,Political Communication Certificate,/UGRD/colleges-schools/UGJRC/JRC_UCT08/,Certificate
+Journalism,Spanish Language News Media Certificate,/UGRD/colleges-schools/UGJRC/JRC_UCT02/,Certificate
+Digital Worlds Institute,Digital Arts and Sciences Minor,/UGRD/colleges-schools/UGART/DAR_UMN/,Minor
+Digital Worlds Institute,Digital Arts and Sciences Minor UF Online,/UGRD/colleges-schools/UGART/DAR_UMN_UFO/,Minor
+Digital Worlds Institute,Digital Arts and Sciences UF Online,/UGRD/colleges-schools/UGART/DAR_BADA_UFO/,Major
+Digital Worlds Institute,Digital Arts and Sciences | Bachelor of Arts,/UGRD/colleges-schools/UGART/DAR_BADA/,Major
+Theatre + Dance,Dance Minor,/UGRD/colleges-schools/UGART/DAN_UMN/,Minor
+Theatre + Dance,Dance | Bachelor of Arts,/UGRD/colleges-schools/UGART/DAN_BA/,Major
+Theatre + Dance,Dance | Bachelor of Fine Arts,/UGRD/colleges-schools/UGART/DAN_BFA/,Major
+Theatre + Dance,Theatre,/UGRD/colleges-schools/UGART/THE_BA/,Major
+Theatre + Dance,Theatre Minor,/UGRD/colleges-schools/UGART/THE_UMN/,Minor
+Theatre + Dance,Theatre Performance,/UGRD/colleges-schools/UGART/THF_BFA/,Major
+Theatre + Dance,Theatre Production,/UGRD/colleges-schools/UGART/TPR_BFA/,Major
+Theatre + Dance,Theatre Production Minor,/UGRD/colleges-schools/UGART/TPR_UMN/,Minor
+Materials Science and Engineering,Advanced Engineering Ceramics Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT01/,Certificate
+Materials Science and Engineering,Biomaterials Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT02/,Certificate
+Materials Science and Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Materials Science and Engineering,Materials Science and Engineering,/UGRD/colleges-schools/UGENG/MSE_BSMS/,Major
+Materials Science and Engineering,Materials Science and Engineering Minor,/UGRD/colleges-schools/UGENG/MSE_UMN/,Minor
+Materials Science and Engineering,Metallurgical Engineering Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT03/,Certificate
+Materials Science and Engineering,Nuclear and Radiological Engineering Minor,/UGRD/colleges-schools/UGENG/NURE_UMN/,Minor
+Materials Science and Engineering,Nuclear Engineering,/UGRD/colleges-schools/UGENG/NUE_BSNE/,Major
+Materials Science and Engineering,Polymer Science and Engineering Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT06/,Certificate
+Materials Science and Engineering,Semiconductor Materials Certificate,/UGRD/colleges-schools/UGENG/ENG_UCT07/,Certificate
+European Studies,East-Central European Studies Minor,/UGRD/colleges-schools/UGLAS/EEU_UMN/,Minor
+European Studies,European Union Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT03/,Certificate
+European Studies,European Union Studies Minor,/UGRD/colleges-schools/UGLAS/EUS_UMN/,Minor
+European Studies,Medieval and Early Modern Studies | IDS,/UGRD/colleges-schools/UGLAS/IDS_BA_BS/IDS_BA16/,Major
+Agronomy,Agroecology and Sustainable Food Systems Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT19/,Certificate
+Agronomy,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Agronomy,Golf and Sports Turf Management Minor,/UGRD/colleges-schools/UGAGL/GST_UMN/,Minor
+Agronomy,Plant Science,/UGRD/colleges-schools/UGAGL/PLS_BS/,Major
+Education | School of Teaching and Learning,Education Sciences,/UGRD/colleges-schools/UGEDU/EDS_BA/,Major
+Education | School of Teaching and Learning,Education Sciences UF Online,/UGRD/colleges-schools/UGEDU/EDS_BA_UFO/,Major
+Education | School of Teaching and Learning,Education Studies Minor,/UGRD/colleges-schools/UGEDU/EDS_UMN/,Minor
+Education | School of Teaching and Learning,Educational Technology Minor,/UGRD/colleges-schools/UGEDU/EDX_UMN/,Minor
+Education | School of Teaching and Learning,Educational Technology Minor UF Online,/UGRD/colleges-schools/UGEDU/EDX_UMN_UFO/,Minor
+Education | School of Teaching and Learning,Elementary Education | Grades K-6,/UGRD/colleges-schools/UGEDU/EED_BAE/,Major
+Education | School of Teaching and Learning,Florida Teaching Minor,/UGRD/colleges-schools/UGEDU/FLT_UMN/,Minor
+Education | School of Teaching and Learning,"UFTeach | Mathematics, Science, or Computer Science Minor",/UGRD/colleges-schools/UGEDU/UF_TEACH/,Minor
+Geological Sciences,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Geological Sciences,Geological Sciences Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT18/,Certificate
+Geological Sciences,Geology,/UGRD/colleges-schools/UGLAS/GLY_BA_BS/,Major
+Geological Sciences,Geology Minor,/UGRD/colleges-schools/UGLAS/GLY_UMN/,Minor
+Geological Sciences,Geology UF Online,/UGRD/colleges-schools/UGLAS/GLY_BA_UFO/,Major
+"Vietnamese | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Vietnamese | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Vietnamese | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Vietnamese | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Vietnamese | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Vietnamese | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Vietnamese | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Vietnamese | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Vietnamese | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Vietnamese | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Jewish Studies,European Jewish Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT17/,Certificate
+Jewish Studies,Holocaust Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT05/,Certificate
+Jewish Studies,Jewish Studies,/UGRD/colleges-schools/UGLAS/JST_BA/,Major
+Jewish Studies,Jewish Studies Minor,/UGRD/colleges-schools/UGLAS/JST_UMN/,Minor
+Microbiology & Cell Science,Bioinformatics Minor,/UGRD/colleges-schools/UGAGL/BIF_UMN/,Minor
+Microbiology & Cell Science,Bioinformatics Minor UF Online,/UGRD/colleges-schools/UGAGL/BIF_UMN_UFO/,Minor
+Microbiology & Cell Science,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Microbiology & Cell Science,Microbiology and Cell Science UF Online,/UGRD/colleges-schools/UGAGL/MCB_BS_UFO/,Major
+Microbiology & Cell Science,Microbiology and Cell Science | CALS,/UGRD/colleges-schools/UGAGL/MCB_BS/,Major
+Microbiology & Cell Science,Microbiology and Cell Science | CLAS,/UGRD/colleges-schools/UGLAS/MCY_BS/,Major
+Microbiology & Cell Science,Pathogenesis Minor,/UGRD/colleges-schools/UGAGL/PAT_UMN/,Minor
+Microbiology & Cell Science,Pathogenesis Minor UF Online,/UGRD/colleges-schools/UGAGL/PAT_UMN_UFO/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Hindi-Urdu | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Hindi-Urdu | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Hindi-Urdu | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Criminology,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Criminology,Criminology,/UGRD/colleges-schools/UGLAS/CRI_BA/,Major
+Criminology,Criminology UF Online,/UGRD/colleges-schools/UGLAS/CRI_BA_UFO/,Major
+Criminology,Sociology,/UGRD/colleges-schools/UGLAS/SOC_BA/,Major
+Criminology,Sociology Minor,/UGRD/colleges-schools/UGLAS/SOC_UMN/,Minor
+Criminology,Sociology Minor UF Online,/UGRD/colleges-schools/UGLAS/SOC_UMN_UFO/,Minor
+Criminology,Sociology of Social Justice and Policy Minor,/UGRD/colleges-schools/UGLAS/SJP_UMN/,Minor
+Criminology,Sociology UF Online,/UGRD/colleges-schools/UGLAS/SOC_BA_UFO/,Major
+Environmental Engineering Sciences,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Environmental Engineering Sciences,Environmental Engineering,/UGRD/colleges-schools/UGENG/EVE_BSEN/,Major
+Biology | Botany | Zoology,Biology UF Online,/UGRD/colleges-schools/UGLAS/BIO_BA_UFO/,Major
+Biology | Botany | Zoology,Biology | CALS,/UGRD/colleges-schools/UGAGL/BLY_BS/,Major
+Biology | Botany | Zoology,Biology | CLAS,/UGRD/colleges-schools/UGLAS/BIO_BA_BS/,Major
+Biology | Botany | Zoology,Botany Minor,/UGRD/colleges-schools/UGLAS/BOT_UMN/,Minor
+Biology | Botany | Zoology,Botany | CALS,/UGRD/colleges-schools/UGAGL/BTY_BS/,Major
+Biology | Botany | Zoology,Botany | CLAS,/UGRD/colleges-schools/UGLAS/BOT_BS/,Major
+Biology | Botany | Zoology,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Biology | Botany | Zoology,Zoology,/UGRD/colleges-schools/UGLAS/ZLY_BS/,Major
+Biology | Botany | Zoology,Zoology Minor,/UGRD/colleges-schools/UGLAS/ZLY_UMN/,Minor
+Nursing,Nursing,/UGRD/colleges-schools/UGNUR/NSG_BSN/,Major
+Nursing,Nursing | RN to BSN UF Online,/UGRD/colleges-schools/UGNUR/NSG_BSN01_UFO/,Major
+"Italian | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Italian | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Italian | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Italian | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Italian | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Italian | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Italian | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Italian | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Italian | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Italian | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Italian | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Italian | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Italian | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Italian | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Italian | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Italian | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Italian | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Italian | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Italian | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Italian | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Italian | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+"Family, Youth and Community Sciences",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Family, Youth and Community Sciences","Family, Youth and Community Sciences",/UGRD/colleges-schools/UGAGL/FYC_BS/,Major
+"Family, Youth and Community Sciences","Family, Youth and Community Sciences Minor",/UGRD/colleges-schools/UGAGL/FYC_UMN/,Minor
+"Gender, Sexualities, and Women’s Studies",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Gender, Sexualities, and Women’s Studies",Community Engagement Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT29/,Certificate
+"Gender, Sexualities, and Women’s Studies","Data, Science, and Technology in Sociocultural Contexts Certificate",/UGRD/colleges-schools/UGLAS/LAS_UCT28/,Certificate
+"Gender, Sexualities, and Women’s Studies",Health Disparities in Society Minor,/UGRD/colleges-schools/UGLAS/HDS_UMN/,Minor
+"Gender, Sexualities, and Women’s Studies",Theories and Politics of Sexuality Minor,/UGRD/colleges-schools/UGLAS/TPS_UMN/,Minor
+"Gender, Sexualities, and Women’s Studies",Violence Against Women Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT30/,Certificate
+"Gender, Sexualities, and Women’s Studies",Women's Studies,/UGRD/colleges-schools/UGLAS/WMS_BA/,Major
+"Gender, Sexualities, and Women’s Studies",Women's Studies Minor,/UGRD/colleges-schools/UGLAS/WMS_UMN/,Minor
+Information Systems and Operations Management,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Information Systems and Operations Management,Information Systems,/UGRD/colleges-schools/UGBUS/IST_BSBA/,Major
+Information Systems and Operations Management,Information Systems Minor,/UGRD/colleges-schools/UGBUS/IST_UMN/,Minor
+"Forest, Fisheries, and Geomatics Sciences",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Forest, Fisheries, and Geomatics Sciences",Fire Ecology and Management Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT17/,Certificate
+"Forest, Fisheries, and Geomatics Sciences",Fisheries and Aquatic Sciences Minor,/UGRD/colleges-schools/UGAGL/FAS_UMN/,Minor
+"Forest, Fisheries, and Geomatics Sciences",Forest Resources and Conservation,/UGRD/colleges-schools/UGAGL/FRC_BSF/,Major
+"Forest, Fisheries, and Geomatics Sciences",Forest Resources and Conservation Minor,/UGRD/colleges-schools/UGAGL/FRC_UMN/,Minor
+"Forest, Fisheries, and Geomatics Sciences",Geomatics,/UGRD/colleges-schools/UGAGL/GEM_BSGE/,Major
+"Forest, Fisheries, and Geomatics Sciences",Geomatics Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT06/,Certificate
+"Forest, Fisheries, and Geomatics Sciences",Mapping with Small Unmanned Aerial Systems Certificate,/UGRD/colleges-schools/UGAGL/AGL_UCT11/,Certificate
+"Forest, Fisheries, and Geomatics Sciences",Natural Resource Conservation,/UGRD/colleges-schools/UGAGL/NRC_BSF/,Major
+Physics,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Physics,Physics,/UGRD/colleges-schools/UGLAS/PS_BA_BS/,Major
+Physics,Physics Minor,/UGRD/colleges-schools/UGLAS/PS_UMN/,Minor
+Latin | Classics,Classical Studies,/UGRD/colleges-schools/UGLAS/CLC_BA/,Major
+Latin | Classics,Classical Studies Minor,/UGRD/colleges-schools/UGLAS/CLC_UMN/,Minor
+Latin | Classics,Greek Studies Minor,/UGRD/colleges-schools/UGLAS/GKS_UMN/,Minor
+Health Education and Behavior,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Health Education and Behavior,Health Education and Behavior,/UGRD/colleges-schools/UGHHU/HEB_BSHE/,Major
+Health Education and Behavior,Health Education and Behavior | Community Health Promotion UF Online,/UGRD/colleges-schools/UGHHU/HEB_BSHE_UFO/,Major
+Health Education and Behavior,Health Promotion Minor,/UGRD/colleges-schools/UGHHU/HEP_UMN/,Minor
+Health Education and Behavior,Health Promotion Minor UF Online,/UGRD/colleges-schools/UGHHU/HEP_UMN_UFO/,Minor
+Construction Management,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Construction Management,Construction Management,/UGRD/colleges-schools/UGCMN/CM_BSCM/,Major
+Construction Management,Construction Management Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT04/,Certificate
+Construction Management,Emergency Management Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT05/,Certificate
+Construction Management,Emergency Medical Services Management Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT06/,Certificate
+Construction Management,Fire and Emergency Services UF Online,/UGRD/colleges-schools/UGCMN/FES_BSFE_UFO/,Major
+Construction Management,Senior Fire Officer Certificate,/UGRD/colleges-schools/UGCMN/CMN_UCT08/,Certificate
+Political Science,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Political Science,International Relations Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT06/,Certificate
+Political Science,Political Campaigning Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT11/,Certificate
+Political Science,Political Science,/UGRD/colleges-schools/UGLAS/POL_BA/,Major
+Political Science,Public Affairs Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT12/,Certificate
+"Russian | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Russian | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Russian | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Russian | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Russian | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Russian | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Russian | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Russian | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Russian | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Russian | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Russian | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Russian | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Russian | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Russian | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Russian | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Russian | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Russian | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Russian | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Russian | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Russian | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Russian | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+"African | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"African | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"African | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"African | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"African | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"African | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"African | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"African | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"African | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"African | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"African | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"African | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"African | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"African | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"African | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"African | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"African | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"African | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"African | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"African | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"African | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+"Speech, Language, and Hearing Sciences",Communication Sciences and Disorders,/UGRD/colleges-schools/UGPBH/CSD_BHS/,Major
+"Speech, Language, and Hearing Sciences",Communication Sciences and Disorders Minor,/UGRD/colleges-schools/UGPBH/CSD_UMN/,Minor
+"Speech, Language, and Hearing Sciences",Communication Sciences and Disorders UF Online,/UGRD/colleges-schools/UGPBH/CSD_BHS_UFO/,Major
+"Speech, Language, and Hearing Sciences",Deaf and Hearing Sciences Minor,/UGRD/colleges-schools/UGPBH/DHS_UMN/,Minor
+"Soil, Water, and Ecosystem Sciences",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Soil, Water, and Ecosystem Sciences",Environmental Management in Agriculture and Natural Resources | Interdisciplinary Studies,/UGRD/colleges-schools/UGAGL/IS_BS01/,Major
+"Soil, Water, and Ecosystem Sciences",Interdisciplinary Studies | Environmental Management in Agriculture and Natural Resources UF Online,/UGRD/colleges-schools/UGAGL/IS_BS01_UFO/,Major
+"Soil, Water, and Ecosystem Sciences","Soil, Water, and Ecosystem Sciences",/UGRD/colleges-schools/UGAGL/SWS_BS/,Major
+"Soil, Water, and Ecosystem Sciences","Soil, Water, and Ecosystem Sciences Minor",/UGRD/colleges-schools/UGAGL/SWS_UMN/,Minor
+"Hebrew | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Hebrew | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Hebrew | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Hebrew | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Hebrew | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Hebrew | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Hebrew | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Hebrew | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Hebrew | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Hebrew | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Hebrew | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Classics,Classical Studies,/UGRD/colleges-schools/UGLAS/CLC_BA/,Major
+Classics,Classical Studies Minor,/UGRD/colleges-schools/UGLAS/CLC_UMN/,Minor
+Classics,Greek Studies Minor,/UGRD/colleges-schools/UGLAS/GKS_UMN/,Minor
+Astronomy and Astrophysics,Astronomy and Astrophysics,/UGRD/colleges-schools/UGLAS/ATY_BA_ASP_BS/,Major
+Astronomy and Astrophysics,Astronomy Minor,/UGRD/colleges-schools/UGLAS/ATY_UMN/,Minor
+Mathematics,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Mathematics,Mathematics,/UGRD/colleges-schools/UGLAS/MAT_BA_BS/,Major
+Mathematics,Mathematics Minor,/UGRD/colleges-schools/UGLAS/MAT_UMN/,Minor
+Wildlife Ecology and Conservation,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Wildlife Ecology and Conservation,Wildlife Ecology and Conservation,/UGRD/colleges-schools/UGAGL/WEC_BS/,Major
+Wildlife Ecology and Conservation,Wildlife Ecology and Conservation Minor,/UGRD/colleges-schools/UGAGL/WEC_UMN/,Minor
+Electrical and Computer Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Electrical and Computer Engineering,Computer Engineering,/UGRD/colleges-schools/UGENG/CPE_BSCO/,Major
+Electrical and Computer Engineering,Electrical Engineering,/UGRD/colleges-schools/UGENG/ELE_BSEE/,Major
+Electrical and Computer Engineering,Electrical Engineering Minor,/UGRD/colleges-schools/UGENG/ELE_UMN/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",African Languages,/UGRD/colleges-schools/UGLAS/FAF_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Arabic,/UGRD/colleges-schools/UGLAS/FAR_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Arabic Language and Literature Minor,/UGRD/colleges-schools/UGLAS/ALL_UMN/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",Chinese,/UGRD/colleges-schools/UGLAS/FCH_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Dual Languages,/UGRD/colleges-schools/UGLAS/FLL_BA/FDU_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",East Asian Languages and Literatures Minor,/UGRD/colleges-schools/UGLAS/EAC_EAJ_UMN/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",Foreign Languages and Literatures,/UGRD/colleges-schools/UGLAS/FLL_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",French and Francophone Studies,/UGRD/colleges-schools/UGLAS/FFR_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",French and Francophone Studies Minor,/UGRD/colleges-schools/UGLAS/FFS_UMN/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",German,/UGRD/colleges-schools/UGLAS/FGR_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",German Minor,/UGRD/colleges-schools/UGLAS/GMN_UMN/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",German Minor UF Online,/UGRD/colleges-schools/UGLAS/GMN_UMN_UFO/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",Hebrew,/UGRD/colleges-schools/UGLAS/FHE_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Hebrew Minor,/UGRD/colleges-schools/UGLAS/HBR_UMN/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",Italian,/UGRD/colleges-schools/UGLAS/FIT_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Italian Studies Minor,/UGRD/colleges-schools/UGLAS/ITA_UMN/,Minor
+"Haitian Creole | Languages, Literatures, and Cultures",Japanese,/UGRD/colleges-schools/UGLAS/FJA_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Russian,/UGRD/colleges-schools/UGLAS/FRU_BA/,Major
+"Haitian Creole | Languages, Literatures, and Cultures",Russian and East-European Area Studies Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT14/,Certificate
+"Haitian Creole | Languages, Literatures, and Cultures",Russian Minor,/UGRD/colleges-schools/UGLAS/RUS_UMN/,Minor
+Management,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Management,Entrepreneurship Minor,/UGRD/colleges-schools/UGBUS/ENT_UMN/,Minor
+Management,Management,/UGRD/colleges-schools/UGBUS/MGT_BSBA/,Major
+Agricultural Education and Communication,Agricultural and Natural Resource Communication Minor,/UGRD/colleges-schools/UGAGL/AGC_UMN/,Minor
+Agricultural Education and Communication,Agricultural Curriculum and Development Minor,/UGRD/colleges-schools/UGAGL/ACD_UMN/,Minor
+Agricultural Education and Communication,Agricultural Education and Communication,/UGRD/colleges-schools/UGAGL/AEC_BS/,Major
+Agricultural Education and Communication,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Agricultural Education and Communication,Extension Education Minor,/UGRD/colleges-schools/UGAGL/EXE_UMN/,Minor
+Agricultural Education and Communication,Leadership Minor,/UGRD/colleges-schools/UGAGL/LDR_UMN/,Minor
+Portuguese | Spanish and Portuguese Studies,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Portuguese | Spanish and Portuguese Studies,"Hispanic and Latin American Languages, Literatures and Linguistics",/UGRD/colleges-schools/UGLAS/HLL_BA/,Major
+Portuguese | Spanish and Portuguese Studies,Portuguese,/UGRD/colleges-schools/UGLAS/HLL_BA01/,Major
+Portuguese | Spanish and Portuguese Studies,Portuguese Minor,/UGRD/colleges-schools/UGLAS/POR_UMN/,Minor
+Portuguese | Spanish and Portuguese Studies,Spanish,/UGRD/colleges-schools/UGLAS/HLL_BA02/,Major
+Portuguese | Spanish and Portuguese Studies,Spanish and Portuguese,/UGRD/colleges-schools/UGLAS/HLL_BA/HLL_BA03/,Major
+Portuguese | Spanish and Portuguese Studies,Spanish for the Professions Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT15/,Certificate
+Portuguese | Spanish and Portuguese Studies,Spanish Minor,/UGRD/colleges-schools/UGLAS/SPN_UMN/,Minor
+Computer and Information Science & Engineering,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Computer and Information Science & Engineering,Computer and Information Science and Engineering Minor,/UGRD/colleges-schools/UGENG/CIE_UMN/,Minor
+Computer and Information Science & Engineering,Computer and Information Science and Engineering Minor UF Online,/UGRD/colleges-schools/UGENG/CIE_UMN_UFO/,Minor
+Computer and Information Science & Engineering,Computer Science UF Online,/UGRD/colleges-schools/UGLAS/CSC_BS_UFO/,Major
+Computer and Information Science & Engineering,Computer Science | CLAS,/UGRD/colleges-schools/UGLAS/CSC_BS/,Major
+Computer and Information Science & Engineering,Computer Science | Herbert Wertheim College of Engineering,/UGRD/colleges-schools/UGENG/CPS_BSCS/,Major
+Computer and Information Science & Engineering,Digital Arts and Sciences | Bachelor of Science,/UGRD/colleges-schools/UGENG/DAS_BSDA/,Major
+Public Relations,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Public Relations,"Media Production, Management, and Technology Minor",/UGRD/colleges-schools/UGJRC/MMT_UMN/,Minor
+Public Relations,Public Relations,/UGRD/colleges-schools/UGJRC/PR_BSPR/,Major
+Public Relations,Public Relations Minor,/UGRD/colleges-schools/UGJRC/PR_UMN/,Minor
+Public Relations,Public Relations UF Online,/UGRD/colleges-schools/UGJRC/PR_BSPR_UFO/,Major
+Linguistics,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Linguistics,Linguistics,/UGRD/colleges-schools/UGLAS/LIN_BA/,Major
+Linguistics,Linguistics Minor,/UGRD/colleges-schools/UGLAS/LIN_UMN/,Minor
+Linguistics,Teaching English as a Second Language Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT16/,Certificate
+Linguistics,Teaching English as a Second Language Minor,/UGRD/colleges-schools/UGLAS/TSL_UMN/,Minor
+Statistics,Actuarial Science Minor,/UGRD/colleges-schools/UGLAS/ACS_UMN/,Minor
+Statistics,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Statistics,Data Analytics Certificate,/UGRD/colleges-schools/UGLAS/LAS_UCT23/,Certificate
+Statistics,Data Science,/UGRD/colleges-schools/UGLAS/DAT_BS/,Major
+Statistics,Statistics,/UGRD/colleges-schools/UGLAS/STA_BA_BS/,Major
+Statistics,Statistics Minor,/UGRD/colleges-schools/UGLAS/STA_UMN/,Minor
+Art + Art History,Art Education Certificate,/UGRD/colleges-schools/UGART/ART_UCT06/,Certificate
+Art + Art History,Art History,/UGRD/colleges-schools/UGART/ARH_BAHA/,Major
+Art + Art History,Art History Minor,/UGRD/colleges-schools/UGART/ARH_UMN/,Minor
+Art + Art History,Art Minor,/UGRD/colleges-schools/UGART/STR_UMN/,Minor
+Art + Art History,Art | BA,/UGRD/colleges-schools/UGART/VAS_BA/,Major
+Art + Art History,Art | BFA,/UGRD/colleges-schools/UGART/ART_BFA/,Major
+Art + Art History,Ceramics Certificate,/UGRD/colleges-schools/UGART/ART_UCT02/,Certificate
+Art + Art History,Graphic Design,/UGRD/colleges-schools/UGART/GRD_BFAG/,Major
+"Media Production, Management, and Technology",Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+"Media Production, Management, and Technology","Media Production, Management, and Technology",/UGRD/colleges-schools/UGJRC/TEL_BSTE/,Major
+"Media Production, Management, and Technology","Media Production, Management, and Technology | Media and Society UF Online",/UGRD/colleges-schools/UGJRC/TEL_BSTE_UFO/,Major
+Botany,Biology UF Online,/UGRD/colleges-schools/UGLAS/BIO_BA_UFO/,Major
+Botany,Biology | CALS,/UGRD/colleges-schools/UGAGL/BLY_BS/,Major
+Botany,Biology | CLAS,/UGRD/colleges-schools/UGLAS/BIO_BA_BS/,Major
+Botany,Botany Minor,/UGRD/colleges-schools/UGLAS/BOT_UMN/,Minor
+Botany,Botany | CALS,/UGRD/colleges-schools/UGAGL/BTY_BS/,Major
+Botany,Botany | CLAS,/UGRD/colleges-schools/UGLAS/BOT_BS/,Major
+Botany,Combination Degrees,/UGRD/academic-advising/combined-degrees/,Major
+Botany,Zoology,/UGRD/colleges-schools/UGLAS/ZLY_BS/,Major
+Botany,Zoology Minor,/UGRD/colleges-schools/UGLAS/ZLY_UMN/,Minor
