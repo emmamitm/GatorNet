@@ -1,0 +1,148 @@
+number,name,abbreviation,address,description
+105,105 Classroom Building,CLB,"105 Fletcher Drive, Gainesville, FL 32611",Classrooms and academic facilities.
+,Academic Research Building,ARB,"1230 Inner Road, Gainesville, FL 32611",Research labs and interdisciplinary studies.
+,Alfred A. McKethan Stadium,CBP,"2500 SW 2nd Ave, Gainesville, FL 32607",Former baseball stadium, now Condron Ballpark.
+,Anderson Hall,AND,"100 Fletcher Dr, Gainesville, FL 32611",Home to the College of Liberal Arts and Sciences.
+,Animal Sciences Building,ANSC,"2250 Shealy Dr, Gainesville, FL 32608",Animal science research and education.
+,Aquatic Food Production Pilot Plant,AFPP,"7922 NW 71st St, Gainesville, FL 32653",Aquaculture and food production research.
+,Aquatic Products Lab,APL,"7922 NW 71st St, Gainesville, FL 32653",Supports aquatic food research.
+,Architecture Building,ARCH,"1480 Inner Rd, Gainesville, FL 32611",College of Design, Construction & Planning.
+,Bartram Hall,BRM,"618 SW 12th Ave, Gainesville, FL 32601",Classrooms and offices for multiple departments.
+,Basic Science Building,BSB,"1600 SW Archer Rd, Gainesville, FL 32610",UF Health Science Center research hub.
+,Basketball Practice Facility,BPF,"2500 SW 13th St, Gainesville, FL 32608",Training facility for basketball teams.
+,Baughman Center,BAUG,"1700 Museum Rd, Gainesville, FL 32611",Meditation and ceremonial space.
+,Beaty Towers,BEAT,"1200 SW 5th Ave, Gainesville, FL 32601",Undergraduate residence hall.
+,Benton Hall,BENT,"1270 Museum Rd, Gainesville, FL 32611",Engineering and computer science departments.
+,Biomedical Sciences Building,BMS,"1275 Center Dr, Gainesville, FL 32610",Biomedical research and labs.
+,Black Hall,BLA,"1504 W University Ave, Gainesville, FL 32603",College of Journalism and Communications.
+,Bookstore and Welcome Center,UFBK,"1512 Union Rd, Gainesville, FL 32611",Campus bookstore and visitor center.
+,Broward Dining Facility,BRD,"655 Reitz Union Dr, Gainesville, FL 32611",Dining hall in Broward Hall.
+,Broward Hall,BRO,"655 Reitz Union Dr, Gainesville, FL 32611",Residential hall with dining facilities.
+,Bruton-Geer Hall,BRG,"1350 Museum Rd, Gainesville, FL 32611",Agricultural and Life Sciences programs.
+,Bryan Hall,BRY,"1008 Museum Rd, Gainesville, FL 32611",Classrooms and administrative offices.
+,Bryant Space Science Center,BSSC,"1320 SW 18th Terr, Gainesville, FL 32611",Astronomy and space science research.
+,Buckman Hall,BUCK,"100 Museum Rd, Gainesville, FL 32611",Residential hall for freshmen.
+,Cancer Center,CNC,"1515 SW Archer Rd, Gainesville, FL 32608",UF Health Cancer Center facility.
+,Cancer and Genetics Research Complex,CGRC,"2033 Mowry Rd, Gainesville, FL 32610",Cancer and genetics research hub.
+,Carleton Auditorium,CARL,"320 Hull Rd, Gainesville, FL 32611",Lecture and event venue.
+,Carr Hall,CARR,"100 Fletcher Dr, Gainesville, FL 32611",Academic offices and classrooms.
+,Carse Swimming Complex,CARSE,"1425 Stadium Rd, Gainesville, FL 32611",Athletic swimming facilities.
+,Century Tower,CENT,"100 Newell Dr, Gainesville, FL 32611",Iconic bell tower and campus landmark.
+,Chemical Engineering Student Center[8],CHESC,"1006 Center Dr, Gainesville, FL 32603",Student center for chemical engineering.
+,Chemistry Laboratory,CHEM,"1251 Center Dr, Gainesville, FL 32603",Undergraduate chemistry labs.
+,Clinical and Translational Research Building[10],CTRB,"2004 Mowry Rd, Gainesville, FL 32610",Medical research and clinical trials.
+,Communicore Building,COMM,"1225 Center Dr, Gainesville, FL 32610",Health Science Center classrooms and labs.
+,Computer Science Building,CSE,"432 Newell Dr, Gainesville, FL 32611",Computer & Information Science & Engineering.
+,Condron Ballpark,CBP,"2500 SW 2nd Ave, Gainesville, FL 32607",Baseball stadium (formerly McKethan Stadium).
+,Constans Theatre,CONST,"1800 McCarty Dr, Gainesville, FL 32611",Performing arts theater.
+,Cooperative Living Organization,CLO,"1319 SW 16th Ave, Gainesville, FL 32608",Student cooperative housing.
+,Corry Memorial Village,CORRY,"1235 Village Dr, Gainesville, FL 32603",Graduate and family housing.
+,Counseling and Wellness Center,CWC,"3190 Radio Rd, Gainesville, FL 32611",Mental health and wellness services.
+,Courtelis Equine Teaching Hospital,CETH,"2015 SW 16th Ave, Gainesville, FL 32610",Equine veterinary hospital.
+,Criser Hall,CRIS,"100 Fletcher Dr, Gainesville, FL 32611",Administrative offices, including Registrar.
+,Dauer Hall,DAU,"220 Dauer Dr, Gainesville, FL 32611",Political science and public health.
+,Davis Cancer Pavilion,DAVIS,"1505 SW Archer Rd, Gainesville, FL 32608",Cancer treatment and outpatient care.
+,Dental Science Building,DENT,"1395 Center Dr, Gainesville, FL 32610",College of Dentistry.
+,Deriso Hall,DERI,"1376 Stadium Rd, Gainesville, FL 32611",Engineering labs and classrooms.
+,Development and Alumni Affairs Building,DAAB,"1938 W University Ave, Gainesville, FL 32603",Alumni relations and fundraising.
+,Diamond Village,DIAM,"1329 Diamond Rd, Gainesville, FL 32611",Apartment-style student housing.
+,Dickinson Hall,DICK,"330 Newell Dr, Gainesville, FL 32611",Art and art history departments.
+,Donald R. Dizney Stadium,DIZ,"2800 SW 13th St, Gainesville, FL 32608",Lacrosse and soccer stadium.
+,Doyle Conner Building,DCB,"1301 Fifield Ln, Gainesville, FL 32611",Agricultural extension services.
+,East Campus Office Building,ECOB,"1790 E University Ave, Gainesville, FL 32601",Administrative offices.
+,East Hall,EAST,"1504 Union Rd, Gainesville, FL 32611",Residential hall.
+,Elmore Hall,ELM,"1745 Museum Rd, Gainesville, FL 32611",Levin College of Law offices.
+,Emerging Pathogens Institute,EPI,"2055 Mowry Rd, Gainesville, FL 32610",Infectious disease research.
+,Emerson Alumni Hall,EAH,"1938 W University Ave, Gainesville, FL 32603",UF Alumni Association headquarters.
+,Entomology-Nematology Building,ENTM,"1881 Natural Area Dr, Gainesville, FL 32611",Insect and nematode studies.
+,Environmental Health and Safety Administrative Offices,EHS,"916 Newell Dr, Gainesville, FL 32611",Campus safety and compliance.
+,Farrior Hall,FAR,"1400 Stadium Rd, Gainesville, FL 32611",Psychology department offices.
+,Fifield Hall,FIF,"1301 Fifield Ln, Gainesville, FL 32611",Horticultural sciences department.
+,Fine Arts Building A,FAA,"400 SW 13th St, Gainesville, FL 32601",Art studios and classrooms.
+,Fine Arts Building B,FAB,"400 SW 13th St, Gainesville, FL 32601",Fine arts facilities.
+,Fine Arts Building C,FAC,"400 SW 13th St, Gainesville, FL 32601",Additional art studios and labs.
+,Fletcher Hall,FLET,"1480 Union Rd, Gainesville, FL 32611",Residential hall.
+,Flint Hall,FLINT,"330 Newell Dr, Gainesville, FL 32611",School of Music facilities.
+,Florida Gymnasium,FLGYM,"115 Florida Gym, Gainesville, FL 32611",Historic sports and event venue.
+,Florida Pool,FLPOOL,"1425 Stadium Rd, Gainesville, FL 32611",Olympic-sized swimming pool.
+,Food Science and Human Nutrition Building,FSHN,"572 Newell Dr, Gainesville, FL 32611",Food and nutrition research.
+,Frazier Rogers Hall,FRAZ,"1745 Museum Rd, Gainesville, FL 32611",Agricultural and Biological Engineering.
+,Gator Band Shell,GBAND,"1380 Inner Rd, Gainesville, FL 32611",Outdoor concert stage.
+,Gator Corner Dining Facility,GCD,"330 Fletcher Dr, Gainesville, FL 32611",Dining hall near campus core.
+,General Services Building,GSB,"561 Newell Dr, Gainesville, FL 32611",Facilities and maintenance offices.
+,Gerson Hall,GERS,"1350 N Quadrangle, Gainesville, FL 32611",Engineering classrooms and labs.
+,Graham Hall,GRAH,"1140 Newell Dr, Gainesville, FL 32611",Residential hall.
+,Gran Telescopio Canarias[7],GTC,"La Palma, Spain",UF-partnered astronomical observatory (not on campus).
+,Griffin-Floyd Hall,GRIF,"1300 Fletcher Dr, Gainesville, FL 32611",Residential hall.
+,Grinter Hall,GRIN,"1523 Union Rd, Gainesville, FL 32611",Graduate School and International Center.
+,Harn Museum of Art,HARN,"3259 Hull Rd, Gainesville, FL 32608",Campus art museum.
+,Harrell Medical Education Building,HMEB,"1524 SW 10th Ave, Gainesville, FL 32610",Medical education and simulation.
+,Health Center Annex #1,HCA1,"1600 SW Archer Rd, Gainesville, FL 32610",UF Health administrative offices.
+,"Health Profession, Nursing, Pharmacy Building",HPNP,"1225 Center Dr, Gainesville, FL 32610",Interprofessional healthcare education.
+,Heavener Hall,HEAV,"1505 University Ave, Gainesville, FL 32603",Warrington College of Business.
+,Herbert Wertheim Laboratory for Engineering Excellence,HWB,"1064 Center Dr, Gainesville, FL 32611",Engineering innovation hub.
+,Hitchcock Field & Fork Pantry[11],HFFP,"1545 Museum Rd, Gainesville, FL 32611",Student food pantry.
+,Holland Law Center,HLC,"309 Village Dr, Gainesville, FL 32611",Law school facilities.
+,Honors Village,HONV,"1380 Inner Rd, Gainesville, FL 32611",Residential community for honors students.
+,Hough Hall,HOUG,"1480 Union Rd, Gainesville, FL 32611",Business school classrooms.
+,Housing Office,HOUS,"1304 Diamond Rd, Gainesville, FL 32611",Housing administration.
+,Human Development Center,HDC,"1149 Newell Dr, Gainesville, FL 32611",Special education and psychology services.
+,Human Resources Building,HRB,"903 W University Ave, Gainesville, FL 32603",HR services and offices.
+,Hume Hall,HUME,"1223 Museum Rd, Gainesville, FL 32611",Honors residential hall.
+,Indoor Practice Facility,IPF,"2500 SW 13th St, Gainesville, FL 32608",Athletic training facility.
+,Infinity Hall,INF,"1370 Museum Rd, Gainesville, FL 32611",Residential hall.
+,Infirmary Hall,INFIRM,"280 Fletcher Dr, Gainesville, FL 32611",Former infirmary, now offices.
+,Institute of Black Culture,IBC,"1510 W University Ave, Gainesville, FL 32603",Cultural and educational center.
+,Institute of Hispanic/Latino Culture,IHLC,"1504 W University Ave, Gainesville, FL 32603",Hispanic/Latino cultural center.
+,James G. Pressly Stadium,PRESS,"2800 SW 13th St, Gainesville, FL 32608",Track and field stadium.
+,Jennings Hall,JENN,"1130 Newell Dr, Gainesville, FL 32611",Residential hall.
+,Johnson Hall,JOH,"1350 Union Rd, Gainesville, FL 32611",Academic advising and classrooms.
+,Keys Residential Complex,KEYS,"1320 Keys Dr, Gainesville, FL 32611",Apartment-style housing.
+,Lakeside Residential Complex,LAKE,"3300 Hull Rd, Gainesville, FL 32606",On-campus apartments.
+,Larsen Hall,LARS,"1250 Newell Dr, Gainesville, FL 32611",Residential hall.
+,Law Advocacy Center,LAC,"309 Village Dr, Gainesville, FL 32611",Moot court and law competitions.
+,Leigh Hall,LEIGH,"1300 Center Dr, Gainesville, FL 32610",Engineering and tech labs.
+,Lemerand Center,LEM,"1329 SW 16th St, Gainesville, FL 32610",Clinical research and patient care.
+,Library West,LIBW,"1545 W University Ave, Gainesville, FL 32603",Main university library.
+,Linder Tennis Stadium,LIND,"2800 SW 13th St, Gainesville, FL 32608",Tennis competition venue.
+,Lipoff Hall,LIPO,"1275 Center Dr, Gainesville, FL 32610",Health Science Center offices.
+,Little Hall,LIT,"1400 Stadium Rd, Gainesville, FL 32611",Mathematics department.
+,Little Hall Express,LHE,"1400 Stadium Rd, Gainesville, FL 32611",Math tutoring center.
+,Maguire Village,MAG,"2800 SW 13th St, Gainesville, FL 32608",Graduate and family housing.
+,Malachowsky Hall for Data Science & Information Technology,MHD,"1275 Center Dr, Gainesville, FL 32611",Data science and IT research (opened 2023).
+,Mallory Hall,MALL,"1350 Union Rd, Gainesville, FL 32611",Residential hall.
+,Mark Bostick Golf Clubhouse,BOST,"2800 SW 2nd Ave, Gainesville, FL 32607",Golf course and clubhouse.
+,Marston Science Library,MAR,"444 Newell Dr, Gainesville, FL 32611",Science and engineering library.
+,Material Engineering Building,MAT,"1006 Center Dr, Gainesville, FL 32603",Materials science research.
+,Matherly Hall,MATH,"1480 Union Rd, Gainesville, FL 32611",Economics and business departments.
+,McCarty Hall A,MC A,"1504 Union Rd, Gainesville, FL 32611",Residential hall.
+,McCarty Hall B,MC B,"1504 Union Rd, Gainesville, FL 32611",Residential hall.
+,McCarty Hall C,MC C,"1504 Union Rd, Gainesville, FL 32611",Residential hall.
+,McCarty Hall D,MC D,"1504 Union Rd, Gainesville, FL 32611",Residential hall.
+,McGuire Center,MCG,"1300 Hull Rd, Gainesville, FL 32611",Entrepreneurship and innovation center.
+,McKnight Brain Institute,MBI,"1149 Newell Dr, Gainesville, FL 32611",Neuroscience research institute.
+,Mechanical Engineering Building A,MEB A,"1064 Center Dr, Gainesville, FL 32611",Mechanical engineering labs.
+,Mechanical Engineering Building B,MEB B,"1064 Center Dr, Gainesville, FL 32611",Mechanical engineering facilities.
+,Mechanical Engineering Building C,MEB C,"1064 Center Dr, Gainesville, FL 32611",Additional engineering labs.
+,Microbiology/Cell Science Building,MIC,"981 Museum Rd, Gainesville, FL 32611",Microbiology research.
+,Multi Purpose Lab,MPL,"2500 SW 13th St, Gainesville, FL 32608",Athletic training and practice facility.
+,Murphree Hall,MURP,"1300 Union Rd, Gainesville, FL 32611",Residential hall.
+,Music Building,MUS,"330 Newell Dr, Gainesville, FL 32611",School of Music facilities.
+,Nanoscale Research Facility,NRF,"218 MAE-A, Gainesville, FL 32611",Nanotechnology research labs.
+,New Engineering Building,NEB,"1275 Center Dr, Gainesville, FL 32611",Engineering classrooms and labs.
+,Newell Hall,NEWL,"1250 Newell Dr, Gainesville, FL 32611",Study spaces and classrooms.
+,Newins-Ziegler Hall,NZH,"1370 Museum Rd, Gainesville, FL 32611",Agricultural and Life Sciences.
+,Norman Gym,NORM,"1425 Stadium Rd, Gainesville, FL 32611",Recreational sports facility.
+,Norman Hall,NORM,"1525 Union Rd, Gainesville, FL 32611",College of Education.
+,North Hall,NORTH,"1480 Union Rd, Gainesville, FL 32611",Residential hall.
+,Nuclear Sciences Building,NSB,"202 Nuclear Sciences Ctr, Gainesville, FL 32611",Nuclear engineering research.
+,O'Connell Center,O'DOME,"250 Gale Lemerand Dr, Gainesville, FL 32611",Arena for sports and events.
+,Observatory,OBS,"223 Bryant Space Science Ctr, Gainesville, FL 32611",Astronomical observatory.
+,Orthopaedics and Sports Medicine Institute,OSMI,"3450 Hull Rd, Gainesville, FL 32608",Orthopedic care and research.
+,P.K. Yonge Developmental Research School,PKY,"1080 SW 11th St, Gainesville, FL 32601",K-12 laboratory school.
+,Particle Science Technology Building,PSTB,"2300 NE 8th Ave, Gainesville, FL 32641",Particle science research.
+,Patient Services Building,PSB,"1600 SW Archer Rd, Gainesville, FL 32610",UF Health outpatient services.
+,Peabody Hall,PEA,"100 Fletcher Dr, Gainesville, FL 32611",College of Education.
+,Phelps Lab,PHELP,"1275 Center Dr, Gainesville, FL 32610",Psychology research labs.
+,Phillips Center,PHIL,"315 Hull Rd, Gainesville, FL 32611",Performing arts venue.
+,Physics Building,PHYS,"2001 Museum Rd, Gainesville
