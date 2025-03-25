@@ -28,22 +28,27 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
     // Fetch user conversations
     const fetchConversations = async () => {
         if (!user) return;
-        
+
         setIsLoading(true);
         setError(null);
-        
+
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:5001/api/conversations", {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            const response = await fetch(
+                "http://localhost:5001/api/conversations",
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
-            });
-            
+            );
+
             if (!response.ok) {
-                throw new Error(`Failed to fetch conversations: ${response.status}`);
+                throw new Error(
+                    `Failed to fetch conversations: ${response.status}`
+                );
             }
-            
+
             const data = await response.json();
             setConversations(data);
         } catch (err) {
@@ -57,26 +62,31 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
     // Create a new conversation
     const createNewConversation = async () => {
         if (!user) return;
-        
+
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch("http://localhost:5001/api/conversations", {
-                method: "POST",
-                headers: {
-                    Authorization: `Bearer ${token}`,
-                    "Content-Type": "application/json"
+            const response = await fetch(
+                "http://localhost:5001/api/conversations",
+                {
+                    method: "POST",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                        "Content-Type": "application/json",
+                    },
                 }
-            });
-            
+            );
+
             if (!response.ok) {
-                throw new Error(`Failed to create conversation: ${response.status}`);
+                throw new Error(
+                    `Failed to create conversation: ${response.status}`
+                );
             }
-            
+
             const newConversation = await response.json();
-            
+
             // Add to conversation list
-            setConversations(prev => [newConversation, ...prev]);
-            
+            setConversations((prev) => [newConversation, ...prev]);
+
             // Select the new conversation
             if (onSelectConversation) {
                 onSelectConversation(newConversation.id);
@@ -90,31 +100,42 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
     // Delete a conversation
     const deleteConversation = async (conversationId, e) => {
         e.stopPropagation(); // Prevent selecting the conversation when deleting
-        
+
         if (!user) return;
-        
+
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`http://localhost:5001/api/conversations/${conversationId}`, {
-                method: "DELETE",
-                headers: {
-                    Authorization: `Bearer ${token}`
+            const response = await fetch(
+                `http://localhost:5001/api/conversations/${conversationId}`,
+                {
+                    method: "DELETE",
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
-            });
-            
+            );
+
             if (!response.ok) {
-                throw new Error(`Failed to delete conversation: ${response.status}`);
+                throw new Error(
+                    `Failed to delete conversation: ${response.status}`
+                );
             }
-            
+
             // Remove from conversation list
-            setConversations(prev => prev.filter(conv => conv.id !== conversationId));
-            
+            setConversations((prev) =>
+                prev.filter((conv) => conv.id !== conversationId)
+            );
+
             // If the deleted conversation was the current one, select a new one or clear
             if (currentConversationId === conversationId) {
                 // Select the first available conversation or null if none left
-                const nextConversation = conversations.find(conv => conv.id !== conversationId);
+                const nextConversation = conversations.find(
+                    (conv) => conv.id !== conversationId
+                );
                 if (onSelectConversation) {
-                    onSelectConversation(nextConversation ? nextConversation.id : null);
+                    onSelectConversation(
+                        nextConversation ? nextConversation.id : null
+                    );
                 }
             }
         } catch (err) {
@@ -123,12 +144,12 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
         }
     };
 
-    // Load conversations on component mount and when user changes
+    // Load conversations on component mount, when user changes, or when expanded
     useEffect(() => {
         if (user) {
             fetchConversations();
         }
-    }, [user]);
+    }, [user, isExpanded]);
 
     useEffect(() => {
         const handleResize = () => {
@@ -142,7 +163,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
         return () => window.removeEventListener("resize", handleResize);
     }, []);
 
-    const iconSize = 25;
+    const iconSize = 20;
 
     return (
         <div>
@@ -169,7 +190,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
             )}
             <motion.div className="max-h-fit md:max-h-full z-20 relative">
                 <motion.div
-                    className="fixed md:top-0 left-0 md:p-2 h-full backdrop-blur-xl bg-neutral-200/60 border-r-2 border-neutral-200 rounded-r-xl"
+                    className="fixed md:top-0 left-0 md:p-1 h-full backdrop-blur-2xl bg-neutral-200/60 border-r-2 border-neutral-200 rounded-r-xl overflow-y-scroll"
                     {...(screenSize.width >= 768 && {
                         onMouseOver: () => {
                             if (!isPinned) setIsExpanded(true);
@@ -189,36 +210,36 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                 >
                     {isExpanded ? (
                         <motion.div
-                            className="flex flex-col gap-2 p-3 md:p-0"
+                            className="flex flex-col p-3 md:p-0"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             transition={{ duration: 0.5, delay: 0.2 }}
                         >
-                            <div className="flex justify-between">
+                            <div className="flex justify-between px-2 pt-1">
                                 {/* <h1 className="text-2xl font-bold">Chats</h1> */}
                                 {isPinned ? (
                                     <PushPinSlash
                                         onClick={() => setIsPinned(false)}
                                         weight="fill"
-                                        className="cursor-pointer hover:fill-neutral-950 transition-colors"
+                                        className="cursor-pointer fill-neutral-800 transition-colors"
                                         size={iconSize}
                                     />
                                 ) : (
                                     <PushPin
                                         onClick={() => setIsPinned(true)}
                                         weight="fill"
-                                        className="cursor-pointer hover:fill-neutral-950 transition-colors"
+                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 transition-colors"
                                         size={iconSize}
                                     />
                                 )}
                                 <div className="flex">
                                     <MagnifyingGlass
                                         size={iconSize}
-                                        className="cursor-pointer hover:fill-neutral-950 transition-colors"
+                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 transition-colors"
                                     />
                                     <Plus
                                         size={iconSize}
-                                        className="cursor-pointer hover:fill-neutral-950 transition-colors"
+                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 transition-colors"
                                         onClick={createNewConversation}
                                     />
                                 </div>
@@ -234,32 +255,47 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                                 )}
                             </div>
 
-                            <hr className="border border-neutral-300" />
-                            
+                            <hr className="border border-neutral-400 my-2" />
+
+                            <h3 className="text-lg font-bold text-neutral-600 ml-2">
+                                Conversations
+                            </h3>
+
                             {isLoading && (
-                                <div className="text-sm text-center py-2">Loading conversations...</div>
-                            )}
-                            
+                                <div className="text-sm text-center py-2">
+                                    Loading conversations...
+                                </div>
+                            )}  
+
                             {error && (
-                                <div className="text-sm text-red-500 text-center py-2">{error}</div>
+                                <div className="text-sm text-red-500 text-center py-2">
+                                    {error}
+                                </div>
                             )}
-                            
+
                             {!isLoading && conversations.length === 0 && (
-                                <div className="text-sm text-center py-2">No conversations yet</div>
+                                <div className="text-sm text-left text-neutral-600 my-2 ml-2">
+                                    No conversations yet.
+                                </div>
                             )}
 
                             {conversations.map((conversation) => (
                                 <div
                                     key={conversation.id}
-                                    className={`flex gap-2 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500 ${
-                                        currentConversationId === conversation.id ? 'bg-blue-100 rounded-md' : ''
+                                    className={`flex px-2 py-1 gap-1 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500 ${
+                                        currentConversationId ===
+                                        conversation.id
+                                            ? "rounded-md bg-blue-800/10"
+                                            : ""
                                     }`}
                                 >
                                     <div
-                                        className="flex items-center gap-1 p-1"
+                                        className="flex items-center gap-1"
                                         onClick={() => {
                                             if (onSelectConversation) {
-                                                onSelectConversation(conversation.id);
+                                                onSelectConversation(
+                                                    conversation.id
+                                                );
                                             }
                                             if (screenSize.width < 768) {
                                                 setIsExpanded(false);
@@ -267,13 +303,20 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                                         }}
                                     >
                                         <ChatsCircle size={14} weight="bold" />
-                                        {conversation.title}
+                                        <p className="line-clamp-1 text-xs md:text-sm">
+                                            {conversation.title}
+                                        </p>
                                     </div>
                                     <button
-                                        onClick={(e) => deleteConversation(conversation.id, e)}
+                                        onClick={(e) =>
+                                            deleteConversation(
+                                                conversation.id,
+                                                e
+                                            )
+                                        }
                                     >
                                         <MinusCircle
-                                            size={18}
+                                            size={14}
                                             className="fill-red-600 hover:fill-red-400 transition-colors"
                                         />
                                     </button>

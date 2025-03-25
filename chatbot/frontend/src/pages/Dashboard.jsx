@@ -13,7 +13,6 @@ function Dashboard() {
     const [input, setInput] = useState("");
     const [isConnected, setIsConnected] = useState(false);
     const [currentConversationId, setCurrentConversationId] = useState(null);
-    const [isFetchingMessages, setIsFetchingMessages] = useState(false);
     const { user } = useAuth();
 
     // Test backend connection on load
@@ -33,36 +32,34 @@ function Dashboard() {
     useEffect(() => {
         if (currentConversationId) {
             loadConversationMessages(currentConversationId);
-        } else {
-            // Clear messages if no conversation is selected
-            setMessages([]);
         }
+        // Don't clear messages when conversation ID is null to prevent
+        // message flickering when creating a new conversation
     }, [currentConversationId]);
 
     // Function to load messages for a conversation
     const loadConversationMessages = async (conversationId) => {
         if (!conversationId) return;
-        
-        setIsFetchingMessages(true);
-        
+
         try {
             const token = localStorage.getItem("token");
-            const response = await fetch(`http://localhost:5001/api/conversations/${conversationId}/messages`, {
-                headers: {
-                    Authorization: `Bearer ${token}`
+            const response = await fetch(
+                `http://localhost:5001/api/conversations/${conversationId}/messages`,
+                {
+                    headers: {
+                        Authorization: `Bearer ${token}`,
+                    },
                 }
-            });
-            
+            );
+
             if (!response.ok) {
                 throw new Error(`Failed to load messages: ${response.status}`);
             }
-            
+
             const messagesData = await response.json();
             setMessages(messagesData);
         } catch (error) {
             console.error("Error loading conversation messages:", error);
-        } finally {
-            setIsFetchingMessages(false);
         }
     };
 
@@ -74,102 +71,168 @@ function Dashboard() {
     const handleSubmit = async (e) => {
         e.preventDefault();
         if (!input.trim()) return;
-        
+
         const userMessage = input.trim();
-        console.log("Sending message:", userMessage); // Debug print
-        
+        console.log("Sending message:", userMessage);
+
         // Clear input field first
         setInput("");
         document.querySelector('[contenteditable="true"]').textContent = "";
-        
+
         // Get user ID from authentication
         const userId = user ? user.user_id : localStorage.getItem("userId");
-        
-        // If no conversation is selected, we need to create one
-        if (!currentConversationId) {
+
+        // Track conversation ID for this request
+        let conversationIdForRequest = currentConversationId;
+
+        // If no conversation is selected, create one before continuing
+        if (!conversationIdForRequest) {
             try {
                 const token = localStorage.getItem("token");
-                const response = await fetch("http://localhost:5001/api/conversations", {
-                    method: "POST",
-                    headers: {
-                        Authorization: `Bearer ${token}`,
-                        "Content-Type": "application/json"
+                const response = await fetch(
+                    "http://localhost:5001/api/conversations",
+                    {
+                        method: "POST",
+                        headers: {
+                            Authorization: `Bearer ${token}`,
+                            "Content-Type": "application/json",
+                        },
                     }
-                });
-                
+                );
+
                 if (!response.ok) {
-                    throw new Error(`Failed to create conversation: ${response.status}`);
+                    throw new Error(
+                        `Failed to create conversation: ${response.status}`
+                    );
                 }
-                
+
                 const newConversation = await response.json();
-                setCurrentConversationId(newConversation.id);
-                
-                // Continue with the message sending...
+                console.log("Created new conversation:", newConversation);
+
+                // Store the new conversation ID in our local variable
+                conversationIdForRequest = newConversation.id;
+
+                // Also update the state (will be used in future requests)
+                // Update the state, but don't trigger a re-render/clear yet
+                // We'll let the messages update first to avoid flicker
+                // setCurrentConversationId will happen after we've shown messages
+
+                if (!conversationIdForRequest) {
+                }
             } catch (error) {
                 console.error("Error creating conversation:", error);
-                return;
+                // Show error in message list
+                setMessages((prev) => [
+                    ...prev,
+                    {
+                        id: "error-" + Date.now(),
+                        text: `Error: ${error.message}. Please try again.`,
+                        isUser: false,
+                        sent_at: new Date().toISOString(),
+                    },
+                ]);
+                return; // Stop execution if we couldn't create a conversation
             }
         }
-        
+
         // Add user message to UI immediately (optimistic update)
-        const tempUserMessage = { 
-            id: 'temp-' + Date.now(),
-            text: userMessage, 
+        const newMessage = {
+            id: "user-" + Date.now(),
+            text: userMessage,
             isUser: true,
-            sent_at: new Date().toISOString()
+            sent_at: new Date().toISOString(),
         };
-        setMessages(prev => [...prev, tempUserMessage]);
-        
+
+        // Add both the user message and a loading indicator for the AI
+        setMessages((prev) => [
+            ...prev,
+            newMessage,
+            {
+                id: "loading-" + Date.now(),
+                text: "",
+                isUser: false,
+                isLoading: true,
+                sent_at: new Date().toISOString(),
+            },
+        ]);
+
         // Get bot response
         try {
-            console.log("Making request to backend..."); // Debug print
-            console.log("Using conversation ID:", currentConversationId);
-            
+            console.log("Making request to backend...");
+            console.log("Using conversation ID:", conversationIdForRequest);
+
             const res = await fetch("http://localhost:5001/api/chat", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    "Accept": "application/json",
-                    "Authorization": `Bearer ${localStorage.getItem("token")}`
+                    Accept: "application/json",
+                    Authorization: `Bearer ${localStorage.getItem("token")}`,
                 },
-                body: JSON.stringify({ 
+                body: JSON.stringify({
                     message: userMessage,
                     user_id: parseInt(userId),
-                    conversation_id: currentConversationId
+                    conversation_id: conversationIdForRequest,
                 }),
             });
-            
-            console.log("Response status:", res.status); // Debug print
-            
+
+            console.log("Response status:", res.status);
+
             if (!res.ok) {
                 throw new Error(`HTTP error! status: ${res.status}`);
             }
-            
+
             const data = await res.json();
-            console.log("Received response:", data); // Debug print
-            
+            console.log("Received response:", data);
+
             // Update the conversation ID from the response if provided
             if (data.conversation_id) {
+                // Now that we have the AI response, it's safe to update the conversation ID
                 setCurrentConversationId(data.conversation_id);
                 console.log("Updated conversation ID:", data.conversation_id);
+            } else if (conversationIdForRequest && !currentConversationId) {
+                // Set the conversation ID we created earlier
+                setCurrentConversationId(conversationIdForRequest);
             }
-            
-            // After getting response, reload the full conversation to ensure we have all messages
-            await loadConversationMessages(data.conversation_id || currentConversationId);
-            
+
+            // Remove the loading indicator and add the AI response
+            const aiMessage = {
+                id: data.id || "ai-" + Date.now(),
+                text: data.message || data.response,
+                isUser: false,
+                sent_at: data.sent_at || new Date().toISOString(),
+            };
+
+            setMessages((prev) =>
+                prev
+                    // Filter out the loading indicator
+                    .filter((msg) => !msg.isLoading)
+                    // Add the new AI message
+                    .concat(aiMessage)
+            );
+
+            // You can still load the full conversation history in the background if needed
+            // This ensures your UI stays responsive while data syncs
+            loadConversationMessages(
+                data.conversation_id || conversationIdForRequest
+            ).catch((err) =>
+                console.error("Error updating conversation:", err)
+            );
         } catch (err) {
             console.error("Detailed error:", err);
-            
-            // Show error in message list
-            setMessages(prev => [
-                ...prev,
-                {
-                    id: 'error-' + Date.now(),
-                    text: `Error: ${err.message}. Please try again.`,
-                    isUser: false,
-                    sent_at: new Date().toISOString()
-                },
-            ]);
+
+            // Remove loading indicator and show error message
+            setMessages((prev) =>
+                prev
+                    // Filter out the loading indicator
+                    .filter((msg) => !msg.isLoading)
+                    // Add the error message
+                    .concat({
+                        id: "error-" + Date.now(),
+                        text: `Error: ${err.message}. Please try again.`,
+                        isUser: false,
+                        sent_at: new Date().toISOString(),
+                    })
+            );
         }
     };
 
@@ -192,20 +255,16 @@ function Dashboard() {
                             processed.
                         </div>
                     )}
-                    
-                    {isFetchingMessages && (
-                        <div className="text-center py-4">Loading messages...</div>
-                    )}
-                    
+
                     {/* Header (only if messages) */}
-                    {messages.length === 0 && !isFetchingMessages && (
+                    {messages.length === 0 && (
                         <h1 className="text-2xl md:text-3xl font-bold m-2 mt-auto mx-auto mb-4">
                             What would you like to know?
                         </h1>
                     )}
-                    
+
                     {/* Suggestions (if no messages) */}
-                    {messages.length === 0 && !isFetchingMessages ? (
+                    {messages.length === 0 ? (
                         <div className="flex justify-center mb-auto mx-auto whitespace-nowrap flex-wrap gap-2 md:gap-4 sm:max-w-md md:max-w-lg">
                             <Suggestion
                                 text="Events at UF"
@@ -246,7 +305,7 @@ function Dashboard() {
                         </div>
                     ) : (
                         <div className="overflow-y-auto scroll flex flex-col-reverse h-full pb-2">
-                            {!isFetchingMessages && messages
+                            {messages
                                 .slice(0)
                                 .reverse()
                                 .map((msg, idx) => (
@@ -254,11 +313,12 @@ function Dashboard() {
                                         key={msg.id || idx}
                                         text={msg.text}
                                         isUser={msg.isUser}
+                                        isLoading={msg.isLoading}
                                     />
                                 ))}
                         </div>
                     )}
-                    
+
                     {/* Message input */}
                     <div className="fixed left-0 bottom-0 w-full p-4 pt-0">
                         <form

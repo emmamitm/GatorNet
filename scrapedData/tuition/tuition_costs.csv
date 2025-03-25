@@ -1,0 +1,24 @@
+Category,Expense Type,Amount,Academic Year
+Florida Resident,Tuition and Fees,6380,2024-25
+Florida Resident,Books & Supplies,1260,2024-25
+Florida Resident,Transportation,1660,2024-25
+Florida Resident,Living Expenses,12120,2024-25
+Florida Resident,Miscellaneous,2054,2024-25
+Florida Resident,Federal Student Loan Fees,56,2024-25
+Florida Resident,Total Estimated Cost,23530,2024-25
+Non-Florida Resident,Tuition and Fees,28658,2024-25
+Non-Florida Resident,Books & Supplies,1260,2024-25
+Non-Florida Resident,Transportation,1660,2024-25
+Non-Florida Resident,Living Expenses,12120,2024-25
+Non-Florida Resident,Miscellaneous,2054,2024-25
+Non-Florida Resident,Federal Student Loan Fees,56,2024-25
+Non-Florida Resident,Total Estimated Cost,45808,2024-25
+International Student (F-1/J-1),Tuition and Fees (24 credits),28658,2023-24
+International Student (F-1/J-1),Books & Course Materials,1450,2023-24
+International Student (F-1/J-1),Transportation,1570,2023-24
+International Student (F-1/J-1),Living Expenses,17390,2023-24
+International Student (F-1/J-1),Miscellaneous Personal Expenses,2603,2023-24
+International Student (F-1/J-1),Federal Student Loan Fees,87,2023-24
+International Student (F-1/J-1),Mandatory Health Insurance,3093,2023-24
+International Student (F-1/J-1),Between-Term Expenses,1000,2023-24
+International Student (F-1/J-1),Total Estimated Cost,55851,2023-24 

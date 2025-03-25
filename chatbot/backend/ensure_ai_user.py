@@ -1,7 +1,8 @@
 # GatorNet/chatbot/backend/ensure_ai_user.py
 
-from database_tables import db, User
+from database_tables import db, User, AVATAR_DIR
 from werkzeug.security import generate_password_hash
+import os
 
 def ensure_ai_user_exists():
     """Ensure a special AI user exists in the database with ID 0"""
@@ -16,7 +17,8 @@ def ensure_ai_user_exists():
                 id=0,
                 email="ai@gatornet.internal",
                 password_hash=generate_password_hash("not-a-real-password"),
-                name="GatorNet AI"
+                name="GatorNet AI",
+                avatar_path= os.path.join(AVATAR_DIR, "0.png")
             )
             
             # Explicitly set ID to 0 (this might require disabling SQLAlchemy autoincrement)
