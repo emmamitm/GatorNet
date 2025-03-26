@@ -5,6 +5,7 @@ chatbot/frontend/src/css/output.css
 # Ignore unzipped model files
 /models/
 /__MACOSX/
+.DS_Store
 
 # But don't ignore the AI/models directory itself
 /AI/models/mistral-7b-instruct.Q4_0.gguf
