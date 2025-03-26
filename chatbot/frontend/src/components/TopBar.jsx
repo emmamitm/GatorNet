@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { UserCircle } from "@phosphor-icons/react";
 import { useAuth } from "../auth/AuthContext";
 import { Link } from "react-router";
+import AccountPopOver from "./AccountPopOver";
 
 export function TopBar({ children }) {
-    const { logout } = useAuth();
     const { user } = useAuth();
 
+    // eslint-disable-next-line no-unused-vars
     const [avatarSrc, setAvatarSrc] = useState(null);
 
     useEffect(() => {
@@ -30,21 +30,7 @@ export function TopBar({ children }) {
                     GatorNet
                 </Link>
                 <div className="flex flex-col justify-center items-center p-2">
-                    <button className="" onClick={logout}>
-                        {user?.avatar ? (
-                            <img
-                                src={avatarSrc}
-                                alt="Avatar"
-                                className="w-8 h-8 object-cover rounded-full "
-                            />
-                        ) : (
-                            <UserCircle
-                                size={32}
-                                weight="fill"
-                                className="fill-orange-400"
-                            />
-                        )}
-                    </button>
+                    <AccountPopOver />
                     <p className="text-neutral-200 text-xs -mt-0.5">
                         {user?.name || ""}
                     </p>

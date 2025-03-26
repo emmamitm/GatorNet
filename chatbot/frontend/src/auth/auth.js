@@ -57,6 +57,24 @@ export const authService = {
         }
     },
 
+    // update user password
+    updatePassword: async (passwordData) => {
+        try {
+            const response = await api.put(
+                "/user/update-password",
+                passwordData,
+                {
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                }
+            );
+            return response.data;
+        } catch (error) {
+            throw error.response?.data?.error || "Update failed";
+        }
+    },
+
     // update user profile
     updateProfile: async (userData) => {
         try {

@@ -1,7 +1,7 @@
 # user.py
 from flask import Blueprint, request, jsonify
 from database_tables import db, User
-from werkzeug.security import generate_password_hash
+from werkzeug.security import generate_password_hash, check_password_hash
 from auth import token_required
 import os, base64
 
@@ -36,6 +36,23 @@ def get_profile(current_user):
     )
 
 
+@user_routes.route("/api/user/update-password", methods=["PUT"])
+@token_required
+def update_password(current_user):
+    data = request.json
+    if not data or "oldPassword" not in data:
+        return jsonify({"error": "Missing old password"}), 400
+    if "newPassword" not in data:
+        return jsonify({"error": "Missing new password"}), 400
+    if not check_password_hash(current_user.password_hash, data["oldPassword"]):
+        return jsonify({"error": "Invalid old password"}), 400
+    current_user.password_hash = generate_password_hash(data["newPassword"])
+    db.session.commit()
+    current_user.password = generate_password_hash(data["newPassword"])
+    db.session.commit()
+    return jsonify({"message": "Password updated successfully"}), 200
+
+
 @user_routes.route("/api/user/update", methods=["PUT"])
 @token_required
 def update_profile(current_user):
@@ -52,8 +69,6 @@ def update_profile(current_user):
         except Exception as img_error:
             print(f"Failed to save avatar: {img_error}")
             return jsonify({"error": "Failed to save avatar"}), 500
-    if "password" in data:
-        current_user.password_hash = generate_password_hash(data["password"])
 
     db.session.commit()
 

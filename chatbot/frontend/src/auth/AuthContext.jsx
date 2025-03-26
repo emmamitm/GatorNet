@@ -58,6 +58,17 @@ export const AuthProvider = ({ children }) => {
         setUser(null);
     };
 
+    // Update password function
+    const updatePassword = async (passwordData) => {
+        setError(null);
+        try {
+            await authService.updatePassword(passwordData);
+        } catch (err) {
+            setError(err);
+            throw err;
+        }
+    };
+
     // Update profile function
     const updateProfile = async (userData) => {
         setError(null);
@@ -78,6 +89,7 @@ export const AuthProvider = ({ children }) => {
         login,
         signup,
         logout,
+        updatePassword,
         updateProfile,
         isAuthenticated: authService.isAuthenticated(),
     };

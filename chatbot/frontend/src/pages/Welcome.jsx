@@ -3,7 +3,6 @@ import { Link, useNavigate, useLocation } from "react-router";
 import { useAuth } from "../auth/AuthContext";
 import { motion } from "motion/react";
 import { ClipLoader } from "react-spinners";
-import "../css/custom.css";
 
 function Welcome() {
     const navigate = useNavigate();
