@@ -5,28 +5,40 @@ import { ClipLoader } from "react-spinners";
 import { UserCircle, X } from "@phosphor-icons/react";
 
 function AccountPopOver() {
+    // Auth context
     const { user, updatePassword, logout, updateAvatar } = useAuth();
+
+    // UI state
     const [showPopover, setShowPopover] = useState(false);
     const [showPasswordModal, setShowPasswordModal] = useState(false);
     const [showAvatarModal, setShowAvatarModal] = useState(false);
+
+    // Password change state
     const [passwordForm, setPasswordForm] = useState({
         oldPassword: "",
         newPassword: "",
         confirmPassword: "",
     });
-    const [formErrors, setFormErrors] = useState({});
     const [loading, setLoading] = useState(false);
-    const [avatarLoading, setAvatarLoading] = useState(false);
     const [success, setSuccess] = useState(false);
-    const [avatarSuccess, setAvatarSuccess] = useState(false);
+
+    // Avatar state
     const [avatarSrc, setAvatarSrc] = useState(null);
     const [newAvatarFile, setNewAvatarFile] = useState(null);
     const [newAvatarPreview, setNewAvatarPreview] = useState(null);
+    const [avatarLoading, setAvatarLoading] = useState(false);
+    const [avatarSuccess, setAvatarSuccess] = useState(false);
+
+    // Error state
+    const [formErrors, setFormErrors] = useState({});
+
+    // Refs
     const popoverRef = useRef(null);
     const modalRef = useRef(null);
     const avatarModalRef = useRef(null);
     const fileInputRef = useRef(null);
 
+    // Update avatar preview when user changes avatar
     useEffect(() => {
         if (user?.avatar) {
             const src = user.avatar.startsWith("data:image/")
