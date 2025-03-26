@@ -1,0 +1,19 @@
+{
+    "buildings": {
+      "Reitz Union": {
+        "location": "Museum Road",
+        "description": "Student union with dining, study spaces, and meeting rooms",
+        "features": ["Food court", "Game room", "Career center", "Hotel", "Computer lab", "UF Bookstore", "ATMs", "Printing services"],
+        "dining_options": ["Starbucks", "Panda Express", "Subway", "Pollo Tropical", "Wing Zone"],
+        "services": ["GatorWell", "Multicultural Affairs", "Student Government", "Student Activities"]
+      }
+    },
+    "libraries": {
+      "Library West": {
+        "location": "Next to Plaza of the Americas",
+        "description": "Humanities and social sciences library with extensive study areas",
+        "features": ["24/5 study space", "Graduate study rooms", "Starbucks", "Group study pods", "Research assistance"]
+      }
+    }
+  }
+  
