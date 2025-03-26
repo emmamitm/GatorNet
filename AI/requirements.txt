@@ -6,6 +6,9 @@ requests==2.31.0
 sentence-transformers==2.2.2
 torch
 flask>=2.2.5
+flask_cors
+flask_sqlalchemy
+PyJWT
 werkzeug
 tqdm==4.66.1
 huggingface-hub==0.19.4

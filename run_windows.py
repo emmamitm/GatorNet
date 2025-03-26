@@ -133,12 +133,13 @@ def run_backend():
         sys.exit(1)
     
     # Use the venv python for backend on Windows
-    python_path = os.path.join("../..", "venv", "Scripts", "python")
+    python_path = os.path.join("../..", "venv", "Scripts", "python.exe")
     if not os.path.exists(os.path.normpath(os.path.join(backend_path, python_path))):
         print(f"Warning: Virtual environment python not found at {python_path}")
         print("Falling back to system Python")
         python_path = sys.executable
     
+    python_path = os.path.join(os.getcwd(), "venv", "Scripts", "python")
     return subprocess.Popen([python_path, "app.py"], cwd=backend_path)
 
 
