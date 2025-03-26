@@ -22,21 +22,22 @@ export function TopBar({ children }) {
 
     return (
         <div className="flex flex-col w-screen h-screen">
-            <div className="bg-blue-800/95 w-full flex justify-between items-center h-14 pl-12 md:pl-8">
-                <Link
-                    to={"/"}
-                    className="text-4xl font-bold text-white pl-4 p-2"
+            <div className="w-full sm:w-3/4 md:w-3/5 flex self-center p-4">
+                <div
+                    className="bg-gradient-to-br from-blue-800 to-blue-900
+                 w-full flex justify-between items-center rounded-3xl h-14 p-4 pl-14 sm:pl-4"
                 >
-                    GatorNet
-                </Link>
-                <div className="flex flex-col justify-center items-center p-2">
+                    <Link
+                        to={"/"}
+                        className="text-3xl font-bold text-white p-2"
+                    >
+                        Gator<span className="text-orange-400">Net</span>
+                    </Link>
+
                     <AccountPopOver />
-                    <p className="text-neutral-200 text-xs -mt-0.5">
-                        {user?.name || ""}
-                    </p>
                 </div>
             </div>
-            <div className="bg-orange-400 h-2"></div>
+
             <div className="flex flex-1 overflow-auto mb-20">{children}</div>
         </div>
     );

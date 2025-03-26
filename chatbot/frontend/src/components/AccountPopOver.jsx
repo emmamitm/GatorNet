@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { motion, AnimatePresence } from "motion/react";
 import { ClipLoader } from "react-spinners";
-import { UserCircle, X } from "@phosphor-icons/react";
+import { UserCircle, X, CaretDown, Car } from "@phosphor-icons/react";
 
 function AccountPopOver() {
     // Auth context
@@ -271,25 +271,28 @@ function AccountPopOver() {
     };
 
     return (
-        <div className="relative">
-            <button
-                onClick={() => setShowPopover(!showPopover)}
-                className="focus:outline-none"
-            >
-                {avatarSrc ? (
-                    <img
-                        src={avatarSrc}
-                        alt="Avatar"
-                        className="w-8 h-8 object-cover rounded-full"
-                    />
-                ) : (
-                    <UserCircle
-                        size={32}
-                        weight="fill"
-                        className="fill-orange-400"
-                    />
-                )}
-            </button>
+        <div className="relative flex justify-center">
+            <div className="">
+                <button
+                    onClick={() => setShowPopover(!showPopover)}
+                    className="flex items-center gap-1 p-1 bg-neutral-100/40 rounded-full hover:scale-110 focus:scale-110 transition-transform"
+                >
+                    {avatarSrc ? (
+                        <img
+                            src={avatarSrc}
+                            alt="Avatar"
+                            className="w-8 h-8 object-cover rounded-full"
+                        />
+                    ) : (
+                        <UserCircle
+                            size={32}
+                            weight="fill"
+                            className="fill-orange-400"
+                        />
+                    )}
+                    <CaretDown size={18} weight="bold" className="text-white" />
+                </button>
+            </div>
 
             {/* Account Popover */}
             <AnimatePresence>

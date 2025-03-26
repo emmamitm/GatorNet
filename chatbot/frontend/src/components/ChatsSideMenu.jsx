@@ -168,7 +168,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
     return (
         <div>
             {screenSize.width < 768 && (
-                <div className="fixed md:hidden left-2 top-2">
+                <div className="fixed md:hidden left-8 top-[26px]">
                     <button
                         className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-100/75 transition-colors"
                         onClick={() => setIsExpanded(!isExpanded)}
@@ -179,7 +179,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
             )}
             {isExpanded && (
                 <motion.div
-                    className="md:hidden fixed inset-0 top-16 bg-neutral-100/50 bg-opacity-50 z-10"
+                    className="md:hidden fixed inset-0 bg-neutral-100/50 bg-opacity-50 z-10"
                     onClick={() => {
                         setIsExpanded(false);
                     }}
@@ -190,7 +190,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
             )}
             <motion.div className="max-h-fit md:max-h-full z-20 relative">
                 <motion.div
-                    className="fixed md:top-0 left-0 md:p-1 h-full backdrop-blur-2xl bg-neutral-200/60 border-r-2 border-neutral-200 rounded-r-xl overflow-y-scroll"
+                    className="fixed top-0 left-0 md:p-1 h-full backdrop-blur-2xl bg-neutral-200/60 border-r-2 border-neutral-200 rounded-r-xl overflow-y-scroll"
                     {...(screenSize.width >= 768 && {
                         onMouseOver: () => {
                             if (!isPinned) setIsExpanded(true);
@@ -265,7 +265,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                                 <div className="text-sm text-center py-2">
                                     Loading conversations...
                                 </div>
-                            )}  
+                            )}
 
                             {error && (
                                 <div className="text-sm text-red-500 text-center py-2">
