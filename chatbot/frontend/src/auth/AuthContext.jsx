@@ -69,6 +69,27 @@ export const AuthProvider = ({ children }) => {
         }
     };
 
+    // Update avatar function
+    const updateAvatar = async (formData) => {
+        setError(null);
+        try {
+            const result = await authService.updateAvatar(formData);
+
+            if (result.avatar) {
+                setUser((prevUser) => ({
+                    ...prevUser,
+                    avatar: result.avatar,
+                }));
+            }
+
+            return result;
+        } catch (err) {
+            console.error("Avatar update error in context:", err);
+            setError(err);
+            throw err;
+        }
+    };
+
     // Update profile function
     const updateProfile = async (userData) => {
         setError(null);
@@ -90,6 +111,7 @@ export const AuthProvider = ({ children }) => {
         signup,
         logout,
         updatePassword,
+        updateAvatar,
         updateProfile,
         isAuthenticated: authService.isAuthenticated(),
     };

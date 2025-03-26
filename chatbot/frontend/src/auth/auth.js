@@ -75,6 +75,22 @@ export const authService = {
         }
     },
 
+    // update avatar
+    updateAvatar: async (formData) => {
+        try {
+            const response = await api.post("/user/update-avatar", formData, {
+                headers: {
+                    // Don't set Content-Type explicitly - axios will set it correctly with boundary
+                    // when sending FormData including the boundary parameter
+                },
+            });
+            return response.data;
+        } catch (error) {
+            console.error("Avatar update error in service:", error);
+            throw error.response?.data?.error || "Update failed";
+        }
+    },
+
     // update user profile
     updateProfile: async (userData) => {
         try {
