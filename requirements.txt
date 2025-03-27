@@ -2,4 +2,11 @@ requests>=2.31.0
 beautifulsoup4==4.12.2
 selenium>=4.15.0
 pandas>=2.1.0
-webdriver_manager>=3.5.2 
+webdriver_manager>=3.5.2
+llama-cpp-python>=0.2.11
+sentence-transformers==2.2.2
+transformers==4.36.2
+torch>=2.1.0
+huggingface-hub==0.19.4
+accelerate==0.25.0
+pandas>=2.1.0 

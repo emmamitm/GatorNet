@@ -1,0 +1,148 @@
+{
+    "libraries": [
+      {
+        "name": "Library West",
+        "location": "1545 W University Ave Gainesville FL 32603",
+        "capacity": 1564,
+        "hours": "7am - 2am (Sun-Thu) 7am - 10pm (Fri) 10am - 10pm (Sat)",
+        "special_notes": "Building access after 10pm limited to users with active UF ID or Santa Fe College ID; Research assistance; Computers; Printing; Group study rooms; Quiet study areas",
+        "url": "https://uflib.ufl.edu/library-west/",
+        "phone": "(352) 273-2845",
+        "email": "libwest@uflib.ufl.edu",
+        "features": ["Research assistance", "Computers", "Printing", "Group study rooms", "Quiet study areas"],
+        "specializations": ["General collections"]
+      },
+      {
+        "name": "Marston Science Library",
+        "location": "444 Newell Dr Gainesville FL 32611",
+        "capacity": 2208,
+        "hours": "7am - 2am (Sun-Thu) 7am - 10pm (Fri) 10am - 10pm (Sat)",
+        "special_notes": "Includes Makerspace (capacity: 15); Research assistance; Computers; Printing; Group study rooms; Quiet study areas",
+        "url": "https://uflib.ufl.edu/marston/",
+        "phone": "(352) 273-2845",
+        "email": "marston@uflib.ufl.edu",
+        "features": ["Makerspace", "Research assistance", "Computers", "Printing", "Group study rooms", "Quiet study areas"],
+        "specializations": ["Science", "Technology", "Engineering", "Mathematics"]
+      },
+      {
+        "name": "Smathers Library",
+        "location": "Plaza of the Americas Gainesville FL 32611",
+        "capacity": null,
+        "hours": "7am - 2am (Sun-Thu) 7am - 10pm (Fri) 10am - 10pm (Sat)",
+        "special_notes": "Oldest library on campus; Special collections; Research assistance; Computers; Printing; Group study rooms",
+        "url": "https://uflib.ufl.edu/smathers/",
+        "phone": "(352) 273-2845",
+        "email": "smathers@uflib.ufl.edu",
+        "features": ["Special collections", "Research assistance", "Computers", "Printing", "Group study rooms"],
+        "specializations": ["History", "Humanities", "Special collections"]
+      },
+      {
+        "name": "Health Science Center Library",
+        "location": "1600 SW Archer Rd Gainesville FL 32610",
+        "capacity": 761,
+        "hours": "7am - 2am (Sun-Thu) 7am - 10pm (Fri) 10am - 10pm (Sat)",
+        "special_notes": "Medical collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "url": "https://uflib.ufl.edu/hscl/",
+        "phone": "(352) 273-8408",
+        "email": "hsc-library@uflib.ufl.edu",
+        "features": ["Medical collections", "Study spaces", "Computers", "Printing", "Research assistance", "Group study rooms"],
+        "specializations": ["Medicine", "Health sciences", "Nursing", "Pharmacy", "Dentistry"]
+      },
+      {
+        "name": "Architecture & Fine Arts Library",
+        "location": "1480 Inner Rd Gainesville FL 32611",
+        "capacity": null,
+        "hours": "7am - 2am (Sun-Thu) 7am - 10pm (Fri) 10am - 10pm (Sat)",
+        "special_notes": "Arts collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "url": "https://uflib.ufl.edu/afa/",
+        "phone": "(352) 273-2825",
+        "email": "afa@uflib.ufl.edu",
+        "features": ["Arts collections", "Study spaces", "Computers", "Printing", "Research assistance", "Group study rooms"],
+        "specializations": ["Architecture", "Fine arts", "Design", "Visual arts"]
+      },
+      {
+        "name": "Education Library",
+        "location": "Norman Hall 2nd Floor Gainesville FL 32611",
+        "capacity": null,
+        "hours": "7am - 2am (Sun-Thu) 7am - 10pm (Fri) 10am - 10pm (Sat)",
+        "special_notes": "Education collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "url": "https://uflib.ufl.edu/education/",
+        "phone": "(352) 273-2780",
+        "email": "edulib@uflib.ufl.edu",
+        "features": ["Education collections", "Study spaces", "Computers", "Printing", "Research assistance", "Group study rooms"],
+        "specializations": ["Education", "Teaching", "Learning", "Educational resources"]
+      },
+      {
+        "name": "Legal Information Center",
+        "location": "Levin College of Law Gainesville FL 32611",
+        "capacity": null,
+        "hours": "7am - 2am (Sun-Thu) 7am - 10pm (Fri) 10am - 10pm (Sat)",
+        "special_notes": "Legal collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "url": "https://uflib.ufl.edu/lic/",
+        "phone": "(352) 273-0722",
+        "email": "lic@law.ufl.edu",
+        "features": ["Legal collections", "Study spaces", "Computers", "Printing", "Research assistance", "Group study rooms"],
+        "specializations": ["Law", "Legal studies", "Government documents"]
+      },
+      {
+        "name": "Special & Area Studies Collections",
+        "location": "Smathers Library 2nd Floor",
+        "capacity": null,
+        "hours": "Closed",
+        "special_notes": "Located in Grand Reading Room",
+        "url": null,
+        "phone": null,
+        "email": null,
+        "features": ["Rare books", "Manuscripts", "Archives"],
+        "specializations": ["Rare collections", "Special collections", "Archives"]
+      }
+    ],
+    "matcher_questions": [
+      {
+        "id": "purpose",
+        "question": "What is your main purpose for visiting the library?",
+        "options": [
+          "General study",
+          "Research",
+          "Group project",
+          "Access special collections",
+          "Use specialized equipment",
+          "Quiet reading"
+        ]
+      },
+      {
+        "id": "subject",
+        "question": "What subject area are you focusing on?",
+        "options": [
+          "General/Humanities",
+          "Science/Technology/Engineering/Math",
+          "Health Sciences/Medicine",
+          "Law",
+          "Architecture/Fine Arts",
+          "Education"
+        ]
+      },
+      {
+        "id": "features",
+        "question": "What library features are most important to you?",
+        "options": [
+          "Group study spaces",
+          "Quiet study areas",
+          "Special collections access",
+          "Computers and technology",
+          "Research assistance",
+          "Large capacity"
+        ]
+      },
+      {
+        "id": "time",
+        "question": "When do you typically visit the library?",
+        "options": [
+          "Weekday daytime",
+          "Weekday evening (after 5pm)",
+          "Late night (after 10pm)",
+          "Weekend"
+        ]
+      }
+    ]
+  }
