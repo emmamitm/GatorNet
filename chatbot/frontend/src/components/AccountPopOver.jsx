@@ -275,7 +275,7 @@ function AccountPopOver() {
             <div className="">
                 <button
                     onClick={() => setShowPopover(!showPopover)}
-                    className="flex items-center gap-1 p-1 bg-neutral-100/40 rounded-full hover:scale-110 focus:scale-110 transition-transform"
+                    className="flex items-center gap-1 p-1 bg-neutral-100/40 hover:bg-neutral-100/60 focus:bg-neutral-200/60 transition-colors rounded-full"
                 >
                     {avatarSrc ? (
                         <img

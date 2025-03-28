@@ -22,11 +22,8 @@ export function TopBar({ children }) {
 
     return (
         <div className="flex flex-col w-screen h-screen">
-            <div className="w-full sm:w-3/4 md:w-3/5 flex self-center p-4">
-                <div
-                    className="bg-gradient-to-br from-blue-800 to-blue-900
-                 w-full flex justify-between items-center rounded-3xl h-14 p-4 pl-14 sm:pl-4"
-                >
+            <div className="w-full md:w-3xl flex self-center p-4">
+                <div className="bg-gradient-to-br from-blue-900 to-blue-950 w-full flex justify-between items-center rounded-3xl h-14 p-4 pl-14 md:pl-4">
                     <Link
                         to={"/"}
                         className="text-3xl font-bold text-white p-2"

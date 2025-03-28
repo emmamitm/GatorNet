@@ -10,6 +10,7 @@ import { useAuth } from "../auth/AuthContext";
 
 function Dashboard() {
     const [messages, setMessages] = useState([]);
+    const isAnyMessageLoading = messages.some((msg) => msg.isLoading);
     const [input, setInput] = useState("");
     const [isConnected, setIsConnected] = useState(false);
     const [currentConversationId, setCurrentConversationId] = useState(null);
@@ -351,11 +352,14 @@ function Dashboard() {
                             >
                                 Type your message...
                             </div>
-                            <button type="submit">
+                            <button
+                                type="submit"
+                                disabled={isAnyMessageLoading}
+                            >
                                 <ArrowCircleUp
                                     size={32}
                                     weight="fill"
-                                    className="fill-neutral-700 hover:fill-neutral-500 active:fill-black outline-none cursor-pointer transition-colors duration-200"
+                                    className="fill-neutral-700 hover:fill-neutral-500 active:fill-black outline-none transition-colors"
                                 />
                             </button>
                         </form>
