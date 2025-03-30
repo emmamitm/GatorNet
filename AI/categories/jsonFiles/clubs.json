@@ -1,0 +1,531 @@
+{
+    "category_groups": [
+      {
+        "group_name": "Academic & Intellectual",
+        "categories": ["Academic", "Debate & Discussion", "STEM-Focused", "Health & Medical", "Coding"]
+      },
+      {
+        "group_name": "Arts & Culture",
+        "categories": ["Artistic", "Cultural", "Music & Performance", "Theater & Acting", "Journalism & Writing"]
+      },
+      {
+        "group_name": "Physical Activities",
+        "categories": ["Athletic", "Dance-Based", "Fitness-Focused", "Martial Arts", "Adventure", "Outdoor"]
+      },
+      {
+        "group_name": "Social Impact & Community",
+        "categories": ["Activism", "Charitable", "Environmental", "Service-Oriented", "Political", "Religious"]
+      },
+      {
+        "group_name": "Leisure & Lifestyle",
+        "categories": ["DIY & Crafting", "Esports & Gaming", "Mental Health & Wellness", "Greek Life", "Social & Networking", "Business-Oriented", "International"]
+      }
+    ],
+    "categories": [
+      {
+        "name": "Academic",
+        "subcategories": [
+          "Study Groups",
+          "Research Projects", 
+          "Honor Societies", 
+          "Tutoring & Mentorship", 
+          "Writing & Publishing", 
+          "Academic Competitions", 
+          "Lecture & Seminar Series", 
+          "Professional Development", 
+          "Interdisciplinary Learning", 
+          "Critical Thinking Workshops"
+        ]
+      },
+      {
+        "name": "Activism",
+        "subcategories": [
+          "Advocacy Campaigns", 
+          "Community Outreach", 
+          "Human Rights Initiatives", 
+          "Policy Change Efforts", 
+          "Social Justice Movements", 
+          "Awareness Events", 
+          "Environmental Activism", 
+          "Fundraising for Causes", 
+          "Grassroots Organizing", 
+          "Volunteer Mobilization"
+        ]
+      },
+      {
+        "name": "Adventure",
+        "subcategories": [
+          "Hiking & Trekking", 
+          "Rock Climbing", 
+          "Camping Trips", 
+          "Extreme Sports", 
+          "Water Sports", 
+          "Travel & Exploration", 
+          "Outdoor Challenges", 
+          "Survival Skills", 
+          "Backpacking", 
+          "Road Trips"
+        ]
+      },
+      {
+        "name": "Artistic",
+        "subcategories": [
+          "Painting & Drawing", 
+          "Sculpture & Pottery", 
+          "Printmaking", 
+          "Digital Art", 
+          "Photography", 
+          "Graphic Design", 
+          "Mixed Media", 
+          "Street Art", 
+          "Illustration", 
+          "Animation"
+        ]
+      },
+      {
+        "name": "Athletic",
+        "subcategories": [
+          "Team Sports", 
+          "Individual Sports", 
+          "Competitive Training", 
+          "Strength & Conditioning", 
+          "Endurance Activities", 
+          "Recreational Sports", 
+          "Intramural Leagues", 
+          "Skill Development", 
+          "Strategy & Tactics", 
+          "Coaching & Mentorship"
+        ]
+      },
+      {
+        "name": "Business-Oriented",
+        "subcategories": [
+          "Entrepreneurship", 
+          "Finance & Investment", 
+          "Marketing & Branding", 
+          "Networking & Professional Development", 
+          "Business Case Competitions", 
+          "Consulting", 
+          "Leadership Training", 
+          "Startups & Innovation", 
+          "Corporate Social Responsibility", 
+          "Business Analytics"
+        ]
+      },
+      {
+        "name": "Charitable",
+        "subcategories": [
+          "Community Service", 
+          "Fundraising & Philanthropy", 
+          "Volunteering", 
+          "Social Impact Projects", 
+          "Nonprofit Support", 
+          "Humanitarian Aid", 
+          "Disaster Relief", 
+          "Charity Drives", 
+          "Mentorship & Support", 
+          "Advocacy Work"
+        ]
+      },
+      {
+        "name": "Coding",
+        "subcategories": [
+          "Software Development", 
+          "Web Development", 
+          "Mobile App Development", 
+          "Artificial Intelligence & Machine Learning", 
+          "Cybersecurity", 
+          "Data Science", 
+          "Open Source Contributions", 
+          "Hackathons", 
+          "Competitive Programming", 
+          "Game Development"
+        ]
+      },
+      {
+        "name": "Competitive",
+        "subcategories": [
+          "Debate & Public Speaking", 
+          "Case Competitions", 
+          "Hackathons", 
+          "Esports Tournaments", 
+          "STEM Competitions", 
+          "Business Pitch Contests", 
+          "Athletic Competitions", 
+          "Quiz Bowls", 
+          "Speech Competitions", 
+          "Strategy Games"
+        ]
+      },
+      {
+        "name": "Cultural",
+        "subcategories": [
+          "Ethnic & Heritage Clubs", 
+          "Language Exchange", 
+          "Cultural Festivals", 
+          "Traditional Music & Dance", 
+          "Cultural Awareness Programs", 
+          "International Cuisine", 
+          "History & Heritage", 
+          "Travel & Study Abroad", 
+          "Storytelling & Folklore", 
+          "Multicultural Networking"
+        ]
+      },
+      {
+        "name": "Dance-Based",
+        "subcategories": [
+          "Hip-Hop", 
+          "Ballet", 
+          "Salsa", 
+          "Contemporary", 
+          "Ballroom Dancing", 
+          "Jazz Dance", 
+          "Cultural & Folk Dance", 
+          "Competitive Dance", 
+          "Choreography & Performance", 
+          "Dance Fitness"
+        ]
+      },
+      {
+        "name": "Debate & Discussion",
+        "subcategories": [
+          "Model United Nations", 
+          "Speech & Debate", 
+          "Political Discussions", 
+          "Ethical Debates", 
+          "Book Clubs", 
+          "Philosophy Circles", 
+          "Academic Roundtables", 
+          "Public Speaking Training", 
+          "Current Events Forums", 
+          "Critical Thinking Workshops"
+        ]
+      },
+      {
+        "name": "DIY & Crafting",
+        "subcategories": [
+          "Knitting & Crocheting", 
+          "Woodworking", 
+          "Jewelry Making", 
+          "DIY Home Decor", 
+          "Scrapbooking", 
+          "Upcycling & Repurposing", 
+          "Handcrafted Gifts", 
+          "Leatherworking", 
+          "Sewing & Embroidery", 
+          "Pottery & Ceramics"
+        ]
+      },
+      {
+        "name": "Environmental",
+        "subcategories": [
+          "Sustainability Initiatives", 
+          "Climate Action", 
+          "Wildlife Conservation", 
+          "Green Technology", 
+          "Clean Energy Projects", 
+          "Environmental Education", 
+          "Recycling Programs", 
+          "Eco-Friendly Gardening", 
+          "Water Conservation", 
+          "Habitat Restoration"
+        ]
+      },
+      {
+        "name": "Esports & Gaming",
+        "subcategories": [
+          "Competitive Gaming", 
+          "Game Development", 
+          "Streaming & Content Creation", 
+          "Virtual Reality", 
+          "Tabletop RPGs", 
+          "Board Games", 
+          "Strategy Games", 
+          "Fighting Games", 
+          "Online Communities", 
+          "Multiplayer Tournaments"
+        ]
+      },
+      {
+        "name": "Fitness-Focused",
+        "subcategories": [
+          "Weightlifting", 
+          "Yoga & Meditation", 
+          "CrossFit", 
+          "Calisthenics", 
+          "Running & Marathon Training", 
+          "Functional Fitness", 
+          "Athletic Recovery", 
+          "Personal Training", 
+          "Sports Nutrition", 
+          "Group Fitness Classes"
+        ]
+      },
+      {
+        "name": "Greek Life",
+        "subcategories": [
+          "Fraternities", 
+          "Sororities", 
+          "Philanthropy Events", 
+          "Social Gatherings", 
+          "Leadership Development", 
+          "Networking & Alumni Relations", 
+          "Community Service", 
+          "Academic Support", 
+          "Greek Council", 
+          "Greek Sports"
+        ]
+      },
+      {
+        "name": "Health & Medical",
+        "subcategories": [
+          "Pre-Med & Pre-Health Societies", 
+          "Medical Volunteering", 
+          "Public Health Awareness", 
+          "Mental Health Advocacy", 
+          "Emergency Response Training", 
+          "Medical Research", 
+          "Health Education", 
+          "Patient Support Programs", 
+          "Disability Advocacy", 
+          "Medical Conferences"
+        ]
+      },
+      {
+        "name": "International",
+        "subcategories": [
+          "Language & Culture Clubs", 
+          "International Student Support", 
+          "Study Abroad Programs", 
+          "Cross-Cultural Networking", 
+          "Global Development Initiatives", 
+          "Multinational Business", 
+          "International Relations", 
+          "Travel & Exchange", 
+          "Global Cuisine", 
+          "Humanitarian Projects"
+        ]
+      },
+      {
+        "name": "Journalism & Writing",
+        "subcategories": [
+          "Student Newspapers", 
+          "Creative Writing", 
+          "Poetry & Spoken Word", 
+          "Journalism Clubs", 
+          "Publishing & Editorial", 
+          "Scriptwriting", 
+          "Blogging & Online Media", 
+          "Investigative Reporting", 
+          "Academic Writing", 
+          "Podcasting"
+        ]
+      },
+      {
+        "name": "Martial Arts",
+        "subcategories": [
+          "Brazilian Jiu-Jitsu", 
+          "Karate", 
+          "Taekwondo", 
+          "Boxing", 
+          "Muay Thai", 
+          "Judo", 
+          "Krav Maga", 
+          "Kickboxing", 
+          "Capoeira", 
+          "Self-Defense Training"
+        ]
+      },
+      {
+        "name": "Mental Health & Wellness",
+        "subcategories": [
+          "Mindfulness & Meditation", 
+          "Stress Management", 
+          "Peer Support Groups", 
+          "Therapy & Counseling Resources", 
+          "Mental Health Advocacy", 
+          "Wellness Coaching", 
+          "Healthy Lifestyle Programs", 
+          "Emotional Resilience Training", 
+          "Self-Care Workshops", 
+          "Community Healing"
+        ]
+      },
+      {
+        "name": "Music & Performance",
+        "subcategories": [
+          "Choirs & A Cappella", 
+          "Instrumental Ensembles", 
+          "DJ & Music Production", 
+          "Jazz & Classical Music", 
+          "Singer-Songwriter Circles", 
+          "Theatrical Performances", 
+          "Opera & Vocal Performance", 
+          "Percussion & Drumline", 
+          "Concert Planning", 
+          "Music Therapy"
+        ]
+      },
+      {
+        "name": "Outdoor",
+        "subcategories": [
+          "Hiking & Camping", 
+          "Kayaking & Canoeing", 
+          "Rock Climbing", 
+          "Wildlife Exploration", 
+          "Fishing & Hunting", 
+          "Outdoor Survival Skills", 
+          "Mountain Biking", 
+          "Trail Running", 
+          "Eco-Tourism", 
+          "National Park Adventures"
+        ]
+      },
+      {
+        "name": "Political",
+        "subcategories": [
+          "Political Party Organizations", 
+          "Policy Advocacy", 
+          "Government & Public Affairs", 
+          "Political Debates", 
+          "Election Campaigning", 
+          "Student Government", 
+          "Civic Engagement", 
+          "Human Rights Activism", 
+          "Lobbying & Grassroots Movements", 
+          "Voter Awareness Campaigns"
+        ]
+      },
+      {
+        "name": "Religious",
+        "subcategories": [
+          "Christian Organizations", 
+          "Jewish Organizations", 
+          "Muslim Student Groups", 
+          "Hindu Organizations", 
+          "Buddhist Meditation Groups", 
+          "Interfaith Dialogue", 
+          "Religious Study Groups", 
+          "Worship Services", 
+          "Spiritual Retreats", 
+          "Faith-Based Community Service"
+        ]
+      },
+      {
+        "name": "Service-Oriented",
+        "subcategories": [
+          "Volunteering", 
+          "Charity Fundraising", 
+          "Community Outreach", 
+          "Mentorship Programs", 
+          "Disaster Relief", 
+          "Humanitarian Aid", 
+          "Public Service Projects", 
+          "Social Impact Initiatives", 
+          "Nonprofit Organizations", 
+          "Philanthropy Events"
+        ]
+      },
+      {
+        "name": "STEM-Focused",
+        "subcategories": [
+          "Engineering Projects", 
+          "Robotics", 
+          "Data Science & AI", 
+          "Biotechnology & Life Sciences", 
+          "Aerospace & Aviation", 
+          "Environmental Science", 
+          "Nanotechnology", 
+          "Chemistry & Materials Science", 
+          "Physics & Astronomy", 
+          "Mathematics & Statistics"
+        ]
+      },
+      {
+        "name": "Theater & Acting",
+        "subcategories": [
+          "Acting & Performance", 
+          "Improv Comedy", 
+          "Playwriting", 
+          "Musical Theater", 
+          "Stage Directing", 
+          "Set & Costume Design", 
+          "Theatrical Production", 
+          "Theater Tech & Lighting", 
+          "Drama Workshops", 
+          "Broadway & Classical Plays"
+        ]
+      },
+      {
+        "name": "Social & Networking",
+        "subcategories": [
+          "Professional Networking", 
+          "Social Gatherings", 
+          "Career Development", 
+          "Leadership Conferences", 
+          "Alumni Connections", 
+          "Mentorship Programs", 
+          "Business Networking", 
+          "Student Government", 
+          "Team-Building Activities", 
+          "Community Engagement"
+        ]
+      }
+    ],
+    "matcher_questions": [
+      {
+        "id": "category_group",
+        "question": "What general area of interest are you looking for?",
+        "options": [
+          "Academic & Intellectual",
+          "Arts & Culture",
+          "Physical Activities",
+          "Social Impact & Community",
+          "Leisure & Lifestyle"
+        ]
+      },
+      {
+        "id": "primary_interest",
+        "question": "Select a specific category within that area:",
+        "options": "dynamically_populated_based_on_group_selection"
+      },
+      {
+        "id": "subcategory_interests",
+        "question": "Select 4 specific interests within your chosen category:",
+        "options": "dynamically_populated_based_on_primary_selection",
+        "select_count": 4
+      },
+      {
+        "id": "commitment_level",
+        "question": "What level of commitment are you looking for?",
+        "options": [
+          "Casual interest (1-2 hours/week)",
+          "Regular involvement (3-5 hours/week)",
+          "Dedicated participation (6-10 hours/week)",
+          "Leadership role (10+ hours/week)"
+        ]
+      },
+      {
+        "id": "schedule_preference",
+        "question": "When are you typically available for club activities?",
+        "options": [
+          "Weekday mornings",
+          "Weekday afternoons",
+          "Weekday evenings",
+          "Weekends"
+        ],
+        "multiple": true
+      },
+      {
+        "id": "experience_level",
+        "question": "What is your experience level with this interest area?",
+        "options": [
+          "Beginner (Just getting started)",
+          "Intermediate (Some experience)",
+          "Advanced (Significant experience)",
+          "Expert (Could teach others)"
+        ]
+      }
+    ]
+  }
