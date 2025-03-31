@@ -324,7 +324,7 @@ function Dashboard() {
                     <div className="fixed left-0 bottom-0 w-full p-4 pt-0">
                         <form
                             onSubmit={handleSubmit}
-                            className="flex justify-between gap-2 md:max-w-3xl mx-auto rounded-2xl p-4 bg-neutral-100"
+                            className="flex justify-between gap-2 md:max-w-3xl mx-auto rounded-2xl p-4 bg-neutral-100 dark:bg-neutral-800"
                         >
                             <div
                                 contentEditable="true"
@@ -359,7 +359,7 @@ function Dashboard() {
                                 <ArrowCircleUp
                                     size={32}
                                     weight="fill"
-                                    className="fill-neutral-700 hover:fill-neutral-500 active:fill-black outline-none transition-colors"
+                                    className="fill-neutral-700 hover:fill-neutral-500 active:fill-black dark:fill-neutral-300 dark:hover:fill-neutral-400 dark:active:fill-neutral-100 outline-none transition-colors"
                                 />
                             </button>
                         </form>

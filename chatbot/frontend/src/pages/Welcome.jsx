@@ -3,6 +3,7 @@ import { Link, useNavigate, useLocation } from "react-router";
 import { useAuth } from "../auth/AuthContext";
 import { motion } from "motion/react";
 import { ClipLoader } from "react-spinners";
+import ThemeToggle from "../components/ThemeToggle";
 
 function Welcome() {
     const navigate = useNavigate();
@@ -89,19 +90,26 @@ function Welcome() {
     return (
         <div className="flex flex-col items-center gap-8 p-4 py-8 max-w-4xl mx-auto">
             {/* Welcome Card */}
-            <div className="relative overflow-hidden w-full px-8 py-10 flex flex-col bg-neutral-100/60 rounded-2xl outline-2 outline-neutral-200">
-                <h1 className="text-4xl font-bold text-neutral-700 mb-2">
-                    Welcome to GatorNet 🐊
-                </h1>
+            <div className="relative overflow-hidden w-full px-8 py-10 flex flex-col bg-neutral-100/60 dark:bg-neutral-800 outline-neutral-200 dark:outline-neutral-600 rounded-2xl outline-2">
+                <div className="flex justify-between">
+                    <div className="flex flex-col">
+                        <h1 className="text-4xl font-bold text-neutral-700 dark:text-neutral-300 mb-2">
+                            Welcome to GatorNet 🐊
+                        </h1>
 
-                <h2 className="text-xl font-semibold text-neutral-500 mb-4">
-                    Your AI assistant for all things UF
-                </h2>
+                        <h2 className="text-xl font-semibold text-neutral-500 dark:text-neutral-400 mb-4">
+                            Your AI assistant for all things UF
+                        </h2>
+                    </div>
+                    <div className="w-9 h-9 rounded-full bg-neutral-600 dark:bg-neutral-700">
+                        <ThemeToggle />
+                    </div>
+                </div>
 
-                <hr className="mb-6 border-neutral-200" />
+                <hr className="mb-6 border-neutral-200 dark:border-neutral-400" />
 
                 <div className="flex flex-col justify-center">
-                    <p className="text-lg text-neutral-600 mb-4">
+                    <p className="text-lg text-neutral-600 dark:text-neutral-300 mb-4">
                         To get started, create an account or log in to your
                         existing account.
                     </p>
@@ -115,7 +123,7 @@ function Welcome() {
                         <div className="flex flex-col gap-1">
                             <input
                                 type="email"
-                                className="py-2 px-4 rounded-lg border-2 border-neutral-200 placeholder-neutral-400 text-neutral-700 focus:outline-none focus:border-blue-200 focus:ring-2 focus:ring-blue-200 transition-colors duration-200"
+                                className="py-2 px-4 rounded-lg border-2 border-neutral-200 dark:border-neutral-600 placeholder-neutral-400 text-neutral-700 dark:text-neutral-200 focus:outline-none focus:border-blue-200 focus:ring-2 focus:ring-blue-200 transition-colors duration-200"
                                 placeholder="Enter your email address"
                                 value={email}
                                 onChange={(e) => {
@@ -125,7 +133,7 @@ function Welcome() {
                                 required
                             />
                             {emailError && (
-                                <p className="text-sm text-red-600 px-1">
+                                <p className="text-sm text-red-600 dark:text-red-400 px-1">
                                     {emailError}
                                 </p>
                             )}
@@ -140,7 +148,7 @@ function Welcome() {
                             >
                                 <input
                                     type="password"
-                                    className="w-full py-2 px-4 rounded-lg border-2 border-neutral-200 placeholder-neutral-400 text-neutral-700 focus:outline-none focus:border-blue-200 focus:ring-2 focus:ring-blue-200 transition-colors duration-200"
+                                    className="py-2 px-4 rounded-lg border-2 border-neutral-200 dark:border-neutral-600 placeholder-neutral-400 text-neutral-700 dark:text-neutral-200 focus:outline-none focus:border-blue-200 focus:ring-2 focus:ring-blue-200 transition-colors duration-200"
                                     placeholder="Enter your password"
                                     value={password}
                                     onChange={handlePasswordChange}
@@ -149,7 +157,7 @@ function Welcome() {
                                     autoFocus
                                 />
                                 {passwordTouched && !password && (
-                                    <p className="text-sm text-red-600 px-1">
+                                    <p className="text-sm text-red-600 dark:text-red-400 px-1">
                                         Please enter your password
                                     </p>
                                 )}
@@ -172,7 +180,7 @@ function Welcome() {
                                 onClick={
                                     showPassword ? undefined : handleEmailClick
                                 }
-                                className="w-full sm:w-fit py-2 px-6 rounded-lg sm:rounded-xl font-medium text-white bg-blue-600 hover:bg-blue-700 active:bg-blue-800 transition-colors duration-200 flex items-center justify-center"
+                                className="w-full sm:w-fit py-2 px-6 rounded-lg sm:rounded-xl font-medium text-white bg-gradient-to-br from-blue-400 to-blue-500 hover:from-blue-500 hover:to-blue-600 active:from-blue-600 active:to-blue-700 transition-colors duration-200 flex items-center justify-center"
                                 disabled={loading}
                             >
                                 {loading ? (
@@ -187,7 +195,7 @@ function Welcome() {
                             {!showPassword && (
                                 <Link
                                     to="/signup"
-                                    className="w-full sm:w-fit py-2 px-6 rounded-lg sm:rounded-xl font-medium text-white bg-orange-500 hover:bg-orange-600 active:bg-orange-700 transition-colors duration-200 text-center"
+                                    className="w-full sm:w-fit py-2 px-6 rounded-lg sm:rounded-xl font-medium text-white bg-gradient-to-br from-orange-400 to-orange-500 hover:from-orange-500 hover:to-orange-600 active:from-orange-600 active:to-orange-700 transition-colors duration-200 text-center"
                                 >
                                     Create Account
                                 </Link>
@@ -198,61 +206,61 @@ function Welcome() {
             </div>
 
             {/* About Card */}
-            <div className="w-full px-8 py-10 bg-neutral-100/60 rounded-2xl outline-2 outline-neutral-200">
-                <h2 className="text-3xl font-bold text-neutral-700 mb-6">
+            <div className="w-full px-8 py-10 bg-neutral-100/60 dark:bg-neutral-800 rounded-2xl outline-2 outline-neutral-200 dark:outline-neutral-600">
+                <h2 className="text-3xl font-bold text-neutral-700 dark:text-neutral-100 mb-6">
                     About GatorNet
                 </h2>
 
-                <div className="grid md:grid-cols-2 gap-8">
+                <div className="grid md:grid-cols-2 gap-8 text-neutral-600 dark:text-neutral-300">
                     <div>
-                        <p className="text-neutral-600 mb-4">
+                        <p className="mb-4">
                             GatorNet is an AI-powered assistant designed
                             exclusively for the University of Florida community.
                             Built to help students, faculty, and staff navigate
                             campus life with ease.
                         </p>
-                        <p className="text-neutral-600 mb-6">
+                        <p className="mb-6">
                             Whether you need information about classes, campus
                             resources, events, or academic policies, GatorNet
                             provides instant, accurate answers tailored to UF.
                         </p>
 
                         <div>
-                            <h3 className="text-xl font-semibold text-neutral-700 mb-3">
+                            <h3 className="text-xl font-semibold text-neutral-700 dark:text-neutral-100 mb-3">
                                 Key Features
                             </h3>
                             <ul className="space-y-2">
                                 <li className="flex items-start">
-                                    <span className="text-blue-500 mr-2">
+                                    <span className="text-blue-500 dark:text-blue-400 mr-2">
                                         ✓
                                     </span>
-                                    <span className="text-neutral-600">
+                                    <span className="text-neutral-600 dark:text-neutral-300">
                                         24/7 instant answers to your UF
                                         questions
                                     </span>
                                 </li>
                                 <li className="flex items-start">
-                                    <span className="text-blue-500 mr-2">
+                                    <span className="text-blue-500 dark:text-blue-400 mr-2">
                                         ✓
                                     </span>
-                                    <span className="text-neutral-600">
+                                    <span className="text-neutral-600 dark:text-neutral-300">
                                         Personalized academic guidance and
                                         resources
                                     </span>
                                 </li>
                                 <li className="flex items-start">
-                                    <span className="text-blue-500 mr-2">
+                                    <span className="text-blue-500 dark:text-blue-400 mr-2">
                                         ✓
                                     </span>
-                                    <span className="text-neutral-600">
+                                    <span className="text-neutral-600 dark:text-neutral-300">
                                         Up-to-date campus event information
                                     </span>
                                 </li>
                                 <li className="flex items-start">
-                                    <span className="text-blue-500 mr-2">
+                                    <span className="text-blue-500 dark:text-blue-400 mr-2">
                                         ✓
                                     </span>
-                                    <span className="text-neutral-600">
+                                    <span className="text-neutral-600 dark:text-neutral-300">
                                         Navigation assistance for campus
                                         facilities
                                     </span>
@@ -294,8 +302,8 @@ function Welcome() {
 
             {/* Footer */}
             <div className="w-full flex flex-col items-center gap-2">
-                <hr className="w-full border-neutral-200" />
-                <p className="text-center text-neutral-500">
+                <hr className="w-full border-neutral-200 dark:border-neutral-600" />
+                <p className="text-center text-neutral-500 dark:text-neutral-400">
                     Developed by a small group of UF students.
                 </p>
             </div>

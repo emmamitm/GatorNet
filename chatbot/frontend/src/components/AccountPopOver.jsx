@@ -2,7 +2,8 @@ import React, { useState, useRef, useEffect } from "react";
 import { useAuth } from "../auth/AuthContext";
 import { motion, AnimatePresence } from "motion/react";
 import { ClipLoader } from "react-spinners";
-import { UserCircle, X, CaretDown, Car } from "@phosphor-icons/react";
+import { UserCircle, X, CaretDown } from "@phosphor-icons/react";
+import ThemeToggle from "./ThemeToggle";
 
 function AccountPopOver() {
     // Auth context
@@ -272,7 +273,8 @@ function AccountPopOver() {
 
     return (
         <div className="relative flex justify-center">
-            <div className="">
+            <div className="flex items-center gap-2">
+                <ThemeToggle />
                 <button
                     onClick={() => setShowPopover(!showPopover)}
                     className="flex items-center gap-1 p-1 bg-neutral-100/40 hover:bg-neutral-100/60 focus:bg-neutral-200/60 transition-colors rounded-full"
@@ -303,9 +305,9 @@ function AccountPopOver() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: 10 }}
                         transition={{ duration: 0.2 }}
-                        className="absolute right-0 top-10 w-64 bg-white rounded-xl shadow-lg border border-neutral-200 overflow-hidden z-50"
+                        className="absolute right-0 top-10 w-64 bg-white dark:bg-neutral-800 rounded-xl shadow-lg border border-neutral-200 dark:border-neutral-600 overflow-hidden z-50"
                     >
-                        <div className="p-4 bg-blue-50 border-b border-blue-100">
+                        <div className="p-4 bg-blue-50 dark:bg-blue-950 border-b border-blue-100 dark:border-blue-600">
                             <div className="flex items-center gap-3">
                                 <div className="w-12 h-12 rounded-full overflow-hidden">
                                     {avatarSrc ? (
@@ -325,10 +327,10 @@ function AccountPopOver() {
                                     )}
                                 </div>
                                 <div>
-                                    <h3 className="font-medium text-neutral-800">
+                                    <h3 className="font-medium text-neutral-800 dark:text-neutral-200">
                                         {user?.name || "User"}
                                     </h3>
-                                    <p className="text-sm text-neutral-500">
+                                    <p className="text-sm text-neutral-500 dark:text-neutral-400">
                                         {user?.email || "user@example.com"}
                                     </p>
                                 </div>
@@ -338,23 +340,23 @@ function AccountPopOver() {
                         <div className="p-2">
                             <button
                                 onClick={() => setShowPasswordModal(true)}
-                                className="w-full text-left px-3 py-2 rounded-lg hover:bg-neutral-100 text-neutral-700 transition-colors"
+                                className="w-full text-left px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors"
                             >
                                 Change Password
                             </button>
 
                             <button
                                 onClick={() => setShowAvatarModal(true)}
-                                className="w-full text-left px-3 py-2 rounded-lg hover:bg-neutral-100 text-neutral-700 transition-colors"
+                                className="w-full text-left px-3 py-2 rounded-lg hover:bg-neutral-100 dark:hover:bg-neutral-900 text-neutral-700 dark:text-neutral-300 transition-colors"
                             >
                                 Change Profile Picture
                             </button>
                         </div>
 
-                        <div className="p-2 border-t border-neutral-200">
+                        <div className="p-2 border-t border-neutral-200 dark:border-neutral-600">
                             <button
                                 onClick={handleSignOut}
-                                className="w-full text-left px-3 py-2 rounded-lg hover:bg-red-50 text-red-600 transition-colors"
+                                className="w-full text-left px-3 py-2 rounded-lg hover:bg-red-50 dark:hover:bg-red-950/60 text-red-600 dark:text-red-400 transition-colors"
                             >
                                 Sign Out
                             </button>
@@ -378,15 +380,15 @@ function AccountPopOver() {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.95, opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="w-full max-w-md bg-white rounded-xl shadow-xl p-6"
+                            className="w-full max-w-md bg-white dark:bg-neutral-800 rounded-xl shadow-xl p-6"
                         >
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-xl font-semibold text-neutral-800">
+                                <h2 className="text-xl font-semibold">
                                     Change Password
                                 </h2>
                                 <button
                                     onClick={() => setShowPasswordModal(false)}
-                                    className="text-neutral-400 hover:text-neutral-600"
+                                    className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-300 dark:hover:text-neutral-200"
                                 >
                                     <svg
                                         xmlns="http://www.w3.org/2000/svg"
@@ -420,7 +422,7 @@ function AccountPopOver() {
                                 className="space-y-4"
                             >
                                 <div>
-                                    <label className="block text-sm font-medium text-neutral-700 mb-1">
+                                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-400 mb-1">
                                         Current Password
                                     </label>
                                     <input
@@ -442,7 +444,7 @@ function AccountPopOver() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-neutral-700 mb-1">
+                                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-400 mb-1">
                                         New Password
                                     </label>
                                     <input
@@ -464,7 +466,7 @@ function AccountPopOver() {
                                 </div>
 
                                 <div>
-                                    <label className="block text-sm font-medium text-neutral-700 mb-1">
+                                    <label className="block text-sm font-medium text-neutral-700 dark:text-neutral-400 mb-1">
                                         Confirm New Password
                                     </label>
                                     <input
@@ -497,7 +499,7 @@ function AccountPopOver() {
                                         onClick={() =>
                                             setShowPasswordModal(false)
                                         }
-                                        className="px-4 py-2 rounded-lg border border-neutral-300 text-neutral-700 hover:bg-neutral-50 transition-colors"
+                                        className="px-4 py-2 rounded-lg border border-neutral-300 text-neutral-700 hover:bg-neutral-50 dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-700 transition-colors"
                                     >
                                         Cancel
                                     </button>
@@ -537,15 +539,15 @@ function AccountPopOver() {
                             animate={{ scale: 1, opacity: 1 }}
                             exit={{ scale: 0.95, opacity: 0 }}
                             transition={{ duration: 0.2 }}
-                            className="w-full max-w-md bg-white rounded-xl shadow-xl p-6"
+                            className="w-full max-w-md bg-white dark:bg-neutral-800 rounded-xl shadow-xl p-6"
                         >
                             <div className="flex justify-between items-center mb-4">
-                                <h2 className="text-xl font-semibold text-neutral-800">
+                                <h2 className="text-xl font-semibold">
                                     Change Profile Picture
                                 </h2>
                                 <button
                                     onClick={() => setShowAvatarModal(false)}
-                                    className="text-neutral-400 hover:text-neutral-600"
+                                    className="text-neutral-400 hover:text-neutral-600 dark:text-neutral-200 dark:hover:text-neutral-500 transition-colors"
                                 >
                                     <X size={24} />
                                 </button>
@@ -555,7 +557,7 @@ function AccountPopOver() {
                                 onSubmit={handleAvatarSubmit}
                                 className="space-y-4"
                             >
-                                <div className="flex flex-col items-center justify-center p-4 border-2 border-dashed border-neutral-300 rounded-lg bg-neutral-50">
+                                <div className="flex flex-col items-center justify-center p-4 border-2 border-dashed rounded-lg bg-neutral-50 border-neutral-300 dark:bg-neutral-900 dark:border-neutral-600">
                                     {newAvatarPreview ? (
                                         <div className="relative mb-4">
                                             <img
@@ -572,10 +574,10 @@ function AccountPopOver() {
                                             </button>
                                         </div>
                                     ) : (
-                                        <div className="w-24 h-24 rounded-full bg-blue-100 flex items-center justify-center mb-4">
+                                        <div className="w-24 h-24 rounded-full bg-blue-100 dark:bg-blue-950 flex items-center justify-center mb-4">
                                             <UserCircle
                                                 size={64}
-                                                className="text-blue-500"
+                                                className="text-blue-500 dark:text-blue-400"
                                             />
                                         </div>
                                     )}
@@ -591,7 +593,7 @@ function AccountPopOver() {
                                     <button
                                         type="button"
                                         onClick={openFileSelector}
-                                        className="px-4 py-2 bg-blue-100 text-blue-700 rounded-lg hover:bg-blue-200 transition-colors"
+                                        className="px-4 py-2 bg-blue-100 dark:bg-blue-950 text-blue-700 dark:text-blue-400 hover:bg-blue-200 dark:hover:bg-blue-900/75 rounded-lg transition-colors"
                                     >
                                         {newAvatarPreview
                                             ? "Choose Different Image"
@@ -617,7 +619,7 @@ function AccountPopOver() {
                                         onClick={() =>
                                             setShowAvatarModal(false)
                                         }
-                                        className="px-4 py-2 rounded-lg border border-neutral-300 text-neutral-700 hover:bg-neutral-50 transition-colors"
+                                        className="px-4 py-2 rounded-lg border border-neutral-300 text-neutral-700 hover:bg-neutral-50 dark:border-neutral-600 dark:text-neutral-300 dark:hover:bg-neutral-700 transition-colors"
                                     >
                                         Cancel
                                     </button>

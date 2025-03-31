@@ -81,7 +81,7 @@ function SignUp() {
                     </Link>
                 </div>
             )}
-            <div className="flex flex-col gap-2 p-6 sm:p-8 md:p-12 bg-neutral-100/60 rounded-xl">
+            <div className="flex flex-col gap-2 p-6 sm:p-8 md:p-12 bg-neutral-100/60 dark:bg-neutral-800 rounded-xl">
                 <h1 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
                     Sign Up
                 </h1>

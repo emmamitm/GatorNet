@@ -179,7 +179,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
             )}
             {isExpanded && (
                 <motion.div
-                    className="md:hidden fixed inset-0 bg-neutral-100/50 bg-opacity-50 z-10"
+                    className="md:hidden fixed inset-0 bg-neutral-100/50 dark:bg-neutral-900/50 z-10"
                     onClick={() => {
                         setIsExpanded(false);
                     }}
@@ -190,7 +190,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
             )}
             <motion.div className="max-h-fit md:max-h-full z-20 relative">
                 <motion.div
-                    className="fixed top-0 left-0 md:p-1 h-full backdrop-blur-2xl bg-neutral-200/60 border-r-2 border-neutral-200 rounded-r-xl overflow-y-scroll"
+                    className="fixed top-0 left-0 md:p-1 h-full backdrop-blur-2xl bg-neutral-200/60 dark:bg-neutral-700/60 border-r-2 border-neutral-200 dark:border-neutral-700 rounded-r-xl overflow-y-scroll"
                     {...(screenSize.width >= 768 && {
                         onMouseOver: () => {
                             if (!isPinned) setIsExpanded(true);
@@ -221,25 +221,21 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                                     <PushPinSlash
                                         onClick={() => setIsPinned(false)}
                                         weight="fill"
-                                        className="cursor-pointer fill-neutral-800 transition-colors"
+                                        className="cursor-pointer fill-neutral-800 dark:fill-neutral-200 transition-colors"
                                         size={iconSize}
                                     />
                                 ) : (
                                     <PushPin
                                         onClick={() => setIsPinned(true)}
                                         weight="fill"
-                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 transition-colors"
+                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 dark:fill-neutral-200 dark:hover:fill-neutral-400 transition-colors"
                                         size={iconSize}
                                     />
                                 )}
                                 <div className="flex">
-                                    <MagnifyingGlass
-                                        size={iconSize}
-                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 transition-colors"
-                                    />
                                     <Plus
                                         size={iconSize}
-                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 transition-colors"
+                                        className="cursor-pointer fill-neutral-600 hover:fill-neutral-950 dark:fill-neutral-200 dark:hover:fill-neutral-400 transition-colors"
                                         onClick={createNewConversation}
                                     />
                                 </div>
@@ -249,15 +245,15 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                                     >
                                         <X
                                             size={iconSize}
-                                            className="fill-red-600 hover:fill-red-400 transition-colors"
+                                            className="fill-red-600 hover:fill-red-400 dark:fill-red-500 dark:hover:fill-red-700 transition-colors"
                                         />
                                     </button>
                                 )}
                             </div>
 
-                            <hr className="border border-neutral-400 my-2" />
+                            <hr className="border border-neutral-400 dark:border-neutral-300 my-2" />
 
-                            <h3 className="text-lg font-bold text-neutral-600 ml-2">
+                            <h3 className="text-lg font-bold text-neutral-600 dark:text-neutral-300 ml-2">
                                 Conversations
                             </h3>
 
@@ -274,7 +270,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                             )}
 
                             {!isLoading && conversations.length === 0 && (
-                                <div className="text-sm text-left text-neutral-600 my-2 ml-2">
+                                <div className="text-sm text-left text-neutral-600 dark:text-neutral-300 my-2 ml-2">
                                     No conversations yet.
                                 </div>
                             )}
@@ -282,7 +278,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                             {conversations.map((conversation) => (
                                 <div
                                     key={conversation.id}
-                                    className={`flex px-2 py-1 gap-1 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500 ${
+                                    className={`flex px-2 py-1 gap-1 justify-between items-center text-sm text-left cursor-pointer hover:text-neutral-500 dark:hover:text-neutral-400 transition-colors ${
                                         currentConversationId ===
                                         conversation.id
                                             ? "rounded-md bg-blue-800/10"
@@ -317,7 +313,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
                                     >
                                         <MinusCircle
                                             size={14}
-                                            className="fill-red-600 hover:fill-red-400 transition-colors"
+                                            className="fill-red-600 hover:fill-red-400 dark:fill-red-500 dark:hover:fill-red-700 transition-colors"
                                         />
                                     </button>
                                 </div>
