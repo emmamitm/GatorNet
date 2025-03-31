@@ -1,0 +1,89 @@
+{
+    "events": [
+      {
+        "name": "Career Showcase",
+        "type": "Professional Development",
+        "location": "Reitz Union Grand Ballroom",
+        "time": "September 19, 9 AM - 3 PM",
+        "description": "Connect with top employers from various industries."
+      },
+      {
+        "name": "GatorNights",
+        "type": "Social",
+        "location": "Reitz Union",
+        "time": "Every Friday, 8 PM - 12 AM",
+        "description": "Free late-night entertainment and activities for students."
+      },
+      {
+        "name": "Hackathon @ UF",
+        "type": "Technology & Coding",
+        "location": "New Engineering Building",
+        "time": "October 14-15, 10 AM - 6 PM",
+        "description": "48-hour coding competition for students of all skill levels."
+      },
+      {
+        "name": "Wellness Wednesdays",
+        "type": "Health & Wellness",
+        "location": "Plaza of the Americas",
+        "time": "Every Wednesday, 12 PM - 2 PM",
+        "description": "Join for guided meditation, therapy dogs, and more."
+      },
+      {
+        "name": "Basketball Game: Gators vs. Wildcats",
+        "type": "Sports",
+        "location": "Exactech Arena",
+        "time": "November 10, 7 PM",
+        "description": "Cheer for the Gators as they face the Wildcats in an exciting match."
+      }
+    ],
+    "matcher_questions": [
+      {
+        "id": "interest",
+        "question": "What type of event are you interested in?",
+        "options": [
+          "Professional Development",
+          "Social",
+          "Technology & Coding",
+          "Health & Wellness",
+          "Sports",
+          "General"
+        ]
+      },
+      {
+        "id": "time_preference",
+        "question": "When do you prefer attending events?",
+        "options": [
+          "Weekdays",
+          "Weekends",
+          "Evenings",
+          "No preference"
+        ]
+      },
+      {
+        "id": "location_preference",
+        "question": "Do you have a preferred location for events?",
+        "options": [
+          "Reitz Union",
+          "New Engineering Building",
+          "Plaza of the Americas",
+          "Exactech Arena",
+          "No preference"
+        ]
+      }
+    ],
+    "faqs": [
+      {
+        "question": "How can I find out about upcoming events?",
+        "answer": "You can visit the UF calendar, check the student union website, or ask me for event suggestions."
+      },
+      {
+        "question": "Do I need to register for events?",
+        "answer": "Some events may require registration, especially workshops or limited-capacity events. Check the event page for details."
+      },
+      {
+        "question": "Are events free for students?",
+        "answer": "Most events organized by the university are free for UF students with a valid ID."
+      }
+    ]
+  }
+  
