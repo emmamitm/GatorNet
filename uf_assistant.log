@@ -1,0 +1,93 @@
+2025-04-02 17:18:58,060 - Enhanced_UF_Assistant - INFO - Initializing Enhanced UF Assistant with model: ./AI/models/Meta-Llama-3-8B-Instruct-Q8_0.gguf
+2025-04-02 17:18:58,060 - Enhanced_UF_Assistant - INFO - No GPU detected - using CPU only
+2025-04-02 17:18:58,065 - Enhanced_UF_Assistant - ERROR - Failed to initialize LLaMA model: Model path does not exist: ./AI/models/Meta-Llama-3-8B-Instruct-Q8_0.gguf
+2025-04-02 17:18:58,066 - Enhanced_UF_Assistant - WARNING - [WARNING] Failed to load LLaMA model - some features will be limited
+2025-04-02 17:18:58,066 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-02 17:18:59,134 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device: cpu
+2025-04-02 17:18:59,135 - Enhanced_UF_Assistant - INFO - [OK] Successfully initialized embedding model
+2025-04-02 17:18:59,135 - Enhanced_UF_Assistant - WARNING - [WARNING] No NLP model available - some linguistic features will be limited
+2025-04-02 17:18:59,136 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 144 campus buildings from CSV
+2025-04-02 17:18:59,143 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 1135 clubs from CSV
+2025-04-02 17:19:00,391 - Enhanced_UF_Assistant - INFO - [OK] Initialized library knowledge retrieval system
+2025-04-02 17:19:00,393 - Enhanced_UF_Assistant - INFO - [OK] Initialized campus buildings knowledge retrieval system
+2025-04-02 17:19:00,396 - Enhanced_UF_Assistant - INFO - [OK] Initialized enhanced query analyzer
+2025-04-02 17:19:00,396 - Enhanced_UF_Assistant - INFO - [OK] Initialized advanced response generator
+2025-04-02 17:19:00,399 - Enhanced_UF_Assistant - INFO - [OK] Initialized academic calendar context
+2025-04-02 17:19:00,399 - Enhanced_UF_Assistant - INFO - [OK] Initialized conversation state manager
+2025-04-02 17:19:00,399 - Enhanced_UF_Assistant - INFO - [OK] Initialized metrics tracker
+2025-04-02 17:19:00,400 - Enhanced_UF_Assistant - INFO - [OK] Initialization complete in 2.34 seconds
+2025-04-02 19:16:54,535 - Enhanced_UF_Assistant - INFO - Initializing Enhanced UF Assistant with model: ./AI/models/Meta-Llama-3-8B-Instruct-Q8_0.gguf
+2025-04-02 19:16:54,536 - Enhanced_UF_Assistant - INFO - No GPU detected - using CPU only
+2025-04-02 19:16:58,112 - Enhanced_UF_Assistant - INFO - [OK] Successfully initialized LLaMA 3 model
+2025-04-02 19:16:58,113 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-02 19:16:59,426 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device: cpu
+2025-04-02 19:16:59,426 - Enhanced_UF_Assistant - INFO - [OK] Successfully initialized embedding model
+2025-04-02 19:16:59,426 - Enhanced_UF_Assistant - WARNING - [WARNING] No NLP model available - some linguistic features will be limited
+2025-04-02 19:16:59,427 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 144 campus buildings from CSV
+2025-04-02 19:16:59,434 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 1135 clubs from CSV
+2025-04-02 19:17:00,851 - Enhanced_UF_Assistant - INFO - [OK] Initialized library knowledge retrieval system
+2025-04-02 19:17:00,852 - Enhanced_UF_Assistant - INFO - [OK] Initialized campus buildings knowledge retrieval system
+2025-04-02 19:17:00,856 - Enhanced_UF_Assistant - INFO - [OK] Initialized enhanced query analyzer
+2025-04-02 19:17:00,856 - Enhanced_UF_Assistant - INFO - [OK] Initialized advanced response generator
+2025-04-02 19:17:00,859 - Enhanced_UF_Assistant - INFO - [OK] Initialized academic calendar context
+2025-04-02 19:17:00,859 - Enhanced_UF_Assistant - INFO - [OK] Initialized conversation state manager
+2025-04-02 19:17:00,859 - Enhanced_UF_Assistant - INFO - [OK] Initialized metrics tracker
+2025-04-02 19:17:00,859 - Enhanced_UF_Assistant - INFO - [OK] Initialization complete in 6.32 seconds
+2025-04-02 19:17:11,529 - Enhanced_UF_Assistant - INFO - Query analysis: intent=get_information, categories=['offerings', 'general']
+2025-04-02 19:17:11,557 - Enhanced_UF_Assistant - INFO - Identified library: Special & Area Studies Collections (confidence: 0.85)
+2025-04-02 19:33:19,496 - Enhanced_UF_Assistant - INFO - Initializing Enhanced UF Assistant with model: ./AI/models/Meta-Llama-3-8B-Instruct-Q8_0.gguf
+2025-04-02 19:33:19,497 - Enhanced_UF_Assistant - INFO - No GPU detected - using CPU only
+2025-04-02 19:33:22,773 - Enhanced_UF_Assistant - INFO - [OK] Successfully initialized LLaMA 3 model
+2025-04-02 19:33:22,774 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-02 19:33:24,419 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device: cpu
+2025-04-02 19:33:24,419 - Enhanced_UF_Assistant - INFO - [OK] Successfully initialized embedding model
+2025-04-02 19:33:24,419 - Enhanced_UF_Assistant - WARNING - [WARNING] No NLP model available - some linguistic features will be limited
+2025-04-02 19:33:24,421 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 144 campus buildings from CSV
+2025-04-02 19:33:24,430 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 1135 clubs from CSV
+2025-04-02 19:33:24,434 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 667 events from CSV
+2025-04-02 19:33:24,464 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 5694 courses from CSV
+2025-04-02 19:33:24,466 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 117 majors from CSV
+2025-04-02 19:33:24,469 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 810 programs from CSV
+2025-04-02 19:33:24,471 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 31 hall info from CSV
+2025-04-02 19:33:24,471 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 71 housing links from CSV
+2025-04-02 19:33:24,472 - Enhanced_UF_Assistant - ERROR - Error loading libraries data: Extra data: line 1 column 2 (char 1)
+2025-04-02 19:33:24,479 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 2020 main UF pages from CSV
+2025-04-02 19:33:24,480 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 118 main UF pages data from CSV
+2025-04-02 19:33:24,481 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 23 tuition data from CSV
+2025-04-02 19:33:26,256 - Enhanced_UF_Assistant - INFO - [OK] Initialized library knowledge retrieval system
+2025-04-02 19:33:26,258 - Enhanced_UF_Assistant - INFO - [OK] Initialized campus buildings knowledge retrieval system
+2025-04-02 19:33:26,263 - Enhanced_UF_Assistant - INFO - [OK] Initialized enhanced query analyzer
+2025-04-02 19:33:26,263 - Enhanced_UF_Assistant - INFO - [OK] Initialized advanced response generator
+2025-04-02 19:33:26,267 - Enhanced_UF_Assistant - INFO - [OK] Initialized academic calendar context
+2025-04-02 19:33:26,267 - Enhanced_UF_Assistant - INFO - [OK] Initialized conversation state manager
+2025-04-02 19:33:26,267 - Enhanced_UF_Assistant - INFO - [OK] Initialized metrics tracker
+2025-04-02 19:33:26,267 - Enhanced_UF_Assistant - INFO - [OK] Initialization complete in 6.77 seconds
+2025-04-02 19:34:23,837 - Enhanced_UF_Assistant - INFO - Query analysis: intent=get_information, categories=['offerings', 'general']
+2025-04-02 19:34:23,861 - Enhanced_UF_Assistant - INFO - Identified library: Legal Information Center (confidence: 0.85)
+2025-04-02 19:35:44,440 - Enhanced_UF_Assistant - INFO - Initializing Enhanced UF Assistant with model: ./AI/models/Meta-Llama-3-8B-Instruct-Q8_0.gguf
+2025-04-02 19:35:44,441 - Enhanced_UF_Assistant - INFO - No GPU detected - using CPU only
+2025-04-02 19:35:48,167 - Enhanced_UF_Assistant - INFO - [OK] Successfully initialized LLaMA 3 model
+2025-04-02 19:35:48,168 - sentence_transformers.SentenceTransformer - INFO - Load pretrained SentenceTransformer: all-MiniLM-L6-v2
+2025-04-02 19:35:49,609 - sentence_transformers.SentenceTransformer - INFO - Use pytorch device: cpu
+2025-04-02 19:35:49,609 - Enhanced_UF_Assistant - INFO - [OK] Successfully initialized embedding model
+2025-04-02 19:35:49,610 - Enhanced_UF_Assistant - WARNING - [WARNING] No NLP model available - some linguistic features will be limited
+2025-04-02 19:35:49,611 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 144 campus buildings from CSV
+2025-04-02 19:35:49,618 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 1135 clubs from CSV
+2025-04-02 19:35:49,623 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 667 events from CSV
+2025-04-02 19:35:49,650 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 5694 courses from CSV
+2025-04-02 19:35:49,652 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 117 majors from CSV
+2025-04-02 19:35:49,655 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 810 programs from CSV
+2025-04-02 19:35:49,656 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 31 hall info from CSV
+2025-04-02 19:35:49,657 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 71 housing links from CSV
+2025-04-02 19:35:49,671 - Enhanced_UF_Assistant - ERROR - Error loading libraries data: Extra data: line 1 column 2 (char 1)
+2025-04-02 19:35:49,677 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 2020 main UF pages from CSV
+2025-04-02 19:35:49,679 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 118 main UF pages data from CSV
+2025-04-02 19:35:49,680 - Enhanced_UF_Assistant - INFO - [OK] Successfully loaded 23 tuition data from CSV
+2025-04-02 19:35:51,148 - Enhanced_UF_Assistant - INFO - [OK] Initialized library knowledge retrieval system
+2025-04-02 19:35:51,150 - Enhanced_UF_Assistant - INFO - [OK] Initialized campus buildings knowledge retrieval system
+2025-04-02 19:35:51,156 - Enhanced_UF_Assistant - INFO - [OK] Initialized enhanced query analyzer
+2025-04-02 19:35:51,156 - Enhanced_UF_Assistant - INFO - [OK] Initialized advanced response generator
+2025-04-02 19:35:51,159 - Enhanced_UF_Assistant - INFO - [OK] Initialized academic calendar context
+2025-04-02 19:35:51,159 - Enhanced_UF_Assistant - INFO - [OK] Initialized conversation state manager
+2025-04-02 19:35:51,160 - Enhanced_UF_Assistant - INFO - [OK] Initialized metrics tracker
+2025-04-02 19:35:51,160 - Enhanced_UF_Assistant - INFO - [OK] Initialization complete in 6.72 seconds
