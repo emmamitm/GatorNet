@@ -1448,13 +1448,267 @@ def load_campus_buildings_data(csv_path="scrapedData/campusBuildings/uf_building
                     "Address": row.get('address', ''),
                     "Description": row.get('description', '')
                 })
-        logger.info(f"✅ Successfully loaded {len(buildings)} campus buildings from CSV")
+        logger.info(f"[OK] Successfully loaded {len(buildings)} campus buildings from CSV")
         return buildings
     except Exception as e:
         logger.error(f"Error loading campus buildings data: {e}")
         # Return the hardcoded data as fallback
-        logger.info("⚠️ Using hardcoded campus buildings data as fallback")
+        logger.info("[WARNING] Using hardcoded campus buildings data as fallback")
         return CAMPUS_BUILDINGS_DATA
+
+def load_clubs_data(csv_path="scrapedData/campusClubs/uf_organizations.csv"):
+    """Load clubs data from CSV file"""
+    clubs = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                clubs.append({
+                    "Club ID": row.get('ID', ''),
+                    "Organization Name": row.get('Organization Name', ''),
+                    "Description": row.get('Description', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(clubs)} clubs from CSV")
+        return clubs
+    except Exception as e:
+        logger.error(f"Error loading clubs data: {e}")
+        return []
+
+def load_events_data(csv_path="scrapedData/campusEvents/uf_events_all.csv"):
+    """Load events data from CSV file"""
+    events = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                events.append({
+                    "Event Name": row.get('name', ''),
+                    "Date": row.get('date', ''),
+                    "Time": row.get('time', ''),
+                    "Location": row.get('location', ''),
+                    "Link": row.get('link', ''),
+                    "Description": row.get('description', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(events)} events from CSV")
+        return events
+    except Exception as e:
+        logger.error(f"Error loading events data: {e}")
+        return []
+
+def load_courses_data(csv_path="scrapedData/classes/courses.csv"):
+    """Load courses data from CSV file"""
+    courses = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                courses.append({
+                    "Department": row.get('department', ''),
+                    "Course Code": row.get('code', ''),
+                    "Course Title": row.get('title', ''),
+                    "Credit Count": row.get('credits', ''),
+                    "Description": row.get('description', ''),
+                    "Prerequisites": row.get('prerequisites', ''),
+                    "Grading Scheme": row.get('grading_scheme', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(courses)} courses from CSV")
+        return courses
+    except Exception as e:
+        logger.error(f"Error loading courses data: {e}")
+        return []
+
+def load_majors_data(csv_path="scrapedData/classes/majors.csv"):
+    """Load majors data from CSV file"""
+    majors = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                majors.append({
+                    "Department": row.get('department', ''),
+                    "Description": row.get('description', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(majors)} majors from CSV")
+        return majors
+    except Exception as e:
+        logger.error(f"Error loading majors data: {e}")
+        return []
+
+def load_programs_data(csv_path="scrapedData/classes/programs.csv"):
+    """Load programs data from CSV file"""
+    programs = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                programs.append({
+                    "Department": row.get('department', ''),
+                    "Program Name": row.get('name', ''),
+                    "URL": row.get('url', ''),
+                    "Type": row.get('type', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(programs)} programs from CSV")
+        return programs
+    except Exception as e:
+        logger.error(f"Error loading programs data: {e}")
+        return []
+
+def load_hallinfo_data(csv_path="scrapedData/housing/hallInfo.csv"):
+    """Load hall info data from CSV file"""
+    hallinfo = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                hallinfo.append({
+                    "Building Name": row.get('name', ''),
+                    "Hall Type": row.get('hall_type', ''),
+                    "Description": row.get('description', ''),
+                    "Location": row.get('location', ''),
+                    "Phone": row.get('phone', ''),
+                    "Features": row.get('features_str', '').split(','),
+                    "Room Types": row.get('room_types_str', '').split(','),
+                    "Nearby Locations": row.get('nearby_locations_str', '').split(','),
+                    "URL": row.get('url', ''),
+                    "Image URL": row.get('image_url', ''),
+                    "Rental Rate URL": row.get('rental_rate_url', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(hallinfo)} hall info from CSV")
+        return hallinfo
+    except Exception as e:
+        logger.error(f"Error loading hall info data: {e}")
+        return []
+
+def load_housinglinks_data(csv_path="scrapedData/housing/housingLinks.csv"):
+    """Load housing links data from CSV file"""
+    housinglinks = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                housinglinks.append({
+                    "Description": row.get('description', ''),
+                    "Link": row.get('link', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(housinglinks)} housing links from CSV")
+        return housinglinks
+    except Exception as e:
+        logger.error(f"Error loading housing links data: {e}")
+        return []
+
+def load_residencehallrates_data(csv_path="scrapedData/housing/residenceHallRates.csv"):
+    """Load residence hall rates data from CSV file"""
+    residencehallrates = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                residencehallrates.append({
+                    "Residence Hall": row.get('residence_hall', ''),
+                    "Room Type": row.get('room_type', ''),
+                    "Fall/Spring Rate": row.get('fall_spring', ''),
+                    "Summer A/B Rate": row.get('summer_a_b', ''),
+                    "Summer C Rate": row.get('summer_c', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(residencehallrates)} residence hall rates from CSV")
+        return residencehallrates
+    except Exception as e:
+        logger.error(f"Error loading residence hall rates data: {e}")
+        return []
+
+def load_libraries_data(csv_path="scrapedData/libraries/uf_libraries.csv"):
+    """Load libraries data from CSV file"""
+    libraries = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                libraries.append({
+                    "Library Name": row.get('Library Name', ''),
+                    "Location": row.get('Location', ''),
+                    "Capacity": row.get('Capacity', ''),
+                    "Hours": json.loads(row.get('Hours', '{}')) if row.get('Hours') else {},
+                    "Special Notes": row.get('Special Notes', ''),
+                    "URL": row.get('URL', ''),
+                    "Phone": row.get('Phone', ''),
+                    "Email": row.get('Email', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(libraries)} libraries from CSV")
+        return libraries
+    except Exception as e:
+        logger.error(f"Error loading libraries data: {e}")
+        return []
+
+def load_mainufpages_links_data(csv_path="scrapedData/mainUfPages/links.csv"):
+    """Load main UF pages data from CSV file"""
+    mainufpages = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                mainufpages.append({
+                    "Source URL": row.get('source_url', ''),
+                    "Target URL": row.get('target_url', ''),
+                    "Link Text": row.get('link_text', ''),
+                    "Timestamp": row.get('timestamp', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(mainufpages)} main UF pages from CSV")
+        return mainufpages
+    except Exception as e:
+        logger.error(f"Error loading main UF pages data: {e}")
+        return []
+
+def load_mainufpages_mainufdata_data(csv_path="scrapedData/mainUfPages/mainUFData.csv"):
+    """Load main UF pages data from CSV file"""
+    mainufdata = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                mainufdata.append({
+                    "Category": row.get('Category', ''),
+                    "Name": row.get('Name', ''),
+                    "Description": row.get('Description', ''),
+                    "Year_Established": row.get('Year_Established', ''),
+                    "Location": row.get('Location', ''),
+                    "Additional_Notes": row.get('Additional_Notes', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(mainufdata)} main UF pages data from CSV")
+        return mainufdata
+    except Exception as e:
+        logger.error(f"Error loading main UF pages data: {e}")
+        return []
+
+def load_tuition_data(csv_path="scrapedData/tuition/tuition_costs.csv"):
+    """Load tuition data from CSV file"""
+    tuition_data = []
+    
+    try:
+        with open(csv_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                tuition_data.append({
+                    "Category": row.get('Category', ''),
+                    "Expense Type": row.get('Expense Type', ''),
+                    "Amount": row.get('Amount', ''),
+                    "Academic Year": row.get('Academic Year', '')
+                })
+        logger.info(f"[OK] Successfully loaded {len(tuition_data)} tuition data from CSV")
+        return tuition_data
+    except Exception as e:
+        logger.error(f"Error loading tuition data: {e}")
+        return []
 
 # =============================================================================
 # ENHANCED KNOWLEDGE RETRIEVAL
@@ -4129,55 +4383,66 @@ class EnhancedUFAssistant:
         llama_config = LLaMA3OptimizedConfig(model_path)
         self.llm = llama_config.initialize_model()
         if self.llm:
-            logger.info("✅ Successfully initialized LLaMA 3 model")
+            logger.info("[OK] Successfully initialized LLaMA 3 model")
         else:
-            logger.warning("⚠️ Failed to load LLaMA model - some features will be limited")
+            logger.warning("[WARNING] Failed to load LLaMA model - some features will be limited")
         
         # Initialize embedding model
         self.embedding_model = self._init_embedding_model()
         if self.embedding_model:
-            logger.info("✅ Successfully initialized embedding model")
+            logger.info("[OK] Successfully initialized embedding model")
         else:
-            logger.warning("⚠️ No embedding model available - semantic search will be disabled")
+            logger.warning("[WARNING] No embedding model available - semantic search will be disabled")
         
         # Initialize NLP model
         self.nlp_model = self._init_nlp_model()
         if self.nlp_model:
-            logger.info("✅ Successfully initialized NLP model")
+            logger.info("[OK] Successfully initialized NLP model")
         else:
-            logger.warning("⚠️ No NLP model available - some linguistic features will be limited")
+            logger.warning("[WARNING] No NLP model available - some linguistic features will be limited")
         
         # Load campus buildings data
         self.campus_buildings_data = load_campus_buildings_data()
+        self.club_data = load_clubs_data()
+        self.event_data = load_events_data()
+        self.courses_data = load_courses_data()
+        self.majors_data = load_majors_data()
+        self.programs_data = load_programs_data()
+        self.hallinfo_data = load_hallinfo_data()
+        self.housinglinks_data = load_housinglinks_data()
+        self.libraries_data = load_libraries_data()
+        self.mainufpages_links_data = load_mainufpages_links_data()
+        self.mainufpages_mainufdata_data = load_mainufpages_mainufdata_data()
+        self.tuition_data = load_tuition_data()
         
         # Initialize enhanced components
         self.library_knowledge = EnhancedKnowledgeRetrieval(LIBRARY_DATA, self.embedding_model)
-        logger.info("✅ Initialized library knowledge retrieval system")
+        logger.info("[OK] Initialized library knowledge retrieval system")
         
         self.buildings_knowledge = CampusBuildingsRetrieval(self.campus_buildings_data)
-        logger.info("✅ Initialized campus buildings knowledge retrieval system")
+        logger.info("[OK] Initialized campus buildings knowledge retrieval system")
         
         self.query_analyzer = EnhancedQueryAnalyzer(self.nlp_model)
-        logger.info("✅ Initialized enhanced query analyzer")
+        logger.info("[OK] Initialized enhanced query analyzer")
         
         self.response_generator = AdvancedResponseGenerator(self.llm)
-        logger.info("✅ Initialized advanced response generator")
+        logger.info("[OK] Initialized advanced response generator")
         
         self.academic_calendar = AcademicCalendarContext()
-        logger.info("✅ Initialized academic calendar context")
+        logger.info("[OK] Initialized academic calendar context")
         
         # Initialize conversation management
         self.conversation_history = []
         self.conversation_state = ConversationState()
-        logger.info("✅ Initialized conversation state manager")
+        logger.info("[OK] Initialized conversation state manager")
         
         # Initialize performance metrics tracking
         self.metrics_tracker = MetricsTracker()
-        logger.info("✅ Initialized metrics tracker")
+        logger.info("[OK] Initialized metrics tracker")
         
         # Measure initialization time
         init_time = time.time() - init_start_time
-        logger.info(f"✅ Initialization complete in {init_time:.2f} seconds")
+        logger.info(f"[OK] Initialization complete in {init_time:.2f} seconds")
         
     def _init_embedding_model(self):
         """Initialize the embedding model for semantic search"""
@@ -4735,7 +5000,7 @@ def main():
     """Main function to run the Enhanced UF Assistant"""
     # Parse command line arguments
     parser = argparse.ArgumentParser(description='Enhanced UF Assistant')
-    parser.add_argument('--model_path', type=str, default='/Users/emmamitchell/Desktop/GatorNet/AI/models/Meta-Llama-3-8B-Instruct-Q8_0.gguf',
+    parser.add_argument('--model_path', type=str, default='./AI/models/Meta-Llama-3-8B-Instruct-Q8_0.gguf',
                       help='Path to the LLaMA model')
     parser.add_argument('--use_gpu', action='store_true',
                       help='Use GPU for inference if available')
