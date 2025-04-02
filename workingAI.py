@@ -1,12 +1,8 @@
-
-
-
 #!/usr/bin/env python3
 """
 Enhanced UF Assistant
 A powerful assistant for answering questions about University of Florida
 using LLaMA 3 with embedded knowledge and advanced retrieval techniques.
-Now with residence hall and housing information.
 """
 
 import os
@@ -94,6 +90,1068 @@ logger = logging.getLogger('Enhanced_UF_Assistant')
 # EMBEDDED LIBRARY DATA
 # =============================================================================
 
+# Comprehensive library information embedded directly in the code
+LIBRARY_DATA = [
+    {
+        "Library Name": "Library West",
+        "Location": "1545 W University Ave, Gainesville, FL 32603",
+        "Capacity": "1564",
+        "Hours": {
+            "Monday": "7:00am - 2:00am",
+            "Tuesday": "7:00am - 2:00am",
+            "Wednesday": "7:00am - 2:00am",
+            "Thursday": "7:00am - 2:00am",
+            "Friday": "7:00am - 10:00pm",
+            "Saturday": "10:00am - 10:00pm",
+            "Sunday": "7:00am - 2:00am"
+        },
+        "Special Notes": "Building access after 10pm limited to users with active UF ID or Santa Fe College ID",
+        "URL": "https://uflib.ufl.edu/library-west/",
+        "Phone": "(352) 273-2845",
+        "Email": "libwest@uflib.ufl.edu",
+        "Tags": "humanities, business, social sciences",
+        "Resources": [
+            "Research assistance",
+            "Computers and laptops for checkout",
+            "Printing and scanning",
+            "Group study rooms",
+            "Quiet study areas",
+            "Graduate student study space",
+            "Writing assistance services",
+            "Course reserves",
+            "Citation management tools",
+            "Business databases"
+        ],
+        "Study Spaces": [
+            "Silent study areas (4th floor)",
+            "Group study rooms (reservation required)",
+            "Individual study carrels",
+            "Graduate student study space (3rd floor)",
+            "Comfortable seating areas",
+            "Collaboration spaces with large screens"
+        ],
+        "Collections": [
+            "Humanities literature",
+            "Business resources",
+            "Social sciences materials",
+            "Government documents",
+            "Journals and periodicals",
+            "Digital collections",
+            "Course reserves"
+        ],
+        "Technology": [
+            "Computer workstations",
+            "Printing stations",
+            "Scanners",
+            "Charging stations",
+            "Multi-media software",
+            "Data analysis tools",
+            "Laptops for checkout"
+        ],
+        "Services": [
+            "Research consultations",
+            "Course reserves",
+            "Interlibrary loan",
+            "Writing assistance",
+            "Citation help",
+            "Subject specialist librarians",
+            "Information literacy instruction",
+            "Circulation desk"
+        ],
+        "Aliases": [
+            "lib west",
+            "west",
+            "libwest",
+            "library w",
+            "west library",
+            "lw",
+            "library-west"
+        ]
+    },
+    {
+        "Library Name": "Marston Science Library",
+        "Location": "444 Newell Dr, Gainesville, FL 32611",
+        "Capacity": "2208",
+        "Hours": {
+            "Monday": "7:00am - 2:00am",
+            "Tuesday": "7:00am - 2:00am",
+            "Wednesday": "7:00am - 2:00am",
+            "Thursday": "7:00am - 2:00am",
+            "Friday": "7:00am - 10:00pm",
+            "Saturday": "10:00am - 10:00pm",
+            "Sunday": "7:00am - 2:00am"
+        },
+        "Special Notes": "Includes Makerspace (capacity: 15); Research assistance; Computers; Printing; Group study rooms; Quiet study areas",
+        "URL": "https://uflib.ufl.edu/marston/",
+        "Phone": "(352) 273-2845",
+        "Email": "marston@uflib.ufl.edu",
+        "Tags": "science, engineering, technology, math",
+        "Resources": [
+            "STEM research materials",
+            "Makerspace with 3D printing",
+            "Research assistance",
+            "Computers and software",
+            "Printing and scanning",
+            "Group study rooms",
+            "Quiet study areas",
+            "Technical software",
+            "Engineering standards",
+            "Data visualization resources",
+            "STEM databases",
+            "Course reserves",
+            "Citation management tools"
+        ],
+        "Study Spaces": [
+            "Quiet study areas (upper floors)",
+            "Group study rooms (reservation required)",
+            "Individual study carrels",
+            "Makerspace",
+            "Collaboration pods",
+            "Computer labs"
+        ],
+        "Collections": [
+            "Science journals and books",
+            "Engineering standards",
+            "Technical reports",
+            "GIS data",
+            "STEM research databases",
+            "Course reserves"
+        ],
+        "Technology": [
+            "Computer workstations",
+            "Technical software (MATLAB, AutoCAD, SolidWorks)",
+            "3D printers",
+            "Laser cutters",
+            "Printing stations",
+            "Scanners",
+            "Charging stations",
+            "VR equipment",
+            "Specialized technology for engineering and sciences"
+        ],
+        "Services": [
+            "STEM research consultations",
+            "Course reserves",
+            "Interlibrary loan",
+            "Data management assistance",
+            "Technical software help",
+            "3D printing services",
+            "Science and engineering librarians",
+            "GIS support",
+            "Circulation desk"
+        ],
+        "Aliases": [
+            "marston",
+            "msl",
+            "science library",
+            "marston library",
+            "science",
+            "marston-science",
+            "marston's"
+        ]
+    },
+    {
+        "Library Name": "Smathers Library",
+        "Location": "Plaza of the Americas, Gainesville, FL 32611",
+        "Capacity": "Unknown",
+        "Hours": {
+            "Monday": "7:00am - 2:00am",
+            "Tuesday": "7:00am - 2:00am",
+            "Wednesday": "7:00am - 2:00am",
+            "Thursday": "7:00am - 2:00am",
+            "Friday": "7:00am - 10:00pm",
+            "Saturday": "10:00am - 10:00pm",
+            "Sunday": "7:00am - 2:00am"
+        },
+        "Special Notes": "Oldest library on campus; Special collections; Research assistance; Computers; Printing; Group study rooms",
+        "URL": "https://uflib.ufl.edu/smathers/",
+        "Phone": "(352) 273-2845",
+        "Email": "smathers@uflib.ufl.edu",
+        "Tags": "archives, rare books, historical, manuscripts, special collections",
+        "Resources": [
+            "Florida history collections",
+            "Latin American collections",
+            "Rare books",
+            "Manuscripts",
+            "Archives",
+            "Special collections reading rooms",
+            "Research assistance",
+            "Computers",
+            "Printing and scanning",
+            "Study areas",
+            "Historical collections",
+            "Primary sources",
+            "P.K. Yonge Library of Florida History"
+        ],
+        "Study Spaces": [
+            "Special collections reading rooms",
+            "Grand Reading Room",
+            "Individual study carrels",
+            "Quiet study areas",
+            "Historic study spaces"
+        ],
+        "Collections": [
+            "P.K. Yonge Library of Florida History",
+            "Latin American Collection",
+            "Judaica Collection",
+            "University Archives",
+            "Architecture Archives",
+            "Rare Books Collection",
+            "Historical manuscripts",
+            "Political papers",
+            "Maps and aerial photographs"
+        ],
+        "Technology": [
+            "Computer workstations",
+            "Digital scanners for archival materials",
+            "Microfilm readers",
+            "Printing stations",
+            "Digitization equipment",
+            "Digital humanities resources"
+        ],
+        "Services": [
+            "Special collections research help",
+            "Archival research consultation",
+            "Preservation services",
+            "Digitization services",
+            "Research consultation for rare materials",
+            "Exhibitions of rare materials",
+            "Public programming",
+            "Circulation desk for general collections"
+        ],
+        "Aliases": [
+            "smathers",
+            "east",
+            "library east",
+            "special collections",
+            "smathers-library",
+            "smather"
+        ]
+    },
+    {
+        "Library Name": "Health Science Center Library",
+        "Location": "1600 SW Archer Rd, Gainesville, FL 32610",
+        "Capacity": "761",
+        "Hours": {
+            "Monday": "7:00am - 2:00am",
+            "Tuesday": "7:00am - 2:00am",
+            "Wednesday": "7:00am - 2:00am",
+            "Thursday": "7:00am - 2:00am",
+            "Friday": "7:00am - 10:00pm",
+            "Saturday": "10:00am - 10:00pm",
+            "Sunday": "7:00am - 2:00am"
+        },
+        "Special Notes": "Medical collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "URL": "https://uflib.ufl.edu/hscl/",
+        "Phone": "(352) 273-8408",
+        "Email": "hsc-library@uflib.ufl.edu",
+        "Tags": "medicine, health, nursing, pharmacy, dental, veterinary",
+        "Resources": [
+            "Medical and health journals",
+            "Clinical resources",
+            "Anatomy models",
+            "Research databases",
+            "Evidence-based medicine tools",
+            "Research assistance",
+            "Computers with specialized software",
+            "Printing and scanning",
+            "Group study rooms",
+            "Individual study spaces",
+            "Course reserves",
+            "Citation management tools",
+            "Systematic review services"
+        ],
+        "Study Spaces": [
+            "Collaboration rooms",
+            "Individual study carrels",
+            "Group study rooms (reservation required)",
+            "Quiet study areas",
+            "Computer labs",
+            "Large tables for group study"
+        ],
+        "Collections": [
+            "Medical journals",
+            "Health sciences books",
+            "Clinical resources",
+            "Nursing resources",
+            "Pharmacy literature",
+            "Dental resources",
+            "Veterinary medicine materials",
+            "Public health resources",
+            "Biomedical research publications",
+            "Electronic medical databases",
+            "Course reserves"
+        ],
+        "Technology": [
+            "Computer workstations",
+            "Clinical software applications",
+            "Anatomical visualization tools",
+            "Printing stations",
+            "Scanners",
+            "Charging stations",
+            "Medical software",
+            "Statistical analysis tools"
+        ],
+        "Services": [
+            "Clinical information services",
+            "Evidence-based medicine assistance",
+            "Systematic review support",
+            "Research consultations",
+            "Course reserves",
+            "Interlibrary loan",
+            "Citation management help",
+            "Health sciences librarians",
+            "Bibliographic instruction",
+            "Circulation desk"
+        ],
+        "Aliases": [
+            "hsc",
+            "health science",
+            "hscl",
+            "medical library",
+            "health",
+            "medical"
+        ]
+    },
+    {
+        "Library Name": "Architecture & Fine Arts Library",
+        "Location": "1480 Inner Rd, Gainesville, FL 32611",
+        "Capacity": "Unknown",
+        "Hours": {
+            "Monday": "7:00am - 2:00am",
+            "Tuesday": "7:00am - 2:00am",
+            "Wednesday": "7:00am - 2:00am",
+            "Thursday": "7:00am - 2:00am",
+            "Friday": "7:00am - 10:00pm",
+            "Saturday": "10:00am - 10:00pm",
+            "Sunday": "7:00am - 2:00am"
+        },
+        "Special Notes": "Arts collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "URL": "https://uflib.ufl.edu/afa/",
+        "Phone": "(352) 273-2825",
+        "Email": "afa@uflib.ufl.edu",
+        "Tags": "art, architecture, design, visual arts, urban planning",
+        "Resources": [
+            "Architecture books and journals",
+            "Fine arts materials",
+            "Design resources",
+            "Visual reference materials",
+            "Research assistance",
+            "Design software",
+            "Printing and scanning",
+            "Material samples library",
+            "Course reserves",
+            "Visual resources collection",
+            "Urban planning resources",
+            "Interior design materials"
+        ],
+        "Study Spaces": [
+            "Individual study carrels",
+            "Large tables for design work",
+            "Group study areas",
+            "Computer lab",
+            "Quiet study spaces",
+            "Material sample review areas"
+        ],
+        "Collections": [
+            "Architecture books",
+            "Design periodicals",
+            "Arts literature",
+            "Urban planning resources",
+            "Interior design materials",
+            "Landscape architecture resources",
+            "Building technology resources",
+            "Visual arts books",
+            "Art history publications",
+            "Design standards and guides",
+            "Course reserves"
+        ],
+        "Technology": [
+            "Computer workstations with design software",
+            "Large format printers",
+            "Scanning stations",
+            "Design software (Adobe Creative Suite, AutoCAD, Revit)",
+            "Digital media tools",
+            "Visual resource databases"
+        ],
+        "Services": [
+            "Design research consultations",
+            "Visual resources help",
+            "Course reserves",
+            "Interlibrary loan",
+            "Material sample access",
+            "Design software assistance",
+            "Architecture & arts librarians",
+            "Circulation desk"
+        ],
+        "Aliases": [
+            "afa",
+            "architecture library",
+            "fine arts",
+            "arts library",
+            "architecture",
+            "arts"
+        ]
+    },
+    {
+        "Library Name": "Education Library",
+        "Location": "Norman Hall 2nd Floor, Gainesville, FL 32611",
+        "Capacity": "Unknown",
+        "Hours": {
+            "Monday": "7:00am - 2:00am",
+            "Tuesday": "7:00am - 2:00am",
+            "Wednesday": "7:00am - 2:00am",
+            "Thursday": "7:00am - 2:00am",
+            "Friday": "7:00am - 10:00pm",
+            "Saturday": "10:00am - 10:00pm",
+            "Sunday": "7:00am - 2:00am"
+        },
+        "Special Notes": "Education collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "URL": "https://uflib.ufl.edu/education/",
+        "Phone": "(352) 273-2780",
+        "Email": "edulib@uflib.ufl.edu",
+        "Tags": "education, teaching, learning, curriculum, pedagogy",
+        "Resources": [
+            "Education books and journals",
+            "Curriculum materials",
+            "Children's literature collection",
+            "Teaching resources",
+            "Research assistance",
+            "Computers with educational software",
+            "Printing and scanning",
+            "Group study rooms",
+            "Course reserves",
+            "Citation management tools",
+            "Educational databases"
+        ],
+        "Study Spaces": [
+            "Individual study carrels",
+            "Group study rooms (reservation required)",
+            "Quiet study areas",
+            "Computer lab",
+            "Curriculum review spaces",
+            "Teaching resource review areas"
+        ],
+        "Collections": [
+            "Education journals",
+            "Teaching resources",
+            "Curriculum materials",
+            "Children's and young adult literature",
+            "Educational psychology resources",
+            "Special education materials",
+            "Educational technology resources",
+            "Educational policy publications",
+            "Course reserves",
+            "Educational assessment resources"
+        ],
+        "Technology": [
+            "Computer workstations",
+            "Educational software",
+            "Printing stations",
+            "Scanners",
+            "Curriculum technology tools",
+            "Educational media equipment"
+        ],
+        "Services": [
+            "Education research consultations",
+            "Curriculum materials access",
+            "Course reserves",
+            "Interlibrary loan",
+            "Instructional material evaluation",
+            "Children's literature specialists",
+            "Education librarians",
+            "Circulation desk"
+        ],
+        "Aliases": [
+            "education",
+            "norman hall",
+            "education-library",
+            "ed library"
+        ]
+    },
+    {
+        "Library Name": "Legal Information Center",
+        "Location": "Levin College of Law, Gainesville, FL 32611",
+        "Capacity": "Unknown",
+        "Hours": {
+            "Monday": "7:00am - 2:00am",
+            "Tuesday": "7:00am - 2:00am",
+            "Wednesday": "7:00am - 2:00am",
+            "Thursday": "7:00am - 2:00am",
+            "Friday": "7:00am - 10:00pm",
+            "Saturday": "10:00am - 10:00pm",
+            "Sunday": "7:00am - 2:00am"
+        },
+        "Special Notes": "Legal collections; Study spaces; Computers; Printing; Research assistance; Group study rooms",
+        "URL": "https://uflib.ufl.edu/lic/",
+        "Phone": "(352) 273-0722",
+        "Email": "lic@law.ufl.edu",
+        "Tags": "law, legal studies, government, policy",
+        "Resources": [
+            "Legal books and journals",
+            "Law reports",
+            "Statutes and regulations",
+            "Legal databases (Westlaw, LexisNexis)",
+            "Research assistance",
+            "Computers with legal software",
+            "Printing and scanning",
+            "Group study rooms",
+            "Individual study spaces",
+            "Course reserves",
+            "Citation management tools"
+        ],
+        "Study Spaces": [
+            "Individual study carrels",
+            "Group study rooms (reservation required)",
+            "Quiet study areas",
+            "Computer lab",
+            "Legal research areas",
+            "Mock courtroom"
+        ],
+        "Collections": [
+            "Legal journals",
+            "Law reports",
+            "State and federal statutes",
+            "Case law resources",
+            "International law materials",
+            "Legal treatises",
+            "Government documents",
+            "Florida law resources",
+            "Course reserves",
+            "Legal research guides"
+        ],
+        "Technology": [
+            "Computer workstations",
+            "Legal research databases",
+            "Printing stations",
+            "Scanners",
+            "Legal software",
+            "Legal citation tools"
+        ],
+        "Services": [
+            "Legal research consultations",
+            "Course reserves",
+            "Interlibrary loan",
+            "Citation management help",
+            "Law librarians",
+            "Legal database training",
+            "Legal research instruction",
+            "Circulation desk"
+        ],
+        "Aliases": [
+            "law library",
+            "law",
+            "legal",
+            "levin",
+            "law-library",
+            "legal-information"
+        ]
+    },
+    {
+        "Library Name": "Special & Area Studies Collections",
+        "Location": "Smathers Library 2nd Floor, Gainesville, FL 32611",
+        "Capacity": "Unknown",
+        "Hours": {
+            "Monday": "9:00am - 5:00pm",
+            "Tuesday": "9:00am - 5:00pm",
+            "Wednesday": "9:00am - 5:00pm",
+            "Thursday": "9:00am - 5:00pm",
+            "Friday": "9:00am - 5:00pm",
+            "Saturday": "Closed",
+            "Sunday": "Closed"
+        },
+        "Special Notes": "Located in Grand Reading Room; Rare materials; Archival collections; Historical documents",
+        "URL": "https://uflib.ufl.edu/spec/",
+        "Phone": "(352) 273-2845",
+        "Email": "specialcollections@uflib.ufl.edu",
+        "Tags": "special collections, area studies, archives",
+        "Resources": [
+            "Rare books",
+            "Manuscripts",
+            "University archives",
+            "Florida history collections",
+            "Political papers",
+            "Archival materials",
+            "Research assistance",
+            "Specialized reading rooms",
+            "Reference services",
+            "Digital collections"
+        ],
+        "Study Spaces": [
+            "Special collections reading room",
+            "Supervised research areas",
+            "Grand Reading Room",
+            "Specialized research spaces"
+        ],
+        "Collections": [
+            "Rare books",
+            "University Archives",
+            "Architecture Archives",
+            "P.K. Yonge Library of Florida History",
+            "Manuscripts Collection",
+            "Political Papers",
+            "Judaica Collection",
+            "Baldwin Library of Historical Children's Literature",
+            "Latin American and Caribbean Collection",
+            "Map and Imagery Library"
+        ],
+        "Technology": [
+            "Digital scanners for archival materials",
+            "Microfilm readers",
+            "Digital cameras for document photography",
+            "Digitization equipment",
+            "Digital humanities tools"
+        ],
+        "Services": [
+            "Special collections consultations",
+            "Archival research assistance",
+            "Document delivery services for rare materials",
+            "Digitization services",
+            "Exhibition preparation",
+            "Preservation services",
+            "Research guidance for primary sources",
+            "Reference services"
+        ],
+        "Aliases": [
+            "special",
+            "area studies",
+            "area-studies",
+            "special-collections"
+        ]
+    }
+]
+
+# =============================================================================
+# CAMPUS BUILDINGS DATA
+# =============================================================================
+
+CAMPUS_BUILDINGS_DATA = [
+    {
+        "Building Number": "105",
+        "Building Name": "105 Classroom Building",
+        "Abbreviation": "CLB",
+        "Address": "105 Fletcher Drive, Gainesville, FL 32611",
+        "Description": "Classrooms and academic facilities."
+    },
+    {
+        "Building Number": "",
+        "Building Name": "Academic Research Building",
+        "Abbreviation": "ARB",
+        "Address": "1230 Inner Road, Gainesville, FL 32611",
+        "Description": "Research labs and interdisciplinary studies."
+    },
+    {
+        "Building Number": "",
+        "Building Name": "Alfred A. McKethan Stadium",
+        "Abbreviation": "CBP",
+        "Address": "2500 SW 2nd Ave, Gainesville, FL 32607",
+        "Description": "Former baseball stadium, now Condron Ballpark."
+    },
+    {
+        "Building Number": "",
+        "Building Name": "Anderson Hall",
+        "Abbreviation": "AND",
+        "Address": "100 Fletcher Dr, Gainesville, FL 32611",
+        "Description": "Home to the College of Liberal Arts and Sciences."
+    },
+    {
+        "Building Number": "",
+        "Building Name": "Animal Sciences Building",
+        "Abbreviation": "ANS",
+        "Address": "459 Shealy Drive, Gainesville, FL 32611",
+        "Description": "Houses the Department of Animal Sciences."
+    }
+    # Additional buildings would be added here
+]
+
+# =============================================================================
+# CAMPUS AMENITIES
+# =============================================================================
+
+# Information about non-library amenities on campus
+CAMPUS_AMENITIES = {
+    "coffee_shops": [
+        {
+            "name": "Starbucks at Library West",
+            "location": "First floor of Library West",
+            "hours": {
+                "Monday": "7:30am - 8:00pm",
+                "Tuesday": "7:30am - 8:00pm",
+                "Wednesday": "7:30am - 8:00pm",
+                "Thursday": "7:30am - 8:00pm",
+                "Friday": "7:30am - 5:00pm",
+                "Saturday": "Closed",
+                "Sunday": "1:00pm - 8:00pm"
+            },
+            "description": "Full-service Starbucks offering coffee, tea, and light snacks",
+            "nearest_library": "Library West"
+        },
+        {
+            "name": "Starbucks at Newell Hall",
+            "location": "Newell Hall, ground floor",
+            "hours": {
+                "Monday": "7:30am - 5:00pm",
+                "Tuesday": "7:30am - 5:00pm",
+                "Wednesday": "7:30am - 5:00pm",
+                "Thursday": "7:30am - 5:00pm",
+                "Friday": "7:30am - 3:00pm",
+                "Saturday": "Closed",
+                "Sunday": "Closed"
+            },
+            "description": "Starbucks location near Marston Science Library",
+            "nearest_library": "Marston Science Library"
+        },
+        {
+            "name": "Starbucks at Reitz Union",
+            "location": "Ground floor of the Reitz Union",
+            "hours": {
+                "Monday": "7:00am - 9:00pm",
+                "Tuesday": "7:00am - 9:00pm",
+                "Wednesday": "7:00am - 9:00pm",
+                "Thursday": "7:00am - 9:00pm",
+                "Friday": "7:00am - 8:00pm",
+                "Saturday": "9:00am - 6:00pm",
+                "Sunday": "10:00am - 6:00pm"
+            },
+            "description": "Starbucks location in the student union",
+            "nearest_library": "Marston Science Library"
+        }
+    ],
+    "dining_locations": [
+        {
+            "name": "Panda Express",
+            "location": "Reitz Union Food Court",
+            "hours": {
+                "Monday": "10:30am - 8:00pm",
+                "Tuesday": "10:30am - 8:00pm",
+                "Wednesday": "10:30am - 8:00pm",
+                "Thursday": "10:30am - 8:00pm",
+                "Friday": "10:30am - 8:00pm",
+                "Saturday": "11:00am - 6:00pm",
+                "Sunday": "11:00am - 6:00pm"
+            },
+            "description": "Chinese fast food restaurant",
+            "nearest_library": "Marston Science Library"
+        },
+        {
+            "name": "Subway",
+            "location": "Reitz Union Food Court",
+            "hours": {
+                "Monday": "9:00am - 8:00pm",
+                "Tuesday": "9:00am - 8:00pm",
+                "Wednesday": "9:00am - 8:00pm",
+                "Thursday": "9:00am - 8:00pm",
+                "Friday": "9:00am - 7:00pm",
+                "Saturday": "11:00am - 6:00pm",
+                "Sunday": "11:00am - 6:00pm"
+            },
+            "description": "Sandwich shop",
+            "nearest_library": "Marston Science Library"
+        },
+        {
+            "name": "Chick-fil-A",
+            "location": "Hub Food Court",
+            "hours": {
+                "Monday": "7:30am - 8:00pm",
+                "Tuesday": "7:30am - 8:00pm",
+                "Wednesday": "7:30am - 8:00pm",
+                "Thursday": "7:30am - 8:00pm",
+                "Friday": "7:30am - 5:00pm",
+                "Saturday": "Closed",
+                "Sunday": "Closed"
+            },
+            "description": "Fast food chicken restaurant",
+            "nearest_library": "Library West"
+        },
+        {
+            "name": "Krishna Lunch",
+            "location": "Plaza of the Americas",
+            "hours": {
+                "Monday": "11:00am - 1:30pm",
+                "Tuesday": "11:00am - 1:30pm",
+                "Wednesday": "11:00am - 1:30pm",
+                "Thursday": "11:00am - 1:30pm",
+                "Friday": "11:00am - 1:30pm",
+                "Saturday": "Closed",
+                "Sunday": "Closed"
+            },
+            "description": "Vegetarian lunch service on the Plaza of the Americas",
+            "nearest_library": "Smathers Library"
+        }
+    ],
+    "study_spots": [
+        {
+            "name": "Newell Hall",
+            "location": "Newell Hall, near Marston Science Library",
+            "hours": {
+                "Monday": "24 hours",
+                "Tuesday": "24 hours",
+                "Wednesday": "24 hours",
+                "Thursday": "24 hours",
+                "Friday": "24 hours",
+                "Saturday": "24 hours",
+                "Sunday": "24 hours"
+            },
+            "description": "24/7 study space with various seating options and a Starbucks",
+            "nearest_library": "Marston Science Library"
+        }
+    ]
+}
+
+# =============================================================================
+# SUBJECT MAPPINGS
+# =============================================================================
+
+# Comprehensive subject to library mappings
+SUBJECT_MAPPINGS = {
+    # STEM subjects → Marston
+    "science": "Marston Science Library",
+    "biology": "Marston Science Library",
+    "chemistry": "Marston Science Library",
+    "physics": "Marston Science Library",
+    "engineering": "Marston Science Library",
+    "computer": "Marston Science Library",
+    "programming": "Marston Science Library",
+    "math": "Marston Science Library",
+    "mathematics": "Marston Science Library",
+    "statistics": "Marston Science Library",
+    "data science": "Marston Science Library",
+    "technology": "Marston Science Library",
+    "astronomy": "Marston Science Library",
+    "geology": "Marston Science Library",
+    "environmental": "Marston Science Library",
+    "computing": "Marston Science Library",
+    "stem": "Marston Science Library",
+    "robotics": "Marston Science Library",
+    "mechanical": "Marston Science Library",
+    "electrical": "Marston Science Library",
+    "civil": "Marston Science Library",
+    "chemical": "Marston Science Library",
+    "aerospace": "Marston Science Library",
+    "coding": "Marston Science Library",
+    "algorithm": "Marston Science Library",
+    "machine learning": "Marston Science Library",
+    "artificial intelligence": "Marston Science Library",
+    "calculus": "Marston Science Library",
+    "algebra": "Marston Science Library",
+    "geometry": "Marston Science Library",
+    
+    # Humanities/Business → Library West
+    "humanities": "Library West",
+    "literature": "Library West",
+    "philosophy": "Library West",
+    "religion": "Library West",
+    "business": "Library West",
+    "economics": "Library West",
+    "finance": "Library West",
+    "management": "Library West",
+    "accounting": "Library West",
+    "marketing": "Library West",
+    "sociology": "Library West",
+    "psychology": "Library West",
+    "anthropology": "Library West",
+    "political": "Library West",
+    "international": "Library West",
+    "social sciences": "Library West",
+    "communication": "Library West",
+    "journalism": "Library West",
+    "english": "Library West",
+    "linguistics": "Library West",
+    "writing": "Library West",
+    "poetry": "Library West",
+    "novel": "Library West",
+    "fiction": "Library West",
+    "nonfiction": "Library West",
+    "history": "Library West",
+    "geography": "Library West",
+    "ethics": "Library West",
+    "languages": "Library West",
+    "entrepreneurship": "Library West",
+    "human resources": "Library West",
+    "operations": "Library West",
+    "supply chain": "Library West",
+    
+    # Florida History/Special Collections → Smathers
+    "florida history": "Smathers Library",
+    "florida": "Smathers Library",
+    "archives": "Smathers Library",
+    "rare books": "Smathers Library",
+    "manuscripts": "Smathers Library",
+    "special collections": "Smathers Library",
+    "historical": "Smathers Library",
+    "archival": "Smathers Library",
+    "preservation": "Smathers Library",
+    "primary sources": "Smathers Library",
+    "latin american": "Smathers Library",
+    "caribbean": "Smathers Library",
+    "judaica": "Smathers Library",
+    "maps": "Smathers Library",
+    "aerial photographs": "Smathers Library",
+    "university archives": "Smathers Library",
+    "political papers": "Smathers Library",
+    "children's literature": "Smathers Library",
+    "baldwin": "Smathers Library",
+    
+    # Medical/Health → Health Science Center Library
+    "medicine": "Health Science Center Library",
+    "medical": "Health Science Center Library",
+    "health": "Health Science Center Library",
+    "nursing": "Health Science Center Library",
+    "pharmacy": "Health Science Center Library",
+    "dental": "Health Science Center Library",
+    "dentistry": "Health Science Center Library",
+    "veterinary": "Health Science Center Library",
+    "clinical": "Health Science Center Library",
+    "anatomy": "Health Science Center Library",
+    "physiology": "Health Science Center Library",
+    "public health": "Health Science Center Library",
+    "biomedical": "Health Science Center Library",
+    "healthcare": "Health Science Center Library",
+    "disease": "Health Science Center Library",
+    "patient care": "Health Science Center Library",
+    "diagnosis": "Health Science Center Library",
+    "treatment": "Health Science Center Library",
+    "therapy": "Health Science Center Library",
+    "surgery": "Health Science Center Library",
+    "epidemiology": "Health Science Center Library",
+    "nutrition": "Health Science Center Library",
+    "psychiatry": "Health Science Center Library",
+    "radiology": "Health Science Center Library",
+    "pathology": "Health Science Center Library",
+    
+    # Art/Architecture → Architecture & Fine Arts Library
+    "art": "Architecture & Fine Arts Library",
+    "architecture": "Architecture & Fine Arts Library",
+    "design": "Architecture & Fine Arts Library",
+    "urban planning": "Architecture & Fine Arts Library",
+    "music": "Architecture & Fine Arts Library",
+    "painting": "Architecture & Fine Arts Library",
+    "sculpture": "Architecture & Fine Arts Library",
+    "theater": "Architecture & Fine Arts Library",
+    "dance": "Architecture & Fine Arts Library",
+    "photography": "Architecture & Fine Arts Library",
+    "drawing": "Architecture & Fine Arts Library",
+    "digital arts": "Architecture & Fine Arts Library",
+    "graphic design": "Architecture & Fine Arts Library",
+    "interior design": "Architecture & Fine Arts Library",
+    "landscape": "Architecture & Fine Arts Library",
+    "building": "Architecture & Fine Arts Library",
+    "construction": "Architecture & Fine Arts Library",
+    "urban design": "Architecture & Fine Arts Library",
+    "art history": "Architecture & Fine Arts Library",
+    "ceramics": "Architecture & Fine Arts Library",
+    "printmaking": "Architecture & Fine Arts Library",
+    "film": "Architecture & Fine Arts Library",
+    "visual arts": "Architecture & Fine Arts Library",
+    "museum": "Architecture & Fine Arts Library",
+    "exhibition": "Architecture & Fine Arts Library",
+    
+    # Education → Education Library
+    "education": "Education Library",
+    "teaching": "Education Library",
+    "learning": "Education Library",
+    "curriculum": "Education Library",
+    "pedagogy": "Education Library",
+    "educational": "Education Library",
+    "school": "Education Library",
+    "classroom": "Education Library",
+    "instruction": "Education Library",
+    "k-12": "Education Library",
+    "elementary": "Education Library",
+    "secondary": "Education Library",
+    "child development": "Education Library",
+    "literacy": "Education Library",
+    "educational psychology": "Education Library",
+    "special education": "Education Library",
+    "counseling": "Education Library",
+    "educational technology": "Education Library",
+    "educational leadership": "Education Library",
+    "educational policy": "Education Library",
+    "teacher": "Education Library",
+    "student": "Education Library",
+    "lesson plan": "Education Library",
+    "assessment": "Education Library",
+    "evaluation": "Education Library",
+    
+    # Legal → Legal Information Center
+    "law": "Legal Information Center",
+    "legal": "Legal Information Center",
+    "legislation": "Legal Information Center",
+    "justice": "Legal Information Center",
+    "court": "Legal Information Center",
+    "criminal": "Legal Information Center",
+    "constitutional": "Legal Information Center",
+    "judicial": "Legal Information Center",
+    "attorney": "Legal Information Center",
+    "statutes": "Legal Information Center",
+    "regulations": "Legal Information Center",
+    "case law": "Legal Information Center",
+    "civil law": "Legal Information Center",
+    "international law": "Legal Information Center",
+    "business law": "Legal Information Center",
+    "tort": "Legal Information Center",
+    "contract": "Legal Information Center",
+    "property law": "Legal Information Center",
+    "intellectual property": "Legal Information Center",
+    "patent": "Legal Information Center",
+    "trademark": "Legal Information Center",
+    "copyright": "Legal Information Center",
+    "legal research": "Legal Information Center",
+    "legal writing": "Legal Information Center",
+    "tax law": "Legal Information Center"
+}
+
+# =============================================================================
+# ACADEMIC CALENDAR DATA
+# =============================================================================
+
+ACADEMIC_CALENDAR = {
+    'terms': {
+        'Spring 2025': {'start': '2025-01-06', 'end': '2025-05-02'},
+        'Summer A 2025': {'start': '2025-05-12', 'end': '2025-06-20'},
+        'Summer B 2025': {'start': '2025-06-30', 'end': '2025-08-08'},
+        'Fall 2025': {'start': '2025-08-25', 'end': '2025-12-12'}
+    },
+    'events': {
+        'Spring 2025 Final Exams': {'start': '2025-04-26', 'end': '2025-05-02'},
+        'Spring Break 2025': {'start': '2025-03-08', 'end': '2025-03-15'},
+        'Summer Break 2025': {'start': '2025-05-03', 'end': '2025-05-11'},
+        'Fall 2025 Final Exams': {'start': '2025-12-06', 'end': '2025-12-12'}
+    },
+    'library_schedule_exceptions': {
+        '2025-01-01': {'all': 'CLOSED - New Year\'s Day'},
+        '2025-01-20': {'all': 'CLOSED - Martin Luther King Jr. Day'},
+        '2025-03-08': {'all': 'CLOSED - Spring Break Begins'},
+        '2025-05-03': {'all': 'CLOSED - Semester Break'},
+        '2025-05-26': {'all': 'CLOSED - Memorial Day'},
+        '2025-07-04': {'all': 'CLOSED - Independence Day'},
+        '2025-09-01': {'all': 'CLOSED - Labor Day'},
+        '2025-11-11': {'all': 'CLOSED - Veterans Day'},
+        '2025-11-27': {'all': 'CLOSED - Thanksgiving Day'},
+        '2025-11-28': {'all': 'CLOSED - Day after Thanksgiving'},
+        '2025-12-13': {'all': 'CLOSED - Semester Break'},
+        '2025-12-24': {'all': 'CLOSED - Christmas Eve'},
+        '2025-12-25': {'all': 'CLOSED - Christmas Day'},
+        '2025-12-31': {'all': 'CLOSED - New Year\'s Eve'}
+    },
+    'extended_hours': {
+        'Spring 2025 Finals': {
+            'start': '2025-04-19',
+            'end': '2025-05-02',
+            'libraries': {
+                'Library West': '24 hours',
+                'Marston Science Library': '24 hours'
+            }
+        },
+        'Fall 2025 Finals': {
+            'start': '2025-11-29',
+            'end': '2025-12-12',
+            'libraries': {
+                'Library West': '24 hours',
+                'Marston Science Library': '24 hours'
+            }
+        }
+    }
+}
 
 # =============================================================================
 # UTILITY CLASSES
@@ -145,13 +1203,11 @@ class ConversationState:
         self.turns = []
         self.current_library = None
         self.current_building = None
-        self.current_residence_hall = None  # Added for housing
         self.current_topic = None
         self.awaiting_followup = False
         self.last_intent = None
         self.mentioned_libraries = set()
         self.mentioned_buildings = set()
-        self.mentioned_residence_halls = set()  # Added for housing
         self.discussed_topics = set()
         self.query_type = None
         
@@ -212,16 +1268,6 @@ class ConversationState:
         self.current_building = building
         if building:
             self.mentioned_buildings.add(building.get("Building Name", ""))
-            
-    def get_active_residence_hall(self):
-        """Get the currently active residence hall in conversation"""
-        return self.current_residence_hall
-        
-    def set_active_residence_hall(self, residence_hall):
-        """Set the active residence hall for the conversation"""
-        self.current_residence_hall = residence_hall
-        if residence_hall:
-            self.mentioned_residence_halls.add(residence_hall.get("name", ""))
     
     def should_maintain_context(self, query, previous_context):
         """Determine if previous context should be maintained"""
@@ -256,13 +1302,6 @@ class ConversationState:
                 if abbr and abbr in query_lower and abbr != previous_context.get('Abbreviation', '').lower():
                     return False
                             
-        elif isinstance(previous_context, dict) and "name" in previous_context:
-            # We're dealing with a residence hall
-            for hall in HOUSING_DATA:
-                hall_name = hall.get('name', '').lower()
-                if hall_name in query_lower and hall_name != previous_context.get('name', '').lower():
-                    return False
-                            
         # No new entity mentioned, probably continue with previous context
         return True
             
@@ -276,10 +1315,8 @@ class ConversationState:
             "turn_count": len(self.turns),
             "active_library": self.current_library.get("Library Name", "None") if self.current_library else "None",
             "active_building": self.current_building.get("Building Name", "None") if self.current_building else "None",
-            "active_residence_hall": self.current_residence_hall.get("name", "None") if self.current_residence_hall else "None",
             "mentioned_libraries": list(self.mentioned_libraries),
             "mentioned_buildings": list(self.mentioned_buildings),
-            "mentioned_residence_halls": list(self.mentioned_residence_halls),
             "discussed_topics": list(self.discussed_topics),
             "awaiting_followup": self.awaiting_followup,
             "last_intent": self.last_intent,
@@ -299,7 +1336,6 @@ class MetricsTracker:
         self.avg_confidence = 0
         self.library_matches = defaultdict(int)
         self.building_matches = defaultdict(int)
-        self.residence_hall_matches = defaultdict(int)  # Added for housing
         self.query_categories = defaultdict(int)
         self.intents = defaultdict(int)
         self.hourly_stats = defaultdict(int)
@@ -329,11 +1365,6 @@ class MetricsTracker:
         if metrics and 'building' in metrics:
             building_name = metrics['building'].get('Building Name', '') if metrics['building'] else 'None'
             self.building_matches[building_name] += 1
-            
-        # Record residence hall matches if available
-        if metrics and 'residence_hall' in metrics:
-            hall_name = metrics['residence_hall'].get('name', '') if metrics['residence_hall'] else 'None'
-            self.residence_hall_matches[hall_name] += 1
             
         # Record query categories if available
         if metrics and 'categories' in metrics:
@@ -365,7 +1396,6 @@ class MetricsTracker:
             "avg_confidence": self.avg_confidence,
             "top_libraries": dict(sorted(self.library_matches.items(), key=lambda x: x[1], reverse=True)[:5]),
             "top_buildings": dict(sorted(self.building_matches.items(), key=lambda x: x[1], reverse=True)[:5]),
-            "top_residence_halls": dict(sorted(self.residence_hall_matches.items(), key=lambda x: x[1], reverse=True)[:5]),
             "top_categories": dict(sorted(self.query_categories.items(), key=lambda x: x[1], reverse=True)[:5]),
             "top_intents": dict(sorted(self.intents.items(), key=lambda x: x[1], reverse=True)[:5]),
             "peak_hours": dict(sorted(self.hourly_stats.items(), key=lambda x: x[1], reverse=True)[:3])
@@ -384,7 +1414,6 @@ class MetricsTracker:
                     "avg_confidence": self.avg_confidence,
                     "library_matches": dict(self.library_matches),
                     "building_matches": dict(self.building_matches),
-                    "residence_hall_matches": dict(self.residence_hall_matches),
                     "query_categories": dict(self.query_categories),
                     "intents": dict(self.intents),
                     "hourly_stats": dict(self.hourly_stats)
@@ -427,85 +1456,6 @@ def load_campus_buildings_data(csv_path="scrapedData/campusBuildings/uf_building
         logger.info("⚠️ Using hardcoded campus buildings data as fallback")
         return CAMPUS_BUILDINGS_DATA
 
-def load_housing_data(hall_info_path="scrapedData/housing/hallInfo.csv", 
-                    rates_path="scrapedData/housing/residenceHallRates.csv",
-                    links_path="scrapedData/housing/housingLinks.csv"):
-    """Load housing data from CSV files"""
-    # Initialize data structures
-    housing_data = []
-    rates_data = []
-    links_data = []
-    
-    # Try to load hall info
-    try:
-        with open(hall_info_path, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                # Convert string lists to actual lists
-                features = row.get('features_str', '').split(', ') if row.get('features_str') else []
-                room_types = row.get('room_types_str', '').split(', ') if row.get('room_types_str') else []
-                nearby = row.get('nearby_locations_str', '').split(', ') if row.get('nearby_locations_str') else []
-                
-                hall = {
-                    "name": row.get('name', ''),
-                    "hall_type": row.get('hall_type', ''),
-                    "description": row.get('description', ''),
-                    "location": row.get('location', ''),
-                    "phone": row.get('phone', ''),
-                    "features": features,
-                    "room_types": room_types,
-                    "nearby_locations": nearby,
-                    "url": row.get('url', ''),
-                    "image_url": row.get('image_url', ''),
-                    "rental_rate_url": row.get('rental_rate_url', '')
-                }
-                housing_data.append(hall)
-        logger.info(f"✅ Successfully loaded {len(housing_data)} residence halls from CSV")
-    except Exception as e:
-        logger.error(f"Error loading hall info data: {e}")
-        # Use embedded data as fallback
-        housing_data = HOUSING_DATA
-        logger.info("⚠️ Using hardcoded housing data as fallback")
-    
-    # Try to load rental rates
-    try:
-        with open(rates_path, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                rate = {
-                    "residence_hall": row.get('residence_hall', ''),
-                    "room_type": row.get('room_type', ''),
-                    "fall_spring": int(row.get('fall_spring', 0)),
-                    "summer_a_b": int(row.get('summer_a_b', 0)),
-                    "summer_c": int(row.get('summer_c', 0))
-                }
-                rates_data.append(rate)
-        logger.info(f"✅ Successfully loaded {len(rates_data)} residence hall rates from CSV")
-    except Exception as e:
-        logger.error(f"Error loading rates data: {e}")
-        # Use embedded data as fallback
-        rates_data = RESIDENCE_HALL_RATES
-        logger.info("⚠️ Using hardcoded rates data as fallback")
-    
-    # Try to load housing links
-    try:
-        with open(links_path, 'r', encoding='utf-8') as f:
-            reader = csv.DictReader(f)
-            for row in reader:
-                link = {
-                    "description": row.get('description', ''),
-                    "link": row.get('link', '')
-                }
-                links_data.append(link)
-        logger.info(f"✅ Successfully loaded {len(links_data)} housing links from CSV")
-    except Exception as e:
-        logger.error(f"Error loading housing links data: {e}")
-        # Use embedded data as fallback
-        links_data = HOUSING_LINKS
-        logger.info("⚠️ Using hardcoded housing links data as fallback")
-    
-    return housing_data, rates_data, links_data
-
 # =============================================================================
 # ENHANCED KNOWLEDGE RETRIEVAL
 # =============================================================================
@@ -532,176 +1482,54 @@ class EnhancedKnowledgeRetrieval:
         # Cache for query results
         self.query_cache = LRUCache(capacity=100)
         
-    # Various methods for knowledge retrieval...
-
-# =============================================================================
-# HOUSING KNOWLEDGE RETRIEVAL
-# =============================================================================
-
-class HousingKnowledgeRetrieval:
-    """Knowledge retrieval for residence halls and housing information"""
-    
-    def __init__(self, housing_data, rates_data, links_data, embedding_model=None):
-        self.housing_data = housing_data
-        self.rates_data = rates_data
-        self.links_data = links_data
-        self.embedding_model = embedding_model
-        
-        # Create lookup dictionaries
-        self.halls_by_name = {hall.get('name', ''): hall for hall in housing_data}
-        self.rates_by_hall = self._index_rates_by_hall()
-        self.links_by_desc = {link.get('description', ''): link.get('link', '') for link in links_data}
-        
-        # Build searchable indexes
-        self.keyword_index = self._build_keyword_index()
-        self.hall_types_index = self._build_hall_types_index()
-        self.features_index = self._build_features_index()
-        self.room_types_index = self._build_room_types_index()
-        
-        # Vector index for semantic search
-        self.vector_index = self._build_vector_index() if embedding_model else None
-        
-        # Cache for query results
-        self.query_cache = LRUCache(capacity=100)
-        
-    def _index_rates_by_hall(self):
-        """Create an index of rates by residence hall"""
-        rates_index = defaultdict(list)
-        for rate in self.rates_data:
-            hall_name = rate.get('residence_hall', '')
-            rates_index[hall_name].append(rate)
-        return rates_index
-    
     def _build_keyword_index(self):
-        """Build keyword index for residence hall search"""
+        """Build inverted index for keyword search"""
         index = defaultdict(list)
-        for i, hall in enumerate(self.housing_data):
+        for i, library in enumerate(self.libraries_data):
             # Extract keywords from all fields
             keywords = []
             
-            # Add hall name
-            name = hall.get('name', '')
-            if name:
-                keywords.append(name.lower())
-                keywords.extend(name.lower().split())
+            # Add library name and aliases
+            if 'Library Name' in library:
+                keywords.append(library['Library Name'].lower())
+            if 'Aliases' in library:
+                keywords.extend([alias.lower() for alias in library['Aliases']])
             
-            # Add hall type
-            hall_type = hall.get('hall_type', '')
-            if hall_type:
-                keywords.append(hall_type.lower())
-                keywords.extend(hall_type.lower().split())
-            
-            # Add from description
-            desc = hall.get('description', '')
-            if desc:
-                # Extract meaningful keywords
-                desc_words = desc.lower().split()
-                for word in desc_words:
-                    if len(word) > 3 and word not in ['with', 'and', 'the', 'for', 'that', 'this', 'from', 'each']:
-                        keywords.append(word)
-            
-            # Add features
-            features = hall.get('features', [])
-            for feature in features:
-                keywords.extend(feature.lower().split())
-            
-            # Add room types
-            room_types = hall.get('room_types', [])
-            for room_type in room_types:
-                keywords.extend(room_type.lower().split())
-            
+            # Add tags
+            if 'Tags' in library:
+                keywords.extend(library['Tags'].lower().split(', '))
+                
+            # Add key resources
+            if 'Resources' in library:
+                for resource in library['Resources']:
+                    keywords.extend(resource.lower().split())
+                    
             # Add all keywords to index
             for keyword in set(keywords):
-                if len(keyword) > 2:  # Only index words of reasonable length
-                    index[keyword].append(i)
+                index[keyword].append(i)
+                
+                # Add word parts for better matching
+                parts = keyword.split()
+                if len(parts) > 1:
+                    for part in parts:
+                        if len(part) > 3:  # Only add meaningful parts
+                            index[part].append(i)
                 
         return index
-    
-    def _build_hall_types_index(self):
-        """Build index for hall types"""
-        index = defaultdict(list)
-        for i, hall in enumerate(self.housing_data):
-            hall_type = hall.get('hall_type', '').lower()
-            if hall_type:
-                index[hall_type].append(i)
-                # Also add common variations
-                if 'apartment' in hall_type:
-                    index['apartment'].append(i)
-                    index['apt'].append(i)
-                if 'traditional' in hall_type:
-                    index['traditional'].append(i)
-                    index['trad'].append(i)
-                if 'suite' in hall_type:
-                    index['suite'].append(i)
-        return index
-    
-    def _build_features_index(self):
-        """Build index for residence hall features"""
-        index = defaultdict(list)
-        for i, hall in enumerate(self.housing_data):
-            features = hall.get('features', [])
-            for feature in features:
-                feature_lower = feature.lower()
-                index[feature_lower].append(i)
-                
-                # Add common variations for features
-                if 'wifi' in feature_lower or 'internet' in feature_lower:
-                    index['wifi'].append(i)
-                    index['internet'].append(i)
-                    index['connection'].append(i)
-                if 'laundry' in feature_lower:
-                    index['laundry'].append(i)
-                    index['washing'].append(i)
-                if 'elevator' in feature_lower:
-                    index['elevator'].append(i)
-                    index['lift'].append(i)
-                if 'game' in feature_lower:
-                    index['game'].append(i)
-                    index['recreation'].append(i)
-                if 'study' in feature_lower:
-                    index['study'].append(i)
-                    index['quiet'].append(i)
-                    
-        return index
-    
-    def _build_room_types_index(self):
-        """Build index for room types"""
-        index = defaultdict(list)
-        for i, hall in enumerate(self.housing_data):
-            room_types = hall.get('room_types', [])
-            for room_type in room_types:
-                room_type_lower = room_type.lower()
-                index[room_type_lower].append(i)
-                
-                # Add common variations
-                if 'single' in room_type_lower:
-                    index['single'].append(i)
-                    index['individual'].append(i)
-                if 'double' in room_type_lower:
-                    index['double'].append(i)
-                    index['shared'].append(i)
-                    index['roommate'].append(i)
-                if 'triple' in room_type_lower:
-                    index['triple'].append(i)
-                    index['three'].append(i)
-                if 'apartment' in room_type_lower:
-                    index['apartment'].append(i)
-                    index['apt'].append(i)
-                    
-        return index
-    
+        
     def _build_vector_index(self):
-        """Build vector index for semantic search"""
+        """Build vector index for semantic search with proper error handling"""
         if not self.embedding_model:
             return None
             
         try:
             # Initialize vector storage
+            embeddings = []
             descriptions = []
             
-            # Create descriptions for each hall
-            for hall in self.housing_data:
-                desc = self._create_hall_description(hall)
+            # First create all descriptions
+            for library in self.libraries_data:
+                desc = self._create_library_description(library)
                 descriptions.append(desc)
             
             # Generate embeddings
@@ -714,122 +1542,258 @@ class HousingKnowledgeRetrieval:
                 
                 # Initialize with proper parameters
                 index.init_index(
-                    max_elements=len(self.housing_data),
+                    max_elements=len(self.libraries_data),
                     ef_construction=200,
                     M=16
                 )
                 
-                # Add residence hall embeddings
-                index.add_items(embeddings, list(range(len(self.housing_data))))
+                # Add library embeddings with proper indexing
+                index.add_items(embeddings, list(range(len(self.libraries_data))))
                 
                 # Set search parameters
                 index.set_ef(50)
                 
                 return index
             else:
-                # Fallback to dictionary
+                # Fallback to dictionary for simpler implementations
                 embeddings_dict = {}
                 for i in range(len(embeddings)):
                     embeddings_dict[i] = embeddings[i]
                 return embeddings_dict
                 
         except Exception as e:
-            logger.error(f"Error building housing vector index: {e}")
+            logger.error(f"Error building vector index: {e}")
+            # Return empty dict as fallback to avoid errors
             return {}
     
-    def _create_hall_description(self, hall):
-        """Create a detailed description of a residence hall for semantic matching"""
-        name = hall.get('name', '')
-        hall_type = hall.get('hall_type', '')
-        desc = hall.get('description', '')
-        location = hall.get('location', '')
+    def _create_library_description(self, library):
+        """Create a detailed description of a library for semantic matching"""
+        name = library.get('Library Name', '')
+        location = library.get('Location', '')
+        tags = library.get('Tags', '')
+        notes = library.get('Special Notes', '')
         
         # Create a detailed description
-        description = f"{name} is a {hall_type} residence hall at the University of Florida. "
-        
-        if desc:
-            # Truncate if too long
-            if len(desc) > 200:
-                description += f"{desc[:200]}... "
-            else:
-                description += f"{desc} "
-        
+        description = f"{name} is a library at the University of Florida. "
         description += f"It is located at {location}. "
         
-        # Add features
-        features = hall.get('features', [])
-        if features:
-            feature_text = ', '.join(features[:5])  # Limit to top 5
-            description += f"Features include: {feature_text}. "
+        if tags:
+            description += f"It specializes in {tags}. "
+            
+        if notes:
+            description += f"It offers {notes}. "
         
-        # Add room types
-        room_types = hall.get('room_types', [])
-        if room_types:
-            room_type_text = ', '.join(room_types[:5])  # Limit to top 5
-            description += f"Room types available: {room_type_text}. "
+        # Add resources and collections if available
+        if 'Resources' in library and library['Resources']:
+            resources = ', '.join(library['Resources'][:5])  # Limit to top 5
+            description += f"It provides these resources: {resources}. "
+            
+        if 'Collections' in library and library['Collections']:
+            collections = ', '.join(library['Collections'][:5])  # Limit to top 5
+            description += f"Its collections include: {collections}. "
+        
+        # Add hours information
+        if 'Hours' in library and library['Hours']:
+            description += f"It is typically open from morning until late evening on weekdays. "
             
         return description
-    
-    def retrieve_residence_hall(self, query):
-        """Retrieve most relevant residence hall for a query"""
+        
+    def _build_library_descriptions(self):
+        """Build detailed descriptions for all libraries"""
+        descriptions = {}
+        for library in self.libraries_data:
+            name = library.get('Library Name', '')
+            if name:
+                descriptions[name] = self._create_library_description(library)
+        return descriptions
+        
+    def _build_aliases(self):
+        """Build a comprehensive alias dictionary for library names"""
+        aliases = {}
+        
+        # Add aliases from library data
+        for library in self.libraries_data:
+            name = library.get('Library Name', '')
+            if 'Aliases' in library and library['Aliases']:
+                for alias in library['Aliases']:
+                    aliases[alias.lower()] = name
+        
+        # Add additional common aliases not covered in the data
+        additional_aliases = {
+            # Additional Library West variations
+            "libw": "Library West",
+            "main library": "Library West",
+            "humanities library": "Library West",
+            "business library": "Library West",
+            
+            # Additional Marston Science Library variations
+            "engineering library": "Marston Science Library",
+            "tech library": "Marston Science Library",
+            "stem library": "Marston Science Library",
+            
+            # Additional Smathers Library variations
+            "library 1": "Smathers Library",
+            "rare books": "Smathers Library",
+            "archives library": "Smathers Library",
+            
+            # Additional Education Library variations
+            "norman": "Education Library",
+            "teaching library": "Education Library",
+            
+            # Additional Legal Information Center variations
+            "legal library": "Legal Information Center",
+            "law college library": "Legal Information Center",
+            "levin library": "Legal Information Center",
+        }
+        
+        # Update aliases with additional ones
+        aliases.update(additional_aliases)
+        
+        return aliases
+        
+    def retrieve_relevant_library(self, query, query_analysis=None):
+        """Retrieve the most relevant library for a query using multiple methods"""
         # Preprocess query
-        query = query.lower().strip()
+        query = self._preprocess_query(query)
         
         # Check cache first
-        cache_key = f"hall_query:{query}"
+        cache_key = f"retrieve_library:{query}"
         if cache_key in self.query_cache:
             return self.query_cache[cache_key]
-        
-        # Try direct name match first (highest confidence)
-        for name, hall in self.halls_by_name.items():
-            if query == name.lower() or query in name.lower():
-                self.query_cache[cache_key] = (hall, 0.95)
-                return hall, 0.95
-        
+            
+        # Try multiple methods and combine results
         results = []
         
-        # Try semantic search if available
+        # 1. Check for direct library name matches first (most reliable)
+        direct_match, direct_confidence = self._find_library_by_name(query)
+        if direct_match:
+            results.append({"library": direct_match, "confidence": direct_confidence, "method": "direct_match"})
+        
+        # 2. Try semantic similarity if available
         if self.embedding_model and self.vector_index:
-            semantic_match, semantic_confidence = self._find_hall_by_semantic_similarity(query)
+            semantic_match, semantic_confidence = self._find_library_by_semantic_similarity(query)
             if semantic_match:
-                results.append({"hall": semantic_match, "confidence": semantic_confidence, "method": "semantic"})
+                results.append({"library": semantic_match, "confidence": semantic_confidence, "method": "semantic"})
         
-        # Try keyword search
-        keyword_match, keyword_confidence = self._find_hall_by_keywords(query)
+        # 3. Try subject matching for topic-related queries
+        subject_match, subject_confidence = self._find_library_by_subject(query)
+        if subject_match:
+            results.append({"library": subject_match, "confidence": subject_confidence, "method": "subject"})
+            
+        # 4. Try keyword-based matching
+        keyword_match, keyword_confidence = self._find_library_by_keywords(query)
         if keyword_match:
-            results.append({"hall": keyword_match, "confidence": keyword_confidence, "method": "keyword"})
+            results.append({"library": keyword_match, "confidence": keyword_confidence, "method": "keyword"})
         
-        # Try hall type search
-        type_match, type_confidence = self._find_hall_by_type(query)
-        if type_match:
-            results.append({"hall": type_match, "confidence": type_confidence, "method": "hall_type"})
-        
-        # Try features search
-        feature_match, feature_confidence = self._find_hall_by_features(query)
-        if feature_match:
-            results.append({"hall": feature_match, "confidence": feature_confidence, "method": "features"})
-        
-        # Try room type search
-        room_match, room_confidence = self._find_hall_by_room_type(query)
-        if room_match:
-            results.append({"hall": room_match, "confidence": room_confidence, "method": "room_type"})
-        
+        # 5. Consider query analysis if provided
+        if query_analysis:
+            if query_analysis.get('mentioned_libraries'):
+                mentioned_lib = query_analysis['mentioned_libraries'][0]
+                if mentioned_lib in self.library_by_name:
+                    results.append({
+                        "library": self.library_by_name[mentioned_lib], 
+                        "confidence": 0.9,
+                        "method": "query_analysis"
+                    })
+                    
         # No matches found
+        if not results:
+            # Try a more aggressive matching as last resort
+            last_resort, last_resort_confidence = self._find_library_by_aggressive_matching(query)
+            if last_resort:
+                results.append({"library": last_resort, "confidence": last_resort_confidence, "method": "aggressive"})
+        
+        # If still no results, return None
         if not results:
             self.query_cache[cache_key] = (None, 0.0)
             return None, 0.0
         
-        # Return best match
+        # Return the match with highest confidence
         best_result = max(results, key=lambda x: x["confidence"])
-        best_match = (best_result["hall"], best_result["confidence"])
+        best_match = (best_result["library"], best_result["confidence"])
         
         # Add to cache
         self.query_cache[cache_key] = best_match
         
         return best_match
     
-    def _find_hall_by_semantic_similarity(self, query):
-        """Find residence hall by semantic similarity"""
+    def _preprocess_query(self, query):
+        """Preprocess query for better library matching"""
+        # Normalize library names
+        query = re.sub(r"\blib\s*west\b", "Library West", query, flags=re.IGNORECASE)
+        query = re.sub(r"\bmarston('s)?\b", "Marston Science Library", query, flags=re.IGNORECASE)
+        query = re.sub(r"\bsmathers\b", "Smathers Library", query, flags=re.IGNORECASE)
+        
+        return query
+    
+    def _find_library_by_name(self, query):
+        """Find a library by name using enhanced fuzzy matching"""
+        if not query:
+            return None, 0.0
+        
+        # Skip certain phrases that shouldn't match libraries
+        skip_phrases = [
+            "ai", "artificial intelligence", "bot", "chatbot", "assistant",
+            "all libraries", "which libraries", "what libraries", "any libraries",
+            "campus", "university", "uf", "florida", "university of florida"
+        ]
+        
+        # Check if query is just one of the skip phrases
+        query_lower = query.lower().strip()
+        if query_lower in skip_phrases:
+            return None, 0.0
+            
+        # First check for direct match in library names
+        for name in self.library_names:
+            if query_lower == name.lower():
+                return self.library_by_name[name], 0.95
+        
+        # Then check if the entire query is an alias
+        if query_lower in self.library_aliases:
+            return self.library_by_name[self.library_aliases[query_lower]], 0.95
+        
+        # Extract potential library mentions from the query
+        words = query_lower.split()
+        
+        # Check for consecutive word combinations that might refer to a library
+        for i in range(len(words)):
+            for j in range(i + 1, min(i + 4, len(words) + 1)):  # Look at up to 3-word combinations
+                phrase = " ".join(words[i:j])
+                
+                # Check if this phrase matches an alias
+                if phrase in self.library_aliases:
+                    return self.library_by_name[self.library_aliases[phrase]], 0.90
+                
+                # Check for partial matches with library names
+                for name in self.library_names:
+                    name_lower = name.lower()
+                    if phrase in name_lower or name_lower in phrase:
+                        if len(phrase) >= 3:  # Only if it's a significant match
+                            return self.library_by_name[name], 0.85
+        
+        # Try fuzzy matching for misspellings
+        best_match = None
+        best_score = 0
+        
+        for name in self.library_names:
+            # Calculate similarity scores
+            token_set_ratio = fuzz.token_set_ratio(query_lower, name.lower())
+            partial_ratio = fuzz.partial_ratio(query_lower, name.lower())
+            
+            # Combined score (weight can be adjusted)
+            score = (token_set_ratio * 0.7) + (partial_ratio * 0.3)
+            
+            if score > best_score and score > 75:  # Threshold can be adjusted
+                best_score = score
+                best_match = name
+        
+        if best_match:
+            return self.library_by_name[best_match], 0.80
+        
+        return None, 0.0
+    
+    def _find_library_by_semantic_similarity(self, query):
+        """Find the library that best matches the query semantically"""
         if not self.embedding_model or not self.vector_index or not query:
             return None, 0.0
         
@@ -837,8 +1801,9 @@ class HousingKnowledgeRetrieval:
             # Get query embedding
             query_embedding = self.embedding_model.encode(query)
             
+            # Use HNSW approximate nearest neighbor search if available
             if isinstance(self.vector_index, dict):
-                # Fallback to manual search
+                # Fallback to manual search with cosine similarity
                 best_idx = -1
                 best_sim = -1
                 
@@ -848,292 +1813,309 @@ class HousingKnowledgeRetrieval:
                         best_sim = sim
                         best_idx = idx
                 
-                if best_sim < 0.4 or best_idx < 0:
+                # Only consider it a match if similarity is above threshold
+                if best_sim < 0.4 or best_idx < 0:  # This threshold can be tuned
                     return None, 0.0
                     
-                return self.housing_data[best_idx], min(best_sim, 0.85)
+                library_name = self.library_names[best_idx]
+                return self.library_by_name[library_name], min(best_sim, 0.85)
             elif hasattr(self.vector_index, 'knn_query'):
                 # Use HNSW index
                 labels, distances = self.vector_index.knn_query(query_embedding.reshape(1, -1), k=1)
                 best_idx = labels[0][0]
-                similarity = 1.0 - distances[0][0]
+                similarity = 1.0 - distances[0][0]  # Convert distance to similarity
                 
-                if similarity < 0.4:
+                # Only consider it a match if similarity is above threshold
+                if similarity < 0.4:  # This threshold can be tuned
                     return None, 0.0
                     
-                return self.housing_data[best_idx], min(similarity, 0.85)
+                library_name = self.library_names[best_idx]
+                return self.library_by_name[library_name], min(similarity, 0.85)
             else:
+                # No suitable vector index
                 return None, 0.0
                 
         except Exception as e:
-            logger.error(f"Error computing housing semantic similarity: {e}")
+            logger.error(f"Error computing semantic similarity: {e}")
             return None, 0.0
-    
-    def _find_hall_by_keywords(self, query):
-        """Find residence hall based on keywords"""
-        if not query:
-            return None, 0.0
+        
+    def _find_library_by_subject(self, query):
+        """Find library based on academic subjects mentioned in query"""
+        query_lower = query.lower()
+        
+        # Count subject matches for each library
+        library_scores = Counter()
+        
+        for subject, library_name in SUBJECT_MAPPINGS.items():
+            if subject in query_lower:
+                library_scores[library_name] += 1
+        
+        # Return library with most subject matches
+        if library_scores:
+            best_library = library_scores.most_common(1)[0][0]
+            score_count = library_scores[best_library]
             
+            # Scale confidence based on number of matches
+            confidence = min(0.8, 0.6 + (score_count * 0.05))
+            
+            if best_library in self.library_by_name:
+                return self.library_by_name[best_library], confidence
+        
+        return None, 0.0
+        
+    def _find_library_by_keywords(self, query):
+        """Find libraries based on keywords in the index"""
         query_words = query.lower().split()
         
-        # Count matches for each hall
-        hall_counts = Counter()
+        # Count matches for each library
+        library_counts = Counter()
         
+        # Check each word in the query
         for word in query_words:
             if word in self.keyword_index:
-                for hall_idx in self.keyword_index[word]:
-                    hall_counts[hall_idx] += 1
+                for library_idx in self.keyword_index[word]:
+                    library_counts[library_idx] += 1
         
-        # Find hall with most keyword matches
-        if hall_counts:
-            best_idx, count = hall_counts.most_common(1)[0]
+        # Find library with most keyword matches
+        if library_counts:
+            best_idx, count = library_counts.most_common(1)[0]
             
             # Scale confidence based on match count
-            confidence = min(0.85, 0.5 + (count * 0.05))
+            confidence = min(0.75, 0.5 + (count * 0.05))
             
-            return self.housing_data[best_idx], confidence
+            return self.libraries_data[best_idx], confidence
             
         return None, 0.0
-    
-    def _find_hall_by_type(self, query):
-        """Find residence halls based on hall type"""
-        hall_type_keywords = {
-            "apartment": ["apartment", "apt", "kitchen", "kitchenette"],
-            "traditional": ["traditional", "trad", "classic", "dorm", "dormitory"],
-            "suite": ["suite", "semi-private", "bathroom"]
+        
+    def _find_library_by_aggressive_matching(self, query):
+        """Last resort matching with aggressive partial matching"""
+        query_lower = query.lower()
+        
+        # General case handling for specific question patterns
+        if "reserve" in query_lower and "room" in query_lower:
+            # For room reservation questions, default to Library West
+            return self.library_by_name.get("Library West"), 0.6
+            
+        if "coffee" in query_lower or "starbucks" in query_lower:
+            # For coffee questions, prioritize libraries with Starbucks
+            return self.library_by_name.get("Library West"), 0.65
+            
+        if "website" in query_lower or "url" in query_lower or "online" in query_lower:
+            # For website questions, default to Library West
+            return self.library_by_name.get("Library West"), 0.6
+        
+        # Short forms that might appear in queries
+        short_forms = {
+            "lib west": "Library West",
+            "west": "Library West",
+            "marston": "Marston Science Library",
+            "science": "Marston Science Library",
+            "smathers": "Smathers Library",
+            "special": "Smathers Library",
+            "health": "Health Science Center Library",
+            "hsc": "Health Science Center Library",
+            "med": "Health Science Center Library",
+            "afa": "Architecture & Fine Arts Library",
+            "arts": "Architecture & Fine Arts Library",
+            "arch": "Architecture & Fine Arts Library",
+            "edu": "Education Library",
+            "norman": "Education Library",
+            "law": "Legal Information Center",
+            "legal": "Legal Information Center",
+            "levin": "Legal Information Center"
         }
         
-        # Determine which hall type is being asked for
-        target_type = None
-        for hall_type, keywords in hall_type_keywords.items():
-            for keyword in keywords:
-                if keyword in query:
-                    target_type = hall_type
-                    break
-            if target_type:
-                break
+        # Check for any partial matches
+        for short_form, library_name in short_forms.items():
+            if short_form in query_lower.split():
+                return self.library_by_name.get(library_name), 0.6
         
-        if not target_type:
-            return None, 0.0
-        
-        # Find halls matching the target type
-        matching_halls = []
-        for hall in self.housing_data:
-            hall_type = hall.get('hall_type', '').lower()
-            if target_type in hall_type:
-                matching_halls.append(hall)
-        
-        if matching_halls:
-            # Return the first match with decent confidence
-            # (In a real system, we might want to rank these more carefully)
-            return matching_halls[0], 0.8
-            
-        return None, 0.0
-    
-    def _find_hall_by_features(self, query):
-        """Find residence halls based on features mentioned"""
-        feature_keywords = {
-            "wifi": ["wifi", "internet", "wireless", "connection"],
-            "laundry": ["laundry", "washing", "dryer", "washer"],
-            "furnished": ["furnished", "furniture", "bed", "desk"],
-            "elevator": ["elevator", "lift"],
-            "kitchen": ["kitchen", "kitchenette", "cooking", "stove", "oven", "refrigerator", "fridge"],
-            "study": ["study", "quiet", "lounge", "studying"],
-            "game": ["game", "recreation", "social", "play"]
+        # Check for common topics or questions
+        topic_mappings = {
+            "study": "Library West",  # Default to Library West for general study questions
+            "quiet": "Marston Science Library",  # Marston has good quiet spaces
+            "group": "Library West",  # Library West for group study
+            "research": "Smathers Library",  # Research often means special collections
+            "book": "Library West",  # General book queries to main library
+            "hours": "Library West",  # Hours questions default to main library
+            "computer": "Marston Science Library",  # Tech questions to Marston
+            "print": "Marston Science Library",  # Printing to Marston
+            "where": "Library West"  # Location questions default to main library
         }
         
-        # Determine which features are being asked for
-        target_features = set()
-        for feature, keywords in feature_keywords.items():
-            for keyword in keywords:
-                if keyword in query:
-                    target_features.add(feature)
+        for topic, library_name in topic_mappings.items():
+            if topic in query_lower:
+                return self.library_by_name.get(library_name), 0.5
         
-        if not target_features:
-            return None, 0.0
-        
-        # Find halls matching the target features
-        hall_matches = Counter()
-        for hall in self.housing_data:
-            hall_features = [f.lower() for f in hall.get('features', [])]
-            for target in target_features:
-                if any(target in feature for feature in hall_features):
-                    hall_matches[hall] += 1
-        
-        if hall_matches:
-            # Get hall with most feature matches
-            best_hall, match_count = hall_matches.most_common(1)[0]
-            confidence = min(0.85, 0.6 + (match_count / len(target_features) * 0.25))
-            return best_hall, confidence
-            
         return None, 0.0
-    
-    def _find_hall_by_room_type(self, query):
-        """Find residence halls based on room types mentioned"""
-        room_keywords = {
-            "single": ["single", "individual", "one person", "private", "by myself"],
-            "double": ["double", "shared", "roommate", "two person", "with someone"],
-            "triple": ["triple", "three person", "three roommates"],
-            "apartment": ["apartment", "apt", "kitchen"]
-        }
         
-        # Determine which room type is being asked for
-        target_room_type = None
-        for room_type, keywords in room_keywords.items():
-            for keyword in keywords:
-                if keyword in query:
-                    target_room_type = room_type
-                    break
-            if target_room_type:
-                break
-        
-        if not target_room_type:
-            return None, 0.0
-        
-        # Find halls with that room type
-        matching_halls = []
-        for hall in self.housing_data:
-            room_types = [r.lower() for r in hall.get('room_types', [])]
-            if any(target_room_type in room_type for room_type in room_types):
-                matching_halls.append(hall)
-        
-        if matching_halls:
-            # Return the first match with decent confidence
-            return matching_halls[0], 0.8
-            
-        return None, 0.0
-    
-    def get_hall_rates(self, hall_name, room_type=None):
-        """Get rental rates for a specific residence hall"""
-        if hall_name not in self.rates_by_hall:
-            return []
-        
-        rates = self.rates_by_hall[hall_name]
-        
-        # Filter by room type if specified
-        if room_type:
-            rates = [rate for rate in rates if room_type.lower() in rate.get('room_type', '').lower()]
-            
-        return rates
-    
-    def get_all_halls_by_type(self, hall_type):
-        """Get all residence halls of a specific type"""
-        if not hall_type:
-            return []
-        
-        hall_type_lower = hall_type.lower()
-        return [hall for hall in self.housing_data if hall_type_lower in hall.get('hall_type', '').lower()]
-    
-    def find_halls_by_feature(self, feature):
-        """Find residence halls that have a specific feature"""
-        if not feature:
-            return []
-        
-        feature_lower = feature.lower()
-        return [hall for hall in self.housing_data 
-                if any(feature_lower in f.lower() for f in hall.get('features', []))]
-    
-    def find_halls_by_room_type(self, room_type):
-        """Find residence halls offering a specific room type"""
-        if not room_type:
-            return []
-        
-        room_type_lower = room_type.lower()
-        return [hall for hall in self.housing_data 
-                if any(room_type_lower in r.lower() for r in hall.get('room_types', []))]
-    
-    def find_halls_in_price_range(self, min_price, max_price, term="fall_spring"):
-        """Find residence halls within a specific price range"""
-        matching_halls = set()
-        
-        for rate in self.rates_data:
-            price = rate.get(term, 0)
-            if min_price <= price <= max_price:
-                hall_name = rate.get('residence_hall', '')
-                if hall_name in self.halls_by_name:
-                    matching_halls.add(self.halls_by_name[hall_name])
-        
-        return list(matching_halls)
-    
-    def get_cheapest_halls(self, top_n=5, term="fall_spring"):
-        """Get the cheapest residence halls"""
-        # Group rates by hall and get minimum rate for each hall
-        hall_min_rates = {}
-        for rate in self.rates_data:
-            hall_name = rate.get('residence_hall', '')
-            price = rate.get(term, 0)
-            
-            if hall_name not in hall_min_rates or price < hall_min_rates[hall_name]:
-                hall_min_rates[hall_name] = price
-        
-        # Sort by price
-        sorted_halls = sorted(hall_min_rates.items(), key=lambda x: x[1])
-        
-        # Get hall objects for the top N
-        cheapest_halls = []
-        for hall_name, price in sorted_halls[:top_n]:
-            if hall_name in self.halls_by_name:
-                hall = self.halls_by_name[hall_name]
-                hall['min_price'] = price  # Add price to hall object
-                cheapest_halls.append(hall)
-        
-        return cheapest_halls
-    
-    def get_related_links(self, topic=None):
-        """Get links related to housing, optionally filtered by topic"""
-        if not topic:
-            return self.links_data
-        
-        topic_lower = topic.lower()
-        return [link for link in self.links_data 
-                if topic_lower in link.get('description', '').lower()]
-    
-    def get_all_halls_summary(self):
-        """Get a brief summary of all residence halls"""
+    def get_all_libraries_summary(self):
+        """Get a summary of all libraries"""
         summaries = []
-        for hall in self.housing_data:
-            name = hall.get('name', '')
-            hall_type = hall.get('hall_type', '')
+        for lib in self.libraries_data:
+            name = lib.get('Library Name', '')
+            location = lib.get('Location', '')
+            focus = lib.get('Tags', '')
             
-            # Get minimum price for fall/spring
-            min_price = float('inf')
-            for rate in self.rates_by_hall.get(name, []):
-                price = rate.get('fall_spring', 0)
-                if price > 0 and price < min_price:
-                    min_price = price
-            
-            price_text = f"starting at ${min_price}/semester" if min_price < float('inf') else ""
-            
-            summary = f"• {name}: {hall_type} {price_text}"
+            summary = f"• {name}: Located at {location}."
+            if focus:
+                summary += f" Focus areas: {focus}."
+                
             summaries.append(summary)
-            
+        
         return "\n".join(summaries)
     
-    def compare_halls(self, hall_names, include_rates=True):
-        """Compare multiple residence halls"""
-        if not hall_names:
-            return {}
+    def get_library_hours(self, library_name, day=None):
+        """Get the hours for a specific library, optionally for a specific day"""
+        library = self.library_by_name.get(library_name)
+        if not library:
+            return "Library not found"
         
-        comparison = {}
-        for name in hall_names:
-            if name in self.halls_by_name:
-                hall = self.halls_by_name[name]
-                hall_data = {
-                    "name": name,
-                    "hall_type": hall.get('hall_type', ''),
-                    "location": hall.get('location', ''),
-                    "features": hall.get('features', []),
-                    "room_types": hall.get('room_types', [])
+        if 'Hours' not in library:
+            return "Hours information not available"
+        
+        hours = library['Hours']
+        
+        if day:
+            # Format day to match keys (capitalize first letter)
+            day = day.capitalize()
+            if day in hours:
+                return f"{hours[day]}"
+            else:
+                return "Hours not available for this day"
+        else:
+            # Return all hours
+            return "\n".join([f"{d}: {h}" for d, h in hours.items()])
+    
+    def get_library_resources(self, library_name, resource_type=None):
+        """Get resources for a specific library, optionally filtered by type"""
+        library = self.library_by_name.get(library_name)
+        if not library:
+            return []
+        
+        if resource_type and resource_type in library:
+            return library.get(resource_type, [])
+        
+        # Combine all resource types if no specific type requested
+        resource_types = ['Resources', 'Study Spaces', 'Collections', 'Technology', 'Services']
+        all_resources = []
+        
+        for rt in resource_types:
+            all_resources.extend(library.get(rt, []))
+        
+        return all_resources
+    
+    def get_library_website(self, library_name):
+        """Get the website URL for a specific library"""
+        library = self.library_by_name.get(library_name)
+        if not library or 'URL' not in library:
+            return None
+        return library.get('URL')
+        
+    def find_amenities_by_type(self, amenity_type, near_library=None):
+        """Find campus amenities by type, optionally near a specific library"""
+        if amenity_type not in CAMPUS_AMENITIES:
+            return []
+            
+        amenities = CAMPUS_AMENITIES[amenity_type]
+        
+        # If a library is specified, prioritize amenities near that library
+        if near_library:
+            # First, find amenities that are explicitly near this library
+            nearby_amenities = [
+                amenity for amenity in amenities 
+                if amenity.get('nearest_library', '') == near_library
+            ]
+            
+            # If we found any nearby amenities, return those
+            if nearby_amenities:
+                return nearby_amenities
+        
+        # Otherwise return all amenities of this type
+        return amenities
+
+    def get_academic_calendar_info(self, date=None):
+        """Get academic calendar information for a specific date"""
+        if date is None:
+            date = datetime.now().date()
+        else:
+            date = date.date() if isinstance(date, datetime) else date
+            
+        # Convert date to string format for comparison
+        date_str = date.strftime('%Y-%m-%d')
+        
+        # Check if we're in a term
+        current_term = None
+        for term, dates in ACADEMIC_CALENDAR['terms'].items():
+            if dates['start'] <= date_str <= dates['end']:
+                current_term = term
+                break
+                
+        # Check if we're in any special event period
+        current_event = None
+        for event, dates in ACADEMIC_CALENDAR['events'].items():
+            if dates['start'] <= date_str <= dates['end']:
+                current_event = event
+                break
+                
+        # Check for schedule exceptions
+        schedule_exception = None
+        if date_str in ACADEMIC_CALENDAR['library_schedule_exceptions']:
+            schedule_exception = ACADEMIC_CALENDAR['library_schedule_exceptions'][date_str]
+        
+        # Check if we're in extended hours period
+        extended_hours = None
+        for period, info in ACADEMIC_CALENDAR['extended_hours'].items():
+            if info['start'] <= date_str <= info['end']:
+                extended_hours = {
+                    'period': period,
+                    'libraries': info['libraries']
                 }
+                break
                 
-                # Add rates if requested
-                if include_rates:
-                    rates = self.get_hall_rates(name)
-                    hall_data["rates"] = rates
-                    
-                comparison[name] = hall_data
-                
-        return comparison
+        return {
+            'date': date_str,
+            'current_term': current_term,
+            'current_event': current_event,
+            'schedule_exception': schedule_exception,
+            'extended_hours': extended_hours
+        }
+        
+    def get_room_reservation_info(self, library_name):
+        """Get room reservation information for a specific library"""
+        library = self.library_by_name.get(library_name)
+        if not library:
+            return None
+            
+        # Base reservation information
+        reservation_info = {
+            "library": library_name,
+            "website": library.get('URL', ''),
+            "process": "To reserve a study room, go to the UF Libraries website, click on 'Study Rooms', sign in with your GatorLink, and select your preferred time and location.",
+            "restrictions": []
+        }
+        
+        # Add library-specific restrictions
+        if 'Marston' in library_name:
+            reservation_info["restrictions"] = [
+                "Reservations are limited to 2 hours per day per group",
+                "Valid UF ID required",
+                "Intended for groups of 2 or more people"
+            ]
+        elif 'West' in library_name:
+            reservation_info["restrictions"] = [
+                "Graduate student rooms available on 3rd floor",
+                "Undergraduate rooms on multiple floors",
+                "Reservations can be made up to 7 days in advance"
+            ]
+        else:
+            reservation_info["restrictions"] = [
+                "Most rooms can be reserved for 2 hours",
+                "Valid UF ID required",
+                "Reservations typically available 7 days in advance"
+            ]
+            
+        return reservation_info
 
 # =============================================================================
 # CAMPUS BUILDINGS RETRIEVAL
@@ -1159,7 +2141,195 @@ class CampusBuildingsRetrieval:
         # Cache for query results
         self.query_cache = LRUCache(capacity=100)
     
-    # Rest of the class implementation...
+    def _build_keyword_index(self):
+        """Build keyword index for building search"""
+        index = defaultdict(list)
+        for i, building in enumerate(self.buildings_data):
+            # Extract keywords from name and description
+            keywords = []
+            
+            # Add building name
+            name = building.get('Building Name', '')
+            if name:
+                keywords.append(name.lower())
+                parts = name.lower().split()
+                for part in parts:
+                    if len(part) > 3:
+                        keywords.append(part)
+            
+            # Add abbreviation
+            abbr = building.get('Abbreviation', '')
+            if abbr:
+                keywords.append(abbr.lower())
+            
+            # Add number
+            num = building.get('Building Number', '')
+            if num:
+                keywords.append(num)
+            
+            # Add from description
+            desc = building.get('Description', '')
+            if desc:
+                desc_words = desc.lower().split()
+                for word in desc_words:
+                    if len(word) > 3 and word not in ['with', 'and', 'the', 'for']:
+                        keywords.append(word)
+            
+            # Add all keywords to index
+            for keyword in set(keywords):
+                index[keyword].append(i)
+                
+        return index
+    
+    def retrieve_building(self, query):
+        """Retrieve most relevant building for a query"""
+        query_lower = query.lower()
+        
+        # Check cache
+        cache_key = f"building:{query_lower}"
+        if cache_key in self.query_cache:
+            return self.query_cache[cache_key]
+            
+        # Direct match by name
+        for name, building in self.building_by_name.items():
+            if query_lower == name.lower() or query_lower in name.lower():
+                self.query_cache[cache_key] = (building, 0.95)
+                return building, 0.95
+        
+        # Match by abbreviation
+        for abbr, building in self.building_by_abbr.items():
+            if query_lower == abbr.lower():
+                self.query_cache[cache_key] = (building, 0.95)
+                return building, 0.95
+                
+        # Match by building number
+        for building in self.buildings_data:
+            if building.get('Building Number') and building['Building Number'] in query:
+                self.query_cache[cache_key] = (building, 0.95)
+                return building, 0.95
+                
+        # Keyword search
+        building_scores = Counter()
+        
+        for word in query_lower.split():
+            if word in self.keyword_index:
+                for building_idx in self.keyword_index[word]:
+                    building_scores[building_idx] += 1
+        
+        # Find building with highest score
+        if building_scores:
+            best_idx, count = building_scores.most_common(1)[0]
+            confidence = min(0.85, 0.6 + (count * 0.05))
+            
+            self.query_cache[cache_key] = (self.buildings_data[best_idx], confidence)
+            return self.buildings_data[best_idx], confidence
+        
+        # Fuzzy matching for inexact building names
+        best_match = None
+        best_score = 0
+        
+        for name, building in self.building_by_name.items():
+            # Calculate similarity scores
+            token_set_ratio = fuzz.token_set_ratio(query_lower, name.lower())
+            partial_ratio = fuzz.partial_ratio(query_lower, name.lower())
+            
+            # Combined score (weight can be adjusted)
+            score = (token_set_ratio * 0.7) + (partial_ratio * 0.3)
+            
+            if score > best_score and score > 75:  # Threshold can be adjusted
+                best_score = score
+                best_match = building
+        
+        if best_match:
+            confidence = min(0.8, best_score / 100)
+            self.query_cache[cache_key] = (best_match, confidence)
+            return best_match, confidence
+            
+        return None, 0.0
+    
+    def get_all_buildings_summary(self):
+        """Get a summary of all campus buildings"""
+        summaries = []
+        for building in self.buildings_data:
+            name = building.get('Building Name', '')
+            abbr = building.get('Abbreviation', '')
+            desc = building.get('Description', '')
+            
+            summary = f"• {name}"
+            if abbr:
+                summary += f" ({abbr})"
+            if desc:
+                summary += f": {desc}"
+                
+            summaries.append(summary)
+            
+        return "\n".join(summaries)
+    
+    def get_building_info(self, building_name_or_abbr):
+        """Get detailed information about a specific building"""
+        # Try to find by name
+        building = self.building_by_name.get(building_name_or_abbr)
+        
+        # If not found, try abbreviation
+        if not building:
+            building = self.building_by_abbr.get(building_name_or_abbr)
+            
+        # If still not found, try case-insensitive search
+        if not building:
+            name_lower = building_name_or_abbr.lower()
+            for name, b in self.building_by_name.items():
+                if name.lower() == name_lower:
+                    building = b
+                    break
+                    
+            if not building:
+                for abbr, b in self.building_by_abbr.items():
+                    if abbr.lower() == name_lower:
+                        building = b
+                        break
+        
+        return building
+    
+    def find_buildings_by_type(self, building_type):
+        """Find buildings of a specific type (based on description)"""
+        type_keywords = {
+            "classroom": ["classroom", "class", "lecture"],
+            "research": ["research", "lab", "laboratory", "studies"],
+            "administrative": ["admin", "office", "administration"],
+            "athletic": ["athletic", "sport", "stadium", "arena", "gym", "fitness"],
+            "residential": ["residential", "dorm", "housing", "hall"],
+            "dining": ["dining", "food", "cafeteria", "restaurant"]
+        }
+        
+        if building_type not in type_keywords:
+            return []
+            
+        keywords = type_keywords[building_type]
+        matching_buildings = []
+        
+        for building in self.buildings_data:
+            desc = building.get('Description', '').lower()
+            name = building.get('Building Name', '').lower()
+            
+            for keyword in keywords:
+                if keyword in desc or keyword in name:
+                    matching_buildings.append(building)
+                    break
+                    
+        return matching_buildings
+    
+    def find_buildings_on_street(self, street_name):
+        """Find buildings located on a specific street"""
+        street_name_lower = street_name.lower()
+        matching_buildings = []
+        
+        for building in self.buildings_data:
+            address = building.get('Address', '').lower()
+            
+            if street_name_lower in address:
+                matching_buildings.append(building)
+                
+        return matching_buildings
 
 # =============================================================================
 # ENHANCED QUERY ANALYZER
@@ -1185,12 +2355,7 @@ class EnhancedQueryAnalyzer:
         'reservation': ['reserve', 'book', 'reservation', 'schedule', 'sign up'],
         'general': ['information', 'about', 'tell', 'describe', 'what'],
         'meta': ['ai', 'assistant', 'bot', 'you', 'who are you', 'what are you'],
-        'buildings': ['building', 'hall', 'center', 'stadium', 'arena', 'classroom', 'lab', 'location', 'dept', 'department'],
-        'housing': ['residence', 'hall', 'dorm', 'housing', 'live', 'room', 'apartment', 'flat', 'roommate', 'suite'],
-        'housing_types': ['traditional', 'apartment', 'suite', 'single', 'double', 'triple', 'quad'],
-        'housing_rates': ['rate', 'cost', 'price', 'expensive', 'cheap', 'affordable', 'semester', 'fall', 'spring', 'summer'],
-        'housing_features': ['kitchen', 'bathroom', 'laundry', 'wifi', 'furnished', 'elevator', 'air conditioning', 'ac', 'private', 'shared'],
-        'housing_application': ['apply', 'application', 'deadline', 'deposit', 'request', 'submit']
+        'buildings': ['building', 'hall', 'center', 'stadium', 'arena', 'classroom', 'lab', 'location', 'dept', 'department']
     }
     
     INTENTS = {
@@ -1210,11 +2375,6 @@ class EnhancedQueryAnalyzer:
         'reserve_room': r'\b(reserve|book|reservation)\b.+\b(room|space|study)\b',
         'find_building': r'\b(where|find|locate|building|hall|center)\b',
         'building_info': r'\b(what|tell me about|info|information|describe)\b.+\b(building|hall|center)\b',
-        'find_housing': r'\b(where|which|find|locate|recommend)\b.+\b(live|dorm|residence|housing|hall)\b',
-        'check_housing_rates': r'\b(cost|price|rate|how much|expensive|cheap)\b.+\b(dorm|residence|housing|hall|room|apartment)\b',
-        'get_housing_info': r'\b(what|tell me|explain|information|about)\b.+\b(dorm|residence|housing|hall)\b',
-        'compare_housing': r'\b(compare|differ|best|difference|better)\b.+\b(dorm|residence|housing|hall)\b',
-        'apply_housing': r'\b(how|where|when)\b.+\b(apply|application|sign up|get|request)\b.+\b(dorm|residence|housing|hall)\b',
         'general_question': r'\b(what|how|who|when|where)\b'
     }
     
@@ -1245,12 +2405,10 @@ class EnhancedQueryAnalyzer:
                 'is_meta_question': False,
                 'is_all_libraries_query': False,
                 'is_building_query': False,
-                'is_housing_query': False,  # Added for housing
                 'is_followup': False,
                 'amenity_type': None,
                 'mentioned_libraries': [],
                 'mentioned_buildings': [],
-                'mentioned_residence_halls': [],  # Added for housing
                 'time_reference': None,
                 'specific_intents': []
             }
@@ -1296,12 +2454,6 @@ class EnhancedQueryAnalyzer:
         # Check if asking about buildings
         is_building_query = self._is_building_query(query)
         
-        # Check if asking about housing
-        is_housing_query = self._is_housing_query(query)
-        
-        # Check if asking about all residence halls
-        is_all_residence_halls_query = self._is_all_residence_halls_query(query)
-        
         # Detect primary intent
         intent = self._detect_intent(query)
         
@@ -1317,9 +2469,6 @@ class EnhancedQueryAnalyzer:
         # Extract building mentions
         mentioned_buildings = self._extract_building_mentions(query)
         
-        # Extract residence hall mentions
-        mentioned_residence_halls = self._extract_residence_hall_mentions(query)
-        
         # Check if this is a follow-up question
         is_followup = self._is_followup_question(query, conversation_history)
         
@@ -1334,8 +2483,6 @@ class EnhancedQueryAnalyzer:
             'is_meta_question': is_meta_question,
             'is_all_libraries_query': is_all_libraries_query,
             'is_building_query': is_building_query,
-            'is_housing_query': is_housing_query,
-            'is_all_residence_halls_query': is_all_residence_halls_query,
             'tokens': tokens,
             'pos_tags': pos_tags,
             'noun_chunks': noun_chunks,
@@ -1343,7 +2490,6 @@ class EnhancedQueryAnalyzer:
             'time_reference': time_reference,
             'mentioned_libraries': mentioned_libraries,
             'mentioned_buildings': mentioned_buildings,
-            'mentioned_residence_halls': mentioned_residence_halls,
             'is_followup': is_followup,
             'amenity_type': amenity_type,
             'specific_intents': specific_intents
@@ -1361,9 +2507,6 @@ class EnhancedQueryAnalyzer:
         query = re.sub(r"\barb\b", "Academic Research Building", query, flags=re.IGNORECASE)
         query = re.sub(r"\band\b", "Anderson Hall", query, flags=re.IGNORECASE)
         
-        # Normalize residence hall terms
-        query = re.sub(r"\bdorm(s|itory|itories)?\b", "residence hall", query, flags=re.IGNORECASE)
-        
         # Normalize room reservation terms
         if "reserve" in query.lower() and "room" in query.lower():
             if not re.search(r"how|where|can i", query.lower()):
@@ -1373,11 +2516,6 @@ class EnhancedQueryAnalyzer:
         if "website" in query.lower() or "url" in query.lower():
             if not re.search(r"what|where is|find|get", query.lower()):
                 query = f"find the website for {query}"
-        
-        # Normalize housing cost queries
-        if re.search(r"cost|price|rate|how much", query.lower()) and re.search(r"dorm|residence|housing|hall", query.lower()):
-            if not re.search(r"what|how much|tell me", query.lower()):
-                query = f"how much does it cost to live in {query}"
         
         return query
         
@@ -1403,7 +2541,7 @@ class EnhancedQueryAnalyzer:
             'what': r'\b(what|tell me|describe)\b',
             'where': r'\b(where|location|located|find)\b',
             'when': r'\b(when|what time|hours|schedule|open|close)\b',
-            'which': r'\b(which|what)\s+(library|place|building|residence hall|dorm)\b',
+            'which': r'\b(which|what)\s+(library|place|building)\b',
             'who': r'\b(who|contact|person|librarian)\b',
             'how': r'\b(how|way|method)\b'
         }
@@ -1484,49 +2622,6 @@ class EnhancedQueryAnalyzer:
                 return True
                 
         return False
-    
-    def _is_housing_query(self, query):
-        """Check if the query is related to residence halls/housing"""
-        housing_patterns = [
-            r'\b(dorm|dormitory|residence hall|residence|housing)\b',
-            r'\b(where|how)\s+(to|can I|do I)\s+(live|stay|reside)\s+(on|in)\s+campus',
-            r'\b(on-campus|on campus)\s+(living|housing|residence)',
-            r'\b(traditional|apartment|suite)\s+(style|hall|room)',
-            r'\b(single|double|triple|quad)\s+(room|occupancy)',
-            r'\b(beaty|broward|buckman|cypress|east|fletcher|graham|hume|infinity|jennings|keys|lakeside)\b',
-            r'\b(mallory|murphree|north|rawlings|reid|riker|simpson|sledd|springs|tanglewood|thomas|tolbert|weaver|yulee)\b',
-            r'\b(how much|cost|price|rate|rates)\s+(for|of|to live in)\s+(dorm|housing|residence hall)',
-            r'\b(apply|application)\s+for\s+(housing|dorm|residence hall)'
-        ]
-        
-        for pattern in housing_patterns:
-            if re.search(pattern, query, re.IGNORECASE):
-                return True
-                
-        # Check for housing-related categories
-        housing_categories = ['housing', 'housing_types', 'housing_rates', 'housing_features', 'housing_application']
-        categories = self._classify_categories(query)
-        
-        if any(category in housing_categories for category in categories):
-            return True
-                
-        return False
-    
-    def _is_all_residence_halls_query(self, query):
-        """Check if the query is asking about all residence halls"""
-        patterns = [
-            r'\b(what|which|all|list)\s+(residence halls|dorms|dormitories)',
-            r'\b(residence halls|dorms|dormitories)\s+(on|at|in)\s+campus',
-            r'\bhow\s+many\s+(residence halls|dorms|dormitories)',
-            r'\btell\s+me\s+about\s+(the|all)\s+(residence halls|dorms|dormitories)',
-            r'\bwhere\s+can\s+I\s+live\s+on\s+campus'
-        ]
-        
-        for pattern in patterns:
-            if re.search(pattern, query, re.IGNORECASE):
-                return True
-                
-        return False
         
     def _detect_intent(self, query):
         """Detect the primary intent of the query"""
@@ -1553,7 +2648,6 @@ class EnhancedQueryAnalyzer:
                 'reserve_room', 'find_website', 'find_coffee', 'find_food', 
                 'find_study_space', 'find_materials', 'check_hours', 'find_location', 
                 'find_building', 'building_info', 'get_directions', 'check_availability', 
-                'check_housing_rates', 'find_housing', 'get_housing_info', 'compare_housing', 'apply_housing',
                 'get_recommendations', 'discover_offerings', 'compare_libraries', 
                 'get_information'
             ]
@@ -1599,28 +2693,6 @@ class EnhancedQueryAnalyzer:
                 specific_intents.append('find_building_location')
             elif any(word in query_lower for word in ['what', 'tell', 'about', 'describe']):
                 specific_intents.append('get_building_info')
-        
-        # Housing-specific intent detection
-        if self._is_housing_query(query_lower):
-            # Check for rates questions
-            if any(word in query_lower for word in ['cost', 'price', 'rate', 'how much', 'expensive', 'cheap']):
-                specific_intents.append('check_housing_rates')
-            
-            # Check for comparison questions
-            if any(word in query_lower for word in ['compare', 'difference', 'better', 'best']):
-                specific_intents.append('compare_housing')
-            
-            # Check for application questions
-            if any(word in query_lower for word in ['apply', 'application', 'sign up', 'request']):
-                specific_intents.append('apply_housing')
-            
-            # Check for housing type questions
-            if any(word in query_lower for word in ['traditional', 'apartment', 'suite']):
-                specific_intents.append('housing_type_info')
-            
-            # Check for housing feature questions
-            if any(word in query_lower for word in ['feature', 'amenity', 'offer', 'provide', 'include']):
-                specific_intents.append('housing_features_info')
                 
         return specific_intents
         
@@ -1686,47 +2758,6 @@ class EnhancedQueryAnalyzer:
         
         return building_mentions
     
-    def _extract_residence_hall_mentions(self, query):
-        """Extract explicit mentions of residence halls"""
-        hall_mentions = []
-        
-        # Common residence hall names and patterns
-        hall_patterns = [
-            (r'\b(beaty towers|beaty)\b', 'Beaty Towers'),
-            (r'\b(broward hall|broward)\b', 'Broward Hall'),
-            (r'\b(buckman hall|buckman)\b', 'Buckman Hall'),
-            (r'\b(cypress hall|cypress)\b', 'Cypress Hall'),
-            (r'\b(east hall|east)\b', 'East Hall'),
-            (r'\b(fletcher hall|fletcher)\b', 'Fletcher Hall'),
-            (r'\b(graham hall|graham)\b', 'Graham Hall'),
-            (r'\b(honors village|honors)\b', 'Honors Village'),
-            (r'\b(hume hall|hume)\b', 'Hume Hall'),
-            (r'\b(infinity hall|infinity)\b', 'Infinity Hall'),
-            (r'\b(jennings hall|jennings)\b', 'Jennings Hall'),
-            (r'\b(keys complex|keys)\b', 'Keys Residential Complex'),
-            (r'\b(lakeside complex|lakeside)\b', 'Lakeside Residential Complex'),
-            (r'\b(mallory hall|mallory)\b', 'Mallory Hall'),
-            (r'\b(murphree hall|murphree)\b', 'Murphree Hall'),
-            (r'\b(north hall|north)\b', 'North Hall'),
-            (r'\b(rawlings hall|rawlings)\b', 'Rawlings Hall'),
-            (r'\b(reid hall|reid)\b', 'Reid Hall'),
-            (r'\b(riker hall|riker)\b', 'Riker Hall'),
-            (r'\b(simpson hall|simpson)\b', 'Simpson Hall'),
-            (r'\b(sledd hall|sledd)\b', 'Sledd Hall'),
-            (r'\b(springs complex|springs)\b', 'Springs Residential Complex'),
-            (r'\b(thomas hall|thomas)\b', 'Thomas Hall'),
-            (r'\b(tolbert hall|tolbert)\b', 'Tolbert Hall'),
-            (r'\b(trusler hall|trusler)\b', 'Trusler Hall'),
-            (r'\b(weaver hall|weaver)\b', 'Weaver Hall'),
-            (r'\b(yulee hall|yulee)\b', 'Yulee Hall')
-        ]
-        
-        for pattern, hall_name in hall_patterns:
-            if re.search(pattern, query, re.IGNORECASE):
-                hall_mentions.append(hall_name)
-        
-        return hall_mentions
-    
     def _is_followup_question(self, query, conversation_history):
         """Detect if this is likely a follow-up question"""
         # Check if there's conversation history
@@ -1741,7 +2772,7 @@ class EnhancedQueryAnalyzer:
         followup_indicators = [
             r'\b(it|its|they|their|there|that|this|those|these)\b',
             r'^(what about|how about|and)\b',
-            r'^(what|where|when|how|why|who|which)\b.{1,30}\?'  # Short questions are often follow-ups
+            r'^(what|where|when|how|why|who|which)\b.{1,30}\?$'  # Short questions are often follow-ups
         ]
         
         for pattern in followup_indicators:
@@ -1782,7 +2813,6 @@ class AdvancedResponseGenerator:
     """Advanced response generator with verification and enhanced output"""
     
     def __init__(self, llm_model=None):
-        """Initialize the response generator with model"""
         self.llm = llm_model
         self.response_cache = LRUCache(capacity=100)
         
@@ -1794,7 +2824,7 @@ class AdvancedResponseGenerator:
         
     def _init_templates(self):
         """Initialize response templates for common query types"""
-        templates = {
+        return {
             'hours': {
                 'template': "{library_name} is open from {hours_today} today ({day_of_week}).\n\nRegular hours:\n{all_hours}\n\n{access_restrictions}",
                 'required': ['library_name', 'hours_today', 'day_of_week']
@@ -1804,7 +2834,7 @@ class AdvancedResponseGenerator:
                 'required': ['library_name', 'location']
             },
             'meta': {
-                'template': "Yes, I'm an AI assistant specifically designed to provide information about the University of Florida's libraries, buildings, campus resources, and housing options. I can help with questions about library hours, locations, services, collections, building information, residence halls, and other UF-related topics. How can I assist you today?",
+                'template': "Yes, I'm an AI assistant specifically designed to provide information about the University of Florida's libraries, buildings, and campus resources. I can help with questions about library hours, locations, services, collections, building information, and other UF-related topics. How can I assist you today?",
                 'required': []
             },
             'all_libraries': {
@@ -1847,36 +2877,13 @@ class AdvancedResponseGenerator:
                 'template': "{building_name}{abbreviation_text} is located at {address}. {description}",
                 'required': ['building_name', 'address']
             },
-            # Housing-specific templates
-            'residence_hall_info': {
-                'template': "{hall_name} is a {hall_type} residence hall located at {location}.\n\n{description}\n\nFeatures:\n{features_list}\n\nRoom types available:\n{room_types_list}\n\nFor more information, visit: {url}",
-                'required': ['hall_name', 'hall_type', 'location']
-            },
-            'hall_rates': {
-                'template': "Rates for {hall_name} (2025):\n\n{rates_list}\n\nPlease note that these rates are per semester. For official and up-to-date rates, please visit the UF Housing website at {rental_rate_url}",
-                'required': ['hall_name', 'rates_list']
-            },
-            'all_halls': {
-                'template': "UF offers the following residence halls on campus:\n\n{halls_list}\n\nThese residence halls offer various room types and amenities. Visit the UF Housing website for more details: https://housing.ufl.edu/",
-                'required': ['halls_list']
-            },
-            'hall_comparison': {
-                'template': "Comparison of {halls_names}:\n\n{comparison_table}\n\nVisit the UF Housing website for more details: https://housing.ufl.edu/",
-                'required': ['halls_names', 'comparison_table']
-            },
-            'housing_application': {
-                'template': "To apply for on-campus housing at UF:\n\n1. Visit {application_url}\n2. Log in with your GatorLink credentials\n3. Complete the housing application\n4. Pay the application fee of $25\n\nImportant dates:\n{dates_info}\n\nFor more information, refer to the Housing Application Guide: https://housing.ufl.edu/apply/how-to-apply/",
-                'required': ['application_url']
-            },
             'error': {
                 'template': "I apologize, but I encountered an issue while processing your request. Please try asking your question again, perhaps with different wording.",
                 'required': []
             }
         }
-        
-        return templates
     
-    def generate(self, query, library=None, building=None, residence_hall=None, query_analysis=None, conversation_history=None, academic_context=None):
+    def generate(self, query, library=None, building=None, query_analysis=None, conversation_history=None, academic_context=None):
         """Generate a response with advanced verification and enhancement"""
         # Start timing for performance tracking
         start_time = time.time()
@@ -1887,8 +2894,6 @@ class AdvancedResponseGenerator:
             cache_key += f":{library['Library Name']}"
         if building:
             cache_key += f":{building['Building Name']}"
-        if residence_hall:
-            cache_key += f":{residence_hall['name']}"
             
         # Check cache for this exact query
         if cache_key in self.response_cache:
@@ -1901,63 +2906,6 @@ class AdvancedResponseGenerator:
         try:
             # Check for specific intents that need special handling
             specific_intents = query_analysis.get('specific_intents', [])
-            
-            # Check if this is a housing query first
-            is_housing_query = query_analysis.get('is_housing_query', False)
-            
-            if is_housing_query and residence_hall:
-                # Handle residence hall information requests
-                if 'check_housing_rates' in specific_intents:
-                    rates_response = self._generate_hall_rates_response(residence_hall)
-                    if rates_response:
-                        metrics = {
-                            'confidence': 0.95,
-                            'method': 'template',
-                            'template_used': 'hall_rates',
-                            'residence_hall': residence_hall
-                        }
-                        # Cache and return
-                        self.response_cache[cache_key] = (rates_response, metrics)
-                        return rates_response, metrics
-                
-                # Handle general hall info requests
-                hall_info_response = self._generate_hall_info_response(residence_hall)
-                if hall_info_response:
-                    metrics = {
-                        'confidence': 0.95,
-                        'method': 'template',
-                        'template_used': 'residence_hall_info',
-                        'residence_hall': residence_hall
-                    }
-                    # Cache and return
-                    self.response_cache[cache_key] = (hall_info_response, metrics)
-                    return hall_info_response, metrics
-            
-            # Handle "all residence halls" queries
-            if query_analysis.get('is_all_residence_halls_query', False):
-                halls_list_response = self._generate_all_halls_response()
-                if halls_list_response:
-                    metrics = {
-                        'confidence': 0.95,
-                        'method': 'template',
-                        'template_used': 'all_halls'
-                    }
-                    # Cache and return
-                    self.response_cache[cache_key] = (halls_list_response, metrics)
-                    return halls_list_response, metrics
-            
-            # Handle housing application queries
-            if 'apply_housing' in specific_intents:
-                application_response = self._generate_housing_application_response()
-                if application_response:
-                    metrics = {
-                        'confidence': 0.95,
-                        'method': 'template',
-                        'template_used': 'housing_application'
-                    }
-                    # Cache and return
-                    self.response_cache[cache_key] = (application_response, metrics)
-                    return application_response, metrics
             
             # Handle library website requests
             if 'find_website' in specific_intents and library:
@@ -2022,7 +2970,6 @@ class AdvancedResponseGenerator:
                     query_analysis, 
                     library,
                     building,
-                    residence_hall,
                     conversation_history, 
                     academic_context
                 )
@@ -2038,8 +2985,6 @@ class AdvancedResponseGenerator:
                         llm_metrics['library'] = library
                     if building:
                         llm_metrics['building'] = building
-                    if residence_hall:
-                        llm_metrics['residence_hall'] = residence_hall
                     
                     # Cache response
                     self.response_cache[cache_key] = (enhanced_response, llm_metrics)
@@ -2048,7 +2993,7 @@ class AdvancedResponseGenerator:
             
             # Try template-based responses as fallback
             template_response, template_metrics = self._generate_template_response(
-                query, query_analysis, library, building, residence_hall, conversation_history, academic_context
+                query, query_analysis, library, building, conversation_history, academic_context
             )
             
             # If we got a good template response, use it
@@ -2060,8 +3005,6 @@ class AdvancedResponseGenerator:
                     template_metrics['library'] = library
                 if building:
                     template_metrics['building'] = building
-                if residence_hall:
-                    template_metrics['residence_hall'] = residence_hall
                 
                 # Cache response
                 self.response_cache[cache_key] = (template_response, template_metrics)
@@ -2069,7 +3012,7 @@ class AdvancedResponseGenerator:
                 return template_response, template_metrics
                 
             # Fallback response if both methods failed
-            fallback_response = "I'm not able to answer that specific question about UF. Could you try rephrasing your question or ask about something like library hours, building locations, residence halls, or campus services?"
+            fallback_response = "I'm not able to answer that specific question about UF. Could you try rephrasing your question or ask about something like library hours, building locations, or campus services?"
             fallback_metrics = {
                 'confidence': 0.3,
                 'method': 'fallback',
@@ -2089,93 +3032,6 @@ class AdvancedResponseGenerator:
             }
             
             return error_response, error_metrics
-    
-    def _generate_hall_info_response(self, residence_hall):
-        """Generate a response for residence hall information"""
-        hall_name = residence_hall.get('name', '')
-        hall_type = residence_hall.get('hall_type', '')
-        location = residence_hall.get('location', '')
-        description = residence_hall.get('description', '')
-        url = residence_hall.get('url', '')
-        
-        # Format features list
-        features_list = ""
-        for feature in residence_hall.get('features', []):
-            features_list += f"• {feature}\n"
-            
-        # Format room types list
-        room_types_list = ""
-        for room_type in residence_hall.get('room_types', []):
-            if "College of" not in room_type and "Hall" not in room_type:  # Filter out non-room-type entries
-                room_types_list += f"• {room_type}\n"
-        
-        return self.templates['residence_hall_info']['template'].format(
-            hall_name=hall_name,
-            hall_type=hall_type,
-            location=location,
-            description=description,
-            features_list=features_list.strip(),
-            room_types_list=room_types_list.strip(),
-            url=url
-        )
-    
-    def _generate_hall_rates_response(self, residence_hall, rates_data=None):
-        """Generate a response with residence hall rates"""
-        hall_name = residence_hall.get('name', '')
-        rental_rate_url = residence_hall.get('rental_rate_url', 'https://housing.ufl.edu/rates-payments-agreements/residence-hall-rental-rates/')
-        
-        # Format rates list
-        rates_list = ""
-        
-        if rates_data:
-            hall_rates = [rate for rate in rates_data if rate.get('residence_hall', '') == hall_name]
-            
-            if hall_rates:
-                for rate in hall_rates:
-                    room_type = rate.get('room_type', '')
-                    fall_spring = rate.get('fall_spring', 0)
-                    summer_a_b = rate.get('summer_a_b', 0)
-                    summer_c = rate.get('summer_c', 0)
-                    
-                    rates_list += f"• {room_type}:\n"
-                    rates_list += f"  - Fall/Spring: ${fall_spring}\n"
-                    rates_list += f"  - Summer A/B: ${summer_a_b}\n"
-                    rates_list += f"  - Summer C: ${summer_c}\n\n"
-            else:
-                rates_list = "Rate information for this hall is not available. Please check the UF Housing website for current rates."
-        else:
-            rates_list = "Rate information for this hall is not available. Please check the UF Housing website for current rates."
-            
-        return self.templates['hall_rates']['template'].format(
-            hall_name=hall_name,
-            rates_list=rates_list.strip(),
-            rental_rate_url=rental_rate_url
-        )
-    
-    def _generate_all_halls_response(self):
-        """Generate a response listing all residence halls"""
-        halls_list = "• Traditional Style Halls: Broward Hall, Buckman Hall, East Hall, Fletcher Hall, Graham Hall, Jennings Hall, Mallory Hall, Murphree Hall, North Hall, Rawlings Hall, Reid Hall, Riker Hall, Simpson Hall, Sledd Hall, Thomas Hall, Tolbert Hall, Trusler Hall, Weaver Hall, Yulee Hall\n\n"
-        halls_list += "• Suite Style Halls: Cypress Hall, Honors Village, Hume Hall, Infinity Hall, Springs Residential Complex\n\n"
-        halls_list += "• Apartment Style Halls: Beaty Towers, Corry Village, Diamond Village, Keys Residential Complex, Lakeside Residential Complex, Tanglewood Village, The Continuum"
-        
-        return self.templates['all_halls']['template'].format(
-            halls_list=halls_list
-        )
-    
-    def _generate_housing_application_response(self):
-        """Generate a response about housing applications"""
-        application_url = "https://housing.ufl.edu/apply/"
-        
-        # Application dates info
-        dates_info = "• First-Year Students: Applications typically open in November for the following academic year\n"
-        dates_info += "• Current Students: Applications typically open in February for the following academic year\n"
-        dates_info += "• Graduate and Family Housing: Applications accepted on a rolling basis\n\n"
-        dates_info += "Note: Housing assignments are made on a first-come, first-served basis, so it's recommended to apply as early as possible."
-        
-        return self.templates['housing_application']['template'].format(
-            application_url=application_url,
-            dates_info=dates_info
-        )
     
     def _generate_website_response(self, library):
         """Generate a response for website queries"""
@@ -2250,7 +3106,7 @@ class AdvancedResponseGenerator:
             description=description
         )
     
-    def _generate_template_response(self, query, query_analysis, library, building, residence_hall, conversation_history=None, academic_context=None):
+    def _generate_template_response(self, query, query_analysis, library, building, conversation_history=None, academic_context=None):
         """Generate response using templates for common query types"""
         # Initialize metrics
         metrics = {
@@ -2273,15 +3129,6 @@ class AdvancedResponseGenerator:
                 libraries_list=libraries_list
             ), metrics
             
-        # Handle requests for all residence halls
-        if query_analysis.get('is_all_residence_halls_query', False):
-            halls_list = self._generate_all_halls_list()
-            metrics['confidence'] = 0.95
-            metrics['template_used'] = 'all_halls'
-            return self.templates['all_halls']['template'].format(
-                halls_list=halls_list
-            ), metrics
-            
         # Handle amenity queries
         amenity_type = query_analysis.get('amenity_type')
         if amenity_type and amenity_type in ['coffee_shops', 'dining_locations']:
@@ -2296,30 +3143,6 @@ class AdvancedResponseGenerator:
                     return self.templates[template_key]['template'].format(
                         **amenity_content
                     ), metrics
-        
-        # Residence hall specific templates
-        if residence_hall:
-            hall_name = residence_hall.get('name', '')
-            
-            # Handle rates query
-            if ('housing_rates' in query_analysis.get('categories', []) or
-                query_analysis.get('intent') == 'check_housing_rates' or
-                any(word in query.lower() for word in ['cost', 'price', 'rate', 'how much'])):
-                
-                rates_response = self._generate_hall_rates_response(residence_hall)
-                metrics['confidence'] = 0.95
-                metrics['template_used'] = 'hall_rates'
-                return rates_response, metrics
-            
-            # Handle general info query
-            if ('housing' in query_analysis.get('categories', []) or
-                query_analysis.get('intent') == 'get_housing_info' or
-                query_analysis.get('question_type') == 'what'):
-                
-                info_response = self._generate_hall_info_response(residence_hall)
-                metrics['confidence'] = 0.95
-                metrics['template_used'] = 'residence_hall_info'
-                return info_response, metrics
                     
         # Building-specific templates
         if building:
@@ -2459,11 +3282,154 @@ class AdvancedResponseGenerator:
                     additional_info=additional_info
                 ), metrics
             
-            # Other library-specific templates...
+            # Handle offerings query
+            if ('offerings' in query_analysis.get('categories', []) or 
+                'services' in query_analysis.get('categories', []) or 
+                query_analysis.get('intent') == 'discover_offerings'):
+                
+                # Get all resources
+                resources = []
+                for resource_type in ['Resources', 'Services', 'Technology']:
+                    if resource_type in library:
+                        resources.extend(library[resource_type])
+                
+                # If no resources found, return None to use LLM
+                if not resources:
+                    return None, metrics
+                
+                # Format resources list
+                offerings_list = ""
+                for resource in resources[:10]:  # Limit to top 10
+                    offerings_list += f"• {resource}\n"
+                    
+                additional_info = f"For more information, contact {library.get('Email', '')} or visit their website at {library.get('URL', '')}."
+                
+                metrics['confidence'] = 0.85
+                metrics['template_used'] = 'offerings'
+                return self.templates['offerings']['template'].format(
+                    library_name=library_name,
+                    offerings_list=offerings_list.strip(),
+                    additional_info=additional_info
+                ), metrics
+            
+            # Handle study spaces query
+            if ('study_spaces' in query_analysis.get('categories', []) or 
+                query_analysis.get('intent') == 'find_study_space'):
+                
+                # Get study spaces
+                study_spaces = []
+                if 'Study Spaces' in library:
+                    study_spaces = library['Study Spaces']
+                
+                # If no study spaces found, return None to use LLM
+                if not study_spaces:
+                    return None, metrics
+                    
+                # Format study spaces list
+                spaces_list = ""
+                for space in study_spaces:
+                    spaces_list += f"• {space}\n"
+                
+                # Get today's hours
+                today = datetime.now().strftime('%A')
+                today_hours = "unavailable"
+                if 'Hours' in library and today in library['Hours']:
+                    today_hours = library['Hours'][today]
+                
+                metrics['confidence'] = 0.85
+                metrics['template_used'] = 'study_spaces'
+                return self.templates['study_spaces']['template'].format(
+                    library_name=library_name,
+                    spaces_list=spaces_list.strip(),
+                    today_hours=today_hours
+                ), metrics
         
         # For other query types, use LLM
         return None, metrics
-    
+        
+    def _generate_amenity_content(self, amenity_type, library, query_analysis):
+        """Generate content for amenity templates"""
+        if amenity_type == "coffee_shops":
+            # Prepare coffee shops content
+            coffee_shops_list = ""
+            
+            # Get coffee shops data from CAMPUS_AMENITIES
+            coffee_shops = CAMPUS_AMENITIES.get('coffee_shops', [])
+            
+            # Filter by nearest library if specified
+            nearest_library = library.get('Library Name', '') if library else None
+            if nearest_library and any(shop for shop in coffee_shops if shop.get('nearest_library') == nearest_library):
+                filtered_shops = [shop for shop in coffee_shops if shop.get('nearest_library') == nearest_library]
+            else:
+                filtered_shops = coffee_shops
+                
+            # Generate list content
+            for shop in filtered_shops:
+                name = shop.get('name', '')
+                location = shop.get('location', '')
+                
+                # Get today's hours
+                today = datetime.now().strftime('%A')
+                hours_today = "hours unavailable"
+                if 'hours' in shop and today in shop['hours']:
+                    hours_today = shop['hours'][today]
+                
+                coffee_shops_list += f"• {name}: Located at {location}. Hours today: {hours_today}\n\n"
+            
+            # Add additional info
+            additional_info = ""
+            if nearest_library:
+                additional_info = f"These coffee options are convenient to {nearest_library}."
+            else:
+                additional_info = "All Starbucks locations accept Gator Dining Dollars and major credit cards."
+                
+            return {
+                'coffee_shops_list': coffee_shops_list.strip(),
+                'additional_info': additional_info
+            }
+            
+        elif amenity_type == "dining_locations":
+            # Prepare dining locations content
+            dining_list = ""
+            
+            # Get dining locations data
+            dining_locations = CAMPUS_AMENITIES.get('dining_locations', [])
+            
+            # Filter by nearest library if specified
+            nearest_library = library.get('Library Name', '') if library else None
+            if nearest_library and any(loc for loc in dining_locations if loc.get('nearest_library') == nearest_library):
+                filtered_locations = [loc for loc in dining_locations if loc.get('nearest_library') == nearest_library]
+            else:
+                filtered_locations = dining_locations
+                
+            # Generate list content
+            for location in filtered_locations:
+                name = location.get('name', '')
+                loc = location.get('location', '')
+                
+                # Get today's hours
+                today = datetime.now().strftime('%A')
+                hours_today = "hours unavailable"
+                if 'hours' in location and today in location['hours']:
+                    hours_today = location['hours'][today]
+                
+                dining_list += f"• {name}: Located at {loc}. Hours today: {hours_today}\n\n"
+                
+            # Add additional info
+            additional_info = ""
+            if nearest_library:
+                additional_info = f"These dining options are all within walking distance of {nearest_library}."
+            else:
+                additional_info = "Most dining locations accept Gator Dining Dollars and major credit cards."
+                
+            return {
+                'dining_list': dining_list.strip(),
+                'additional_info': additional_info
+            }
+            
+        # Return None for unsupported amenity types
+        return None
+        
     def _generate_all_libraries_list(self):
         """Generate a formatted list of all libraries"""
         libraries_list = "• Library West: Focuses on humanities, business, and social sciences\n"
@@ -2474,21 +3440,8 @@ class AdvancedResponseGenerator:
         libraries_list += "• Education Library: Resources for education and teaching\n"
         libraries_list += "• Legal Information Center: Law and legal resources"
         return libraries_list
-    
-    def _generate_all_halls_list(self):
-        """Generate a formatted list of all residence halls"""
-        halls_list = "• Traditional Style Halls: Broward Hall, Buckman Hall, East Hall, Fletcher Hall, Graham Hall, Jennings Hall, Mallory Hall, Murphree Hall, North Hall, Rawlings Hall, Reid Hall, Riker Hall, Simpson Hall, Sledd Hall, Thomas Hall, Tolbert Hall, Trusler Hall, Weaver Hall, Yulee Hall\n\n"
-        halls_list += "• Suite Style Halls: Cypress Hall, Honors Village, Hume Hall, Infinity Hall, Springs Residential Complex\n\n"
-        halls_list += "• Apartment Style Halls: Beaty Towers, Corry Village, Diamond Village, Keys Residential Complex, Lakeside Residential Complex, Tanglewood Village, The Continuum"
         
-        return halls_list
-        
-    def _generate_amenity_content(self, amenity_type, library, query_analysis):
-        """Generate content for amenity templates"""
-        # Existing implementation...
-        return None
-        
-    def _generate_llm_response(self, query, query_analysis, library=None, building=None, residence_hall=None, conversation_history=None, academic_context=None):
+    def _generate_llm_response(self, query, query_analysis, library=None, building=None, conversation_history=None, academic_context=None):
         """Generate a response using the LLM model"""
         if not self.llm:
             # If no LLM is available, return None to use fallback
@@ -2496,7 +3449,7 @@ class AdvancedResponseGenerator:
         
         # Create optimized prompt for LLaMA 3
         prompt = self._generate_optimized_prompt(
-            query, query_analysis, library, building, residence_hall, conversation_history, academic_context
+            query, query_analysis, library, building, conversation_history, academic_context
         )
         
         # Determine appropriate generation parameters based on query
@@ -2519,7 +3472,7 @@ class AdvancedResponseGenerator:
             
             # Calculate confidence based on response properties
             confidence = self._calculate_response_confidence(
-                response, query, query_analysis, library, building, residence_hall
+                response, query, query_analysis, library, building
             )
             
             return response, {'confidence': confidence}
@@ -2528,12 +3481,12 @@ class AdvancedResponseGenerator:
             logger.error(f"Error generating LLM response: {e}")
             return None, {'confidence': 0.0, 'error': str(e)}
             
-    def _generate_optimized_prompt(self, query, query_analysis, library=None, building=None, residence_hall=None, conversation_history=None, academic_context=None):
+    def _generate_optimized_prompt(self, query, query_analysis, library=None, building=None, conversation_history=None, academic_context=None):
         """Generate an optimized prompt for LLaMA 3"""
         # Create system message
         system_message = """<|system|>
 You are the UF Assistant, an expert on University of Florida. 
-Provide accurate, helpful information about campus buildings, libraries, resources, residence halls, and housing options.
+Provide accurate, helpful information about campus buildings, libraries, resources, and services.
 Your responses should be: (1) factual and based only on the provided UF data, 
 (2) concise and directly answering the user's question, (3) helpful for students 
 and faculty navigating UF campus, and (4) conversational but professional in tone.
@@ -2602,53 +3555,11 @@ and faculty navigating UF campus, and (4) conversational but professional in ton
                 context += f"Address: {building.get('Address', '')}\n"
             if building.get('Description', ''):
                 context += f"Description: {building.get('Description', '')}\n"
-        
-        # Add residence hall context if relevant
-        if residence_hall:
-            hall_name = residence_hall.get('name', '')
-            
-            context += f"Residence Hall: {hall_name}\n"
-            context += f"Hall Type: {residence_hall.get('hall_type', '')}\n"
-            context += f"Location: {residence_hall.get('location', '')}\n"
-            context += f"Description: {residence_hall.get('description', '')}\n"
-            
-            # Features
-            features = residence_hall.get('features', [])
-            if features:
-                context += "Features:\n"
-                for feature in features:
-                    context += f"- {feature}\n"
-            
-            # Room types
-            room_types = residence_hall.get('room_types', [])
-            if room_types:
-                context += "Room Types:\n"
-                for room_type in room_types:
-                    if "College of" not in room_type and "Hall" not in room_type:  # Filter out non-room-type entries
-                        context += f"- {room_type}\n"
-            
-            # Contact and website
-            if residence_hall.get('phone', ''):
-                context += f"Phone: {residence_hall.get('phone', '')}\n"
-            if residence_hall.get('url', ''):
-                context += f"Website: {residence_hall.get('url', '')}\n"
-            
-            # Rates information (if available)
-            context += "\nPlease note that residence hall rates vary by room type and term (Fall/Spring vs. Summer).\n"
                 
         # Add general UF information if no specific entity
-        if not library and not building and not residence_hall:
+        if not library and not building:
             # Determine what kind of information to include based on query
-            if query_analysis.get('is_housing_query', False):
-                context += "UF offers a variety of on-campus housing options:\n\n"
-                context += "1. Traditional Style Halls: Shared community bathrooms, community kitchens, typically double or triple occupancy rooms\n"
-                context += "2. Suite Style Halls: Semi-private bathrooms shared with suitemates, typically double or single rooms\n"
-                context += "3. Apartment Style Halls: Full kitchens, private or shared bedrooms, private bathrooms\n\n"
-                context += "Housing costs vary by hall type, room type, and term (Fall/Spring vs. Summer).\n"
-                context += "Applications typically open in November for first-year students and February for current students.\n"
-                context += "For more information, students can visit: https://housing.ufl.edu/\n"
-                
-            elif query_analysis.get('is_building_query'):
+            if query_analysis.get('is_building_query'):
                 # Add general buildings information
                 context += "UF has numerous buildings across campus. Some notable ones include:\n"
                 for i, building_data in enumerate(CAMPUS_BUILDINGS_DATA[:5]):  # Limit to 5 for brevity
@@ -2678,7 +3589,7 @@ and faculty navigating UF campus, and (4) conversational but professional in ton
             else:
                 # Add general UF information
                 context += "The University of Florida (UF) is a major public research university in Gainesville, Florida. "
-                context += "The campus includes various libraries, academic buildings, research facilities, residence halls, and student resources. "
+                context += "The campus includes various libraries, academic buildings, research facilities, and student resources. "
                 context += "UF offers numerous academic programs and is known for its research activities.\n"
                 
         # Add academic calendar context if available
@@ -2749,14 +3660,6 @@ and faculty navigating UF campus, and (4) conversational but professional in ton
                 system_guidance = "Provide detailed information about nearby options with hours."
             elif intent == 'building_info':
                 system_guidance = "Provide detailed information about the building's purpose, departments housed there, and relevant features."
-            elif intent == 'check_housing_rates':
-                system_guidance = "Provide specific rates for the requested residence hall, noting differences by room type and term."
-            elif intent == 'get_housing_info':
-                system_guidance = "Describe the residence hall, its features, room types, and location on campus."
-            elif intent == 'compare_housing':
-                system_guidance = "Compare the requested residence halls focusing on type, features, location, and rates."
-            elif intent == 'apply_housing':
-                system_guidance = "Explain the housing application process, including timelines, fees, and steps."
                 
             if system_guidance:
                 context += f"<|system|>\nGUIDANCE: {system_guidance}</|system|>\n"
@@ -2794,12 +3697,12 @@ and faculty navigating UF campus, and (4) conversational but professional in ton
             params['top_p'] = 0.95
             params['repeat_penalty'] = 1.2
             
-        elif intent in ['get_information', 'discover_offerings', 'building_info', 'get_housing_info']:
+        elif intent in ['get_information', 'discover_offerings', 'building_info']:
             # Balanced for informational content
             params['temperature'] = 0.6
             params['max_tokens'] = 1000  # Allow longer responses for information
             
-        elif intent in ['get_recommendations', 'compare_libraries', 'compare_housing']:
+        elif intent in ['get_recommendations', 'compare_libraries']:
             # More creative for suggestions
             params['temperature'] = 0.75
             params['top_p'] = 0.85
@@ -2810,7 +3713,7 @@ and faculty navigating UF campus, and (4) conversational but professional in ton
             
         return params
         
-    def _calculate_response_confidence(self, response, query, query_analysis, library=None, building=None, residence_hall=None):
+    def _calculate_response_confidence(self, response, query, query_analysis, library=None, building=None):
         """Calculate confidence score for a generated response"""
         # Start with base confidence
         confidence = 0.7
@@ -2822,15 +3725,11 @@ and faculty navigating UF campus, and (4) conversational but professional in ton
             confidence += 0.1
         elif query_analysis.get('question_type') == 'what' and ('is a' in response or 'houses' in response or 'contains' in response):
             confidence += 0.1
-        elif query_analysis.get('question_type') == 'how' and ('cost' in query.lower()) and re.search(r'\$\d+', response):
-            confidence += 0.1
             
         # Check for entity name inclusion
         if library and library.get('Library Name', '') in response:
             confidence += 0.05
         if building and building.get('Building Name', '') in response:
-            confidence += 0.05
-        if residence_hall and residence_hall.get('name', '') in response:
             confidence += 0.05
             
         # Check for specific query terms in response
@@ -2908,10 +3807,6 @@ and faculty navigating UF campus, and (4) conversational but professional in ton
         response = response.replace("{day_of_week}", today.strftime('%A'))
         response = response.replace("{date}", today.strftime('%B %d, %Y'))
         
-        # Standardize dollar amounts
-        money_pattern = r'(\d+)(\s+)dollars'
-        response = re.sub(money_pattern, r'$\1', response)
-        
         return response
 
 class ResponseQualityEnhancer:
@@ -2922,8 +3817,7 @@ class ResponseQualityEnhancer:
             'hours': r'(\d{1,2}(?::\d{2})?(?:am|pm|AM|PM))\s*-\s*(\d{1,2}(?::\d{2})?(?:am|pm|AM|PM))',
             'lists': r'(?:\n\s*[-•*]\s+.+){2,}',
             'locations': r'\b\d+\s+[A-Z][a-z]+(?:\s+[A-Z][a-z]+)*(?:\s+(?:Rd|Dr|St|Ave))?\b',
-            'urls': r'(https?://[^\s]+)',
-            'money': r'\$(\d+(?:\.\d{2})?)'
+            'urls': r'(https?://[^\s]+)'
         }
         
     def enhance(self, response, query_analysis=None, with_citations=False):
@@ -2975,21 +3869,6 @@ class ResponseQualityEnhancer:
             return url
             
         response = re.sub(self.formatting_patterns['urls'], format_url, response)
-        
-        # Standardize money formatting
-        def format_money(match):
-            amount = match.group(1)
-            # Format with commas for thousands
-            try:
-                value = float(amount)
-                if value.is_integer():
-                    return f"${int(value):,}"
-                else:
-                    return f"${value:,.2f}"
-            except:
-                return f"${amount}"
-                
-        response = re.sub(self.formatting_patterns['money'], format_money, response)
         
         return response
         
@@ -3070,20 +3949,6 @@ class ResponseQualityEnhancer:
                         response += "."
                     response += website_info
                     break
-                    
-        # Add housing application info
-        if intent == 'apply_housing' and 'housing.ufl.edu/apply' not in response:
-            application_info = "\n\nTo apply for housing, visit https://housing.ufl.edu/apply/"
-            if not response.endswith((".", "!", "?")):
-                response += "."
-            response += application_info
-            
-        # Add housing rates info
-        if intent == 'check_housing_rates' and not re.search(r'\$\d+', response):
-            rates_info = "\n\nFor the most up-to-date housing rates, visit https://housing.ufl.edu/rates-payments-agreements/"
-            if not response.endswith((".", "!", "?")):
-                response += "."
-            response += rates_info
             
         return response
 
@@ -3285,18 +4150,12 @@ class EnhancedUFAssistant:
         # Load campus buildings data
         self.campus_buildings_data = load_campus_buildings_data()
         
-        # Load housing data
-        self.housing_data, self.rates_data, self.links_data = load_housing_data()
-        
         # Initialize enhanced components
         self.library_knowledge = EnhancedKnowledgeRetrieval(LIBRARY_DATA, self.embedding_model)
         logger.info("✅ Initialized library knowledge retrieval system")
         
         self.buildings_knowledge = CampusBuildingsRetrieval(self.campus_buildings_data)
         logger.info("✅ Initialized campus buildings knowledge retrieval system")
-        
-        self.housing_knowledge = HousingKnowledgeRetrieval(self.housing_data, self.rates_data, self.links_data, self.embedding_model)
-        logger.info("✅ Initialized housing knowledge retrieval system")
         
         self.query_analyzer = EnhancedQueryAnalyzer(self.nlp_model)
         logger.info("✅ Initialized enhanced query analyzer")
@@ -3390,42 +4249,24 @@ class EnhancedUFAssistant:
                                 ['hours', 'collections', 'study_spaces', 'services', 'offerings']) or \
                               query_analysis.get('intent') in ['check_hours', 'find_materials', 'find_study_space'] or \
                               query_analysis.get('is_all_libraries_query', False)
-                              
-            # Determine if this is a housing-related query
-            is_housing_query = 'housing' in query_analysis.get('categories', []) or \
-                              any(category in query_analysis.get('categories', []) for category in 
-                                 ['housing_types', 'housing_rates', 'housing_features', 'housing_application']) or \
-                              query_analysis.get('intent') in ['find_housing', 'check_housing_rates', 'get_housing_info'] or \
-                              query_analysis.get('is_housing_query', False) or \
-                              query_analysis.get('is_all_residence_halls_query', False)
             
             # Initialize relevant entities
             library = None
             library_confidence = 0.0
             building = None
             building_confidence = 0.0
-            residence_hall = None
-            residence_hall_confidence = 0.0
             
             # If this is a follow-up, try to use the previously active context
             if query_analysis.get('is_followup', False):
-                if is_housing_query or not (is_building_query or is_library_query):
-                    # Check for residence hall context first
-                    prev_hall = self.conversation_state.get_active_residence_hall()
-                    if prev_hall and self.conversation_state.should_maintain_context(query, prev_hall):
-                        residence_hall = prev_hall
-                        residence_hall_confidence = 0.8
-                        logger.info(f"Using previous residence hall context: {residence_hall.get('name', '')}")
-                
-                if (is_building_query or not is_library_query) and not residence_hall:
-                    # Check for building context
+                if is_building_query or not is_library_query:
+                    # Check for building context first
                     prev_building = self.conversation_state.get_active_building()
                     if prev_building and self.conversation_state.should_maintain_context(query, prev_building):
                         building = prev_building
                         building_confidence = 0.8
                         logger.info(f"Using previous building context: {building.get('Building Name', '')}")
                 
-                if (is_library_query or (not building and not is_building_query)) and not residence_hall:
+                if is_library_query or (not building and not is_building_query):
                     # Check for library context
                     prev_library = self.conversation_state.get_active_library()
                     if prev_library and self.conversation_state.should_maintain_context(query, prev_library):
@@ -3434,15 +4275,7 @@ class EnhancedUFAssistant:
                         logger.info(f"Using previous library context: {library.get('Library Name', '')}")
             
             # If no context from history, try to identify from query
-            if is_housing_query and not residence_hall:
-                residence_hall, residence_hall_confidence = self.housing_knowledge.retrieve_residence_hall(query)
-                
-                if residence_hall:
-                    logger.info(f"Identified residence hall: {residence_hall.get('name', '')} (confidence: {residence_hall_confidence:.2f})")
-                else:
-                    logger.info("No specific residence hall identified")
-                
-            if is_building_query and not building and not residence_hall:
+            if is_building_query and not building:
                 building, building_confidence = self.buildings_knowledge.retrieve_building(query)
                 
                 if building:
@@ -3450,7 +4283,7 @@ class EnhancedUFAssistant:
                 else:
                     logger.info("No specific building identified")
                     
-            if (is_library_query or not (building or residence_hall)) and not library:
+            if (is_library_query or not building) and not library:
                 library, library_confidence = self.library_knowledge.retrieve_relevant_library(
                     query, query_analysis
                 )
@@ -3461,9 +4294,6 @@ class EnhancedUFAssistant:
                     logger.info("No specific library identified")
             
             # Update active entities in conversation state
-            if residence_hall and residence_hall_confidence >= 0.7:
-                self.conversation_state.set_active_residence_hall(residence_hall)
-            
             if building and building_confidence >= 0.7:
                 self.conversation_state.set_active_building(building)
             
@@ -3475,7 +4305,6 @@ class EnhancedUFAssistant:
                 query, 
                 library,
                 building,
-                residence_hall,
                 query_analysis,
                 self.conversation_history,
                 academic_context
@@ -3494,8 +4323,6 @@ class EnhancedUFAssistant:
                 metrics['library'] = library
             if building and building_confidence >= 0.5:
                 metrics['building'] = building
-            if residence_hall and residence_hall_confidence >= 0.5:
-                metrics['residence_hall'] = residence_hall
                 
             self.metrics_tracker.record_query(
                 query, 
@@ -3539,14 +4366,6 @@ class EnhancedUFAssistant:
         query = re.sub(r"\barb\b", "Academic Research Building", query, flags=re.IGNORECASE)
         query = re.sub(r"\band\b", "Anderson Hall", query, flags=re.IGNORECASE)
         
-        # Normalize residence hall terms
-        query = re.sub(r"\bdorm(s|itory|itories)?\b", "residence hall", query, flags=re.IGNORECASE)
-        
-        # Normalize common residence hall abbreviations
-        query = re.sub(r"\bbeaty\b", "Beaty Towers", query, flags=re.IGNORECASE)
-        query = re.sub(r"\bhume\b", "Hume Hall", query, flags=re.IGNORECASE)
-        query = re.sub(r"\bbroward\b", "Broward Hall", query, flags=re.IGNORECASE)
-        
         # Handle special queries
         query_lower = query.lower()
         
@@ -3564,11 +4383,6 @@ class EnhancedUFAssistant:
         if "coffee" in query_lower:
             if not any(word in query_lower for word in ["where", "what", "is there"]):
                 query = f"where can I get coffee {query}"
-                
-        # Housing cost queries
-        if re.search(r"cost|price|rate|how much", query_lower) and re.search(r"dorm|residence|housing|hall", query_lower):
-            if not re.search(r"what are|how much", query_lower):
-                query = f"how much does it cost to live in {query}"
         
         return query
             
@@ -3596,22 +4410,81 @@ TRAINING_EXAMPLES = [
         "query": "What are the hours for Library West?",
         "response": "Library West is open from 7:00am to 2:00am today (Thursday).\n\nRegular hours:\n• Monday: 7:00am - 2:00am\n• Tuesday: 7:00am - 2:00am\n• Wednesday: 7:00am - 2:00am\n• Thursday: 7:00am - 2:00am\n• Friday: 7:00am - 10:00pm\n• Saturday: 10:00am - 10:00pm\n• Sunday: 7:00am - 2:00am\n\nPlease note that building access after 10pm is limited to users with an active UF ID or Santa Fe College ID."
     },
-    # Other examples...
     {
-        "query": "Tell me about Beaty Towers",
-        "response": "Beaty Towers is an Apartment Style residence hall located at 11 Beaty Towers, Gainesville, FL 32612-1101. It's centrally located on the corner of Museum Road and 13th Street, close to the College of Music, Design Construction and Planning, and a short walk to the Warrington College of Business.\n\nEach apartment features double room suites with a semi-private bathroom, built-in desks, and a kitchenette complete with a refrigerator, oven, and garbage disposal.\n\nFeatures:\n• Fully Furnished\n• Twin XL Beds\n• Passenger Elevators\n• High-Speed Internet\n• Laundry Facilities\n• The Market in Beaty Towers\n• Game Room\n\nBeaty Towers offers Apartment Double rooms at a rate of $3,821 per semester for Fall/Spring and $1,433 for Summer A or B ($2,866 for Summer C).\n\nFor more information, visit: https://housing.ufl.edu/beaty-towers/"
+        "query": "Where is Marston Science Library located?",
+        "response": "Marston Science Library is located at 444 Newell Dr, Gainesville, FL 32611. It's situated in the central part of UF's campus, making it easily accessible from most classroom buildings."
     },
     {
-        "query": "How much does on-campus housing cost?",
-        "response": "UF on-campus housing costs vary by residence hall type, room configuration, and semester. Here's a general overview of the pricing (2025 rates):\n\n• Traditional Style Halls (like Broward, Buckman, East):\n  - Single rooms: $3,766 per Fall/Spring semester\n  - Double rooms: $3,556 per Fall/Spring semester\n  - Triple rooms: $3,136 per Fall/Spring semester\n\n• Suite Style Halls (like Cypress, Hume, Springs):\n  - Single suites: $4,408-$5,081 per Fall/Spring semester\n  - Double suites: $4,109-$4,800 per Fall/Spring semester\n\n• Apartment Style Halls (like Beaty, Keys, Lakeside):\n  - Single rooms in apartments: $4,262-$4,603 per Fall/Spring semester\n  - Double rooms in apartments: $3,821 per Fall/Spring semester\n\nSummer rates are approximately 35-40% of the Fall/Spring rates for a single term (A or B), or about 75% for the full Summer C term.\n\nThe Honors Village and Infinity Hall tend to be among the most expensive options, while traditional triple rooms are typically the most affordable.\n\nFor exact rates and up-to-date information, visit: https://housing.ufl.edu/rates-payments-agreements/residence-hall-rental-rates/"
+        "query": "Tell me about Smathers Library",
+        "response": "Smathers Library is UF's oldest library, located at the Plaza of the Americas in Gainesville, FL 32611. It houses special collections, archives, rare books, and historical manuscripts.\n\nThe library offers several resources:\n• Florida history collections\n• Latin American collections\n• Rare books and manuscripts\n• Archives and special collections reading rooms\n• Research assistance for historical materials\n\nSmathers Library is open from 7:00am to 2:00am Monday through Thursday, 7:00am to 10:00pm on Friday, 10:00am to 10:00pm on Saturday, and 7:00am to 2:00am on Sunday.\n\nThe library is known for its historical collections, including the P.K. Yonge Library of Florida History and various special collections."
     },
     {
-        "query": "How do I apply for housing at UF?",
-        "response": "To apply for on-campus housing at UF:\n\n1. Visit https://housing.ufl.edu/apply/\n2. Log in with your GatorLink credentials\n3. Complete the housing application\n4. Pay the application fee of $25\n\nImportant dates to know:\n• First-Year Students: Applications typically open in November for the following academic year\n• Current Students: Applications typically open in February for the following academic year\n• Graduate and Family Housing: Applications accepted on a rolling basis\n\nHousing assignments are made on a first-come, first-served basis, so it's recommended to apply as early as possible. For more information, refer to the Housing Application Guide: https://housing.ufl.edu/apply/how-to-apply/"
+        "query": "What are things Marston offers?",
+        "response": "Marston Science Library offers the following resources and services:\n\n• STEM research materials and databases\n• Makerspace with 3D printing capabilities\n• Technical software (MATLAB, AutoCAD, SolidWorks, etc.)\n• Group study rooms (reservations required)\n• Quiet study areas on upper floors\n• Computer workstations with specialized software\n• Research assistance for science and engineering\n• Printing and scanning services\n• GIS support and data visualization resources\n• Course reserves for STEM classes\n\nThe library specializes in science, engineering, technology, and mathematics resources. For more information, you can contact them at marston@uflib.ufl.edu or visit their website at https://uflib.ufl.edu/marston/."
     },
     {
-        "query": "What residence halls are available at UF?",
-        "response": "UF offers the following residence halls on campus:\n\n• Traditional Style Halls: Broward Hall, Buckman Hall, East Hall, Fletcher Hall, Graham Hall, Jennings Hall, Mallory Hall, Murphree Hall, North Hall, Rawlings Hall, Reid Hall, Riker Hall, Simpson Hall, Sledd Hall, Thomas Hall, Tolbert Hall, Trusler Hall, Weaver Hall, Yulee Hall\n\n• Suite Style Halls: Cypress Hall, Honors Village, Hume Hall, Infinity Hall, Springs Residential Complex\n\n• Apartment Style Halls: Beaty Towers, Corry Village, Diamond Village, Keys Residential Complex, Lakeside Residential Complex, Tanglewood Village, The Continuum\n\nThese residence halls offer various room types and amenities. Visit the UF Housing website for more details: https://housing.ufl.edu/"
+        "query": "Where can I study quietly?",
+        "response": "For quiet studying at UF, you have several good options:\n\n• Library West: The 4th floor is a designated silent study area with individual study carrels.\n\n• Marston Science Library: The upper floors (especially the 3rd and 4th floors) offer quiet study areas with individual seating.\n\n• Smathers Library: The Grand Reading Room provides a quiet, historic study environment.\n\n• Health Science Center Library: Offers designated quiet study spaces throughout the building.\n\nAll these libraries have extended hours during weekdays (generally 7am-2am). Library West and Marston Science Library tend to be the most popular for quiet studying. Just remember that building access after 10pm requires an active UF ID."
+    },
+    {
+        "query": "I need to print something, where should I go?",
+        "response": "You can print at any of the UF libraries. Here are your options:\n\n• Marston Science Library: Printing stations are available on the 1st floor. They offer both black & white and color printing options.\n\n• Library West: Printing services are located on the 1st floor near the entrance.\n\n• Smathers Library: Printing is available on the 2nd floor.\n\n• Health Science Center Library: Printing stations are located throughout the building.\n\nTo print, you'll need to send your document to the print queue and use your Gator 1 card to release the print job. Black and white printing typically costs $0.08 per page, while color printing is $0.25 per page. All libraries have scanning services available at no cost."
+    },
+    {
+        "query": "Where can I find legal resources on campus?",
+        "response": "The Legal Information Center at the Levin College of Law is your best resource for legal materials on campus. Located at the UF Levin College of Law (Gainesville, FL 32611), this specialized library offers:\n\n• Comprehensive legal collections including case law, statutes, and regulations\n• Legal research databases (Westlaw, LexisNexis, HeinOnline)\n• Study spaces designed for law students\n• Legal research assistance from specialized librarians\n• Computer workstations with legal software\n• Group study rooms for collaborative work\n\nThe Legal Information Center is open from 7:00am to 2:00am Monday through Thursday, 7:00am to 10:00pm on Friday, 10:00am to 10:00pm on Saturday, and 7:00am to 2:00am on Sunday. For specific questions about legal resources, you can contact them at lic@law.ufl.edu or (352) 273-0722."
+    },
+    {
+        "query": "I'm looking for architecture books",
+        "response": "The Architecture & Fine Arts Library is your best resource for architecture books at UF. Located at 1480 Inner Rd, Gainesville, FL 32611, this specialized library offers:\n\n• Comprehensive architecture book collections\n• Design and building technology resources\n• Urban planning materials\n• Interior design references\n• Visual resources for architecture studies\n• Design standards and guides\n• Architectural journals and periodicals\n\nThe library provides spaces specifically designed for architecture students, including large tables for design work and computer stations with specialized design software like AutoCAD and Revit.\n\nIt's open from 7:00am to 2:00am Monday through Thursday, 7:00am to 10:00pm on Friday, 10:00am to 10:00pm on Saturday, and 7:00am to 2:00am on Sunday. For specific questions about architecture resources, you can contact them at afa@uflib.ufl.edu."
+    },
+    {
+        "query": "Are you an AI?",
+        "response": "Yes, I'm an AI assistant specifically designed to provide information about the University of Florida's libraries, buildings, campus resources, and other UF-related topics. I can help with questions about library hours, locations, services, collections, building information, and more. How can I assist you with UF-related questions today?"
+    },
+    {
+        "query": "What libraries are on campus?",
+        "response": "The University of Florida has several libraries across campus:\n\n• Library West: Focuses on humanities, business, and social sciences\n• Marston Science Library: Specializes in science, engineering, technology, and math\n• Smathers Library: Houses special collections, archives, and rare materials\n• Health Science Center Library: Serves medical and health science disciplines\n• Architecture & Fine Arts Library: Supports art, design, and architecture programs\n• Education Library: Resources for education and teaching\n• Legal Information Center: Law and legal resources\n\nEach library offers specialized collections, study spaces, and research assistance for their respective disciplines."
+    },
+    {
+        "query": "I'm looking for books on Florida history",
+        "response": "For books on Florida history, your best resource is the P.K. Yonge Library of Florida History, located in Smathers Library (on the Plaza of the Americas). This is one of the most comprehensive collections of Florida historical materials anywhere.\n\nThe collection includes:\n• Rare books on Florida's colonial and territorial periods\n• Extensive manuscript collections from Florida's notable historical figures\n• Historical newspapers and periodicals\n• Maps and geographical materials related to Florida\n• Archival photographs documenting Florida's history\n• Local and regional historical records\n• Materials on indigenous peoples of Florida\n\nThese materials are part of the Special & Area Studies Collections and are typically used in the reading room on the 2nd floor of Smathers Library. Some items may require advance notice to access.\n\nSmathers Library is open from 7:00am to 2:00am Monday through Thursday, 7:00am to 10:00pm on Friday, 10:00am to 10:00pm on Saturday, and 7:00am to 2:00am on Sunday. However, the Special Collections reading room has more limited hours, typically 9:00am to 5:00pm Monday through Friday.\n\nFor specific research assistance with Florida history materials, you can contact specialcollections@uflib.ufl.edu."
+    },
+    {
+        "query": "Is there a cafe in any of the libraries?",
+        "response": "Yes, there is a café in Library West called the Starbucks Library West. It's located on the first floor of Library West and offers a selection of coffee drinks, teas, pastries, and light snacks.\n\nThis Starbucks location is popular among students for study breaks and quick refreshments. The hours may be slightly different from the library's hours, typically opening a bit later and closing earlier than the library itself.\n\nOther UF libraries don't have cafés inside them, but there are numerous dining options near the libraries:\n\n• Near Marston Science Library: You'll find the Reitz Union food court and Starbucks at Newell Hall within walking distance\n• Near Health Science Center Library: Several cafés and food options are available in the health complex buildings\n• Near Smathers Library: The Plaza of the Americas often has food vendors during weekdays\n\nWhile beverages with secure lids are generally permitted in library spaces, food policies may vary by location and specific areas within each library."
+    },
+    {
+        "query": "Where are the Starbucks on campus?",
+        "response": "There are three Starbucks locations on the UF campus:\n\n• Starbucks at Library West: Located on the first floor of Library West. Open from 7:30am to 8:00pm Monday through Thursday, 7:30am to 5:00pm on Friday, closed Saturday, and 1:00pm to 8:00pm on Sunday.\n\n• Starbucks at Newell Hall: Located on the ground floor of Newell Hall, near Marston Science Library. Open from 7:30am to 5:00pm Monday through Friday, closed on weekends.\n\n• Starbucks at the Reitz Union: Located on the ground floor of the Reitz Union. Open from 7:00am to 9:00pm Monday through Thursday, 7:00am to 8:00pm on Friday, 9:00am to 6:00pm on Saturday, and 10:00am to 6:00pm on Sunday.\n\nThe Starbucks at Library West is particularly convenient if you're studying there."
+    },
+    {
+        "query": "Does Marston have coffee?",
+        "response": "Marston Science Library itself does not have a coffee shop inside the building. However, there is a Starbucks located nearby at Newell Hall, which is just a short walk from Marston. This Starbucks is typically open from 7:30am to 5:00pm on weekdays. Additionally, there are vending machines within Marston where you can purchase cold beverages and snacks."
+    },
+    {
+        "query": "What's the website for Library West?",
+        "response": "The website for Library West is: https://uflib.ufl.edu/library-west/"
+    },
+    {
+        "query": "How do I reserve a study room at Marston?",
+        "response": "To reserve a study room at Marston Science Library:\n\n1. Go to https://uflib.ufl.edu/marston/\n2. Click on 'Study Rooms' or 'Room Reservations'\n3. Sign in with your GatorLink credentials\n4. Select your preferred time and location\n\nImportant information:\n• Reservations are limited to 2 hours per day per group\n• You must have a valid UF ID to use reserved rooms\n• Rooms must be occupied within 15 minutes of reservation time\n• Most rooms have whiteboards and display screens for collaborative work"
+    },
+    {
+        "query": "Where is Anderson Hall?",
+        "response": "Anderson Hall is located at 100 Fletcher Dr, Gainesville, FL 32611. It's home to the College of Liberal Arts and Sciences at the University of Florida. The building is centrally located on campus, making it easily accessible from most other facilities."
+    },
+    {
+        "query": "What is the Academic Research Building?",
+        "response": "The Academic Research Building (ARB) is located at 1230 Inner Road, Gainesville, FL 32611. It houses research laboratories and facilities for interdisciplinary studies at the University of Florida. The building provides space for various research initiatives across multiple academic disciplines."
+    },
+    {
+        "query": "Tell me about CLB",
+        "response": "The 105 Classroom Building (CLB) is located at 105 Fletcher Drive, Gainesville, FL 32611. It's primarily used for classrooms and academic facilities at the University of Florida. Many undergraduate courses are held in this building, which is equipped with standard classroom technology and learning spaces."
+    },
+    {
+        "query": "Is there a stadium on campus?",
+        "response": "Yes, UF has several athletic facilities on campus. The Alfred A. McKethan Stadium, formerly used for baseball, has been replaced by Condron Ballpark located at 2500 SW 2nd Ave, Gainesville, FL 32607. The main football stadium is Ben Hill Griffin Stadium, also known as 'The Swamp,' which is one of the most recognized stadiums in college football."
     }
 ]
 
@@ -3622,7 +4495,7 @@ TRAINING_EXAMPLES = [
 def interactive_cli(assistant):
     """Run an interactive CLI for the UF Assistant"""
     print("\n=== Enhanced UF Assistant ===")
-    print("Type your questions about UF libraries, campus buildings, and housing (or '/help' for commands)")
+    print("Type your questions about UF libraries and campus buildings (or '/help' for commands)")
     
     while True:
         try:
@@ -3654,9 +4527,6 @@ def interactive_cli(assistant):
                     print("\nTop Building Matches:")
                     for building, count in metrics['top_buildings'].items():
                         print(f"  - {building}: {count}")
-                    print("\nTop Residence Hall Matches:")
-                    for hall, count in metrics['top_residence_halls'].items():
-                        print(f"  - {hall}: {count}")
                     print("\nTop Intents:")
                     for intent, count in metrics['top_intents'].items():
                         print(f"  - {intent}: {count}")
@@ -3704,42 +4574,6 @@ def interactive_cli(assistant):
             print(f"\nError: {str(e)}")
 
 # =============================================================================
-# HOUSING TEST SPECIFIC FUNCTION
-# =============================================================================
-
-def test_housing_queries(assistant):
-    """Test housing-related queries on the UF Assistant"""
-    housing_tests = [
-        "Tell me about Beaty Towers",
-        "What are the different types of housing options at UF?",
-        "How much does it cost to live in Hume Hall?",
-        "What features does Infinity Hall have?",
-        "Which residence halls are closest to the engineering buildings?",
-        "Compare Broward Hall and Jennings Hall",
-        "What's the cheapest housing option at UF?",
-        "How do I apply for housing at UF?",
-        "Are there apartment-style residence halls?",
-        "What's the difference between traditional style and suite style halls?"
-    ]
-    
-    print(f"\n===== TESTING HOUSING QUERIES =====\n")
-    
-    for i, query in enumerate(housing_tests):
-        print(f"Test #{i+1}: {query}")
-        
-        # Process the query and time it
-        start_time = time.time()
-        response = assistant.process_query(query)
-        end_time = time.time()
-        response_time = end_time - start_time
-        
-        # Print the result
-        print("\nResponse:")
-        print(response)
-        print(f"\nResponse time: {response_time:.2f} seconds")
-        print("\n" + "-" * 80 + "\n")
-
-# =============================================================================
 # BATCH TESTING
 # =============================================================================
 
@@ -3766,28 +4600,6 @@ def run_batch_tests(assistant, test_set='basic'):
             "Are there any cafes in the libraries?",
             "Do UF libraries have textbooks on reserve?"
         ],
-        'housing': [
-            "Tell me about Beaty Towers",
-            "What are the different types of housing options at UF?",
-            "How much does it cost to live in Hume Hall?",
-            "What features does Infinity Hall have?",
-            "Which residence halls are closest to the engineering buildings?",
-            "Compare Broward Hall and Jennings Hall",
-            "What's the cheapest housing option at UF?",
-            "How do I apply for housing at UF?",
-            "Are there apartment-style residence halls?",
-            "What's the difference between traditional style and suite style halls?"
-        ],
-        'buildings': [
-            "Where is Anderson Hall?",
-            "What is the CLB building?",
-            "Tell me about the Academic Research Building",
-            "How do I get to Anderson Hall from Marston?",
-            "What departments are in Anderson Hall?",
-            "Is there a stadium on campus?",
-            "Where are the classrooms on campus?",
-            "What building is at 105 Fletcher Drive?"
-        ],
         'edge_cases': [
             "When was Library West built?",  # Might not have this specific info
             "Can I eat in the library?",  # Policy question
@@ -3799,6 +4611,32 @@ def run_batch_tests(assistant, test_set='basic'):
             "Can I check out a laptop?",  # Specific service
             "How many books does Library West have?",  # Specific count
             "What's the quietest spot in the library?"  # Subjective assessment
+        ],
+        'amenities': [
+            "Where can I get coffee near Marston?",
+            "Does Library West have a cafe?",
+            "Where are the Starbucks on campus?",
+            "Where can I eat near the libraries?",
+            "What food options are near Smathers?",
+            "Is there a coffee shop in Marston?"
+        ],
+        'followups': [
+            "Where is Marston?",
+            "Does it have coffee?",
+            "yes",
+            "where's the closest one?",
+            "thanks",
+            "where can I eat nearby?"
+        ],
+        'buildings': [
+            "Where is Anderson Hall?",
+            "What is the CLB building?",
+            "Tell me about the Academic Research Building",
+            "How do I get to Anderson Hall from Marston?",
+            "What departments are in Anderson Hall?",
+            "Is there a stadium on campus?",
+            "Where are the classrooms on campus?",
+            "What building is at 105 Fletcher Drive?"
         ]
     }
     
@@ -3855,6 +4693,41 @@ def run_batch_tests(assistant, test_set='basic'):
     return results
 
 # =============================================================================
+# BUILDING TEST SPECIFIC FUNCTION
+# =============================================================================
+
+def test_building_queries(assistant):
+    """Test building-related queries on the UF Assistant"""
+    building_tests = [
+        "Where is Anderson Hall?",
+        "What is the Academic Research Building?",
+        "Tell me about CLB",
+        "Where are the classrooms on campus?",
+        "How do I find the Animal Sciences Building?",
+        "Which building houses the College of Liberal Arts and Sciences?",
+        "What's the abbreviation for 105 Classroom Building?",
+        "Where is the former baseball stadium?",
+        "What buildings are on Fletcher Drive?"
+    ]
+    
+    print(f"\n===== TESTING BUILDING QUERIES =====\n")
+    
+    for i, query in enumerate(building_tests):
+        print(f"Test #{i+1}: {query}")
+        
+        # Process the query and time it
+        start_time = time.time()
+        response = assistant.process_query(query)
+        end_time = time.time()
+        response_time = end_time - start_time
+        
+        # Print the result
+        print("\nResponse:")
+        print(response)
+        print(f"\nResponse time: {response_time:.2f} seconds")
+        print("\n" + "-" * 80 + "\n")
+
+# =============================================================================
 # MAIN FUNCTION
 # =============================================================================
 
@@ -3866,7 +4739,7 @@ def main():
                       help='Path to the LLaMA model')
     parser.add_argument('--use_gpu', action='store_true',
                       help='Use GPU for inference if available')
-    parser.add_argument('--test', choices=['basic', 'detailed', 'edge_cases', 'housing', 'buildings', 'all'],
+    parser.add_argument('--test', choices=['basic', 'detailed', 'edge_cases', 'amenities', 'followups', 'buildings', 'all'],
                       help='Run tests instead of interactive mode')
     parser.add_argument('--interactive', action='store_true',
                       help='Run in interactive mode after tests')
@@ -3882,13 +4755,10 @@ def main():
     
     # Run tests if requested
     if args.test:
-        if args.test == 'housing':
-            test_housing_queries(assistant)
-        elif args.test == 'buildings':
+        if args.test == 'buildings':
             test_building_queries(assistant)
         elif args.test == 'all':
             run_batch_tests(assistant, 'basic')
-            test_housing_queries(assistant)
             test_building_queries(assistant)
         else:
             run_batch_tests(assistant, args.test)
