@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import "../css/output.css";
 import { ArrowCircleUp } from "@phosphor-icons/react";
 // component imports
@@ -14,6 +14,8 @@ function Dashboard() {
     const [input, setInput] = useState("");
     const [isConnected, setIsConnected] = useState(false);
     const [currentConversationId, setCurrentConversationId] = useState(null);
+    const [isPlaceholder, setIsPlaceholder] = useState(true);
+    const inputRef = useRef(null);
     const { user } = useAuth();
 
     // Test backend connection on load
@@ -78,7 +80,10 @@ function Dashboard() {
 
         // Clear input field first
         setInput("");
-        document.querySelector('[contenteditable="true"]').textContent = "";
+        if (inputRef.current) {
+            inputRef.current.textContent = "";
+            setIsPlaceholder(true);
+        }
 
         // Get user ID from authentication
         const userId = user ? user.user_id : localStorage.getItem("userId");
@@ -239,7 +244,30 @@ function Dashboard() {
 
     const handleSuggestion = (text) => () => {
         setInput(text);
-        document.querySelector('[contenteditable="true"]').textContent = text;
+        if (inputRef.current) {
+            inputRef.current.textContent = text;
+            setIsPlaceholder(false);
+        }
+    };
+
+    const handleInputFocus = () => {
+        if (isPlaceholder && inputRef.current) {
+            inputRef.current.textContent = "";
+            setIsPlaceholder(false);
+        }
+    };
+
+    const handleInputBlur = () => {
+        if (inputRef.current && inputRef.current.textContent.trim() === "") {
+            inputRef.current.textContent = "Type your message...";
+            setIsPlaceholder(true);
+        }
+    };
+
+    const handleInputChange = (e) => {
+        const content = e.currentTarget.textContent || "";
+        setInput(content);
+        setIsPlaceholder(content.trim() === "");
     };
 
     return (
@@ -327,22 +355,17 @@ function Dashboard() {
                             className="flex justify-between gap-2 md:max-w-3xl mx-auto rounded-2xl p-4 bg-neutral-100 dark:bg-neutral-800"
                         >
                             <div
+                                ref={inputRef}
                                 contentEditable="true"
                                 suppressContentEditableWarning={true}
-                                className="outline-none flex flex-1 items-center"
-                                onInput={(e) => {
-                                    setInput(e.currentTarget.textContent);
-                                }}
-                                onFocus={(e) =>
-                                    e.currentTarget.textContent ===
-                                        "Type your message..." &&
-                                    (e.currentTarget.textContent = "")
-                                }
-                                onBlur={(e) =>
-                                    e.currentTarget.textContent === "" &&
-                                    (e.currentTarget.textContent =
-                                        "Type your message...")
-                                }
+                                className={`outline-none flex flex-1 items-center ${
+                                    isPlaceholder
+                                        ? "text-neutral-500 dark:text-neutral-400"
+                                        : ""
+                                }`}
+                                onInput={handleInputChange}
+                                onFocus={handleInputFocus}
+                                onBlur={handleInputBlur}
                                 onKeyDown={(e) => {
                                     if (e.key === "Enter") {
                                         e.preventDefault();
