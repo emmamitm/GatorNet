@@ -1,0 +1,396 @@
+{
+    "housingTypeBranch": {
+      "question": "What type of housing are you looking for?",
+      "options": [
+        {
+          "answer": "Traditional Style",
+          "nextQuestion": "traditionalLocationBranch"
+        },
+        {
+          "answer": "Suite Style",
+          "nextQuestion": "suiteLocationBranch"
+        },
+        {
+          "answer": "Apartment Style",
+          "nextQuestion": "apartmentLocationBranch"
+        }
+      ]
+    },
+    "traditionalLocationBranch": {
+      "question": "Which campus area would you prefer?",
+      "options": [
+        {
+          "answer": "Historic District (Near Libraries/Hub)",
+          "nextQuestion": "historicDistrictPriceBranch"
+        },
+        {
+          "answer": "East Campus (Near Colleges of Education/Arts)",
+          "nextQuestion": "eastCampusPriceBranch"
+        },
+        {
+          "answer": "West Campus (Near Athletics/Engineering)",
+          "nextQuestion": "westCampusPriceBranch"
+        }
+      ]
+    },
+    "suiteLocationBranch": {
+      "question": "Which campus area would you prefer?",
+      "options": [
+        {
+          "answer": "East Campus (Near Colleges of Education/Arts)",
+          "nextQuestion": "eastCampusSuitePriceBranch"
+        },
+        {
+          "answer": "West Campus (Near Athletics/Engineering)",
+          "nextQuestion": "westCampusSuitePriceBranch"
+        },
+        {
+          "answer": "Off-Campus (Innovation Square/Downtown)",
+          "results": [
+            {
+              "name": "Infinity Hall",
+              "description": "Modern suite-style hall located in Innovation Square, just a short walk from campus with a Maker Space.",
+              "roomTypes": ["Single Suite", "Double Suite", "Super Suite"],
+              "priceRange": "$5008-$5302 per semester",
+              "features": ["Maker Space", "Semi-Private Bathroom", "Close to Downtown"]
+            }
+          ]
+        }
+      ]
+    },
+    "apartmentLocationBranch": {
+      "question": "Which campus area would you prefer?",
+      "options": [
+        {
+          "answer": "Central Campus",
+          "nextQuestion": "centralCampusApartmentBranch"
+        },
+        {
+          "answer": "West Campus (Near Athletics)",
+          "nextQuestion": "westCampusApartmentBranch"
+        },
+        {
+          "answer": "Off-Campus",
+          "nextQuestion": "offCampusApartmentBranch"
+        }
+      ]
+    },
+    "historicDistrictPriceBranch": {
+      "question": "What's your budget per semester?",
+      "options": [
+        {
+          "answer": "Lower ($3000-$3600)",
+          "results": [
+            {
+              "name": "Buckman Hall",
+              "description": "Historic hall with unique room layouts near Library West and Newell Hall.",
+              "roomTypes": ["Double Room", "Triple Room"],
+              "priceRange": "$3136-$3556 per semester",
+              "features": ["Unique Room Layouts", "Historic Architecture"]
+            },
+            {
+              "name": "Thomas Hall",
+              "description": "Traditional hall in the historic district with various room configurations.",
+              "roomTypes": ["Double Room", "Triple Room", "Quad Room"],
+              "priceRange": "$3004-$3556 per semester",
+              "features": ["Historic Architecture", "Variety of Room Options"]
+            }
+          ]
+        },
+        {
+          "answer": "Medium ($3600-$4100)",
+          "results": [
+            {
+              "name": "Fletcher Hall",
+              "description": "Historic hall with standard and large rooms near campus resources.",
+              "roomTypes": ["Single Room", "Double Room", "Large Single", "Large Double"],
+              "priceRange": "$3556-$4082 per semester",
+              "features": ["Variety of Room Sizes", "Historic Architecture"]
+            },
+            {
+              "name": "Murphree Hall",
+              "description": "Unique picturesque rooms in the historic district near the Hub.",
+              "roomTypes": ["Double Room", "Large Double", "Triple Room", "Large Triple"],
+              "priceRange": "$3296-$4082 per semester",
+              "features": ["Unique Room Layouts", "Near Campus Resources"]
+            },
+            {
+              "name": "Sledd Hall",
+              "description": "Historic hall with character and charm near several colleges.",
+              "roomTypes": ["Single Room", "Large Single", "Double Room", "Large Double", "Triple Room"],
+              "priceRange": "$3136-$4082 per semester",
+              "features": ["Variety of Room Configurations", "Historic Architecture"]
+            }
+          ]
+        }
+      ]
+    },
+    "eastCampusPriceBranch": {
+      "question": "What's your budget per semester?",
+      "options": [
+        {
+          "answer": "Lower ($3000-$3600)",
+          "results": [
+            {
+              "name": "Broward Hall",
+              "description": "Traditional hall near Broward Dining and Plaza of the Americas.",
+              "roomTypes": ["Double Room", "Triple Room"],
+              "priceRange": "$3136-$3556 per semester",
+              "features": ["Near Dining Hall", "Central Campus Location"]
+            },
+            {
+              "name": "Jennings Hall",
+              "description": "Traditional hall near sorority row and the College of Music.",
+              "roomTypes": ["Double Room", "Triple Room"],
+              "priceRange": "$3136-$3556 per semester",
+              "features": ["Near Sorority Row", "Close to Arts Colleges"]
+            }
+          ]
+        },
+        {
+          "answer": "Medium ($3600-$4100)",
+          "results": [
+            {
+              "name": "Mallory Hall",
+              "description": "Traditional hall near various colleges with single room options.",
+              "roomTypes": ["Single Room", "Double Room"],
+              "priceRange": "$3556-$3766 per semester",
+              "features": ["Study Lounge", "Close to Arts Colleges"]
+            },
+            {
+              "name": "Reid Hall",
+              "description": "Traditional hall near Century Tower and Marston Science Library.",
+              "roomTypes": ["Single Room", "Double Room", "Triple Room"],
+              "priceRange": "$3136-$3766 per semester",
+              "features": ["Study Lounge", "Central Location"]
+            },
+            {
+              "name": "Yulee Hall",
+              "description": "Traditional hall with range of room options near arts colleges.",
+              "roomTypes": ["Single Room", "Double Room", "Triple Room"],
+              "priceRange": "$3136-$3766 per semester",
+              "features": ["Study Lounge", "Close to The Market in Beaty Towers"]
+            }
+          ]
+        }
+      ]
+    },
+    "westCampusPriceBranch": {
+      "question": "What's your budget per semester?",
+      "options": [
+        {
+          "answer": "Lower ($3000-$3600)",
+          "results": [
+            {
+              "name": "Graham Hall",
+              "description": "Traditional hall at corner of Museum Road and Gale Lemerand Drive.",
+              "roomTypes": ["Double Room"],
+              "priceRange": "$3556 per semester",
+              "features": ["Swimming Pool", "The Market in Graham Hall"]
+            },
+            {
+              "name": "Simpson Hall",
+              "description": "Traditional hall near the Reitz Union and athletic venues.",
+              "roomTypes": ["Double Room"],
+              "priceRange": "$3556 per semester",
+              "features": ["Swimming Pool", "Near Recreational Fields"]
+            },
+            {
+              "name": "Trusler Hall",
+              "description": "Traditional hall near fraternity row and athletic venues.",
+              "roomTypes": ["Double Room"],
+              "priceRange": "$3556 per semester",
+              "features": ["Near Graham Pool", "Study Space"]
+            }
+          ]
+        },
+        {
+          "answer": "Medium ($3600-$4100)",
+          "results": [
+            {
+              "name": "North Hall",
+              "description": "Home to the Pre-Health Living Learning Community near athletic venues.",
+              "roomTypes": ["Single Room", "Double Room"],
+              "priceRange": "$3556-$3766 per semester",
+              "features": ["Near Athletics", "Pre-Health Focus"]
+            },
+            {
+              "name": "Riker Hall",
+              "description": "Traditional hall across from athletics facilities.",
+              "roomTypes": ["Single Room", "Double Room", "Triple Room"],
+              "priceRange": "$3136-$3766 per semester",
+              "features": ["Near Ben Hill Griffin Stadium", "Study Lounges"]
+            },
+            {
+              "name": "Tolbert Hall",
+              "description": "Home to the ROTC Living Learning Community near Van Fleet Hall.",
+              "roomTypes": ["Single Room", "Double Room", "Triple Room"],
+              "priceRange": "$3136-$3766 per semester",
+              "features": ["Maritime Skills Simulator", "Near Reitz Union"]
+            }
+          ]
+        }
+      ]
+    },
+    "eastCampusSuitePriceBranch": {
+      "question": "What's your budget per semester?",
+      "options": [
+        {
+          "answer": "Lower ($3500-$4500)",
+          "results": [
+            {
+              "name": "Rawlings Hall",
+              "description": "Has some suite-style options near Broward Dining Hall.",
+              "roomTypes": ["Suite Double"],
+              "priceRange": "$3680 per semester",
+              "features": ["Near Broward Dining", "Central Campus Location"]
+            }
+          ]
+        },
+        {
+          "answer": "Higher ($4500+)",
+          "results": [
+            {
+              "name": "Cypress Hall",
+              "description": "Modern hall with universally designed suites and accessibility features.",
+              "roomTypes": ["Suite Single", "Suite Double", "Super Suite"],
+              "priceRange": "$4800-$5081 per semester",
+              "features": ["Accessibility Features", "Modern Design"]
+            },
+            {
+              "name": "Honors Village",
+              "description": "Brand-new complex dedicated to honors students with premium amenities.",
+              "roomTypes": ["Suite Single", "Suite Double"],
+              "priceRange": "$5281-$5589 per semester",
+              "features": ["Learning Commons", "Specialized Programming Spaces"]
+            }
+          ]
+        }
+      ]
+    },
+    "westCampusSuitePriceBranch": {
+      "question": "What's your budget per semester?",
+      "options": [
+        {
+          "answer": "Medium ($4000-$4500)",
+          "results": [
+            {
+              "name": "Springs Complex",
+              "description": "Suite-style complex near athletic venues and fraternity row.",
+              "roomTypes": ["Suite Single", "Suite Double"],
+              "priceRange": "$4109-$4408 per semester",
+              "features": ["Outdoor Volleyball Space", "Near Athletics"]
+            }
+          ]
+        },
+        {
+          "answer": "Higher ($4500+)",
+          "results": [
+            {
+              "name": "Hume Hall",
+              "description": "Suite-style hall often housing honors students near the Reitz Union.",
+              "roomTypes": ["Suite Single", "Suite Double"],
+              "priceRange": "$4800-$5081 per semester",
+              "features": ["Hume Classroom", "Study Rooms"]
+            }
+          ]
+        }
+      ]
+    },
+    "centralCampusApartmentBranch": {
+      "question": "Are you looking for single or shared bedroom options?",
+      "options": [
+        {
+          "answer": "Shared bedroom",
+          "results": [
+            {
+              "name": "Beaty Towers",
+              "description": "Centrally located apartment-style building with kitchenettes.",
+              "roomTypes": ["Apartment Double"],
+              "priceRange": "$3821 per semester",
+              "features": ["Kitchenette", "Semi-Private Bathroom"]
+            }
+          ]
+        }
+      ]
+    },
+    "westCampusApartmentBranch": {
+      "question": "Are you looking for single or shared bedroom options?",
+      "options": [
+        {
+          "answer": "Single bedroom",
+          "results": [
+            {
+              "name": "Keys Residential Complex",
+              "description": "Apartment-style complex near athletic venues with private rooms.",
+              "roomTypes": ["Apartment Single"],
+              "priceRange": "$4262 per semester",
+              "features": ["Full-Size Beds", "Fully Equipped Kitchen"]
+            },
+            {
+              "name": "Lakeside Complex",
+              "description": "Apartment complex near Lake Alice with private and shared options.",
+              "roomTypes": ["Apartment Single"],
+              "priceRange": "$4603 per semester",
+              "features": ["Full Kitchen", "Outdoor Volleyball Court"]
+            }
+          ]
+        },
+        {
+          "answer": "Shared bedroom",
+          "results": [
+            {
+              "name": "Lakeside Complex",
+              "description": "Apartment complex near recreational spaces with shared options.",
+              "roomTypes": ["Apartment Double"],
+              "priceRange": "$3821 per semester",
+              "features": ["Full Kitchen", "Near UF Bat Houses"]
+            }
+          ]
+        }
+      ]
+    },
+    "offCampusApartmentBranch": {
+      "question": "Are you a graduate student or family?",
+      "options": [
+        {
+          "answer": "Yes",
+          "results": [
+            {
+              "name": "Corry Village",
+              "description": "Family-friendly apartments with playgrounds and community center.",
+              "roomTypes": ["One Bedroom Apartment", "Two Bedroom Apartment"],
+              "priceRange": "Varies - See Graduate Housing Rates",
+              "features": ["Playground", "Basketball Court", "Family-Oriented"]
+            },
+            {
+              "name": "Diamond Village",
+              "description": "Environmentally conscious community near UF Health Shands.",
+              "roomTypes": ["One Bedroom Apartment", "Two Bedroom Apartment"],
+              "priceRange": "Varies - See Graduate Housing Rates",
+              "features": ["Solar Panels", "Community Garden", "Near Medical Campus"]
+            },
+            {
+              "name": "Tanglewood Village",
+              "description": "Off-campus retreat with various apartment and townhome options.",
+              "roomTypes": ["Efficiency", "One Bedroom", "Two Bedroom Apartment", "Two Bedroom Townhome"],
+              "priceRange": "Varies - See Graduate Housing Rates",
+              "features": ["Free Parking", "Pool", "Community Garden"]
+            }
+          ]
+        },
+        {
+          "answer": "No",
+          "results": [
+            {
+              "name": "The Continuum",
+              "description": "Fully furnished apartments near downtown with premium amenities.",
+              "roomTypes": ["Studio", "One Bedroom", "Two Bedroom", "Four Bedroom"],
+              "priceRange": "Varies - See Website",
+              "features": ["Business Center", "Fitness Center", "Swimming Pool"]
+            }
+          ]
+        }
+      ]
+    }
+  }
