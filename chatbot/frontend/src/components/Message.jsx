@@ -32,7 +32,7 @@ function Message({ text, isUser, isLoading }) {
             <div
                 className={`flex items-center p-3 rounded-xl bg-gradient-to-tr ${
                     isUser
-                        ? "from-blue-100 to-cyan-100 dark:from-blue-900 dark:to-cyan-900 dark:text-neutral-100"
+                        ? "from-blue-100 to-cyan-100 dark:from-slate-700 dark:to-slate-700 dark:text-neutral-100"
                         : "from-neutral-100 to-neutral-100 dark:from-neutral-800 dark:to-neutral-800 dark:text-neutral-200"
                 }`}
             >
