@@ -121,20 +121,27 @@ function Dashboard() {
             }
         }
 
+        // Create unique timestamps for IDs to prevent collisions
+        const userMsgTimestamp = Date.now();
+        const aiMsgTimestamp = userMsgTimestamp + 1;
+
         // Add user message to UI immediately (optimistic update)
         const newMessage = {
-            id: "user-" + Date.now(),
+            id: "user-" + userMsgTimestamp,
             text: userMessage,
             isUser: true,
             sent_at: new Date().toISOString(),
         };
+
+        // Unique ID for the loading/AI message that we'll update in place
+        const aiMessageId = "ai-" + aiMsgTimestamp;
 
         // Add both the user message and a loading indicator for the AI
         setMessages((prev) => [
             ...prev,
             newMessage,
             {
-                id: "loading-" + Date.now(),
+                id: aiMessageId, // Use a persistent ID
                 text: "",
                 isUser: false,
                 isLoading: true,
@@ -180,20 +187,21 @@ function Dashboard() {
                 setCurrentConversationId(conversationIdForRequest);
             }
 
-            // Remove the loading indicator and add the AI response
-            const aiMessage = {
-                id: data.id || "ai-" + Date.now(),
-                text: data.message || data.response,
-                isUser: false,
-                sent_at: data.sent_at || new Date().toISOString(),
-            };
-
+            // Update loading message to show AI response
             setMessages((prev) =>
-                prev
-                    // Filter out the loading indicator
-                    .filter((msg) => !msg.isLoading)
-                    // Add the new AI message
-                    .concat(aiMessage)
+                prev.map((msg) => {
+                    // Find the loading message by ID and update it
+                    if (msg.id === aiMessageId) {
+                        return {
+                            id: data.id || aiMessageId,
+                            text: data.message || data.response,
+                            isUser: false,
+                            isLoading: false, // No longer loading
+                            sent_at: data.sent_at || new Date().toISOString(),
+                        };
+                    }
+                    return msg;
+                })
             );
 
             // You can still load the full conversation history in the background if needed
@@ -206,18 +214,21 @@ function Dashboard() {
         } catch (err) {
             console.error("Detailed error:", err);
 
-            // Remove loading indicator and show error message
+            // Update the loading message to show the error instead
             setMessages((prev) =>
-                prev
-                    // Filter out the loading indicator
-                    .filter((msg) => !msg.isLoading)
-                    // Add the error message
-                    .concat({
-                        id: "error-" + Date.now(),
-                        text: `Error: ${err.message}. Please try again.`,
-                        isUser: false,
-                        sent_at: new Date().toISOString(),
-                    })
+                prev.map((msg) => {
+                    // Find the loading message by ID and update it to show error
+                    if (msg.id === aiMessageId) {
+                        return {
+                            id: aiMessageId,
+                            text: `Error: ${err.message}. Please try again.`,
+                            isUser: false,
+                            isLoading: false, // No longer loading
+                            sent_at: new Date().toISOString(),
+                        };
+                    }
+                    return msg;
+                })
             );
         }
     };
@@ -257,13 +268,13 @@ function Dashboard() {
     };
 
     return (
-        <div className="flex flex-col w-screen h-screen">
+        <div className="flex flex-col w-screen min-h-screen">
             <TopBar />
             <ChatsSideMenu
                 onSelectConversation={handleSelectConversation}
                 currentConversationId={currentConversationId}
             />
-            <div className="md:w-3xl px-4 md:pl-8 mx-auto flex flex-col flex-1 text-base">
+            <div className="md:w-3xl px-4 md:pl-8 mx-auto flex flex-col flex-1 w-full">
                 {/* Main content (messages or menu) */}
                 {renderMainContent()}
             </div>

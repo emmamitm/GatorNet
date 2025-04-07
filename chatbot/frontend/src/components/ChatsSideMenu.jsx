@@ -170,7 +170,7 @@ function ChatsSideMenu({ onSelectConversation, currentConversationId }) {
             {screenSize.width < 768 && (
                 <div className="fixed md:hidden left-8 top-[26px] z-20">
                     <button
-                        className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-100/75 transition-colors"
+                        className="p-2 rounded-full bg-neutral-100 hover:bg-neutral-100/75 dark:bg-neutral-100/25 transition-colors"
                         onClick={() => setIsExpanded(!isExpanded)}
                     >
                         <Chats size={iconSize} />

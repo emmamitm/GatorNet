@@ -13,7 +13,17 @@ const ChatInterface = ({
     const [input, setInput] = useState("");
     const [isPlaceholder, setIsPlaceholder] = useState(true);
     const inputRef = useRef(null);
-    const isAnyMessageLoading = messages.some((msg) => msg.isLoading);
+    const messagesContainerRef = useRef(null);
+    const lastMessageRef = useRef(null);
+    const messagesLengthRef = useRef(messages.length);
+    const prevIsLoadingRef = useRef(false);
+    const [isAnyMessageLoading, setIsAnyMessageLoading] = useState(() =>
+        messages.some((msg) => msg.isLoading)
+    );
+
+    useEffect(() => {
+        setIsAnyMessageLoading(messages.some((msg) => msg.isLoading));
+    }, [messages]);
 
     // Initialize input ref with placeholder
     useEffect(() => {
@@ -22,9 +32,50 @@ const ChatInterface = ({
         }
     }, []);
 
+    // Function to handle scrolling to the bottom
+    const scrollToBottom = () => {
+        requestAnimationFrame(() => {
+            if (messagesContainerRef.current) {
+                // For a flex-col-reverse container, 0 is the bottom (newest messages)
+                messagesContainerRef.current.scrollTop = 0;
+            }
+
+            // Backup approach using lastMessageRef
+            if (lastMessageRef.current) {
+                lastMessageRef.current.scrollIntoView({ behavior: "smooth" });
+            }
+        });
+
+        // Additional delayed scroll to catch any layout shifts
+        setTimeout(() => {
+            if (messagesContainerRef.current) {
+                messagesContainerRef.current.scrollTop = 0;
+            }
+        }, 100);
+    };
+
+    // Track message changes and handle scrolling
+    useEffect(() => {
+        // If messages array has changed
+        if (messages.length !== messagesLengthRef.current) {
+            // Update our ref to the new length
+            messagesLengthRef.current = messages.length;
+            scrollToBottom();
+        }
+
+        // Check if loading state changed from true to false
+        const currentIsLoading = messages.some((msg) => msg.isLoading);
+        if (prevIsLoadingRef.current && !currentIsLoading) {
+            // Loading state changed from true to false - an AI message was updated
+            scrollToBottom();
+        }
+        prevIsLoadingRef.current = currentIsLoading;
+    }, [messages]);
+
     const handleSubmit = (e) => {
+        // Prevent default form submission
         e.preventDefault();
-        if (!input.trim()) return;
+        if (!input.trim() || isAnyMessageLoading) return;
 
         // Send the message
         onSendMessage(input.trim());
@@ -35,6 +86,12 @@ const ChatInterface = ({
             inputRef.current.textContent = "";
             setIsPlaceholder(true);
         }
+
+        // Scroll to bottom after short delay
+        // to ensure the new message is visible before the scroll
+        setTimeout(() => {
+            scrollToBottom();
+        }, 50);
     };
 
     const handleInputFocus = () => {
@@ -59,7 +116,7 @@ const ChatInterface = ({
 
     return (
         <motion.div
-            className="flex flex-col flex-1"
+            className="flex flex-col flex-1 justify-end"
             initial={{
                 opacity: 0,
                 y: 50,
@@ -103,7 +160,11 @@ const ChatInterface = ({
                 </>
             ) : (
                 /* Messages */
-                <div className="overflow-y-auto scroll flex flex-col-reverse h-full pb-2 px-1">
+                <div
+                    ref={messagesContainerRef}
+                    className="overflow-y-auto scroll flex flex-col-reverse h-full pb-2 px-1"
+                >
+                    {/* Using two approaches: container scrollTop and lastMessageRef */}
                     {messages
                         .slice(0)
                         .reverse()
@@ -113,6 +174,7 @@ const ChatInterface = ({
                                 text={msg.text}
                                 isUser={msg.isUser}
                                 isLoading={msg.isLoading}
+                                ref={idx === 0 ? lastMessageRef : null}
                             />
                         ))}
                 </div>
@@ -143,7 +205,7 @@ const ChatInterface = ({
                         onFocus={handleInputFocus}
                         onBlur={handleInputBlur}
                         onKeyDown={(e) => {
-                            if (e.key === "Enter") {
+                            if (e.key === "Enter" && !isAnyMessageLoading) {
                                 e.preventDefault();
                                 handleSubmit(e);
                             }
@@ -151,11 +213,16 @@ const ChatInterface = ({
                     >
                         Type your message...
                     </div>
-                    <button type="submit" disabled={isAnyMessageLoading}>
+                    <button
+                        disabled={isAnyMessageLoading}
+                        type="submit"
+                        aria-label="Send message"
+                        className="outline-none transition-colors"
+                    >
                         <ArrowCircleUp
                             size={32}
                             weight="fill"
-                            className="fill-neutral-700 hover:fill-neutral-500 active:fill-black dark:fill-neutral-300 dark:hover:fill-neutral-400 dark:active:fill-neutral-100 outline-none transition-colors"
+                            className="fill-neutral-700 hover:fill-neutral-500 active:fill-black dark:fill-neutral-300 dark:hover:fill-neutral-400 dark:active:fill-neutral-100"
                         />
                     </button>
                 </form>
