@@ -1,0 +1,805 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Calendar App</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.css" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #4a6984;
+            --secondary-color: #f0f4f8;
+            --accent-color: #5d9cec;
+            --text-color: #333;
+            --light-text: #777;
+            --border-color: #dee2e6;
+            --hover-color: #edf2f7;
+            --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f8fafc;
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+        }
+        
+        .app-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 2rem;
+        }
+        
+        .calendar-container {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1rem;
+            margin-bottom: 2rem;
+        }
+        
+        .fc-event {
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+        
+        .fc-event:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+        
+        .fc-button-primary {
+            background-color: var(--primary-color) !important;
+            border-color: var(--primary-color) !important;
+        }
+        
+        .fc-button-primary:hover {
+            background-color: #3a5673 !important;
+            border-color: #3a5673 !important;
+        }
+        
+        .modal-content {
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+        }
+        
+        .form-control:focus, .form-select:focus {
+            border-color: var(--accent-color);
+            box-shadow: 0 0 0 0.2rem rgba(93, 156, 236, 0.25);
+        }
+        
+        .btn-primary {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-primary:hover {
+            background-color: #3a5673;
+            border-color: #3a5673;
+        }
+        
+        .btn-outline-primary {
+            color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .btn-outline-primary:hover {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+        
+        .form-label {
+            font-weight: 500;
+        }
+        
+        .event-list {
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow);
+            padding: 1rem;
+        }
+        
+        .event-list-item {
+            padding: 0.75rem;
+            border-bottom: 1px solid var(--border-color);
+            transition: background-color 0.2s ease;
+        }
+        
+        .event-list-item:hover {
+            background-color: var(--hover-color);
+        }
+        
+        .event-list-item:last-child {
+            border-bottom: none;
+        }
+        
+        .event-title {
+            font-weight: 600;
+        }
+        
+        .event-time {
+            color: var(--light-text);
+            font-size: 0.9rem;
+        }
+        
+        .event-location {
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+        
+        .fc-day-today {
+            background-color: #f0f7ff !important;
+        }
+        
+        .color-swatch {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            margin-right: 5px;
+            cursor: pointer;
+            border: 2px solid transparent;
+        }
+        
+        .color-swatch.selected {
+            border-color: #333;
+        }
+        
+        #color-selector {
+            margin-top: 10px;
+            display: flex;
+            gap: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="app-header">
+            <h1 class="h3">Modern Event Calendar</h1>
+            <button class="btn btn-primary" id="add-event-btn">
+                <i class="bi bi-plus-circle"></i> Add Event
+            </button>
+        </div>
+        
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="calendar-container">
+                    <div id="calendar"></div>
+                </div>
+            </div>
+            
+            <div class="col-lg-4">
+                <div class="event-list">
+                    <h4 class="mb-3">Upcoming Events</h4>
+                    <div id="upcoming-events">
+                        <div class="text-center py-4 text-muted">
+                            <p>Loading events...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Event Modal -->
+    <div class="modal fade" id="event-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="modal-title">Add Event</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="event-form">
+                        <input type="hidden" id="event-id">
+                        
+                        <div class="mb-3">
+                            <label for="event-title" class="form-label">Event Title</label>
+                            <input type="text" class="form-control" id="event-title" required>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="event-start-date" class="form-label">Start Date</label>
+                                <input type="date" class="form-control" id="event-start-date" required>
+                            </div>
+                            <div class="col">
+                                <label for="event-start-time" class="form-label">Start Time</label>
+                                <input type="time" class="form-control" id="event-start-time">
+                            </div>
+                        </div>
+                        
+                        <div class="row mb-3">
+                            <div class="col">
+                                <label for="event-end-date" class="form-label">End Date</label>
+                                <input type="date" class="form-control" id="event-end-date">
+                            </div>
+                            <div class="col">
+                                <label for="event-end-time" class="form-label">End Time</label>
+                                <input type="time" class="form-control" id="event-end-time">
+                            </div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="event-location" class="form-label">Location</label>
+                            <input type="text" class="form-control" id="event-location">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="event-url" class="form-label">URL</label>
+                            <input type="url" class="form-control" id="event-url" placeholder="https://">
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="event-color" class="form-label">Event Color</label>
+                            <div id="color-selector"></div>
+                        </div>
+                        
+                        <div class="mb-3">
+                            <label for="event-description" class="form-label">Description</label>
+                            <textarea class="form-control" id="event-description" rows="3"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-danger" id="delete-event-btn">Delete</button>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-primary" id="save-event-btn">Save Event</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Event Details Modal -->
+    <div class="modal fade" id="event-details-modal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="details-title"></h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="mb-3">
+                        <i class="bi bi-calendar"></i>
+                        <span id="details-date"></span>
+                    </div>
+                    
+                    <div class="mb-3" id="details-location-container">
+                        <i class="bi bi-geo-alt"></i>
+                        <span id="details-location"></span>
+                    </div>
+                    
+                    <div class="mb-3" id="details-url-container">
+                        <i class="bi bi-link"></i>
+                        <a href="#" id="details-url" target="_blank"></a>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <p id="details-description"></p>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary" id="edit-event-btn">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.10.2/main.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Available colors for events
+            const EVENT_COLORS = [
+                '#4a6984', // Default blue
+                '#e63946', // Red
+                '#2a9d8f', // Teal
+                '#e9c46a', // Yellow
+                '#f4a261', // Orange
+                '#8338ec', // Purple
+                '#3a5a40', // Green
+                '#6c757d', // Gray
+            ];
+            
+            let selectedColor = EVENT_COLORS[0];
+            let currentEvent = null;
+            
+            // Initialize color selector
+            const colorSelector = document.getElementById('color-selector');
+            EVENT_COLORS.forEach(color => {
+                const swatch = document.createElement('div');
+                swatch.className = 'color-swatch';
+                swatch.style.backgroundColor = color;
+                if (color === selectedColor) {
+                    swatch.classList.add('selected');
+                }
+                swatch.addEventListener('click', () => {
+                    document.querySelectorAll('.color-swatch').forEach(s => s.classList.remove('selected'));
+                    swatch.classList.add('selected');
+                    selectedColor = color;
+                });
+                colorSelector.appendChild(swatch);
+            });
+            
+            // Initialize FullCalendar
+            const calendarEl = document.getElementById('calendar');
+            const calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                headerToolbar: {
+                    left: 'prev,next today',
+                    center: 'title',
+                    right: 'dayGridMonth,timeGridWeek,timeGridDay,listMonth'
+                },
+                editable: true,
+                selectable: true,
+                selectMirror: true,
+                dayMaxEvents: true,
+                events: '/api/events',
+                eventClick: function(info) {
+                    showEventDetails(info.event);
+                },
+                select: function(info) {
+                    showAddEventModal(info.startStr, info.endStr);
+                },
+                eventContent: function(info) {
+                    const eventTitle = document.createElement('div');
+                    eventTitle.classList.add('fc-event-title');
+                    eventTitle.innerHTML = info.event.title;
+                    
+                    const eventTime = document.createElement('div');
+                    eventTime.classList.add('fc-event-time');
+                    
+                    if (info.event.allDay) {
+                        eventTime.innerHTML = 'All day';
+                    } else {
+                        const startTime = info.event.start ? new Date(info.event.start).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'}) : '';
+                        eventTime.innerHTML = startTime;
+                    }
+                    
+                    const wrapper = document.createElement('div');
+                    wrapper.classList.add('fc-event-main-wrapper');
+                    wrapper.appendChild(eventTime);
+                    wrapper.appendChild(eventTitle);
+                    
+                    return { domNodes: [wrapper] };
+                },
+                eventDrop: function(info) {
+                    updateEventDates(info.event);
+                },
+                eventResize: function(info) {
+                    updateEventDates(info.event);
+                }
+            });
+            
+            calendar.render();
+            
+            // Update upcoming events sidebar
+            function updateUpcomingEvents() {
+                const upcomingEventsEl = document.getElementById('upcoming-events');
+                upcomingEventsEl.innerHTML = '';
+                
+                // Get future events
+                const events = calendar.getEvents().filter(event => {
+                    return event.start >= new Date();
+                }).sort((a, b) => a.start - b.start);
+                
+                if (events.length === 0) {
+                    upcomingEventsEl.innerHTML = '<div class="text-center py-4 text-muted"><p>No upcoming events</p></div>';
+                    return;
+                }
+                
+                // Show the next 10 events
+                const eventsToShow = events.slice(0, 10);
+                
+                eventsToShow.forEach(event => {
+                    const eventEl = document.createElement('div');
+                    eventEl.className = 'event-list-item';
+                    eventEl.style.borderLeft = `4px solid ${event.backgroundColor || '#4a6984'}`;
+                    eventEl.style.paddingLeft = '12px';
+                    
+                    const title = document.createElement('div');
+                    title.className = 'event-title';
+                    title.textContent = event.title;
+                    
+                    const dateStr = new Date(event.start).toLocaleDateString([], {
+                        weekday: 'short',
+                        month: 'short',
+                        day: 'numeric'
+                    });
+                    
+                    const timeStr = event.allDay ? 
+                        'All day' : 
+                        new Date(event.start).toLocaleTimeString([], {
+                            hour: '2-digit',
+                            minute: '2-digit'
+                        });
+                    
+                    const time = document.createElement('div');
+                    time.className = 'event-time';
+                    time.textContent = `${dateStr}, ${timeStr}`;
+                    
+                    const location = document.createElement('div');
+                    location.className = 'event-location';
+                    if (event.extendedProps.location) {
+                        location.textContent = event.extendedProps.location;
+                    }
+                    
+                    eventEl.appendChild(title);
+                    eventEl.appendChild(time);
+                    if (event.extendedProps.location) {
+                        eventEl.appendChild(location);
+                    }
+                    
+                    eventEl.addEventListener('click', () => {
+                        showEventDetails(event);
+                    });
+                    
+                    upcomingEventsEl.appendChild(eventEl);
+                });
+            }
+            
+            // Initialize modals
+            const eventModal = new bootstrap.Modal(document.getElementById('event-modal'));
+            const eventDetailsModal = new bootstrap.Modal(document.getElementById('event-details-modal'));
+            
+            // Event handlers
+            document.getElementById('add-event-btn').addEventListener('click', () => {
+                showAddEventModal();
+            });
+            
+            document.getElementById('save-event-btn').addEventListener('click', saveEvent);
+            document.getElementById('delete-event-btn').addEventListener('click', deleteEvent);
+            document.getElementById('edit-event-btn').addEventListener('click', editCurrentEvent);
+            
+            // Show event details modal
+            function showEventDetails(event) {
+                currentEvent = event;
+                
+                // Set event details
+                document.getElementById('details-title').textContent = event.title;
+                
+                // Format date/time
+                let dateText = '';
+                if (event.allDay) {
+                    if (event.end) {
+                        // Multi-day event
+                        dateText = `${formatDate(event.start)} - ${formatDate(event.end)}`;
+                    } else {
+                        // Single all-day event
+                        dateText = `${formatDate(event.start)} (All day)`;
+                    }
+                } else {
+                    if (isSameDay(event.start, event.end)) {
+                        // Same day event
+                        dateText = `${formatDate(event.start)} ${formatTime(event.start)} - ${formatTime(event.end)}`;
+                    } else {
+                        // Multi-day event with time
+                        dateText = `${formatDate(event.start)} ${formatTime(event.start)} - ${formatDate(event.end)} ${formatTime(event.end)}`;
+                    }
+                }
+                document.getElementById('details-date').textContent = dateText;
+                
+                // Location
+                const locationContainer = document.getElementById('details-location-container');
+                if (event.extendedProps.location) {
+                    document.getElementById('details-location').textContent = event.extendedProps.location;
+                    locationContainer.style.display = 'block';
+                } else {
+                    locationContainer.style.display = 'none';
+                }
+                
+                // URL
+                const urlContainer = document.getElementById('details-url-container');
+                if (event.extendedProps.url) {
+                    const urlElement = document.getElementById('details-url');
+                    urlElement.href = event.extendedProps.url;
+                    urlElement.textContent = event.extendedProps.url;
+                    urlContainer.style.display = 'block';
+                } else {
+                    urlContainer.style.display = 'none';
+                }
+                
+                // Description
+                document.getElementById('details-description').textContent = event.extendedProps.description || '';
+                
+                // Show the modal
+                eventDetailsModal.show();
+            }
+            
+            // Show add/edit event modal
+            function showAddEventModal(startDate = '', endDate = '') {
+                document.getElementById('modal-title').textContent = 'Add Event';
+                document.getElementById('event-id').value = '';
+                document.getElementById('event-title').value = '';
+                document.getElementById('event-location').value = '';
+                document.getElementById('event-url').value = '';
+                document.getElementById('event-description').value = '';
+                
+                // Set default color
+                selectedColor = EVENT_COLORS[0];
+                document.querySelectorAll('.color-swatch').forEach(swatch => {
+                    swatch.classList.remove('selected');
+                    if (swatch.style.backgroundColor === selectedColor) {
+                        swatch.classList.add('selected');
+                    }
+                });
+                
+                // Set dates
+                if (startDate) {
+                    const startDateObj = new Date(startDate);
+                    document.getElementById('event-start-date').value = formatDateForInput(startDateObj);
+                    document.getElementById('event-end-date').value = formatDateForInput(startDateObj);
+                } else {
+                    const today = new Date();
+                    document.getElementById('event-start-date').value = formatDateForInput(today);
+                    document.getElementById('event-end-date').value = formatDateForInput(today);
+                }
+                
+                // Clear time inputs
+                document.getElementById('event-start-time').value = '';
+                document.getElementById('event-end-time').value = '';
+                
+                // Hide delete button
+                document.getElementById('delete-event-btn').style.display = 'none';
+                
+                eventModal.show();
+            }
+            
+            // Edit current event
+            function editCurrentEvent() {
+                if (!currentEvent) return;
+                
+                eventDetailsModal.hide();
+                
+                document.getElementById('modal-title').textContent = 'Edit Event';
+                document.getElementById('event-id').value = currentEvent.id;
+                document.getElementById('event-title').value = currentEvent.title;
+                document.getElementById('event-location').value = currentEvent.extendedProps.location || '';
+                document.getElementById('event-url').value = currentEvent.extendedProps.url || '';
+                document.getElementById('event-description').value = currentEvent.extendedProps.description || '';
+                
+                // Set color
+                selectedColor = currentEvent.backgroundColor || EVENT_COLORS[0];
+                document.querySelectorAll('.color-swatch').forEach(swatch => {
+                    swatch.classList.remove('selected');
+                    if (swatch.style.backgroundColor === selectedColor) {
+                        swatch.classList.add('selected');
+                    }
+                });
+                
+                // Set start date/time
+                if (currentEvent.start) {
+                    document.getElementById('event-start-date').value = formatDateForInput(currentEvent.start);
+                    if (!currentEvent.allDay) {
+                        document.getElementById('event-start-time').value = formatTimeForInput(currentEvent.start);
+                    } else {
+                        document.getElementById('event-start-time').value = '';
+                    }
+                }
+                
+                // Set end date/time
+                if (currentEvent.end) {
+                    document.getElementById('event-end-date').value = formatDateForInput(currentEvent.end);
+                    if (!currentEvent.allDay) {
+                        document.getElementById('event-end-time').value = formatTimeForInput(currentEvent.end);
+                    } else {
+                        document.getElementById('event-end-time').value = '';
+                    }
+                } else {
+                    document.getElementById('event-end-date').value = document.getElementById('event-start-date').value;
+                    document.getElementById('event-end-time').value = '';
+                }
+                
+                // Show delete button
+                document.getElementById('delete-event-btn').style.display = 'block';
+                
+                eventModal.show();
+            }
+            
+            // Save event
+            function saveEvent() {
+                const eventId = document.getElementById('event-id').value;
+                const title = document.getElementById('event-title').value.trim();
+                const startDate = document.getElementById('event-start-date').value;
+                const startTime = document.getElementById('event-start-time').value;
+                const endDate = document.getElementById('event-end-date').value || startDate;
+                const endTime = document.getElementById('event-end-time').value;
+                const location = document.getElementById('event-location').value.trim();
+                const url = document.getElementById('event-url').value.trim();
+                const description = document.getElementById('event-description').value.trim();
+                
+                if (!title || !startDate) {
+                    alert('Please provide a title and start date');
+                    return;
+                }
+                
+                let start, end;
+                const allDay = !startTime && !endTime;
+                
+                if (allDay) {
+                    // All-day event
+                    start = startDate;
+                    end = endDate;
+                } else {
+                    // Event with time
+                    start = `${startDate}T${startTime || '00:00'}`;
+                    end = `${endDate}T${endTime || startTime || '00:00'}`;
+                }
+                
+                const eventData = {
+                    title,
+                    start,
+                    end,
+                    allDay,
+                    location,
+                    url,
+                    description,
+                    backgroundColor: selectedColor,
+                    borderColor: selectedColor
+                };
+                
+                if (eventId) {
+                    // Update existing event
+                    fetch(`/api/events/${eventId}`, {
+                        method: 'PUT',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(eventData)
+                    })
+                    .then(response => response.json())
+                    .then(updatedEvent => {
+                        // Refresh calendar
+                        calendar.refetchEvents();
+                        updateUpcomingEvents();
+                        eventModal.hide();
+                    })
+                    .catch(error => {
+                        console.error('Error updating event:', error);
+                        alert('Failed to update event. Please try again.');
+                    });
+                } else {
+                    // Add new event
+                    fetch('/api/events', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json'
+                        },
+                        body: JSON.stringify(eventData)
+                    })
+                    .then(response => response.json())
+                    .then(newEvent => {
+                        // Refresh calendar
+                        calendar.refetchEvents();
+                        updateUpcomingEvents();
+                        eventModal.hide();
+                    })
+                    .catch(error => {
+                        console.error('Error adding event:', error);
+                        alert('Failed to add event. Please try again.');
+                    });
+                }
+            }
+            
+            // Delete event
+            function deleteEvent() {
+                const eventId = document.getElementById('event-id').value;
+                
+                if (!eventId) {
+                    eventModal.hide();
+                    return;
+                }
+                
+                if (confirm('Are you sure you want to delete this event?')) {
+                    fetch(`/api/events/${eventId}`, {
+                        method: 'DELETE'
+                    })
+                    .then(response => response.json())
+                    .then(deletedEvent => {
+                        // Refresh calendar
+                        calendar.refetchEvents();
+                        updateUpcomingEvents();
+                        eventModal.hide();
+                    })
+                    .catch(error => {
+                        console.error('Error deleting event:', error);
+                        alert('Failed to delete event. Please try again.');
+                    });
+                }
+            }
+            
+            // Update event dates after drag & drop or resize
+            function updateEventDates(event) {
+                const eventData = {
+                    title: event.title,
+                    start: event.start.toISOString(),
+                    end: event.end ? event.end.toISOString() : null,
+                    allDay: event.allDay,
+                    location: event.extendedProps.location,
+                    url: event.extendedProps.url,
+                    description: event.extendedProps.description,
+                    backgroundColor: event.backgroundColor,
+                    borderColor: event.borderColor
+                };
+                
+                fetch(`/api/events/${event.id}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(eventData)
+                })
+                .then(response => response.json())
+                .catch(error => {
+                    console.error('Error updating event dates:', error);
+                    calendar.refetchEvents(); // Revert to original position
+                });
+            }
+            
+            // Helper functions for date/time formatting
+            function formatDate(date) {
+                if (!date) return '';
+                return new Date(date).toLocaleDateString([], {
+                    weekday: 'short',
+                    month: 'short',
+                    day: 'numeric',
+                    year: 'numeric'
+                });
+            }
+            
+            function formatTime(date) {
+                if (!date) return '';
+                return new Date(date).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit'
+                });
+            }
+            
+            function formatDateForInput(date) {
+                if (!date) return '';
+                const d = new Date(date);
+                return `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+            }
+            
+            function formatTimeForInput(date) {
+                if (!date) return '';
+                const d = new Date(date);
+                return `${String(d.getHours()).padStart(2, '0')}:${String(d.getMinutes()).padStart(2, '0')}`;
+            }
+            
+            function isSameDay(date1, date2) {
+                if (!date1 || !date2) return false;
+                const d1 = new Date(date1);
+                const d2 = new Date(date2);
+                return d1.getFullYear() === d2.getFullYear() &&
+                       d1.getMonth() === d2.getMonth() &&
+                       d1.getDate() === d2.getDate();
+            }
+            
+            // Initial load of upcoming events
+            updateUpcomingEvents();
+            
+            // Refresh upcoming events when calendar changes
+            calendar.on('eventAdd', updateUpcomingEvents);
+            calendar.on('eventChange', updateUpcomingEvents);
+            calendar.on('eventRemove', updateUpcomingEvents);
+            
+            // Handle window resize
+            window.addEventListener('resize', () => {
+                calendar.updateSize();
+            });
+        });
+    </script>
+</body>
+</html>
+        

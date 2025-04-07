@@ -1,0 +1,626 @@
+from flask import Flask, render_template, jsonify
+import json
+import os
+import glob
+
+app = Flask(__name__)
+
+# Load data from all OSM JSON files in the directory
+def load_all_osm_data():
+    data = {
+        'locations': []
+    }
+    
+    # Find all JSON files in the campus_data_osm directory
+    json_files = glob.glob(os.path.join("campus_data_osm", "*.json"))
+    print(f"Found {len(json_files)} JSON files: {json_files}")
+    
+    # First, collect all nodes from all files to get coordinates
+    all_nodes = {}
+    
+    for json_file in json_files:
+        try:
+            with open(json_file, "r") as f:
+                file_data = json.load(f)
+                
+                # Extract nodes with coordinates
+                for element in file_data.get('elements', []):
+                    if element['type'] == 'node' and 'lat' in element and 'lon' in element:
+                        all_nodes[element['id']] = {
+                            'lat': element['lat'],
+                            'lon': element['lon']
+                        }
+        except Exception as e:
+            print(f"Error extracting nodes from {json_file}: {e}")
+    
+    print(f"Extracted coordinates for {len(all_nodes)} nodes from all files")
+    
+    # Now process all elements with tags
+    all_locations = []
+    processed_ids = set()  # Track processed IDs to avoid duplicates
+    
+    for json_file in json_files:
+        filename = os.path.basename(json_file)
+        print(f"Processing {filename}...")
+        
+        try:
+            with open(json_file, "r") as f:
+                file_data = json.load(f)
+                
+                # Process elements with tags
+                file_locations = []
+                
+                for element in file_data.get('elements', []):
+                    # Skip if already processed or has no tags
+                    if element['id'] in processed_ids or 'tags' not in element:
+                        continue
+                    
+                    # Create location entry
+                    location = {
+                        'id': element['id'],
+                        'type': element['type'],
+                        'source_file': filename
+                    }
+                    
+                    # Set coordinates based on element type
+                    if element['type'] == 'node':
+                        if 'lat' in element and 'lon' in element:
+                            location['lat'] = element['lat']
+                            location['lon'] = element['lon']
+                        else:
+                            continue  # Skip nodes without coordinates
+                            
+                    elif element['type'] == 'way':
+                        # For ways, calculate center point from nodes
+                        if 'nodes' not in element:
+                            continue
+                            
+                        valid_nodes = []
+                        for node_id in element['nodes']:
+                            if node_id in all_nodes:
+                                valid_nodes.append(all_nodes[node_id])
+                        
+                        if not valid_nodes:
+                            continue  # Skip if no valid nodes found
+                            
+                        # Calculate average coordinates
+                        lat_sum = sum(node['lat'] for node in valid_nodes)
+                        lon_sum = sum(node['lon'] for node in valid_nodes)
+                        count = len(valid_nodes)
+                        
+                        location['lat'] = lat_sum / count
+                        location['lon'] = lon_sum / count
+                    
+                    else:
+                        # Skip other types without direct coordinates
+                        continue
+                    
+                    # Copy tags
+                    location['tags'] = element['tags']
+                    
+                    # Determine name
+                    if 'name' in location['tags']:
+                        location['name'] = location['tags']['name']
+                    elif 'official_name' in location['tags']:
+                        location['name'] = location['tags']['official_name']
+                    else:
+                        # Generate descriptive name based on tags
+                        key_tags = ['building', 'amenity', 'highway', 'leisure', 'shop']
+                        for tag in key_tags:
+                            if tag in location['tags']:
+                                tag_value = location['tags'][tag]
+                                if isinstance(tag_value, str):
+                                    location['name'] = f"{tag_value.title()} (ID: {location['id']})"
+                                    break
+                        else:
+                            location['name'] = f"Location {location['id']}"
+                    
+                    # Determine element type for styling
+                    if 'building' in location['tags']:
+                        if location['tags']['building'] in ['university', 'college', 'school']:
+                            location['element_type'] = 'university'
+                        elif location['tags']['building'] in ['residential', 'dormitory', 'apartments']:
+                            location['element_type'] = 'residential'
+                        else:
+                            location['element_type'] = 'building'
+                    elif 'amenity' in location['tags']:
+                        location['element_type'] = location['tags']['amenity']
+                    elif 'highway' in location['tags']:
+                        location['element_type'] = 'highway'
+                    elif 'leisure' in location['tags']:
+                        location['element_type'] = 'leisure'
+                    elif 'shop' in location['tags']:
+                        location['element_type'] = 'shop'
+                    elif 'natural' in location['tags']:
+                        location['element_type'] = 'natural'
+                    else:
+                        location['element_type'] = 'default'
+                    
+                    # Add to locations and mark as processed
+                    file_locations.append(location)
+                    processed_ids.add(element['id'])
+                
+                all_locations.extend(file_locations)
+                print(f"Extracted {len(file_locations)} locations from {filename}")
+                
+        except Exception as e:
+            print(f"Error processing {filename}: {e}")
+    
+    # Update the data with all locations
+    data['locations'] = all_locations
+    print(f"Total unique locations: {len(all_locations)}")
+    
+    return data
+
+@app.route('/')
+def index():
+    return render_template('index.html')
+
+@app.route('/api/map-data')
+def map_data():
+    data = load_all_osm_data()
+    return jsonify(data)
+
+# Create directory for templates if it doesn't exist
+os.makedirs(os.path.join(os.getcwd(), 'templates'), exist_ok=True)
+
+# Create the HTML template
+with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
+    f.write('''
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UF Campus Map - Complete</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            height: 100%;
+            width: 100%;
+        }
+        #map {
+            height: 100%;
+            width: 100%;
+        }
+        .info-panel {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            width: 300px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-height: 80%;
+            overflow-y: auto;
+        }
+        .location-item {
+            margin-bottom: 5px;
+            padding: 5px;
+            cursor: pointer;
+            border-bottom: 1px solid #eee;
+        }
+        .location-item:hover {
+            background-color: #f5f5f5;
+        }
+        h3 {
+            margin-top: 0;
+        }
+        .location-count {
+            font-size: 12px;
+            color: #666;
+            margin-bottom: 10px;
+        }
+        .filter-section {
+            margin-bottom: 10px;
+        }
+        .filter-title {
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        .filter-options {
+            max-height: 150px;
+            overflow-y: auto;
+            padding-left: 10px;
+        }
+        .search-section {
+            margin-bottom: 10px;
+        }
+        .legend {
+            position: absolute;
+            bottom: 30px;
+            right: 10px;
+            background: white;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        .legend-color {
+            width: 16px;
+            height: 16px;
+            margin-right: 8px;
+            border-radius: 50%;
+        }
+        .popup-content {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        .popup-tag {
+            margin-top: 2px;
+            font-size: 12px;
+        }
+        .popup-tag strong {
+            color: #555;
+        }
+        .data-sources {
+            font-size: 10px;
+            color: #999;
+            margin-top: 5px;
+        }
+    </style>
+</head>
+<body>
+    <div id="map"></div>
+    <div class="info-panel">
+        <h3>UF Campus Locations</h3>
+        <div class="location-count" id="location-count"></div>
+        
+        <div class="search-section">
+            <input type="text" id="search-input" placeholder="Search locations..." style="width: 100%;">
+        </div>
+        
+        <div class="filter-section">
+            <div class="filter-title">Filter by Type:</div>
+            <div class="filter-options" id="type-filter">
+                <div><label><input type="checkbox" checked data-filter="all"> Show All Types</label></div>
+            </div>
+        </div>
+        
+        <div id="locations-list"></div>
+        
+        <div class="data-sources">
+            Data source: OpenStreetMap contributors
+        </div>
+    </div>
+    
+    <div class="legend" id="legend">
+        <h4 style="margin-top: 0;">Legend</h4>
+        <div id="legend-items"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script>
+        // Initialize the map centered on UF
+        const map = L.map('map').setView([29.6436, -82.3549], 15);
+
+        // Add OpenStreetMap tile layer
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+        
+        // Define icon colors for different types of locations
+        const iconColors = {
+            'university': '#B73239',  // UF Red
+            'building': '#F37021',    // UF Orange
+            'residential': '#6C9AC3', // Light Blue
+            'parking': '#4D4D4D',     // Dark Gray
+            'community_centre': '#7BAFD4', // Medium Blue
+            'police': '#0021A5',      // UF Blue
+            'restaurant': '#D82900',  // Dark Orange
+            'cafe': '#D82900',        // Dark Orange
+            'library': '#6C3C00',     // Brown
+            'leisure': '#33A02C',     // Green
+            'shop': '#E31A1C',        // Red
+            'highway': '#999999',     // Gray
+            'natural': '#006837',     // Forest Green
+            'default': '#FA4616'      // Default UF Orange
+        };
+        
+        // Store all locations and markers
+        let locations = [];
+        let markers = {};
+        let filterTypes = new Set();
+        
+        // Create a marker with custom color based on location type
+        function createMarker(location) {
+            const color = iconColors[location.element_type] || iconColors['default'];
+            
+            // Create marker icon with custom color
+            const markerHtmlStyles = `
+                background-color: ${color};
+                width: 1.5rem;
+                height: 1.5rem;
+                display: block;
+                left: -0.75rem;
+                top: -0.75rem;
+                position: relative;
+                border-radius: 1.5rem 1.5rem 0;
+                transform: rotate(45deg);
+                border: 1px solid #FFFFFF`;
+
+            const icon = L.divIcon({
+                className: "my-custom-pin",
+                iconAnchor: [0, 24],
+                labelAnchor: [-6, 0],
+                popupAnchor: [0, -36],
+                html: `<span style="${markerHtmlStyles}" />`
+            });
+            
+            // Create the marker
+            const marker = L.marker([location.lat, location.lon], {
+                icon: icon,
+                title: location.name
+            });
+            
+            // Create popup with all available information
+            let popupContent = `<div class="popup-content">
+                <h3>${location.name}</h3>
+                <p>Type: ${location.element_type}</p>
+            `;
+            
+            // Add source file
+            if (location.source_file) {
+                popupContent += `<p>Source: ${location.source_file}</p>`;
+            }
+            
+            // Add all tags
+            if (location.tags) {
+                popupContent += '<hr>';
+                for (const [key, value] of Object.entries(location.tags)) {
+                    if (key !== 'name' && key !== 'official_name') {
+                        popupContent += `<div class="popup-tag"><strong>${key}:</strong> ${value}</div>`;
+                    }
+                }
+            }
+            
+            popupContent += '</div>';
+            marker.bindPopup(popupContent);
+            
+            return marker;
+        }
+
+        // Fetch and display locations data
+        fetch('/api/map-data')
+            .then(response => response.json())
+            .then(data => {
+                console.log("Received data:", data);
+                
+                if (data.locations && data.locations.length > 0) {
+                    locations = data.locations;
+                    
+                    // Group markers for better performance
+                    const markerGroup = L.layerGroup().addTo(map);
+                    
+                    // Add markers for all locations
+                    locations.forEach(location => {
+                        if (location.lat && location.lon) {
+                            // Track unique types for filtering
+                            filterTypes.add(location.element_type);
+                            
+                            // Create and add marker
+                            const marker = createMarker(location);
+                            markerGroup.addLayer(marker);
+                            
+                            // Store marker reference with location
+                            location.marker = marker;
+                        }
+                    });
+                    
+                    // Update location count
+                    document.getElementById('location-count').textContent = 
+                        `Showing ${locations.length} locations on campus`;
+                    
+                    // Populate locations list
+                    populateLocationsList(locations);
+                    
+                    // Setup search
+                    setupSearch();
+                    
+                    // Setup type filters
+                    setupFilters();
+                    
+                    // Setup legend
+                    setupLegend();
+                } else {
+                    console.warn("No location data found");
+                    document.getElementById('locations-list').innerHTML = 
+                        '<p>No location data available. Please check that the JSON files exist and contain valid data.</p>';
+                }
+            })
+            .catch(error => {
+                console.error('Error fetching map data:', error);
+                document.getElementById('locations-list').innerHTML = 
+                    '<p>Error loading location data. Please check the console for details.</p>';
+            });
+
+        function populateLocationsList(locationsToShow) {
+            const locationsList = document.getElementById('locations-list');
+            locationsList.innerHTML = '';
+            
+            if (locationsToShow.length === 0) {
+                locationsList.innerHTML = '<p>No locations match your search criteria</p>';
+                return;
+            }
+            
+            // Limit to 1000 items for performance
+            const limitedLocations = locationsToShow.slice(0, 1000);
+            
+            // If list is limited, show a message
+            if (locationsToShow.length > 1000) {
+                locationsList.innerHTML = 
+                    `<p>Showing 1000 of ${locationsToShow.length} matching locations. Use search to narrow results.</p>`;
+            }
+            
+            // Sort locations alphabetically
+            limitedLocations.sort((a, b) => a.name.localeCompare(b.name));
+            
+            limitedLocations.forEach(location => {
+                const div = document.createElement('div');
+                div.className = 'location-item';
+                div.innerHTML = `<strong>${location.name}</strong>`;
+                if (location.element_type) {
+                    div.innerHTML += `<br><small>${location.element_type}</small>`;
+                }
+                
+                div.addEventListener('click', () => {
+                    map.setView([location.lat, location.lon], 18);
+                    location.marker.openPopup();
+                });
+                
+                locationsList.appendChild(div);
+            });
+        }
+
+        function setupSearch() {
+            const searchInput = document.getElementById('search-input');
+            searchInput.addEventListener('input', () => {
+                filterLocations();
+            });
+        }
+        
+        function setupFilters() {
+            const filterContainer = document.getElementById('type-filter');
+            const allTypesCheckbox = filterContainer.querySelector('input[data-filter="all"]');
+            
+            // Create filter options for common types first, then others
+            const commonTypes = ['university', 'building', 'residential', 'parking', 'restaurant', 'cafe', 'library'];
+            
+            // Add common types first
+            commonTypes.forEach(type => {
+                if (filterTypes.has(type)) {
+                    const div = document.createElement('div');
+                    div.innerHTML = `<label><input type="checkbox" checked data-filter="${type}"> ${type}</label>`;
+                    filterContainer.appendChild(div);
+                    filterTypes.delete(type); // Remove from set so we don't add it twice
+                }
+            });
+            
+            // Add remaining types
+            Array.from(filterTypes).sort().forEach(type => {
+                const div = document.createElement('div');
+                div.innerHTML = `<label><input type="checkbox" checked data-filter="${type}"> ${type}</label>`;
+                filterContainer.appendChild(div);
+            });
+            
+            // Setup event listeners for filters
+            document.querySelectorAll('#type-filter input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', () => {
+                    if (checkbox.dataset.filter === 'all') {
+                        // If "all" is clicked, update all other checkboxes
+                        const isChecked = checkbox.checked;
+                        document.querySelectorAll('#type-filter input[type="checkbox"]:not([data-filter="all"])').forEach(cb => {
+                            cb.checked = isChecked;
+                        });
+                    } else {
+                        // If a specific filter is changed, update the "all" checkbox
+                        const allChecked = Array.from(
+                            document.querySelectorAll('#type-filter input[type="checkbox"]:not([data-filter="all"])')
+                        ).every(cb => cb.checked);
+                        
+                        allTypesCheckbox.checked = allChecked;
+                    }
+                    
+                    filterLocations();
+                });
+            });
+        }
+        
+        function setupLegend() {
+            const legendItems = document.getElementById('legend-items');
+            
+            // Add legend items for common types first, then others
+            const commonTypes = ['university', 'building', 'residential', 'parking', 'restaurant', 'cafe', 'library'];
+            const allTypes = new Set([...commonTypes, ...Object.keys(iconColors)]);
+            
+            // Get all types that actually have locations
+            const typesInUse = new Set();
+            locations.forEach(location => {
+                if (location.element_type) {
+                    typesInUse.add(location.element_type);
+                }
+            });
+            
+            // Add legend items for common types that are in use
+            commonTypes.forEach(type => {
+                if (typesInUse.has(type) && iconColors[type]) {
+                    addLegendItem(type, iconColors[type]);
+                }
+            });
+            
+            // Add legend items for other types in use
+            Array.from(typesInUse)
+                .filter(type => !commonTypes.includes(type) && iconColors[type])
+                .sort()
+                .forEach(type => {
+                    addLegendItem(type, iconColors[type]);
+                });
+            
+            // Add legend item for default if any locations use it
+            if (locations.some(location => !iconColors[location.element_type])) {
+                addLegendItem('other', iconColors['default']);
+            }
+            
+            function addLegendItem(type, color) {
+                const div = document.createElement('div');
+                div.className = 'legend-item';
+                div.innerHTML = `
+                    <div class="legend-color" style="background-color: ${color};"></div>
+                    <div>${type}</div>
+                `;
+                legendItems.appendChild(div);
+            }
+        }
+        
+        function filterLocations() {
+            const searchTerm = document.getElementById('search-input').value.toLowerCase();
+            
+            // Get selected types
+            const selectedTypes = Array.from(
+                document.querySelectorAll('#type-filter input[type="checkbox"]:not([data-filter="all"]):checked')
+            ).map(cb => cb.dataset.filter);
+            
+            // Filter locations based on search and type
+            const filteredLocations = locations.filter(location => {
+                const matchesSearch = location.name.toLowerCase().includes(searchTerm);
+                const matchesType = selectedTypes.includes(location.element_type);
+                
+                // Show/hide marker based on filter
+                if (location.marker) {
+                    if (matchesSearch && matchesType) {
+                        map.addLayer(location.marker);
+                    } else {
+                        map.removeLayer(location.marker);
+                    }
+                }
+                
+                return matchesSearch && matchesType;
+            });
+            
+            // Update locations list
+            populateLocationsList(filteredLocations);
+            
+            // Update count
+            document.getElementById('location-count').textContent = 
+                `Showing ${filteredLocations.length} of ${locations.length} locations`;
+        }
+    </script>
+</body>
+</html>
+    ''')
+
+if __name__ == '__main__':
+    print("Starting Flask server with complete UF campus data...")
+    print("Open http://127.0.0.1:5000/ in your browser to view the map")
+    app.run(debug=False)
