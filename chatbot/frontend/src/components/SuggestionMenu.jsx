@@ -29,9 +29,6 @@ const SuggestionMenu = ({ category, onBack }) => {
         setDirection(goingBack ? -1 : 1);
 
         // sample API request & response
-
-        // delay to simulate loading
-        await new Promise((resolve) => setTimeout(resolve, 500));
         // Sample data
         setMenuData({
             question: "What would you like to know?",
@@ -221,7 +218,7 @@ const SuggestionMenu = ({ category, onBack }) => {
                             <button
                                 key={index}
                                 onClick={() => handleSelect(option.value)}
-                                className="p-4 text-left bg-white dark:bg-neutral-700 rounded-lg shadow hover:bg-neutral-100 dark:hover:bg-neutral-600 transition-colors"
+                                className="p-4 text-left bg-neutral-100 dark:bg-neutral-800 rounded-lg shadow hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors"
                             >
                                 <h3 className="font-semibold">
                                     {option.label}

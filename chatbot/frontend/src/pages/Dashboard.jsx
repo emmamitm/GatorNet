@@ -248,7 +248,7 @@ function Dashboard() {
         if (activeMenu) {
             return (
                 // Menu
-                <div className="flex flex-col flex-1 justify-center">
+                <div className="flex flex-col flex-1 justify-center items-center">
                     <SuggestionMenu
                         category={activeMenu}
                         onBack={handleExitMenu}
