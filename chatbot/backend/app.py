@@ -1,5 +1,4 @@
 # GatorNet/chatbot/backend/app.py
-
 from flask import Flask, request
 from flask_cors import CORS
 from database_tables import db
@@ -12,6 +11,12 @@ from routes.login import login_routes
 from routes.signup import signup_routes
 from ai_integration import ai_manager
 from ensure_ai_user import ensure_ai_user_exists
+import argparse
+
+# Parse command line arguments
+parser = argparse.ArgumentParser()
+parser.add_argument("--port", type=int, default=5001, help="Port to run the server on")
+args = parser.parse_args()
 
 app = Flask(__name__)
 CORS(
@@ -44,20 +49,17 @@ def home():
 
 @app.after_request
 def after_request(response):
-    print(f"Request to {request.path}: {response.status}")  # Debug print
+    print(f"Request to {request.path}: {response.status}") # Debug print
     return response
 
 if __name__ == "__main__":
-    print("Server starting on http://localhost:5001")
+    print(f"Server starting on http://localhost:{args.port}")
     with app.app_context():
         # db.drop_all() // in case of changes in db schema
         db.create_all()
-        
         # Ensure AI user exists
         ensure_ai_user_exists()
-        
         # Start AI initialization in background
         print("Starting AI assistant initialization in background...")
         ai_manager.start_initialization()
-        
-        app.run(debug=True, port=5001)
+        app.run(debug=True, port=args.port)
