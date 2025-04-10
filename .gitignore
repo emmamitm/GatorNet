@@ -46,3 +46,8 @@ AI/models/AI/Meta-Llama-3-8B-Instruct-Q4_K_M.gguf
 AI/models/AI/mistral-7b-instruct.Q4_0.gguf
 
 credentials.py
+uf_env
+outputs
+chatbot/backend/ai_integration.log
+chatbot/backend/AI/enhanced_uf_assistant.log
+chatbot/backend/enhanced_uf_assistant.log
