@@ -2222,6 +2222,7 @@ class EnhancedUFAssistant:
 # Main Application with Hydra
 # ------------------------------
 # Add this at the end of AI_model.py
+# At the end of AI_model.py, change:
 if __name__ == "__main__":
     import argparse
     
@@ -2261,6 +2262,6 @@ if __name__ == "__main__":
             
             # Print the response
             print(f"{response}\n")
-
+            
 if __name__ == "__main__":
     main()
