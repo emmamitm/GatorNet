@@ -1,4 +1,3 @@
-# GatorNet/chatbot/backend/app.py
 from flask import Flask, request
 from flask_cors import CORS
 from database_tables import db
@@ -26,15 +25,19 @@ CORS(
     allow_headers=["Content-Type", "Authorization"],
     methods=["GET", "POST", "PUT", "DELETE", "OPTIONS"],
 )
+
 # Load Configurations
 app.config.from_object(Config)
+
 # Secret Key for token generation
 # TODO: change to environment variable in production
 app.config["secret_key"] = (
     "a6b6831eba9b404d716194f94161cc9376b0270045138623a76f74a4d6781663"
 )
+
 # Init Database
 db.init_app(app)
+
 # Blueprints
 app.register_blueprint(user_routes)
 app.register_blueprint(chat_routes)
@@ -49,7 +52,7 @@ def home():
 
 @app.after_request
 def after_request(response):
-    print(f"Request to {request.path}: {response.status}") # Debug print
+    print(f"Request to {request.path}: {response.status}")  # Debug print
     return response
 
 if __name__ == "__main__":
@@ -59,7 +62,5 @@ if __name__ == "__main__":
         db.create_all()
         # Ensure AI user exists
         ensure_ai_user_exists()
-        # Start AI initialization in background
-        print("Starting AI assistant initialization in background...")
-        ai_manager.start_initialization()
+        # AI Manager now initializes automatically on creation
         app.run(debug=True, port=args.port)
