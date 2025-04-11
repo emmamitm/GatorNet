@@ -1,4 +1,4 @@
-from flask import Flask, request
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 from database_tables import db
 from config import Config
@@ -11,6 +11,7 @@ from routes.signup import signup_routes
 from ai_integration import ai_manager
 from ensure_ai_user import ensure_ai_user_exists
 import argparse
+from map_api import get_map_data
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -49,6 +50,11 @@ app.register_blueprint(signup_routes)
 @app.route("/")
 def home():
     return "Chatbot backend is running!"
+
+# mapping endpoint
+@app.route('/api/map-data')
+def map_data():
+    return jsonify(get_map_data())
 
 @app.after_request
 def after_request(response):
