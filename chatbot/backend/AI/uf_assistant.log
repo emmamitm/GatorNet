@@ -1,0 +1,44 @@
+2025-04-11 14:19:18.169 | INFO     | __main__:<module>:28 - LLaMA-driven UF Assistant starting up...
+2025-04-11 14:19:18.275 | INFO     | __main__:__init__:470 - Initialized enhanced query analyzer.
+2025-04-11 14:19:18.275 | INFO     | __main__:__init__:607 - Initialized entity recognizer
+2025-04-11 14:19:18.275 | INFO     | __main__:__init__:735 - Initialized academic calendar context.
+2025-04-11 14:19:18.275 | INFO     | __main__:__init__:197 - Initialized enhanced conversation state.
+2025-04-11 14:19:18.291 | INFO     | __main__:initialize_model:795 - No GPU detected - using CPU only
+2025-04-11 14:19:21.674 | INFO     | __main__:initialize_model:808 - Successfully loaded LLaMA model from ./models/Meta-Llama-3-8B-Instruct-Q8_0.gguf
+2025-04-11 14:19:21.675 | INFO     | __main__:__init__:911 - LLaMA model initialized
+2025-04-11 14:19:21.675 | INFO     | __main__:__init__:920 - Initialization complete in 3.40 seconds
+2025-04-11 14:19:24.994 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'building_location', 'query': 'Where is UF', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 14:19:46.824 | INFO     | __main__:process_query:1026 - Processed query in 21.84 seconds
+2025-04-11 14:19:59.607 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'generic', 'query': 'Reitz union', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False, 'potential_building': 'reitz union'}
+2025-04-11 14:20:24.817 | INFO     | __main__:process_query:1026 - Processed query in 25.21 seconds
+2025-04-11 14:20:34.195 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'generic', 'query': 'Food on campu', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 14:21:00.155 | INFO     | __main__:process_query:1026 - Processed query in 25.96 seconds
+2025-04-11 14:21:10.370 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'generic', 'query': 'Meal plans', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 14:21:37.116 | INFO     | __main__:process_query:1026 - Processed query in 26.75 seconds
+2025-04-11 14:21:48.758 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'generic', 'query': 'WHo are you', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 14:22:16.854 | INFO     | __main__:process_query:1026 - Processed query in 28.10 seconds
+2025-04-11 14:22:25.680 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'generic', 'query': 'Why UF', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 14:23:11.583 | INFO     | __main__:process_query:1026 - Processed query in 45.90 seconds
+2025-04-11 14:23:47.216 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'major_info', 'query': 'computer science major', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': True, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 14:24:44.271 | INFO     | __main__:process_query:1026 - Processed query in 57.06 seconds
+2025-04-11 14:25:34.134 | INFO     | __main__:<module>:28 - LLaMA-driven UF Assistant starting up...
+2025-04-11 14:25:34.244 | INFO     | __main__:__init__:470 - Initialized enhanced query analyzer.
+2025-04-11 14:25:34.244 | INFO     | __main__:__init__:607 - Initialized entity recognizer
+2025-04-11 14:25:34.244 | INFO     | __main__:__init__:735 - Initialized academic calendar context.
+2025-04-11 14:25:34.244 | INFO     | __main__:__init__:197 - Initialized enhanced conversation state.
+2025-04-11 14:25:34.259 | INFO     | __main__:initialize_model:795 - No GPU detected - using CPU only
+2025-04-11 14:25:34.698 | INFO     | __main__:initialize_model:808 - Successfully loaded LLaMA model from ./models/Meta-Llama-3-8B-Instruct-Q8_0.gguf
+2025-04-11 14:25:34.698 | INFO     | __main__:__init__:911 - LLaMA model initialized
+2025-04-11 14:25:34.698 | INFO     | __main__:__init__:920 - Initialization complete in 0.45 seconds
+2025-04-11 14:25:38.879 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'building_location', 'query': 'Where is UF?', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 14:26:00.924 | INFO     | __main__:_clean_llm_response:1056 - Cleaned 5 characters from LLaMA response
+2025-04-11 14:26:00.925 | INFO     | __main__:process_query:1029 - Processed query in 22.05 seconds
+2025-04-11 15:26:55.477 | INFO     | __main__:<module>:28 - LLaMA-driven UF Assistant starting up...
+2025-04-11 15:26:55.478 | INFO     | __main__:__init__:470 - Initialized enhanced query analyzer.
+2025-04-11 15:26:55.478 | INFO     | __main__:__init__:607 - Initialized entity recognizer
+2025-04-11 15:26:55.478 | INFO     | __main__:__init__:735 - Initialized academic calendar context.
+2025-04-11 15:26:55.478 | INFO     | __main__:__init__:197 - Initialized enhanced conversation state.
+2025-04-11 15:26:55.478 | WARNING  | __main__:__init__:913 - No LLaMA model path provided, running in reduced functionality mode
+2025-04-11 15:26:55.478 | INFO     | __main__:__init__:920 - Initialization complete in 0.00 seconds
+2025-04-11 15:26:55.480 | INFO     | __main__:analyze:592 - Query analysis result: {'intent': 'building_location', 'query': 'where is UF', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-11 15:26:55.480 | INFO     | __main__:process_query:1026 - Processed query in 0.00 seconds
