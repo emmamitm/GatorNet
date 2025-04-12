@@ -566,8 +566,9 @@ class ClubSystem:
             score = 0
             match_reasons = []
             
-            description = club.get("Description", "").lower()
-            org_name = club.get("Organization Name", "").lower()
+            # Convert to string before calling lower() to handle non-string types
+            description = str(club.get("Description", "")).lower()
+            org_name = str(club.get("Organization Name", "")).lower()
             
             # Check for matches with selected subcategories
             for subcategory in selected_subcategories:
@@ -589,7 +590,7 @@ class ClubSystem:
                 }
                 
                 for keyword in commitment_keywords.get(commitment_level, []):
-                    if keyword in description.lower():
+                    if keyword in description:
                         score += 1
                         match_reasons.append(f"Matches your {commitment_level} preference")
                         break
