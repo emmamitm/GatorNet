@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import { motion } from "motion/react";
 import { ClipLoader } from "react-spinners";
+import api from "../axiosApi";
 
 // Main component for the suggestion menu
 const SuggestionMenu = ({ category, onBack }) => {
@@ -9,97 +10,118 @@ const SuggestionMenu = ({ category, onBack }) => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null);
     const [direction, setDirection] = useState(1); // 1 for forward, -1 for backward
+    const [customInput, setCustomInput] = useState("");
 
     // Keep track of menu history
     const historyRef = useRef([]);
 
     // Fetch initial menu data (mount/category update)
     useEffect(() => {
-        fetchMenuData(category);
+        fetchMenuData(category, null, false, []);
+        console.log("Fetching initial menu data for category:", category);
     }, [category]);
 
-    // Function to fetch menu data from API
+    // Function to fetch menu data from API using axios
     const fetchMenuData = async (
         category,
         selection = null,
-        goingBack = false
+        goingBack = false,
+        currentPath = path // Use current path by default, but allow override
     ) => {
         setLoading(true);
         setError(null);
         setDirection(goingBack ? -1 : 1);
 
-        // sample API request & response
-        // Sample data
-        setMenuData({
-            question: "What would you like to know?",
-            options: [
-                { label: "Option 1", value: "option1" },
-                { label: "Option 2", value: "option2" },
-            ],
-            content: "<p>This is some content.</p>",
-            breadcrumbs: ["Home", "Category"],
-        });
+        // Prepare request data
+        // use the path that's passed in, not the state variable which might not have updated yet
+        const requestData = {
+            category: category,
+            path: currentPath,
+        };
 
-        // Uncomment the following code to make an actual API request
-
-        // try {
-        //     // Prepare request data
-        //     const requestData = {
-        //         category: category,
-        //         path: path,
-        //     };
-
-        //     // Include selection if provided
-        //     if (selection !== null) {
-        //         requestData.selection = selection;
-        //     }
-
-        //     // Get auth token
-        //     const token = localStorage.getItem("token");
-
-        //     // Make API request
-        //     const response = await fetch("http://localhost:5001/api/menu", {
-        //         method: "POST",
-        //         headers: {
-        //             "Content-Type": "application/json",
-        //             Authorization: `Bearer ${token}`,
-        //         },
-        //         body: JSON.stringify(requestData),
-        //     });
-
-        //     if (!response.ok) {
-        //         throw new Error(`API error: ${response.status}`);
-        //     }
-
-        //     const data = await response.json();
-        //     setMenuData(data);
-
-        // Update history if moving forward
-        if (!goingBack && selection !== null) {
-            // Store current state in history
-            historyRef.current = [
-                ...historyRef.current,
-                {
-                    category,
-                    path: [...path],
-                    menuData: menuData,
-                },
-            ];
-
-            // Update path with new selection
-            setPath([...path, selection]);
+        // Include selection if provided
+        if (selection !== null) {
+            requestData.selection = selection;
         }
-        // } catch (err) {
-        //     console.error("Error fetching menu data:", err);
-        //     setError("Failed to load menu data. Please try again.");
-        // } finally {
-        setLoading(false);
-        // }
+
+        try {
+            console.log("Sending request with path:", currentPath);
+
+            // Make API request using axios
+            const response = await api.post("/menu", requestData);
+            const data = response.data;
+
+            // Debug logging
+            console.log("Request data:", requestData);
+            console.log("Response data:", data);
+
+            setMenuData(data);
+
+            // Reset custom input when navigating
+            setCustomInput("");
+        } catch (err) {
+            console.error("Error fetching menu data:", err);
+            setError(
+                `Failed to load menu data: ${
+                    err.response?.data?.message || err.message
+                }. Please try again.`
+            );
+        } finally {
+            setLoading(false);
+        }
     };
 
     // Handle option selection
     const handleSelect = (selection) => {
-        fetchMenuData(category, selection);
+        // Store current state in history before updating
+        historyRef.current = [
+            ...historyRef.current,
+            {
+                category,
+                path: [...path],
+                menuData: menuData,
+            },
+        ];
+
+        // Calculate the new path that will include this selection
+        const newPath = [...path, selection];
+
+        // Update the path state
+        setPath(newPath);
+
+        // Then fetch data with the new path
+        fetchMenuData(category, selection, false, newPath);
+
+        console.log("Selected option:", selection, "New path:", newPath);
+    };
+
+    // Handle custom input submission
+    const handleCustomInputSubmit = () => {
+        // Store current state in history
+        historyRef.current = [
+            ...historyRef.current,
+            {
+                category,
+                path: [...path],
+                menuData: menuData,
+            },
+        ];
+
+        // Calculate the new path
+        const newPath = [...path, customInput.trim()];
+
+        // Update the path state
+        setPath(newPath);
+
+        // Fetch with the new path
+        fetchMenuData(category, customInput.trim(), false, newPath);
+
+        console.log(
+            "Custom input submitted:",
+            customInput,
+            "New path:",
+            newPath
+        );
     };
 
     // Handle back button click
@@ -114,17 +136,26 @@ const SuggestionMenu = ({ category, onBack }) => {
         const prevState = historyRef.current.pop();
 
         if (prevState) {
-            // Update path to previous state
-            setPath(prevState.path);
+            // Get the previous path from history
+            const previousPath = prevState.path;
+            console.log("Going back to previous path:", previousPath);
+
+            // Update path state
+            setPath(previousPath);
 
             // Fetch menu data for previous path
-            fetchMenuData(category, null, true);
+            fetchMenuData(category, null, true, previousPath);
         } else {
             // If no history (shouldn't happen), just go back one level
             const newPath = [...path];
             newPath.pop();
+            console.log("No history found, calculating new path:", newPath);
+
+            // Update path state
             setPath(newPath);
-            fetchMenuData(category, null, true);
+
+            // Fetch with the new path
+            fetchMenuData(category, null, true, newPath);
         }
     };
 
@@ -183,6 +214,36 @@ const SuggestionMenu = ({ category, onBack }) => {
         }),
     };
 
+    // Render custom input field when needed
+    const renderCustomInput = () => {
+        if (!menuData || !menuData.hasCustomInput) return null;
+
+        return (
+            <div className="mt-4">
+                <div className="flex">
+                    <input
+                        type="text"
+                        value={customInput}
+                        onChange={(e) => setCustomInput(e.target.value)}
+                        placeholder={
+                            menuData.inputPlaceholder || "Enter value..."
+                        }
+                        className="flex-grow p-2 border rounded-l focus:outline-none focus:ring-2 focus:ring-blue-500 dark:bg-neutral-700 dark:border-neutral-600"
+                        onKeyDown={(e) =>
+                            e.key === "Enter" && handleCustomInputSubmit()
+                        }
+                    />
+                    <button
+                        onClick={handleCustomInputSubmit}
+                        className="px-4 py-2 bg-blue-500 text-white rounded-r hover:bg-blue-600 transition-colors"
+                    >
+                        Submit
+                    </button>
+                </div>
+            </div>
+        );
+    };
+
     // Render menu content
     const renderMenuContent = () => {
         if (loading) return renderLoader();
@@ -191,7 +252,7 @@ const SuggestionMenu = ({ category, onBack }) => {
 
         return (
             <motion.div
-                key={path.length} // Important: key changes trigger animation
+                key={path.join("-") || "root"} // Unique key for each path
                 custom={direction}
                 variants={variants}
                 initial="enter"
@@ -201,7 +262,19 @@ const SuggestionMenu = ({ category, onBack }) => {
                     x: { type: "spring", stiffness: 300, damping: 30 },
                     opacity: { duration: 0.2 },
                 }}
+                className="flex flex-col"
             >
+                {/* Content block if present */}
+                {menuData.content && (
+                    <div className="mb-4 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
+                        <div
+                            dangerouslySetInnerHTML={{
+                                __html: menuData.content,
+                            }}
+                        />
+                    </div>
+                )}
+
                 {/* Subtitle/Question */}
                 {menuData.question && (
                     <div className="mb-4">
@@ -212,11 +285,11 @@ const SuggestionMenu = ({ category, onBack }) => {
                 )}
 
                 {/* Menu Options */}
-                <div className="grid grid-cols-1 gap-3">
-                    {menuData.options &&
-                        menuData.options.map((option, index) => (
+                {menuData.options && menuData.options.length > 0 && (
+                    <div className="grid grid-cols-1 gap-3">
+                        {menuData.options.map((option, index) => (
                             <button
-                                key={index}
+                                key={`${option.value}-${index}`}
                                 onClick={() => handleSelect(option.value)}
                                 className="p-4 text-left bg-neutral-100 dark:bg-neutral-800 rounded-lg shadow hover:bg-neutral-200 dark:hover:bg-neutral-600 transition-colors"
                             >
@@ -230,24 +303,17 @@ const SuggestionMenu = ({ category, onBack }) => {
                                 )}
                             </button>
                         ))}
-                </div>
-
-                {/* Content block if present */}
-                {menuData.content && (
-                    <div className="mt-4 p-4 bg-white dark:bg-neutral-700 rounded-lg shadow">
-                        <div
-                            dangerouslySetInnerHTML={{
-                                __html: menuData.content,
-                            }}
-                        />
                     </div>
                 )}
+
+                {/* Custom Input Field */}
+                {renderCustomInput()}
             </motion.div>
         );
     };
 
     return (
-        <div className="flex flex-col my-auto">
+        <div className="flex flex-col w-full my-auto py-4">
             {/* Header with title and back button */}
             <div className="flex items-center mb-4">
                 <button
@@ -272,8 +338,9 @@ const SuggestionMenu = ({ category, onBack }) => {
                 <div className="flex items-center text-sm text-neutral-500 dark:text-neutral-400 mb-4 overflow-x-auto">
                     <span
                         onClick={() => {
-                            setPath([]);
-                            fetchMenuData(category, null, true);
+                            const emptyPath = [];
+                            setPath(emptyPath);
+                            fetchMenuData(category, null, true, emptyPath);
                         }}
                         className="cursor-pointer hover:text-neutral-700 dark:hover:text-neutral-300 whitespace-nowrap"
                     >
@@ -296,7 +363,12 @@ const SuggestionMenu = ({ category, onBack }) => {
                                             index + 1
                                         );
                                         setPath(newPath);
-                                        fetchMenuData(category, null, true);
+                                        fetchMenuData(
+                                            category,
+                                            null,
+                                            true,
+                                            newPath
+                                        );
                                     }
                                 }}
                                 className={`whitespace-nowrap ${
@@ -325,7 +397,7 @@ const SuggestionMenu = ({ category, onBack }) => {
             <div className="mt-auto pt-4">
                 <button
                     onClick={onBack}
-                    className="w-full py-3 bg-neutral-200 dark:bg-neutral-700 rounded-lg hover:bg-neutral-300 dark:hover:bg-neutral-600 transition-colors"
+                    className="w-full py-3 bg-blue-100 dark:bg-gray-700 rounded-lg hover:bg-blue-200 dark:hover:bg-gray-600 transition-colors"
                 >
                     Return to Chat
                 </button>

@@ -8,10 +8,16 @@ from routes.conversation import conversation_routes
 from routes.message import message_routes
 from routes.login import login_routes
 from routes.signup import signup_routes
+from routes.menu import menu_routes  # Import the new menu routes
 from ai_integration import ai_manager
 from ensure_ai_user import ensure_ai_user_exists
 import argparse
 from map_api import get_map_data
+import os
+
+# Ensure required directories for menu exist
+os.makedirs("./jsonFiles", exist_ok=True)
+os.makedirs("./modules", exist_ok=True)
 
 # Parse command line arguments
 parser = argparse.ArgumentParser()
@@ -46,20 +52,25 @@ app.register_blueprint(conversation_routes)
 app.register_blueprint(message_routes)
 app.register_blueprint(login_routes)
 app.register_blueprint(signup_routes)
+app.register_blueprint(menu_routes)
+
 
 @app.route("/")
 def home():
     return "Chatbot backend is running!"
 
+
 # mapping endpoint
-@app.route('/api/map-data')
+@app.route("/api/map-data")
 def map_data():
     return jsonify(get_map_data())
+
 
 @app.after_request
 def after_request(response):
     print(f"Request to {request.path}: {response.status}")  # Debug print
     return response
+
 
 if __name__ == "__main__":
     print(f"Server starting on http://localhost:{args.port}")
