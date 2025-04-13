@@ -45,8 +45,6 @@ const SuggestionMenu = ({ category, onBack }) => {
         }
 
         try {
-            console.log("Sending request with path:", currentPath);
-
             // Make API request using axios
             const response = await api.post("/menu", requestData);
             const data = response.data;
@@ -264,6 +262,15 @@ const SuggestionMenu = ({ category, onBack }) => {
                 }}
                 className="flex flex-col"
             >
+                {/* Subtitle/Question */}
+                {menuData.question && (
+                    <div className="mb-4">
+                        <h3 className="text-lg font-medium">
+                            {menuData.question}
+                        </h3>
+                    </div>
+                )}
+
                 {/* Content block if present */}
                 {menuData.content && (
                     <div className="mb-4 p-4 bg-neutral-50 dark:bg-neutral-800 rounded-lg">
@@ -272,15 +279,6 @@ const SuggestionMenu = ({ category, onBack }) => {
                                 __html: menuData.content,
                             }}
                         />
-                    </div>
-                )}
-
-                {/* Subtitle/Question */}
-                {menuData.question && (
-                    <div className="mb-4">
-                        <h3 className="text-lg font-medium">
-                            {menuData.question}
-                        </h3>
                     </div>
                 )}
 
