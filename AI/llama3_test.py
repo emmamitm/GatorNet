@@ -137,8 +137,8 @@ Answer:
 
 
 if __name__ == "__main__":
-    assistant = LLaMA3Assistant()
-    print("\n=== LLaMA 3 UF Assistant ===")
+    router = QueryRouter()
+    print("\n=== UF Assistant (Smart Routing + LLaMA Fallback) ===")
     print("Type a question (or 'quit' to exit):")
 
     while True:
@@ -146,7 +146,7 @@ if __name__ == "__main__":
             query = input("\n> ").strip()
             if query.lower() == "quit":
                 break
-            response = assistant.generate_response(query)
+            response = router.handle(query)
             print("\n" + response + "\n")
         except KeyboardInterrupt:
             break

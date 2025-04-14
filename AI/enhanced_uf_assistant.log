@@ -1,0 +1,32 @@
+2025-04-14 19:11:00.474 | INFO     | AI_model:<module>:29 - Enhanced UF Assistant starting up...
+2025-04-14 19:11:22.408 | INFO     | __main__:<module>:29 - Enhanced UF Assistant starting up...
+2025-04-14 19:11:23.207 | WARNING  | __main__:_load_config:1985 - Could not load config from conf/config.yaml: Primary config directory not found.
+Check that the config directory 'C:\Users\smhue\OneDrive\Documents\GitHub\GatorNet\AI\conf' exists and readable
+2025-04-14 19:11:32.768 | INFO     | __main__:__init__:1946 - Initialized embedding model
+2025-04-14 19:11:32.768 | INFO     | __main__:__init__:1957 - Loading data from CSV files...
+2025-04-14 19:11:32.769 | ERROR    | __main__:load_campus_buildings_data:202 - Error loading campus buildings data: [Errno 2] No such file or directory: 'C:\\Users\\smhue\\OneDrive\\Documents\\GitHub\\GatorNet\\wrong/campusBuildings/uf_buildings.csv'
+2025-04-14 19:11:32.769 | ERROR    | __main__:load_libraries_data:411 - Error loading libraries data: [Errno 2] No such file or directory: 'C:\\Users\\smhue\\OneDrive\\Documents\\GitHub\\GatorNet\\wrong/libraries/uf_libraries.csv'
+2025-04-14 19:11:32.769 | ERROR    | __main__:load_hallinfo_data:342 - Error loading hall info data: [Errno 2] No such file or directory: 'C:\\Users\\smhue\\OneDrive\\Documents\\GitHub\\GatorNet\\wrong/housing/hallInfo.csv'
+2025-04-14 19:11:32.769 | ERROR    | __main__:load_programs_data:309 - Error loading programs data: [Errno 2] No such file or directory: 'C:\\Users\\smhue\\OneDrive\\Documents\\GitHub\\GatorNet\\wrong/classes/programs.csv'
+2025-04-14 19:11:32.769 | ERROR    | __main__:load_majors_data:288 - Error loading majors data: [Errno 2] No such file or directory: 'C:\\Users\\smhue\\OneDrive\\Documents\\GitHub\\GatorNet\\wrong/classes/majors.csv'
+2025-04-14 19:11:32.769 | ERROR    | __main__:load_courses_data:269 - Error loading courses data: [Errno 2] No such file or directory: 'C:\\Users\\smhue\\OneDrive\\Documents\\GitHub\\GatorNet\\wrong/classes/courses.csv'
+2025-04-14 19:11:32.769 | INFO     | __main__:__init__:776 - Initialized academic info retrieval with 0 programs, 0 majors, and 0 courses.
+2025-04-14 19:11:32.769 | ERROR    | __main__:load_clubs_data:222 - Error loading clubs data: [Errno 2] No such file or directory: 'C:\\Users\\smhue\\OneDrive\\Documents\\GitHub\\GatorNet\\wrong/campusClubs/uf_organizations.csv'
+2025-04-14 19:11:32.769 | INFO     | __main__:__init__:981 - Initialized campus clubs retrieval with 0 entries.
+2025-04-14 19:11:32.769 | INFO     | __main__:__init__:1140 - Initialized enhanced query analyzer.
+2025-04-14 19:11:32.769 | INFO     | __main__:__init__:1829 - Initialized academic calendar context.
+2025-04-14 19:11:32.770 | INFO     | __main__:__init__:494 - Initialized enhanced conversation state.
+2025-04-14 19:11:32.770 | WARNING  | __main__:_validate_data:2021 - Data validation issue: No library data loaded
+2025-04-14 19:11:32.770 | WARNING  | __main__:_validate_data:2021 - Data validation issue: No building data loaded
+2025-04-14 19:11:32.770 | WARNING  | __main__:_validate_data:2021 - Data validation issue: No dormitory data loaded
+2025-04-14 19:11:32.770 | INFO     | __main__:__init__:1978 - Initialization complete in 9.56 seconds
+2025-04-14 19:12:05.324 | INFO     | __main__:analyze:1262 - Enhanced query analysis result: {'intent': 'generic', 'query': 'what is the best sorority', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-14 19:12:05.324 | INFO     | __main__:process_query:2208 - Processed query in 0.01 seconds
+2025-04-14 19:12:39.991 | INFO     | __main__:analyze:1262 - Enhanced query analysis result: {'intent': 'club_info', 'query': 'can you tell me about florida club rowing', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': True, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-14 19:12:46.584 | INFO     | __main__:process_query:2208 - Processed query in 6.59 seconds
+2025-04-14 19:12:56.941 | INFO     | __main__:analyze:1262 - Enhanced query analysis result: {'intent': 'club_info', 'query': 'rowing club at UF', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': True, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-14 19:12:56.977 | INFO     | __main__:process_query:2208 - Processed query in 0.04 seconds
+2025-04-14 19:14:11.675 | INFO     | __main__:analyze:1262 - Enhanced query analysis result: {'intent': 'building_location', 'query': 'Where is the physics building?', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-14 19:14:11.676 | INFO     | __main__:process_query:2208 - Processed query in 0.00 seconds
+2025-04-14 19:14:19.192 | INFO     | __main__:analyze:1262 - Enhanced query analysis result: {'intent': 'building_location', 'query': 'Where is marston library', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False, 'potential_library': 'marston library'}
+2025-04-14 19:14:19.192 | INFO     | __main__:process_query:2208 - Processed query in 0.00 seconds
