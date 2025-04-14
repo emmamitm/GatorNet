@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+#NEW 
 """
 Enhanced UF Assistant
 A powerful assistant for answering questions about University of Florida
@@ -72,7 +73,8 @@ def verify_data_directories():
         os.path.join(HOME_DIR, "scrapedData", "campusBuildings"),
         os.path.join(HOME_DIR, "scrapedData", "campusClubs"),
         os.path.join(HOME_DIR, "scrapedData", "libraries"),
-        os.path.join(HOME_DIR, "scrapedData", "housing")
+        os.path.join(HOME_DIR, "scrapedData", "housing"),
+        os.path.join(HOME_DIR, "scrapedData", "classes")
     ]
     
     for directory in required_dirs:
@@ -92,6 +94,7 @@ def verify_data_directories():
 
 # Call this on module load
 verify_data_directories()
+
 ACADEMIC_CALENDAR = {
     'terms': {
         'Spring 2025': {'start': '2025-01-06', 'end': '2025-05-02'},
@@ -178,11 +181,178 @@ DORM_ALIASES = {
 }
 
 # ------------------------------
+# Enhanced Major Search Functionality
+# ------------------------------
+def search_major_info(query, home_dir):
+    """
+    Search for information about an academic major/program
+    with improved detection and formatting
+    """
+    # Normalize query
+    query_lower = query.lower().strip()
+    
+    # Extract major name with improved patterns
+    major_patterns = [
+        r'major in\s+([a-zA-Z\s&]+)(?:\s|$|\.|\?)',
+        r'studying\s+([a-zA-Z\s&]+)(?:\s|$|\.|\?)',
+        r'about\s+([a-zA-Z\s&]+)\s+(?:major|program|degree)',
+        r'([a-zA-Z\s&]+)\s+(?:major|program|degree)',
+        r'information about\s+([a-zA-Z\s&]+)'
+    ]
+    
+    extracted_major = None
+    for pattern in major_patterns:
+        match = re.search(pattern, query_lower)
+        if match:
+            extracted_major = match.group(1).strip()
+            break
+    
+    # If no pattern matched, use the whole query
+    if not extracted_major:
+        # Remove common words that aren't part of a major name
+        filter_words = ['what', 'is', 'the', 'about', 'tell', 'me', 'information', 'program']
+        query_words = query_lower.split()
+        filtered_query = ' '.join([word for word in query_words if word not in filter_words])
+        extracted_major = filtered_query.strip()
+    
+    logger.info(f"Extracted major: {extracted_major}")
+    
+    # Define paths for both programs and majors CSVs
+    programs_path = os.path.join(home_dir, "scrapedData", "classes", "programs.csv")
+    majors_path = os.path.join(home_dir, "scrapedData", "classes", "majors.csv")
+    
+    # Load programs data with error handling
+    programs = []
+    departments = set()
+    try:
+        with open(programs_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                # Clean up field names if needed
+                cleaned_row = {k.strip(): v.strip() for k, v in row.items() if k and v}
+                programs.append(cleaned_row)
+                if 'Department' in cleaned_row:
+                    departments.add(cleaned_row['Department'].lower())
+    except Exception as e:
+        logger.error(f"Error loading programs: {e}")
+        programs = []
+    
+    # Load majors data for descriptions
+    majors_descriptions = {}
+    try:
+        with open(majors_path, 'r', encoding='utf-8') as f:
+            reader = csv.DictReader(f)
+            for row in reader:
+                if 'Department' in row and 'Description' in row:
+                    dept = row['Department'].strip().lower()
+                    desc = row['Description'].strip()
+                    if dept and desc:
+                        majors_descriptions[dept] = desc
+    except Exception as e:
+        logger.error(f"Error loading majors descriptions: {e}")
+    
+    # Search for matching programs - trying different matching approaches
+    
+    # 1. First try exact match on name
+    matched_programs = []
+    matched_department = None
+    
+    for program in programs:
+        if 'Name' in program and program['Name'].lower() == extracted_major:
+            matched_programs.append(program)
+            if 'Department' in program:
+                matched_department = program['Department']
+    
+    # 2. Try partial match on name if no exact matches
+    if not matched_programs:
+        for program in programs:
+            if 'Name' in program and extracted_major in program['Name'].lower():
+                matched_programs.append(program)
+                if 'Department' in program and not matched_department:
+                    matched_department = program['Department']
+    
+    # 3. Try match on department
+    if not matched_programs:
+        for program in programs:
+            if 'Department' in program and program['Department'].lower() == extracted_major:
+                matched_programs.append(program)
+                if not matched_department:
+                    matched_department = program['Department']
+    
+    # 4. Try fuzzy matching for department if still no matches
+    if not matched_programs and departments:
+        # Try to find close matches to departments
+        close_matches = difflib.get_close_matches(extracted_major, list(departments), n=1, cutoff=0.7)
+        if close_matches:
+            matched_department = close_matches[0]
+            # Get all programs in that department
+            for program in programs:
+                if 'Department' in program and program['Department'].lower() == matched_department:
+                    matched_programs.append(program)
+    
+    # Get major description
+    description = "No detailed information available."
+    if matched_department and matched_department.lower() in majors_descriptions:
+        description = majors_descriptions[matched_department.lower()]
+    
+    # Format the response
+    if matched_programs:
+        # Get all types of programs (major, minor, certificate)
+        program_types = []
+        program_details = []
+        
+        for program in matched_programs:
+            prog_type = program.get('Type', '')
+            name = program.get('Name', '')
+            url = program.get('URL', '')
+            dept = program.get('Department', matched_department or '')
+            
+            if prog_type and prog_type not in program_types:
+                program_types.append(prog_type)
+                
+            if name and prog_type:
+                detail = f"• {name} ({prog_type})"
+                if url:
+                    detail += f" - [Catalog Link](https://catalog.ufl.edu{url})"
+                program_details.append(detail)
+        
+        # Format the title - use department name or the first program name
+        title = matched_department or matched_programs[0].get('Name', extracted_major.title())
+        
+        # Build a properly formatted response
+        response = f"""
+🎓 **{title}**
+
+{description}
+
+**Available as:** {', '.join(program_types)}
+
+**Available Programs:**
+{"".join(program_details)}
+
+For more details, visit the [UF Catalog](https://catalog.ufl.edu).
+"""
+        return response, True
+    
+    # If no matches found, return a generic response
+    else:
+        response = f"""
+🎓 **{extracted_major.title()}**
+
+I don't have specific information about this program in my database. 
+
+The University of Florida offers over 100 undergraduate majors across multiple colleges. Your program might be offered under a different name or as a specialization within another major.
+
+For the most accurate and complete information, please visit the [UF Undergraduate Catalog](https://catalog.ufl.edu/UGRD/) or contact the UF Admissions Office.
+"""
+        return response, False
+
+# ------------------------------
 # Data Loading Functions
 # ------------------------------
 def load_campus_buildings_data():
     """Load campus buildings data from CSV file"""
-    csv_path = os.path.join(HOME_DIR, "wrong/campusBuildings/uf_buildings.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/campusBuildings/uf_buildings.csv")
     buildings = []
     
     try:
@@ -204,7 +374,7 @@ def load_campus_buildings_data():
 
 def load_clubs_data():
     """Load clubs data from CSV file"""
-    csv_path = os.path.join(HOME_DIR, "wrong/campusClubs/uf_organizations.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/campusClubs/uf_organizations.csv")
     clubs = []
     
     try:
@@ -224,7 +394,7 @@ def load_clubs_data():
 
 def load_events_data():
     """Load events data from CSV file"""
-    csv_path = os.path.join(HOME_DIR, "wrong/campusEvents/uf_events_all.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/campusEvents/uf_events_all.csv")
     events = []
     
     try:
@@ -247,7 +417,7 @@ def load_events_data():
 
 def load_courses_data():
     """Load courses data from CSV file"""
-    csv_path = os.path.join(HOME_DIR, "wrong/classes/courses.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/classes/courses.csv")
     courses = []
     
     try:
@@ -271,7 +441,7 @@ def load_courses_data():
 
 def load_majors_data():
     """Load majors data from CSV file"""
-    csv_path = os.path.join(HOME_DIR, "wrong/classes/majors.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/classes/majors.csv")
     majors = []
     
     try:
@@ -290,7 +460,7 @@ def load_majors_data():
 
 def load_programs_data():
     """Load programs data from CSV file"""
-    csv_path = os.path.join(HOME_DIR, "wrong/classes/programs.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/classes/programs.csv")
     programs = []
     
     try:
@@ -311,7 +481,7 @@ def load_programs_data():
 
 def load_hallinfo_data():
     """Load hall info data from CSV file"""
-    csv_path = os.path.join(HOME_DIR, "wrong/housing/hallInfo.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/housing/hallInfo.csv")
     hallinfo = []
     
     try:
@@ -344,7 +514,7 @@ def load_hallinfo_data():
 
 def load_libraries_data():
     """Load libraries data from CSV file with enhanced parsing"""
-    csv_path = os.path.join(HOME_DIR, "wrong/libraries/uf_libraries.csv")
+    csv_path = os.path.join(HOME_DIR, "scrapedData/libraries/uf_libraries.csv")
     libraries = []
     
     try:
@@ -674,6 +844,10 @@ class ConversationState:
             # For structured academic info
             self.current_major = major
             self.mentioned_entities['majors'].add(major["department"])
+        elif isinstance(major, dict) and "response" in major:
+            # For new response-based format
+            self.current_major = major
+            self.mentioned_entities['majors'].add(major["query"])
         else:
             # For legacy format
             self.set_active_entity('major', major, 'Department')
@@ -1261,6 +1435,31 @@ class QueryAnalyzer:
                 
         logger.info(f"Enhanced query analysis result: {analysis}")
         return analysis
+        
+    def is_major_query(self, query):
+        """Enhanced detection for academic major queries"""
+        query_lower = query.lower()
+        
+        # Check for explicit major keywords
+        major_keywords = [
+            'major', 'program', 'degree', 'study', 'department', 
+            'concentration', 'specialization'
+        ]
+        
+        if any(keyword in query_lower for keyword in major_keywords):
+            return True
+            
+        # Check for academic field names (common majors)
+        common_majors = [
+            'computer science', 'engineering', 'business', 'psychology', 
+            'biology', 'chemistry', 'economics', 'english', 'history',
+            'mathematics', 'physics', 'political science', 'sociology'
+        ]
+        
+        if any(major in query_lower for major in common_majors):
+            return True
+            
+        return False
 
 # ------------------------------
 # Response Generator
@@ -1397,7 +1596,11 @@ I apologize, but I couldn't find specific information about {query_subject}. Cou
             
         elif intent == "major_info" and major_info:
             try:
-                return self._generate_major_info_response(major_info)
+                # Handle the new format from search_major_info
+                if isinstance(major_info, dict) and "response" in major_info:
+                    return major_info["response"]
+                else:
+                    return self._generate_major_info_response(major_info)
             except Exception as e:
                 logger.error(f"Error generating major info response: {e}")
                 return self.templates["error"].format(query_subject="major information")
@@ -1776,6 +1979,9 @@ I apologize, but I couldn't find specific information about {query_subject}. Cou
                     prompt += "Programs:\n"
                     for program in major_info['programs']:
                         prompt += f"- {program.get('Name', '')} ({program.get('Type', '')})\n"
+            elif isinstance(major_info, dict) and "response" in major_info:
+                # New response-based format
+                prompt += f"Major Info: Available as formatted text\n"
             else:
                 prompt += f"Major: {major_info.get('Department', '')}\n"
                 if 'Description' in major_info:
@@ -2065,7 +2271,7 @@ class EnhancedUFAssistant:
                 best_match = entity
                 
         return best_match
-        
+            
     def _find_library(self, query):
         """Find the most relevant library for the query using the generalized finder"""
         return self._find_entity(query, self.libraries, "Library Name", LIBRARY_ALIASES)
@@ -2108,6 +2314,46 @@ class EnhancedUFAssistant:
             major_info = None
             club_info = None
             
+            # If no specific intent detected, always use LLaMA for response
+            if analysis.get("intent") == "generic":
+                # Reset active contexts for generic queries
+                self.conversation_state.reset_active_contexts()
+                
+                # Generate response with LLaMA if available
+                if self.llm:
+                    try:
+                        # Create a prompt for LLaMA
+                        prompt = "You are the UF Assistant, an AI designed to provide helpful information about the University of Florida.\n\n"
+                        prompt += f"User Question: {query}\n\n"
+                        prompt += "Please provide a helpful response to the user's question about UF.\n"
+                        prompt += "Assistant:"
+                        
+                        # Generate response with LLaMA
+                        result = self.llm(
+                            prompt=prompt,
+                            max_tokens=500,
+                            temperature=0.7,
+                            stop=["User:", "Assistant:"]
+                        )
+                        
+                        # Extract response text
+                        response = result["choices"][0]["text"].strip()
+                        
+                        # Add to conversation state
+                        self.conversation_state.add_message("Assistant", response)
+                        
+                        # Cache the result
+                        self.query_cache[cache_key] = response
+                        
+                        # Log processing time
+                        processing_time = time.time() - start_time
+                        logger.info(f"Processed query in {processing_time:.2f} seconds")
+                        
+                        return response
+                    except Exception as e:
+                        logger.error(f"Error generating LLaMA response: {e}")
+                        # Fall through to standard processing if LLaMA fails
+            
             # Try to identify entities in the query
             # If it's a followup question, try to use previous context
             if self.conversation_state.is_followup_question(query):
@@ -2121,6 +2367,9 @@ class EnhancedUFAssistant:
                     major_info = self.conversation_state.get_active_major()
                 if self.conversation_state.get_active_club():
                     club_info = self.conversation_state.get_active_club()
+            else:
+                # Not a followup question, reset active contexts
+                self.conversation_state.reset_active_contexts()
             
             # Try to identify entities in the query with error handling
             try:
@@ -2159,15 +2408,25 @@ class EnhancedUFAssistant:
                 logger.error(f"Error finding dorm: {e}")
                 
             try:
-                # Enhanced Major/Program information
-                if analysis.get("is_major_query"):
-                    major_name = analysis.get("potential_major", query)
-                    # Use the enhanced academic info retrieval
-                    major_info = self.academic_info.get_info(major_name)
-                    if major_info:
+                # Major/Program information using enhanced search_major_info function
+                if analysis.get("is_major_query") or self.query_analyzer.is_major_query(query):
+                    major_response, found = search_major_info(query, self.HOME_DIR)
+                    if found:
+                        major_info = {"response": major_response, "query": query}
                         self.conversation_state.set_active_major(major_info)
+                        self.query_cache[cache_key] = major_response
+                        return major_response
             except Exception as e:
-                logger.error(f"Error finding major: {e}")
+                logger.error(f"Error finding major with enhanced search: {e}")
+                # Fall back to legacy method if enhanced search fails
+                try:
+                    if analysis.get("is_major_query"):
+                        major_name = analysis.get("potential_major", query)
+                        major_info = self.academic_info.get_info(major_name)
+                        if major_info:
+                            self.conversation_state.set_active_major(major_info)
+                except Exception as e2:
+                    logger.error(f"Error with fallback major search: {e2}")
                 
             try:
                 # Club information
@@ -2212,6 +2471,7 @@ class EnhancedUFAssistant:
         except Exception as e:
             logger.error(f"Critical error processing query: {e}")
             return "I apologize, but I encountered an error processing your request. Please try asking about a different topic."
+
             
     def reset_conversation(self):
         """Reset the conversation state"""
@@ -2219,12 +2479,11 @@ class EnhancedUFAssistant:
         return "Conversation has been reset."
 
 # ------------------------------
-# Main Application with Hydra
+# Main Application
 # ------------------------------
-# Add this at the end of AI_model.py
-# At the end of AI_model.py, change:
 if __name__ == "__main__":
     import argparse
+    import sys
     
     # Create argument parser
     parser = argparse.ArgumentParser(description='UF Assistant')
@@ -2243,7 +2502,8 @@ if __name__ == "__main__":
         # Process the query provided via command line
         print(f"> {args.query}")
         response = assistant.process_query(args.query)
-        print(f"{response}")
+        # CRITICAL FIX: Make sure to print in a single line without buffering
+        print(response, flush=True)
     else:
         # Interactive mode
         print("UF Assistant is ready! Type your questions about UF (or 'exit' to quit).\n")
@@ -2262,6 +2522,6 @@ if __name__ == "__main__":
             
             # Print the response
             print(f"{response}\n")
-            
+
 if __name__ == "__main__":
     main()
