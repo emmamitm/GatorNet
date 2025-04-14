@@ -51,3 +51,4 @@ outputs
 chatbot/backend/ai_integration.log
 chatbot/backend/AI/enhanced_uf_assistant.log
 chatbot/backend/enhanced_uf_assistant.log
+chatbot/backend/database.db
