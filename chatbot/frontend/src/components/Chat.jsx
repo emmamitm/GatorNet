@@ -3,6 +3,7 @@ import { ArrowCircleUp } from "@phosphor-icons/react";
 import Message from "./Message";
 import Suggestion from "./Suggestion";
 import { motion } from "motion/react";
+import { Link } from 'react-router-dom';
 
 const ChatInterface = ({
     messages,
@@ -156,6 +157,9 @@ const ChatInterface = ({
                             text="Tuition and Fees"
                             func={() => onMenuSelect("tuition")}
                         />
+                        <Link to="/campus-map">
+                            <Suggestion text="Navigate to..."/>
+                        </Link>
                     </div>
                 </>
             ) : (

@@ -174,6 +174,7 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>UF Campus Map - Complete</title>
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.css" />
     <style>
         body, html {
             margin: 0;
@@ -301,6 +302,7 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
     </div>
 
     <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet-routing-machine@latest/dist/leaflet-routing-machine.min.js"></script>
     <script>
         // Initialize the map centered on UF
         const map = L.map('map').setView([29.6436, -82.3549], 15);
@@ -332,6 +334,67 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
         let locations = [];
         let markers = {};
         let filterTypes = new Set();
+        let routingControl = null;
+        let selectedStart = null;
+
+        function startNavigation(destLat, destLon) {
+            if (!navigator.geolocation) {
+                alert("Geolocation is not supported by your browser.");
+                return;
+            }
+
+            navigator.geolocation.getCurrentPosition(
+                position => {
+                    const startLat = position.coords.latitude;
+                    const startLon = position.coords.longitude;
+
+                    if (routingControl) {
+                        map.removeControl(routingControl);
+                    }
+
+                    routingControl = L.Routing.control({
+                        waypoints: [
+                            L.latLng(startLat, startLon),
+                            L.latLng(destLat, destLon)
+                        ],
+                        router: L.Routing.osrmv1({
+                            serviceUrl: 'https://router.project-osrm.org/route/v1'
+                        }),
+                        lineOptions: {
+                            styles: [{ color: 'blue', opacity: 0.7, weight: 5 }]
+                        },
+                        routeWhileDragging: false,
+                        show: false
+                    }).addTo(map);
+                },
+                error => {
+                    alert("Unable to access your location. Please allow location access in your browser.");
+                }
+            );
+        }
+
+
+        function enableRouting(startLatLng, endLatLng) {
+            if (routingControl) {
+                map.removeControl(routingControl);
+            }
+
+            routingControl = L.Routing.control({
+                waypoints: [
+                    L.latLng(startLatLng),
+                    L.latLng(endLatLng)
+                ],
+                router: L.Routing.osrmv1({
+                    serviceUrl: 'https://router.project-osrm.org/route/v1'
+                }),
+                lineOptions: {
+                    styles: [{ color: 'blue', opacity: 0.7, weight: 5 }]
+                },
+                routeWhileDragging: false,
+                show: false
+            }).addTo(map);
+        }
+
         
         // Create a marker with custom color based on location type
         function createMarker(location) {
@@ -367,6 +430,7 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
             // Create popup with all available information
             let popupContent = `<div class="popup-content">
                 <h3>${location.name}</h3>
+                <button onclick="startNavigation(${location.lat}, ${location.lon})">Navigate Here</button>
                 <p>Type: ${location.element_type}</p>
             `;
             
@@ -433,6 +497,9 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
                     
                     // Setup legend
                     setupLegend();
+            
+                    // filter out highways for performance and usability
+                    filterLocations(); 
                 } else {
                     console.warn("No location data found");
                     document.getElementById('locations-list').innerHTML = 
@@ -501,7 +568,8 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
             commonTypes.forEach(type => {
                 if (filterTypes.has(type)) {
                     const div = document.createElement('div');
-                    div.innerHTML = `<label><input type="checkbox" checked data-filter="${type}"> ${type}</label>`;
+                    const checked = type === 'highway' ? '' : 'checked';
+                    div.innerHTML = `<label><input type="checkbox" ${checked} data-filter="${type}"> ${type}</label>`;
                     filterContainer.appendChild(div);
                     filterTypes.delete(type); // Remove from set so we don't add it twice
                 }
@@ -510,7 +578,8 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
             // Add remaining types
             Array.from(filterTypes).sort().forEach(type => {
                 const div = document.createElement('div');
-                div.innerHTML = `<label><input type="checkbox" checked data-filter="${type}"> ${type}</label>`;
+                const checked = type === 'highway' ? '' : 'checked';
+                div.innerHTML = `<label><input type="checkbox" ${checked} data-filter="${type}"> ${type}</label>`;
                 filterContainer.appendChild(div);
             });
             
@@ -620,7 +689,6 @@ with open(os.path.join(os.getcwd(), 'templates', 'index.html'), 'w') as f:
 </html>
     ''')
 
-if __name__ == '__main__':
-    print("Starting Flask server with complete UF campus data...")
-    print("Open http://127.0.0.1:5000/ in your browser to view the map")
-    app.run(debug=False)
+
+def get_map_data():
+    return load_all_osm_data()

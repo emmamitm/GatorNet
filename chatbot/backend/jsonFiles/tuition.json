@@ -1,0 +1,77 @@
+{
+    "name": "University Tuition Cost Calculator",
+    "description": "Decision tree for estimating university costs based on student type and academic year",
+    "root": {
+      "question": "What is your student status?",
+      "options": [
+        {
+          "label": "Florida Resident",
+          "next": {
+            "question": "Which academic year?",
+            "options": [
+              {
+                "label": "2024-25",
+                "result": {
+                  "breakdown": [
+                    {"type": "Tuition and Fees", "amount": 6380},
+                    {"type": "Books & Supplies", "amount": 1260},
+                    {"type": "Transportation", "amount": 1660},
+                    {"type": "Living Expenses", "amount": 12120},
+                    {"type": "Miscellaneous", "amount": 2054},
+                    {"type": "Federal Student Loan Fees", "amount": 56}
+                  ],
+                  "total": 23530
+                }
+              }
+            ]
+          }
+        },
+        {
+          "label": "Non-Florida Resident",
+          "next": {
+            "question": "Which academic year?",
+            "options": [
+              {
+                "label": "2024-25",
+                "result": {
+                  "breakdown": [
+                    {"type": "Tuition and Fees", "amount": 28658},
+                    {"type": "Books & Supplies", "amount": 1260},
+                    {"type": "Transportation", "amount": 1660},
+                    {"type": "Living Expenses", "amount": 12120},
+                    {"type": "Miscellaneous", "amount": 2054},
+                    {"type": "Federal Student Loan Fees", "amount": 56}
+                  ],
+                  "total": 45808
+                }
+              }
+            ]
+          }
+        },
+        {
+          "label": "International Student (F-1/J-1)",
+          "next": {
+            "question": "Which academic year?",
+            "options": [
+              {
+                "label": "2023-24",
+                "result": {
+                  "breakdown": [
+                    {"type": "Tuition and Fees (24 credits)", "amount": 28658},
+                    {"type": "Books & Course Materials", "amount": 1450},
+                    {"type": "Transportation", "amount": 1570},
+                    {"type": "Living Expenses", "amount": 17390},
+                    {"type": "Miscellaneous Personal Expenses", "amount": 2603},
+                    {"type": "Federal Student Loan Fees", "amount": 87},
+                    {"type": "Mandatory Health Insurance", "amount": 3093},
+                    {"type": "Between-Term Expenses", "amount": 1000}
+                  ],
+                  "total": 55851
+                }
+              }
+            ]
+          }
+        }
+      ]
+    }
+  }

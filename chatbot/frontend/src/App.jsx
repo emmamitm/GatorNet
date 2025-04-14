@@ -10,6 +10,7 @@ import { withAuth } from "./auth/ProtectedRoute";
 import Welcome from "./pages/Welcome";
 import SignUp from "./pages/SignUp";
 import Dashboard from "./pages/Dashboard";
+import CampusMap from './pages/CampusMap';
 
 // protected routes
 const ProtectedDashboard = withAuth(Dashboard);
@@ -23,6 +24,7 @@ function App() {
                     <Route path="/" element={<Welcome />} />
                     <Route path="/signup" element={<SignUp />} />
                     <Route path="/dashboard" element={<ProtectedDashboard />} />
+                    <Route path="/campus-map" element={<CampusMap />} />
                     <Route path="*" element={<Navigate to="/" />} />
                 </Routes>
             </BrowserRouter>

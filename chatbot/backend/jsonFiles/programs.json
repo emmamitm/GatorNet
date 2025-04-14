@@ -1,0 +1,4878 @@
+{
+    "programs": [
+      {
+        "name": "Marketing",
+        "department": "Marketing",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Professional Selling Minor",
+        "department": "Marketing",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Retailing Minor",
+        "department": "Marketing",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Art Education Certificate",
+        "department": "Fine Arts",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Art History",
+        "department": "Fine Arts",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Art History Minor",
+        "department": "Fine Arts",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Art Minor",
+        "department": "Fine Arts",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Art | BA",
+        "department": "Fine Arts",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Art | BFA",
+        "department": "Fine Arts",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Ceramics Certificate",
+        "department": "Fine Arts",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Graphic Design",
+        "department": "Fine Arts",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Accounting",
+        "department": "Accounting",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Accounting Minor",
+        "department": "Accounting",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Accounting",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Animal Genetics Certificate",
+        "department": "Animal Sciences",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Animal Sciences",
+        "department": "Animal Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Animal Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Arabic | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Architecture",
+        "department": "Architecture",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Architecture Minor",
+        "department": "Architecture",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "English",
+        "department": "English",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "English Minor",
+        "department": "English",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Dietetics",
+        "department": "Food Science and Human Nutrition",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Food Science",
+        "department": "Food Science and Human Nutrition",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Food Science Minor",
+        "department": "Food Science and Human Nutrition",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Nutritional Sciences",
+        "department": "Food Science and Human Nutrition",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Nutritional Sciences Minor",
+        "department": "Food Science and Human Nutrition",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "French | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African American Studies",
+        "department": "African American Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "African American Studies Minor",
+        "department": "African American Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chemistry Minor",
+        "department": "Chemistry",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chemistry | Biochemistry",
+        "department": "Chemistry",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hispanic and Latin American Languages, Literatures and Linguistics",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Portuguese",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Portuguese Minor",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Spanish",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Spanish and Portuguese",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Spanish for the Professions Certificate",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Spanish Minor",
+        "department": "Spanish | Spanish and Portuguese Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hispanic and Latin American Languages, Literatures and Linguistics",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Portuguese",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Portuguese Minor",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Spanish",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Spanish and Portuguese",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Spanish for the Professions Certificate",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Spanish Minor",
+        "department": "Spanish and Portuguese Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Polish | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Geography",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Geographic Artificial Intelligence and Big Data Certificate",
+        "department": "Geography",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Geography",
+        "department": "Geography",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Geography Minor",
+        "department": "Geography",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Geography Minor UF Online",
+        "department": "Geography",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Geography UF Online",
+        "department": "Geography",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Geospatial Information Analysis Certificate",
+        "department": "Geography",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Medical Geography Certificate",
+        "department": "Geography",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Medical Geography in Global Health Minor",
+        "department": "Geography",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Meteorology and Climatology Certificate",
+        "department": "Geography",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Fire and Emergency Services",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Construction Management",
+        "department": "Fire and Emergency Services",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Construction Management Certificate",
+        "department": "Fire and Emergency Services",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Emergency Management Certificate",
+        "department": "Fire and Emergency Services",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Emergency Medical Services Management Certificate",
+        "department": "Fire and Emergency Services",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Fire and Emergency Services UF Online",
+        "department": "Fire and Emergency Services",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Senior Fire Officer Certificate",
+        "department": "Fire and Emergency Services",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "History",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "History",
+        "department": "History",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "History Minor",
+        "department": "History",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Legal History Certificate",
+        "department": "History",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Beekeeping Certificate",
+        "department": "Entomology and Nematology",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Entomology and Nematology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Entomology and Nematology",
+        "department": "Entomology and Nematology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Entomology and Nematology Minor",
+        "department": "Entomology and Nematology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Entomology and Nematology Minor UF Online",
+        "department": "Entomology and Nematology",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Landscape Pest Management Certificate",
+        "department": "Entomology and Nematology",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Medical Entomology Certificate",
+        "department": "Entomology and Nematology",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Pest Control Technology Certificate",
+        "department": "Entomology and Nematology",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Urban Pest Management Certificate",
+        "department": "Entomology and Nematology",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Communication Studies Minor",
+        "department": "William & Grace Dial Center for Speech and Communication Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Business Administration Minor",
+        "department": "Business",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Business Administration Minor UF Online",
+        "department": "Business",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Business Administration | General Business | BSBA UF Online",
+        "department": "Business",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Business Administration | General Studies | BABA",
+        "department": "Business",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Business Administration | General Studies | BABA UF Online",
+        "department": "Business",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Business",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Wealth Management Minor",
+        "department": "Business",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Disability Science Minor",
+        "department": "Health Science",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Health Science",
+        "department": "Health Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Health Science Minor",
+        "department": "Health Science",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Pharmacy | Preprofessional",
+        "department": "Pharmacy",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Innovation Minor",
+        "department": "Innovation Academy",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "East-Central European Studies Minor",
+        "department": "Turkish | European Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "European Union Studies Certificate",
+        "department": "Turkish | European Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "European Union Studies Minor",
+        "department": "Turkish | European Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Medieval and Early Modern Studies | IDS",
+        "department": "Turkish | European Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Biology UF Online",
+        "department": "Zoology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Biology | CALS",
+        "department": "Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Biology | CLAS",
+        "department": "Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Botany Minor",
+        "department": "Zoology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Botany | CALS",
+        "department": "Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Botany | CLAS",
+        "department": "Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Zoology",
+        "department": "Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Zoology Minor",
+        "department": "Zoology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Economics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Economics",
+        "department": "Economics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Economics Minor",
+        "department": "Economics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Agricultural Operations Management",
+        "department": "Agricultural and Biological Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Biological Engineering",
+        "department": "Agricultural and Biological Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Agricultural and Biological Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Packaging Engineering Certificate",
+        "department": "Agricultural and Biological Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Packaging Science Minor",
+        "department": "Agricultural and Biological Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Precision Agriculture Minor",
+        "department": "Agricultural and Biological Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Studies Minor",
+        "department": "African Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Chinese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Environmental Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Environmental Science",
+        "department": "Environmental Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Environmental Science Minor",
+        "department": "Environmental Science",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "American Indian and Indigenous Studies | IDS",
+        "department": "Anthropology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Anthropology",
+        "department": "Anthropology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Anthropology Minor",
+        "department": "Anthropology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Anthropology Minor UF Online",
+        "department": "Anthropology",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Anthropology UF Online",
+        "department": "Anthropology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Medical Anthropology Certificate",
+        "department": "Anthropology",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Sport Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Sport and Entertainment Law and Risk Management Certificate",
+        "department": "Sport Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Sport Management",
+        "department": "Sport Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Sport Management Certificate",
+        "department": "Sport Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Sport Management UF Online",
+        "department": "Sport Management",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Biomedical Engineering",
+        "department": "Biomedical Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Biomedical Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East-Central European Studies Minor",
+        "department": "Hungarian | European Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "European Union Studies Certificate",
+        "department": "Hungarian | European Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "European Union Studies Minor",
+        "department": "Hungarian | European Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Medieval and Early Modern Studies | IDS",
+        "department": "Hungarian | European Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Latin American Studies, Center for",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Latin American Studies Certificate",
+        "department": "Latin American Studies, Center for",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Latin American Studies Minor",
+        "department": "Latin American Studies, Center for",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Latin American Studies | IDS",
+        "department": "Latin American Studies, Center for",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "German | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Industrial and Systems Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Industrial and Systems Engineering",
+        "department": "Industrial and Systems Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Aerospace Engineering",
+        "department": "Mechanical & Aerospace Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Biomechanics Minor",
+        "department": "Mechanical & Aerospace Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Mechanical & Aerospace Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Mechanical Engineering",
+        "department": "Mechanical & Aerospace Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Sustainable and Resilient Energy Engineering Certificate",
+        "department": "Mechanical & Aerospace Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Advertising",
+        "department": "Advertising",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Advertising | Persuasive Messaging UF Online",
+        "department": "Advertising",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Advertising",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Sociology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Criminology",
+        "department": "Sociology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Criminology UF Online",
+        "department": "Sociology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Sociology",
+        "department": "Sociology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Sociology Minor",
+        "department": "Sociology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Sociology Minor UF Online",
+        "department": "Sociology",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Sociology of Social Justice and Policy Minor",
+        "department": "Sociology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Sociology UF Online",
+        "department": "Sociology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Agricultural and Natural Resource Ethics and Policy Minor",
+        "department": "Food and Resource Economics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Agricultural and Natural Resource Law Minor",
+        "department": "Food and Resource Economics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Food and Resource Economics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Food and Resource Economics",
+        "department": "Food and Resource Economics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Food and Resource Economics Minor",
+        "department": "Food and Resource Economics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "International Development and Humanitarian Assistance Minor",
+        "department": "Food and Resource Economics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Sustainability and the Built Environment",
+        "department": "Sustainability and the Built Environment",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Sustainability and the Built Environment Minor",
+        "department": "Sustainability and the Built Environment",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Greek Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Greek Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Greek Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Environmental Horticulture Management Certificate",
+        "department": "Environmental Horticulture",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Environmental Horticulture Minor",
+        "department": "Environmental Horticulture",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Horticultural Therapy Certificate",
+        "department": "Environmental Horticulture",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Japanese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Religion",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Religion",
+        "department": "Religion",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Religion Minor",
+        "department": "Religion",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Biomolecular Engineering Minor",
+        "department": "Chemical Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chemical Engineering",
+        "department": "Chemical Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Chemical Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Korean | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Urban and Regional Planning",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Urban and Regional Planning Minor",
+        "department": "Urban and Regional Planning",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Artificial Intelligence and Data Analytics in Tourism, Hospitality and Event Management Certificate",
+        "department": "Tourism, Hospitality and Event Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Tourism, Hospitality and Event Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Entrepreneurship in Tourism, Hospitality and Event Management Certificate",
+        "department": "Tourism, Hospitality and Event Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Event Management Minor",
+        "department": "Tourism, Hospitality and Event Management",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Event Management Minor UF Online",
+        "department": "Tourism, Hospitality and Event Management",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Tourism, Hospitality and Event Management",
+        "department": "Tourism, Hospitality and Event Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Tourism, Hospitality and Event Management UF Online",
+        "department": "Tourism, Hospitality and Event Management",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Horticultural Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Horticultural Science Minor",
+        "department": "Horticultural Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Horticultural Therapy Certificate",
+        "department": "Horticultural Sciences",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Organic and Sustainable Crop Production Minor",
+        "department": "Horticultural Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Plant Molecular and Cellular Biology Minor",
+        "department": "Horticultural Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Landscape Architecture",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Landscape Architecture Minor",
+        "department": "Landscape Architecture",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Landscape Architecture | 4-Year Professional Program",
+        "department": "Landscape Architecture",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Civil Engineering",
+        "department": "Civil and Coastal Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Civil and Coastal Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Czech | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Applied Physiology and Kinesiology",
+        "department": "Applied Physiology and Kinesiology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Music",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Jazz Studies Minor",
+        "department": "Music",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Music Business and Entrepreneurship",
+        "department": "Music",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Music Education",
+        "department": "Music",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Music History | Ethnomusicology Minor",
+        "department": "Music",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Music in Medicine Certificate",
+        "department": "Music",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Music Performance Certificate",
+        "department": "Music",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Music Performance Minor",
+        "department": "Music",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Music Theory Minor",
+        "department": "Music",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Music | Bachelor of Arts",
+        "department": "Music",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Music | Bachelor of Music",
+        "department": "Music",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Advanced Engineering Ceramics Certificate",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Biomaterials Certificate",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Materials Science and Engineering",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Materials Science and Engineering Minor",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Metallurgical Engineering Certificate",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Nuclear and Radiological Engineering Minor",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Nuclear Engineering",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Polymer Science and Engineering Certificate",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Semiconductor Materials Certificate",
+        "department": "Nuclear and Radiological Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Aerospace Leadership Minor",
+        "department": "Military Science",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Military Science and Leadership Minor",
+        "department": "Military Science",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Psychology",
+        "department": "Psychology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Psychology UF Online",
+        "department": "Psychology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Artificial Intelligence in Public Health and Healthcare Certificate",
+        "department": "Public Health",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Public Health",
+        "department": "Public Health",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Public Health Minor",
+        "department": "Public Health",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Interior Design",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Interior Design",
+        "department": "Interior Design",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Philosophy",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Philosophy",
+        "department": "Philosophy",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Philosophy Minor",
+        "department": "Philosophy",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Geomatics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Fire Ecology and Management Certificate",
+        "department": "Geomatics",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Fisheries and Aquatic Sciences Minor",
+        "department": "Geomatics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Forest Resources and Conservation",
+        "department": "Geomatics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Forest Resources and Conservation Minor",
+        "department": "Geomatics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Geomatics",
+        "department": "Geomatics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Geomatics Certificate",
+        "department": "Geomatics",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Mapping with Small Unmanned Aerial Systems Certificate",
+        "department": "Geomatics",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Natural Resource Conservation",
+        "department": "Geomatics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Finance, Insurance, and Real Estate",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Entrepreneurship Minor",
+        "department": "Finance, Insurance, and Real Estate",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Finance",
+        "department": "Finance, Insurance, and Real Estate",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Real Estate Minor",
+        "department": "Finance, Insurance, and Real Estate",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Journalism",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Creative Advertising Certificate",
+        "department": "Journalism",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "International Communication Certificate",
+        "department": "Journalism",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Journalism",
+        "department": "Journalism",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Journalism | Sports and Media UF Online",
+        "department": "Journalism",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Mass Communication Studies Minor",
+        "department": "Journalism",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Mass Communication Studies Minor UF Online",
+        "department": "Journalism",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Media Sales Certificate",
+        "department": "Journalism",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Political Communication Certificate",
+        "department": "Journalism",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Spanish Language News Media Certificate",
+        "department": "Journalism",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Digital Arts and Sciences Minor",
+        "department": "Digital Worlds Institute",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Digital Arts and Sciences Minor UF Online",
+        "department": "Digital Worlds Institute",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Digital Arts and Sciences UF Online",
+        "department": "Digital Worlds Institute",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Digital Arts and Sciences | Bachelor of Arts",
+        "department": "Digital Worlds Institute",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dance Minor",
+        "department": "Theatre + Dance",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Dance | Bachelor of Arts",
+        "department": "Theatre + Dance",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dance | Bachelor of Fine Arts",
+        "department": "Theatre + Dance",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Theatre",
+        "department": "Theatre + Dance",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Theatre Minor",
+        "department": "Theatre + Dance",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Theatre Performance",
+        "department": "Theatre + Dance",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Theatre Production",
+        "department": "Theatre + Dance",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Theatre Production Minor",
+        "department": "Theatre + Dance",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Advanced Engineering Ceramics Certificate",
+        "department": "Materials Science and Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Biomaterials Certificate",
+        "department": "Materials Science and Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Materials Science and Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Materials Science and Engineering",
+        "department": "Materials Science and Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Materials Science and Engineering Minor",
+        "department": "Materials Science and Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Metallurgical Engineering Certificate",
+        "department": "Materials Science and Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Nuclear and Radiological Engineering Minor",
+        "department": "Materials Science and Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Nuclear Engineering",
+        "department": "Materials Science and Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Polymer Science and Engineering Certificate",
+        "department": "Materials Science and Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Semiconductor Materials Certificate",
+        "department": "Materials Science and Engineering",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "East-Central European Studies Minor",
+        "department": "European Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "European Union Studies Certificate",
+        "department": "European Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "European Union Studies Minor",
+        "department": "European Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Medieval and Early Modern Studies | IDS",
+        "department": "European Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Agroecology and Sustainable Food Systems Certificate",
+        "department": "Agronomy",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Agronomy",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Golf and Sports Turf Management Minor",
+        "department": "Agronomy",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Plant Science",
+        "department": "Agronomy",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Education Sciences",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Education Sciences UF Online",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Education Studies Minor",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Educational Technology Minor",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Educational Technology Minor UF Online",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Elementary Education | Grades K-6",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Florida Teaching Minor",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "UFTeach | Mathematics, Science, or Computer Science Minor",
+        "department": "Education | School of Teaching and Learning",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Geological Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Geological Sciences Certificate",
+        "department": "Geological Sciences",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Geology",
+        "department": "Geological Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Geology Minor",
+        "department": "Geological Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Geology UF Online",
+        "department": "Geological Sciences",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "African Languages",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Vietnamese | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "European Jewish Studies Certificate",
+        "department": "Jewish Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Holocaust Studies Certificate",
+        "department": "Jewish Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Jewish Studies",
+        "department": "Jewish Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Jewish Studies Minor",
+        "department": "Jewish Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Bioinformatics Minor",
+        "department": "Microbiology & Cell Science",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Bioinformatics Minor UF Online",
+        "department": "Microbiology & Cell Science",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Microbiology & Cell Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Microbiology and Cell Science UF Online",
+        "department": "Microbiology & Cell Science",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Microbiology and Cell Science | CALS",
+        "department": "Microbiology & Cell Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Microbiology and Cell Science | CLAS",
+        "department": "Microbiology & Cell Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Pathogenesis Minor",
+        "department": "Microbiology & Cell Science",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Pathogenesis Minor UF Online",
+        "department": "Microbiology & Cell Science",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "African Languages",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Hindi-Urdu | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Criminology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Criminology",
+        "department": "Criminology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Criminology UF Online",
+        "department": "Criminology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Sociology",
+        "department": "Criminology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Sociology Minor",
+        "department": "Criminology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Sociology Minor UF Online",
+        "department": "Criminology",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Sociology of Social Justice and Policy Minor",
+        "department": "Criminology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Sociology UF Online",
+        "department": "Criminology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Environmental Engineering Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Environmental Engineering",
+        "department": "Environmental Engineering Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Biology UF Online",
+        "department": "Biology | Botany | Zoology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Biology | CALS",
+        "department": "Biology | Botany | Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Biology | CLAS",
+        "department": "Biology | Botany | Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Botany Minor",
+        "department": "Biology | Botany | Zoology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Botany | CALS",
+        "department": "Biology | Botany | Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Botany | CLAS",
+        "department": "Biology | Botany | Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Biology | Botany | Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Zoology",
+        "department": "Biology | Botany | Zoology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Zoology Minor",
+        "department": "Biology | Botany | Zoology",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Nursing",
+        "department": "Nursing",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Nursing | RN to BSN UF Online",
+        "department": "Nursing",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "African Languages",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Italian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Family, Youth and Community Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Family, Youth and Community Sciences",
+        "department": "Family, Youth and Community Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Family, Youth and Community Sciences Minor",
+        "department": "Family, Youth and Community Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Community Engagement Certificate",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Data, Science, and Technology in Sociocultural Contexts Certificate",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Health Disparities in Society Minor",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Theories and Politics of Sexuality Minor",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Violence Against Women Certificate",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Women's Studies",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Women's Studies Minor",
+        "department": "Gender, Sexualities, and Women\u2019s Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Information Systems and Operations Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Information Systems",
+        "department": "Information Systems and Operations Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Information Systems Minor",
+        "department": "Information Systems and Operations Management",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Fire Ecology and Management Certificate",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Fisheries and Aquatic Sciences Minor",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Forest Resources and Conservation",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Forest Resources and Conservation Minor",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Geomatics",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Geomatics Certificate",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Mapping with Small Unmanned Aerial Systems Certificate",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Natural Resource Conservation",
+        "department": "Forest, Fisheries, and Geomatics Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Physics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Physics",
+        "department": "Physics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Physics Minor",
+        "department": "Physics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Classical Studies",
+        "department": "Latin | Classics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Classical Studies Minor",
+        "department": "Latin | Classics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Greek Studies Minor",
+        "department": "Latin | Classics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Health Education and Behavior",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Health Education and Behavior",
+        "department": "Health Education and Behavior",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Health Education and Behavior | Community Health Promotion UF Online",
+        "department": "Health Education and Behavior",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Health Promotion Minor",
+        "department": "Health Education and Behavior",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Health Promotion Minor UF Online",
+        "department": "Health Education and Behavior",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Construction Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Construction Management",
+        "department": "Construction Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Construction Management Certificate",
+        "department": "Construction Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Emergency Management Certificate",
+        "department": "Construction Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Emergency Medical Services Management Certificate",
+        "department": "Construction Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Fire and Emergency Services UF Online",
+        "department": "Construction Management",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Senior Fire Officer Certificate",
+        "department": "Construction Management",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Political Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "International Relations Certificate",
+        "department": "Political Science",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Political Campaigning Certificate",
+        "department": "Political Science",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Political Science",
+        "department": "Political Science",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Public Affairs Certificate",
+        "department": "Political Science",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Russian | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "African | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Communication Sciences and Disorders",
+        "department": "Speech, Language, and Hearing Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Communication Sciences and Disorders Minor",
+        "department": "Speech, Language, and Hearing Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Communication Sciences and Disorders UF Online",
+        "department": "Speech, Language, and Hearing Sciences",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Deaf and Hearing Sciences Minor",
+        "department": "Speech, Language, and Hearing Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Soil, Water, and Ecosystem Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Environmental Management in Agriculture and Natural Resources | Interdisciplinary Studies",
+        "department": "Soil, Water, and Ecosystem Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Interdisciplinary Studies | Environmental Management in Agriculture and Natural Resources UF Online",
+        "department": "Soil, Water, and Ecosystem Sciences",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Soil, Water, and Ecosystem Sciences",
+        "department": "Soil, Water, and Ecosystem Sciences",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Soil, Water, and Ecosystem Sciences Minor",
+        "department": "Soil, Water, and Ecosystem Sciences",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Hebrew | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Classical Studies",
+        "department": "Classics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Classical Studies Minor",
+        "department": "Classics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Greek Studies Minor",
+        "department": "Classics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Astronomy and Astrophysics",
+        "department": "Astronomy and Astrophysics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Astronomy Minor",
+        "department": "Astronomy and Astrophysics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Mathematics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Mathematics",
+        "department": "Mathematics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Mathematics Minor",
+        "department": "Mathematics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Wildlife Ecology and Conservation",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Wildlife Ecology and Conservation",
+        "department": "Wildlife Ecology and Conservation",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Wildlife Ecology and Conservation Minor",
+        "department": "Wildlife Ecology and Conservation",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Electrical and Computer Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Computer Engineering",
+        "department": "Electrical and Computer Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Electrical Engineering",
+        "department": "Electrical and Computer Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Electrical Engineering Minor",
+        "department": "Electrical and Computer Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "African Languages",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Arabic Language and Literature Minor",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Chinese",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Dual Languages",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "East Asian Languages and Literatures Minor",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Foreign Languages and Literatures",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "French and Francophone Studies Minor",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "German Minor",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "German Minor UF Online",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Hebrew",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hebrew Minor",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Italian",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Italian Studies Minor",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Japanese",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Russian and East-European Area Studies Certificate",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Russian Minor",
+        "department": "Haitian Creole | Languages, Literatures, and Cultures",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Entrepreneurship Minor",
+        "department": "Management",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Management",
+        "department": "Management",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Agricultural and Natural Resource Communication Minor",
+        "department": "Agricultural Education and Communication",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Agricultural Curriculum and Development Minor",
+        "department": "Agricultural Education and Communication",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Agricultural Education and Communication",
+        "department": "Agricultural Education and Communication",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Agricultural Education and Communication",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Extension Education Minor",
+        "department": "Agricultural Education and Communication",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Leadership Minor",
+        "department": "Agricultural Education and Communication",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Hispanic and Latin American Languages, Literatures and Linguistics",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Portuguese",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Portuguese Minor",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Spanish",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Spanish and Portuguese",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Spanish for the Professions Certificate",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Spanish Minor",
+        "department": "Portuguese | Spanish and Portuguese Studies",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Computer and Information Science & Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Computer and Information Science and Engineering Minor",
+        "department": "Computer and Information Science & Engineering",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Computer and Information Science and Engineering Minor UF Online",
+        "department": "Computer and Information Science & Engineering",
+        "type": "Minor",
+        "online": true
+      },
+      {
+        "name": "Computer Science UF Online",
+        "department": "Computer and Information Science & Engineering",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Computer Science | CLAS",
+        "department": "Computer and Information Science & Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Computer Science | Herbert Wertheim College of Engineering",
+        "department": "Computer and Information Science & Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Digital Arts and Sciences | Bachelor of Science",
+        "department": "Computer and Information Science & Engineering",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Public Relations",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Media Production, Management, and Technology Minor",
+        "department": "Public Relations",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Public Relations",
+        "department": "Public Relations",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Public Relations Minor",
+        "department": "Public Relations",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Public Relations UF Online",
+        "department": "Public Relations",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Linguistics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Linguistics",
+        "department": "Linguistics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Linguistics Minor",
+        "department": "Linguistics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Teaching English as a Second Language Certificate",
+        "department": "Linguistics",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Teaching English as a Second Language Minor",
+        "department": "Linguistics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Actuarial Science Minor",
+        "department": "Statistics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Statistics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Data Analytics Certificate",
+        "department": "Statistics",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Data Science",
+        "department": "Statistics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Statistics",
+        "department": "Statistics",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Statistics Minor",
+        "department": "Statistics",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Art Education Certificate",
+        "department": "Art + Art History",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Art History",
+        "department": "Art + Art History",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Art History Minor",
+        "department": "Art + Art History",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Art Minor",
+        "department": "Art + Art History",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Art | BA",
+        "department": "Art + Art History",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Art | BFA",
+        "department": "Art + Art History",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Ceramics Certificate",
+        "department": "Art + Art History",
+        "type": "Certificate",
+        "online": false
+      },
+      {
+        "name": "Graphic Design",
+        "department": "Art + Art History",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Media Production, Management, and Technology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Media Production, Management, and Technology",
+        "department": "Media Production, Management, and Technology",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Media Production, Management, and Technology | Media and Society UF Online",
+        "department": "Media Production, Management, and Technology",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Biology UF Online",
+        "department": "Botany",
+        "type": "Major",
+        "online": true
+      },
+      {
+        "name": "Biology | CALS",
+        "department": "Botany",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Biology | CLAS",
+        "department": "Botany",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Botany Minor",
+        "department": "Botany",
+        "type": "Minor",
+        "online": false
+      },
+      {
+        "name": "Botany | CALS",
+        "department": "Botany",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Botany | CLAS",
+        "department": "Botany",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Combination Degrees",
+        "department": "Botany",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Zoology",
+        "department": "Botany",
+        "type": "Major",
+        "online": false
+      },
+      {
+        "name": "Zoology Minor",
+        "department": "Botany",
+        "type": "Minor",
+        "online": false
+      }
+    ],
+    "matcher_questions": [
+      {
+        "question": "Are you looking for a major, minor, or certificate?",
+        "key": "type"
+      },
+      {
+        "question": "Do you want your program to be available online?",
+        "key": "online"
+      },
+      {
+        "question": "Which department or field are you interested in?",
+        "key": "department"
+      }
+    ]
+  }
