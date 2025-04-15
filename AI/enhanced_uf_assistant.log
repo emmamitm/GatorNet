@@ -30,3 +30,41 @@ Check that the config directory 'C:\Users\smhue\OneDrive\Documents\GitHub\GatorN
 2025-04-14 19:14:11.676 | INFO     | __main__:process_query:2208 - Processed query in 0.00 seconds
 2025-04-14 19:14:19.192 | INFO     | __main__:analyze:1262 - Enhanced query analysis result: {'intent': 'building_location', 'query': 'Where is marston library', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False, 'potential_library': 'marston library'}
 2025-04-14 19:14:19.192 | INFO     | __main__:process_query:2208 - Processed query in 0.00 seconds
+2025-04-14 19:24:19.271 | INFO     | __main__:<module>:30 - Enhanced UF Assistant starting up...
+2025-04-14 19:24:19.735 | WARNING  | __main__:_load_config:2191 - Could not load config from conf/config.yaml: Primary config directory not found.
+Check that the config directory 'C:\Users\smhue\OneDrive\Documents\GitHub\GatorNet\AI\conf' exists and readable
+2025-04-14 19:24:20.868 | INFO     | __main__:__init__:2152 - Initialized embedding model
+2025-04-14 19:24:20.868 | INFO     | __main__:__init__:2163 - Loading data from CSV files...
+2025-04-14 19:24:20.878 | INFO     | __main__:load_campus_buildings_data:369 - [OK] Successfully loaded 144 campus buildings from CSV
+2025-04-14 19:24:20.887 | INFO     | __main__:load_libraries_data:578 - [OK] Successfully loaded 8 libraries from CSV
+2025-04-14 19:24:20.899 | INFO     | __main__:load_hallinfo_data:509 - [OK] Successfully loaded 31 hall info from CSV
+2025-04-14 19:24:20.909 | INFO     | __main__:load_programs_data:476 - [OK] Successfully loaded 810 programs from CSV
+2025-04-14 19:24:20.917 | INFO     | __main__:load_majors_data:455 - [OK] Successfully loaded 117 majors from CSV
+2025-04-14 19:24:20.942 | INFO     | __main__:load_courses_data:436 - [OK] Successfully loaded 5694 courses from CSV
+2025-04-14 19:24:20.942 | INFO     | __main__:__init__:950 - Initialized academic info retrieval with 810 programs, 117 majors, and 5694 courses.
+2025-04-14 19:24:20.987 | INFO     | __main__:load_clubs_data:389 - [OK] Successfully loaded 1135 clubs from CSV
+2025-04-14 19:24:20.988 | INFO     | __main__:__init__:1155 - Initialized campus clubs retrieval with 1135 entries.
+2025-04-14 19:24:20.988 | INFO     | __main__:__init__:1314 - Initialized enhanced query analyzer.
+2025-04-14 19:24:20.988 | INFO     | __main__:__init__:2035 - Initialized academic calendar context.
+2025-04-14 19:24:20.988 | INFO     | __main__:__init__:664 - Initialized enhanced conversation state.
+2025-04-14 19:24:20.988 | INFO     | __main__:__init__:2184 - Initialization complete in 1.25 seconds
+2025-04-14 19:24:42.219 | INFO     | __main__:analyze:1436 - Enhanced query analysis result: {'intent': 'generic', 'query': 'What is the best sorority at Uf?', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-14 19:24:42.219 | INFO     | __main__:process_query:2467 - Processed query in 0.00 seconds
+2025-04-14 19:24:57.682 | INFO     | __main__:_check_personal_query:722 - Personal query detected about: a
+2025-04-14 19:24:57.683 | INFO     | __main__:analyze:1436 - Enhanced query analysis result: {'intent': 'major_info', 'query': 'I am a computer science major what are the clubs at UF?', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': True, 'is_club_query': True, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': True, 'is_personal_query': True}
+2025-04-14 19:24:57.684 | INFO     | __main__:search_major_info:218 - Extracted major: i am a computer science
+2025-04-14 19:25:18.184 | INFO     | __main__:process_query:2467 - Processed query in 20.50 seconds
+2025-04-14 19:29:56.568 | INFO     | __main__:add_message:673 - User returned after 278.4 seconds
+2025-04-14 19:29:56.569 | INFO     | __main__:analyze:1436 - Enhanced query analysis result: {'intent': 'generic', 'query': 'What are the campus events today?', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': True, 'is_personal_query': False}
+2025-04-14 19:29:56.569 | INFO     | __main__:process_query:2467 - Processed query in 0.00 seconds
+2025-04-14 19:30:08.660 | INFO     | __main__:analyze:1436 - Enhanced query analysis result: {'intent': 'building_location', 'query': 'Where is the marston library', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False, 'potential_library': 'marston library'}
+2025-04-14 19:30:08.660 | INFO     | __main__:process_query:2467 - Processed query in 0.00 seconds
+2025-04-14 19:30:29.814 | INFO     | __main__:analyze:1436 - Enhanced query analysis result: {'intent': 'building_location', 'query': 'Where is malakousky hall', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-14 19:30:29.818 | INFO     | __main__:process_query:2467 - Processed query in 0.00 seconds
+2025-04-14 19:30:47.199 | INFO     | __main__:analyze:1436 - Enhanced query analysis result: {'intent': 'major_info', 'query': 'What are the majors at uf?', 'is_location_query': False, 'is_hours_query': False, 'is_major_query': True, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': True, 'is_personal_query': False}
+2025-04-14 19:30:47.199 | INFO     | __main__:search_major_info:218 - Extracted major: what are the
+2025-04-14 19:30:47.202 | INFO     | __main__:process_query:2467 - Processed query in 0.00 seconds
+2025-04-14 19:40:44.581 | INFO     | __main__:add_message:673 - User returned after 597.4 seconds
+2025-04-14 19:40:44.581 | INFO     | __main__:analyze:1436 - Enhanced query analysis result: {'intent': 'building_location', 'query': 'Where is the physics building?', 'is_location_query': True, 'is_hours_query': False, 'is_major_query': False, 'is_club_query': False, 'is_dorm_query': False, 'is_course_query': None, 'is_all_query': False, 'is_personal_query': False}
+2025-04-14 19:40:44.582 | INFO     | __main__:search_major_info:218 - Extracted major: where physics building?
+2025-04-14 19:40:44.586 | INFO     | __main__:process_query:2467 - Processed query in 0.00 seconds
