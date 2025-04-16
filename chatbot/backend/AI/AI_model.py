@@ -1936,10 +1936,13 @@ I apologize, but I couldn't find specific information about {query_subject}. Cou
             return "I encountered an error while processing your request. Could you try rephrasing your question?"
             
     def _build_llm_prompt(self, query, analysis, library_info=None, building_info=None, 
-                         dorm_info=None, major_info=None, club_info=None, academic_calendar=None):
+                        dorm_info=None, major_info=None, club_info=None, academic_calendar=None):
         """Build a prompt for the LLM with relevant context"""
         # Start with system instructions
         prompt = "You are the UF Assistant, an AI designed to provide helpful information about the University of Florida.\n\n"
+        
+        # Add markdown formatting instruction - explicitly say NO LINKS
+        prompt += "IMPORTANT: Format your response using clean, simple markdown syntax with proper headers, lists, and bold text. DO NOT INCLUDE ANY LINKS OR URLS IN YOUR RESPONSE - no matter what. Never use markdown link syntax [text](url).\n\n"
         
         # Add relevant context
         prompt += "Context Information:\n"
@@ -2005,6 +2008,16 @@ I apologize, but I couldn't find specific information about {query_subject}. Cou
         # Add the query
         prompt += f"\nUser Question: {query}\n\n"
         
+        # Add markdown formatting guidelines - improved for cleaner output and NO LINKS
+        prompt += "FORMATTING GUIDELINES:\n"
+        prompt += "1. Use clean, proper markdown: '## Heading' with a space after the #\n"
+        prompt += "2. Use **bold** for emphasis, not ***triple asterisks***\n"
+        prompt += "3. Format lists using * with a space: '* Item'\n"
+        prompt += "4. DO NOT INCLUDE ANY LINKS OR URLS - not even to UF websites\n"
+        prompt += "5. Instead of links, mention resources by name only (e.g., 'Check the UF Catalog' instead of providing a URL)\n"
+        prompt += "6. Do not sign your response or add 'Best,' or 'The UF Assistant' at the end\n"
+        prompt += "7. Keep your response focused and concise\n\n"
+        
         # Add instructions based on intent
         intent = analysis.get('intent', 'generic')
         if intent == "library_hours":
@@ -2019,7 +2032,7 @@ I apologize, but I couldn't find specific information about {query_subject}. Cou
             prompt += "Please provide information about the student organization, including its purpose and activities.\n"
         else:
             prompt += "Please provide a helpful response to the user's question about UF.\n"
-            
+        
         prompt += "Assistant:"
         
         return prompt
