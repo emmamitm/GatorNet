@@ -50,12 +50,8 @@ class AIWrapper:
                         response = response.split(">")[0].strip()
                     
                     # ADVANCED CLEANUP
-                    # Remove anything that comes after "assistant" 
-                    if "assistant" in response.lower():
-                        response = response.split("assistant")[0].strip()
-                    
-                    # Remove template/prompt-like text 
-                    response = self._clean_templated_text(response)
+                    # Preserve markdown content but clean up after it
+                    response = self._clean_preserving_markdown(response)
                         
                     print(f"Response length: {len(response)} characters")
                     return response
@@ -76,31 +72,52 @@ class AIWrapper:
             traceback.print_exc()
             return f"I encountered an error processing your query: {str(e)}. Please try a different question."
 
-    def _clean_templated_text(self, text):
-        """Clean out template-like instructions and formatting"""
-        # Remove note patterns like "(Note: Please respond as the UF Assistant would.)"
-        text = re.sub(r'\(Note:.*?\)', '', text)
+    def _clean_preserving_markdown(self, text):
+        """Clean text while preserving markdown formatting"""
+        # Identify the end of markdown content
+        # Looking for common markers that appear after the main content
+        markdown_end_markers = [
+            "assistant",
+            "Context Information",
+            "User Question:",
+            "(Note:",
+            "# UF",
+            "**Response**",
+            "**Output**"
+        ]
         
-        # Remove hashtags like "# UFAssistant # UniversityOfFlorida"
-        text = re.sub(r'#\s*[A-Za-z0-9]+', '', text)
+        # Find the position of the earliest marker
+        earliest_pos = len(text)
+        for marker in markdown_end_markers:
+            pos = text.find(marker)
+            if pos != -1 and pos < earliest_pos:
+                # Don't cut at bold/italic markers that might be part of markdown
+                if marker in ["**Response**", "**Output**"]:
+                    # Check if this is actually part of markdown formatting
+                    # or if it appears to be a template header
+                    pattern = r'\*\*' + marker.strip('*') + r'\*\*\s*[\n:]'
+                    if re.search(pattern, text):
+                        earliest_pos = pos
+                else:
+                    earliest_pos = pos
         
-        # Remove any "**Response**" or "**Output**" markers
-        text = re.sub(r'\*\*[A-Za-z]+\*\*', '', text)
+        # If any marker was found, truncate the text
+        if earliest_pos < len(text):
+            text = text[:earliest_pos].strip()
         
-        # Remove any "Context Information" sections
-        if "Context Information" in text:
-            text = text.split("Context Information")[0].strip()
+        # Clean up specific patterns that might be mixed with markdown
+        # Only clean patterns that appear to be template instructions
         
-        # Remove any "User Question" sections
-        if "User Question:" in text:
-            text = text.split("User Question:")[0].strip()
-            
-        # Remove any template sections with "Hi there! I'm the UF Assistant" that repeat 
+        # Remove hashtags if they appear to be tags, not markdown headers
+        # Markdown headers have # at start of line, tags usually have space before #
+        text = re.sub(r'(?<!\n)\s+#\s*[A-Za-z0-9]+', '', text)
+        
+        # Remove template sections with "Hi there! I'm the UF Assistant" that repeat
         if text.count("Hi there! I'm the UF Assistant") > 1:
             parts = text.split("Hi there! I'm the UF Assistant")
             text = "Hi there! I'm the UF Assistant" + parts[1]
             
-        return text
+        return text.strip()
         
     def _extract_meaningful_response(self, output):
         """Extract meaningful response from output when regular patterns fail"""
@@ -128,12 +145,8 @@ class AIWrapper:
             # If no greeting found, just use all filtered lines
             response = "\n".join(filtered_lines)
         
-        # Apply the same cleanup as in main function
-        response = self._clean_templated_text(response)
-        
-        # Remove anything after "assistant" marker
-        if "assistant" in response.lower():
-            response = response.split("assistant")[0].strip()
+        # Apply the markdown-preserving cleanup
+        response = self._clean_preserving_markdown(response)
         
         return response.strip()
 
