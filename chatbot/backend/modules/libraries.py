@@ -4,23 +4,23 @@ from collections import defaultdict
 
 
 class LibrariesSystem:
-    def __init__(self, json_file=None, events_data=None):
+    def __init__(self, json_file=None, libraries_data=None):
         """Initialize the library system with data from a file or direct input."""
         self.libraries = []
         self.matcher_questions = []
-        self._load_data(json_file, events_data)
+        self._load_data(json_file, libraries_data)
         self._extract_metadata()
 
-    def _load_data(self, json_file, events_data):
+    def _load_data(self, json_file, libraries_data):
         """Load data from either a file or direct input."""
         if json_file and os.path.exists(json_file):
             with open(json_file, "r") as f:
                 data = json.load(f)
                 self.libraries = data.get("libraries", [])
                 self.matcher_questions = data.get("matcher_questions", [])
-        elif events_data:
-            self.libraries = events_data.get("libraries", [])
-            self.matcher_questions = events_data.get("matcher_questions", [])
+        elif libraries_data:
+            self.libraries = libraries_data.get("libraries", [])
+            self.matcher_questions = libraries_data.get("matcher_questions", [])
 
     def _extract_metadata(self):
         """Extract and organize metadata from libraries."""

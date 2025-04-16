@@ -470,7 +470,7 @@
             "question": "Select a specific department of interest (if applicable)",
             "options": [
                 "Any Department",
-                "Computer Science",
+                "Computer and Information Science & Engineering",
                 "Management",
                 "Marketing",
                 "Biology",
@@ -486,7 +486,7 @@
             "question": "What course level are you looking for?",
             "options": [
                 "Introductory (1000-2000 levels)",
-                "Intermediate (3000-4000 levels)", 
+                "Intermediate (3000-4000 levels)",
                 "Advanced/Graduate (5000+ levels)"
             ]
         },

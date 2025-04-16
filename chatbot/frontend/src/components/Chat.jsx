@@ -3,7 +3,7 @@ import { ArrowCircleUp } from "@phosphor-icons/react";
 import Message from "./Message";
 import Suggestion from "./Suggestion";
 import { motion } from "motion/react";
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
 const ChatInterface = ({
     messages,
@@ -142,8 +142,8 @@ const ChatInterface = ({
                             func={() => onMenuSelect("libraries")}
                         />
                         <Suggestion
-                            text="Explore Academics"
-                            func={() => onMenuSelect("academics")}
+                            text="Explore Courses"
+                            func={() => onMenuSelect("courses")}
                         />
                         <Suggestion
                             text="Discover Clubs"
@@ -158,7 +158,7 @@ const ChatInterface = ({
                             func={() => onMenuSelect("tuition")}
                         />
                         <Link to="/campus-map">
-                            <Suggestion text="Navigate to..."/>
+                            <Suggestion text="Navigate to..." />
                         </Link>
                     </div>
                 </>

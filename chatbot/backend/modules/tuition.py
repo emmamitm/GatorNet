@@ -3,14 +3,14 @@ import os
 
 
 class TuitionSystem:
-    def __init__(self, json_file=None, events_data=None):
+    def __init__(self, json_file=None, tuition_data=None):
         """Initialize with either a JSON file or direct data"""
         if json_file and os.path.exists(json_file):
             with open(json_file, "r") as f:
                 self.data = json.load(f)
-        elif events_data:
+        elif tuition_data:
             # Load data directly from provided dictionary
-            self.data = events_data
+            self.data = tuition_data
         else:
             self.data = {"name": "Tuition Calculator", "description": "", "root": {}}
 
