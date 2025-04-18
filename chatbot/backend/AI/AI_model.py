@@ -827,6 +827,13 @@ class ConversationState:
             r"\bwhat\s+is\s+my\b",
             r"\bwhere\s+is\s+my\b",
             r"\bhow\s+do\s+i\s+([a-z]+\b)",
+            r"\bi\s+like\b",
+            r"\bi\s+enjoy\b",
+            r"\bi\s+prefer\b",
+            r"\bi\s+want\b",
+            r"\bif\s+i\s+am\b",
+            r"\bcould\s+i\b",
+            r"\bshould\s+i\b",
         ]
 
         for pattern in personal_indicators:
@@ -1947,7 +1954,40 @@ I apologize, but I couldn't find specific information about {query_subject}. Cou
         return f"I don't have specific information to answer your question about {query}. Could you try asking about a specific library, building, major, or club at UF?"
 
     def _handle_personal_query(self, query):
-        """Handle personal queries that we can't answer"""
+        """Handle personal queries with improved UF-relevant detection"""
+        # First check if this is a UF-relevant personal query that we SHOULD answer
+        if self._is_uf_relevant_personal_query(query):
+            # For UF-relevant personal queries, forward to LLM if available
+            if self.llm:
+                try:
+                    prompt = f"""You are the UF Assistant, an AI designed to provide helpful information about the University of Florida.
+
+    User Question: {query}
+
+    This is a personal question about University of Florida academics or campus life.
+    Respond as if you are a helpful academic advisor. Provide tailored recommendations
+    based on the person's stated interests or preferences. Include specific UF majors,
+    programs, or departments that would be appropriate for them. Do not refuse to answer
+    or say you lack access to personal information - instead, provide helpful guidance.
+    """
+
+                    # Generate response with LLaMA
+                    result = self.llm(
+                        prompt=prompt,
+                        max_tokens=500,
+                        temperature=0.7,
+                        stop=["User:", "Assistant:"],
+                    )
+
+                    # Extract response text
+                    return result["choices"][0]["text"].strip()
+                except Exception as e:
+                    logger.error(
+                        f"Error generating LLM response for personal query: {e}"
+                    )
+                    # Fall back to standard personal query handling
+
+        # For non-UF-relevant personal queries, use the template
         query_lower = query.lower()
         personal_type = ""
 
@@ -2030,6 +2070,58 @@ I apologize, but I couldn't find specific information about {query_subject}. Cou
         )
 
         return response.strip()
+
+    def _is_uf_relevant_personal_query(self, query):
+        """Determine if a personal query is about UF programs and should be answered"""
+        query_lower = query.lower()
+
+        # UF-relevant keywords in context of personal questions
+        uf_relevant_keywords = [
+            "major",
+            "program",
+            "degree",
+            "study",
+            "class",
+            "course",
+            "career",
+            "job",
+            "college",
+            "department",
+            "admission",
+            "application",
+            "academic",
+            "subject",
+            "field",
+            "interest",
+            "graduate",
+            "art",
+            "science",
+            "engineering",
+            "business",
+            "medicine",
+            "law",
+            "education",
+            "minor",
+        ]
+
+        # UF-specific keywords
+        uf_specific = ["uf", "university of florida", "gator", "gators"]
+
+        # Check if the query contains UF-relevant academic keywords
+        has_uf_relevant = any(
+            keyword in query_lower for keyword in uf_relevant_keywords
+        )
+
+        # Check if there's a specific reference to UF
+        has_uf_reference = any(term in query_lower for term in uf_specific)
+
+        # Consider it UF-relevant if it has both relevant keywords and UF reference,
+        # or if it's a query about majors/programs/courses (high confidence academic)
+        high_confidence_academic = any(
+            term in query_lower for term in ["major", "program", "course", "degree"]
+        )
+
+        return (has_uf_relevant and has_uf_reference) or high_confidence_academic
 
     def _generate_library_location_response(self, library):
         """Generate response for library location query"""
@@ -2652,6 +2744,58 @@ class EnhancedUFAssistant:
         """Find the most relevant dorm for the query using the generalized finder"""
         return self._find_entity(query, self.dorms, "Building Name", DORM_ALIASES)
 
+    def _is_uf_relevant_personal_query(self, query):
+        """Determine if a personal query is relevant to UF and should be answered"""
+        query_lower = query.lower()
+
+        # UF-relevant keywords in context of personal questions
+        uf_relevant_keywords = [
+            "major",
+            "program",
+            "degree",
+            "study",
+            "class",
+            "course",
+            "career",
+            "job",
+            "college",
+            "department",
+            "admission",
+            "application",
+            "academic",
+            "subject",
+            "field",
+            "interest",
+            "graduate",
+            "art",
+            "science",
+            "engineering",
+            "business",
+            "medicine",
+            "law",
+            "education",
+            "minor",
+        ]
+
+        # UF-specific keywords
+        uf_specific = ["uf", "university of florida", "gator", "gators"]
+
+        # Check if the query contains UF-relevant academic keywords
+        has_uf_relevant = any(
+            keyword in query_lower for keyword in uf_relevant_keywords
+        )
+
+        # Check if there's a specific reference to UF
+        has_uf_reference = any(term in query_lower for term in uf_specific)
+
+        # Consider it UF-relevant if it has both relevant keywords and UF reference,
+        # or if it's a query about majors/programs/courses (high confidence academic)
+        high_confidence_academic = any(
+            term in query_lower for term in ["major", "program", "course", "degree"]
+        )
+
+        return (has_uf_relevant and has_uf_reference) or high_confidence_academic
+
     def process_query(self, query):
         """Process a user query with enhanced entity detection and data interconnection"""
         # Start timer for performance monitoring
@@ -2684,6 +2828,52 @@ class EnhancedUFAssistant:
             major_info = None
             club_info = None
 
+            # New approach for handling personal queries
+            if analysis.get("is_personal_query"):
+                if self._is_uf_relevant_personal_query(query) and self.llm:
+                    try:
+                        # Create a prompt for LLaMA specifically for UF-relevant personal queries
+                        prompt = f"""You are the UF Assistant, an AI designed to provide helpful information about the University of Florida.
+
+    User Question: {query}
+
+    This appears to be a personal question related to University of Florida academics or campus life. 
+    Respond as if you are a helpful academic advisor at UF. Provide tailored recommendations based 
+    on the user's stated interests, preferences, or needs. Include specific majors, programs, resources, 
+    or departments at UF that would be appropriate. DO NOT say you don't have access to personal 
+    information - instead, offer thoughtful advice based on the user's question."""
+
+                        # Generate response with LLaMA
+                        result = self.llm(
+                            prompt=prompt,
+                            max_tokens=500,
+                            temperature=0.7,
+                            stop=["User:", "Assistant:"],
+                        )
+
+                        # Extract response text
+                        response = result["choices"][0]["text"].strip()
+
+                        # Add to conversation state
+                        self.conversation_state.add_message("Assistant", response)
+
+                        # Cache the result
+                        self.query_cache[cache_key] = response
+
+                        # Log processing time
+                        processing_time = time.time() - start_time
+                        logger.info(
+                            f"Processed personal query in {processing_time:.2f} seconds"
+                        )
+
+                        return response
+                    except Exception as e:
+                        logger.error(
+                            f"Error generating LLaMA response for personal query: {e}"
+                        )
+                        # Fall through to standard processing if LLaMA fails
+
+            # Rest of the existing process_query method continues as before...
             # If no specific intent detected, always use LLaMA for response
             if analysis.get("intent") == "generic":
                 # Reset active contexts for generic queries
