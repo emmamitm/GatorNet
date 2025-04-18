@@ -75,6 +75,68 @@ class AIWrapper:
     def _clean_response(self, text):
         """Clean AI response text by removing template/debug information and assistant tags."""
         
+        # First, try to extract just the actual response if we can identify it clearly
+        # Look for patterns that indicate the start of an actual response
+        response_start_patterns = [
+            "Hi there!",
+            "I'm sorry,",
+            "I apologize,",
+            "Thank you for",
+            "To answer your",
+            "Here's",
+            "The University"
+        ]
+        
+        # Look for patterns that indicate the end of a response - text after these should be removed
+        response_end_patterns = [
+            "End User Question:",
+            "User Question:",
+            "assistant",
+            "assistant:",
+            "AI End User Question:",
+            "You are the UF Assistant,",
+            "Please provide a helpful response",
+            "User:",
+            "\n\n\n"  # Triple newline often separates response from template
+        ]
+        
+        # First pass - try to extract clean response between common markers
+        if "Hi there!" in text and any(pattern in text for pattern in response_end_patterns):
+            # Find the start of relevant content
+            start_pos = text.find("Hi there!")
+            
+            # Find the earliest end marker
+            end_pos = len(text)
+            for pattern in response_end_patterns:
+                pos = text.find(pattern, start_pos)
+                if pos != -1 and pos < end_pos:
+                    end_pos = pos
+            
+            # Extract just the response portion
+            if start_pos < end_pos:
+                text = text[start_pos:end_pos].strip()
+        
+        # Try another approach - find a clear start pattern if we haven't already
+        if not any(pattern in text[:50] for pattern in response_start_patterns):
+            for pattern in response_start_patterns:
+                if pattern in text:
+                    text = text[text.find(pattern):].strip()
+                    break
+        
+        # Remove any end markers and everything after them
+        for pattern in response_end_patterns:
+            if pattern in text:
+                text = text[:text.find(pattern)].strip()
+        
+        # Handle specific variations that might appear
+        text = re.sub(r'assistant$', '', text).strip()
+        text = re.sub(r'Sincerely, The UF Assistant.*$', 'Sincerely, The UF Assistant', text, flags=re.DOTALL).strip()
+        
+        # Remove any lines containing "UF Assistant AI" which often marks template boundaries
+        lines = text.split('\n')
+        cleaned_lines = [line for line in lines if "UF Assistant AI" not in line]
+        text = '\n'.join(cleaned_lines)
+        
         # List of markers that indicate the start of template/debug information
         end_markers = [
             "```\nResponse Type:",
@@ -90,15 +152,8 @@ class AIWrapper:
             "**Output**",
             "await response",
             "<assistant>",
-            "</assistant>",
-            "**User:**",
-            "```\ndef",  # Function definition in unlabeled code block
-            "```\nimport"  # Import statement in unlabeled code block
+            "</assistant>"
         ]
-        
-        # Remove "Answer:" prefix if present at start
-        if text.startswith("Answer:"):
-            text = text[7:].lstrip()
         
         # Find the position of the earliest marker
         earliest_pos = len(text)
@@ -131,25 +186,19 @@ class AIWrapper:
                     # If we can't find the end, just truncate at the last starting marker
                     text = text[:last_complete].strip()
         
-        # Check for incomplete multiline string markers - signs of template code
-        string_markers = ['"""', "'''"]
-        for marker in string_markers:
-            # If there's an odd number of markers, find the last one and truncate
-            if text.count(marker) % 2 != 0:
-                last_marker_pos = text.rfind(marker)
-                if last_marker_pos != -1:
-                    text = text[:last_marker_pos].strip()
+        # Remove any other common template artifacts
+        artifacts_to_remove = [
+            r'You are the UF Assistant.*?$',
+            r'User Question:.*?$',
+            r'User asked:.*?$',
+            r'Please provide a helpful.*?$'
+        ]
         
-        # Remove template sections with "Hi there! I'm the UF Assistant" that repeat
-        if text.count("Hi there! I'm the UF Assistant") > 1:
-            parts = text.split("Hi there! I'm the UF Assistant")
-            text = "Hi there! I'm the UF Assistant" + parts[1]
+        for pattern in artifacts_to_remove:
+            text = re.sub(pattern, '', text, flags=re.MULTILINE | re.DOTALL).strip()
         
-        # NEW: Remove assistant: tags that appear in the response
-        # Match both "assistant:" and "assistant: " patterns
-        assistant_pattern = re.compile(r'assistant:\s?', re.IGNORECASE)
-        
-        # Split by the pattern and only keep content before the first occurrence
+        # Replace any occurrence of "assistant: " pattern in the middle of text
+        assistant_pattern = re.compile(r'assistant:?\s?', re.IGNORECASE)
         if assistant_pattern.search(text):
             parts = assistant_pattern.split(text, 1)
             if parts[0].strip():  # If there's content before the first "assistant:" tag
@@ -160,8 +209,13 @@ class AIWrapper:
                 more_parts = assistant_pattern.split(remaining_text)
                 text = more_parts[0].strip()
         
+        # Handle the "[insert link]" pattern and replace with UF main page link
+        text = text.replace("[insert link]", "[UF Website](https://www.ufl.edu)")
+        
+        # Final pass to remove any leftover template/assistant references
+        text = re.sub(r'\bassistant\b', '', text, flags=re.IGNORECASE).strip()
+        
         return text.strip()
-
 
 class AIManager:
     def __init__(self):
