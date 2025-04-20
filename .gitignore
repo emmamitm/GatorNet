@@ -53,3 +53,5 @@ chatbot/backend/AI/enhanced_uf_assistant.log
 chatbot/backend/enhanced_uf_assistant.log
 chatbot/backend/database.db
 AI/enhanced_uf_assistant.log
+
+AI/venv
