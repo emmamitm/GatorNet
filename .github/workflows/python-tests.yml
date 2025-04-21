@@ -1,0 +1,33 @@
+name: Python Tests
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+    branches: [ main, master ]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        pip install pytest pytest-cov pytest-mock sentence-transformers torch pandas hydra-core loguru
+    - name: Prepare test data
+      run: |
+        mkdir -p tests/mock_data/scrapedData/campusBuildings
+        mkdir -p tests/mock_data/scrapedData/campusClubs
+        mkdir -p tests/mock_data/scrapedData/libraries
+        mkdir -p tests/mock_data/scrapedData/housing
+        mkdir -p tests/mock_data/scrapedData/classes
+        # Create mock data files (abbreviated for space)
+    - name: Test with pytest
+      run: |
+        python -m pytest tests/test_basic.py -v

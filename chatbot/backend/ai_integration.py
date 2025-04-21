@@ -49,22 +49,22 @@ class AIWrapper:
                     if ">" in response:
                         response = response.split(">")[0].strip()
                     
-                    # Simple but effective cleanup
-                    response = self._clean_response(response)
+                    # ADVANCED CLEANUP
+                    # Preserve markdown content but clean up after it
+                    response = self._clean_preserving_markdown(response)
                         
                     print(f"Response length: {len(response)} characters")
                     return response
                 else:
-                    # If query pattern not found, just apply cleanup to full output
-                    response = self._clean_response(output)
+                    # If query pattern not found, try to extract meaningful response
+                    response = self._extract_meaningful_response(output)
                     return response
                     
             except Exception as e:
                 print(f"Error parsing AI output: {e}")
-                traceback.print_exc()
                 
-                # Last resort - apply cleanup to full output
-                response = self._clean_response(output)
+                # Last resort cleanup - try to extract meaningful response
+                response = self._extract_meaningful_response(output)
                 return response
             
         except Exception as e:
@@ -72,96 +72,83 @@ class AIWrapper:
             traceback.print_exc()
             return f"I encountered an error processing your query: {str(e)}. Please try a different question."
 
-    def _clean_response(self, text):
-        """Clean AI response text by removing template/debug information and assistant tags."""
-        
-        # List of markers that indicate the start of template/debug information
-        end_markers = [
-            "```\nResponse Type:",
-            "Response Type:",
-            "```python not modify",
-            "def respond_to_user", 
-            "import random",
-            "response_map =",
-            "a dictionary to map",
-            "python not modify",
-            "```\n```",  # Empty code block often indicates template boundary
+    def _clean_preserving_markdown(self, text):
+        """Clean text while preserving markdown formatting"""
+        # Identify the end of markdown content
+        # Looking for common markers that appear after the main content
+        markdown_end_markers = [
+            "assistant",
+            "Context Information",
+            "User Question:",
+            "(Note:",
+            "# UF",
             "**Response**",
-            "**Output**",
-            "await response",
-            "<assistant>",
-            "</assistant>",
-            "**User:**",
-            "```\ndef",  # Function definition in unlabeled code block
-            "```\nimport"  # Import statement in unlabeled code block
+            "**Output**"
         ]
-        
-        # Remove "Answer:" prefix if present at start
-        if text.startswith("Answer:"):
-            text = text[7:].lstrip()
         
         # Find the position of the earliest marker
         earliest_pos = len(text)
-        for marker in end_markers:
+        for marker in markdown_end_markers:
             pos = text.find(marker)
             if pos != -1 and pos < earliest_pos:
-                earliest_pos = pos
+                # Don't cut at bold/italic markers that might be part of markdown
+                if marker in ["**Response**", "**Output**"]:
+                    # Check if this is actually part of markdown formatting
+                    # or if it appears to be a template header
+                    pattern = r'\*\*' + marker.strip('*') + r'\*\*\s*[\n:]'
+                    if re.search(pattern, text):
+                        earliest_pos = pos
+                else:
+                    earliest_pos = pos
         
         # If any marker was found, truncate the text
         if earliest_pos < len(text):
             text = text[:earliest_pos].strip()
         
-        # Handle special case of code blocks without language specifier that contain template info
-        unlabeled_code_blocks = re.findall(r'```\n[\s\S]*?```', text)
-        for block in unlabeled_code_blocks:
-            if any(marker in block for marker in ["Response Type:", "Tone:", "Intent:", "import random", "def respond_to_user"]):
-                text = text.replace(block, "")
+        # Clean up specific patterns that might be mixed with markdown
+        # Only clean patterns that appear to be template instructions
         
-        # Clean up any incomplete markdown elements
-        if text.count("```") % 2 != 0:  # Odd number of code block markers
-            # Find the last complete code block
-            last_complete = text.rfind("```", 0, text.rfind("```"))
-            if last_complete != -1:
-                # Find the end of this code block
-                end_of_block = text.find("```", last_complete + 3)
-                if end_of_block != -1:
-                    # Keep everything up to and including this code block
-                    text = text[:end_of_block + 3].strip()
-                else:
-                    # If we can't find the end, just truncate at the last starting marker
-                    text = text[:last_complete].strip()
-        
-        # Check for incomplete multiline string markers - signs of template code
-        string_markers = ['"""', "'''"]
-        for marker in string_markers:
-            # If there's an odd number of markers, find the last one and truncate
-            if text.count(marker) % 2 != 0:
-                last_marker_pos = text.rfind(marker)
-                if last_marker_pos != -1:
-                    text = text[:last_marker_pos].strip()
+        # Remove hashtags if they appear to be tags, not markdown headers
+        # Markdown headers have # at start of line, tags usually have space before #
+        text = re.sub(r'(?<!\n)\s+#\s*[A-Za-z0-9]+', '', text)
         
         # Remove template sections with "Hi there! I'm the UF Assistant" that repeat
         if text.count("Hi there! I'm the UF Assistant") > 1:
             parts = text.split("Hi there! I'm the UF Assistant")
             text = "Hi there! I'm the UF Assistant" + parts[1]
-        
-        # NEW: Remove assistant: tags that appear in the response
-        # Match both "assistant:" and "assistant: " patterns
-        assistant_pattern = re.compile(r'assistant:\s?', re.IGNORECASE)
-        
-        # Split by the pattern and only keep content before the first occurrence
-        if assistant_pattern.search(text):
-            parts = assistant_pattern.split(text, 1)
-            if parts[0].strip():  # If there's content before the first "assistant:" tag
-                text = parts[0].strip()
-            else:  # If "assistant:" is at the beginning, use the second part but check for further occurrences
-                remaining_text = parts[1]
-                # Check for more "assistant:" patterns in the remaining text
-                more_parts = assistant_pattern.split(remaining_text)
-                text = more_parts[0].strip()
-        
+            
         return text.strip()
-
+        
+    def _extract_meaningful_response(self, output):
+        """Extract meaningful response from output when regular patterns fail"""
+        # Split by lines and try different extraction methods
+        lines = output.split('\n')
+        
+        # Filter out diagnostic/debug lines
+        filtered_lines = [line for line in lines if not line.startswith("✓") and 
+                        "Found scrapedData" not in line and
+                        "Contains" not in line and
+                        "setting HOME_DIR" not in line]
+        
+        # Try to find a response starting with common greeting patterns
+        start_idx = -1
+        for i, line in enumerate(filtered_lines):
+            if any(greeting in line for greeting in ["Hi", "Hello", "Welcome", "Greetings", "I'm", "Thank"]):
+                start_idx = i
+                break
+        
+        if start_idx >= 0:
+            # Get all lines from starting point
+            response_lines = filtered_lines[start_idx:]
+            response = "\n".join(response_lines)
+        else:
+            # If no greeting found, just use all filtered lines
+            response = "\n".join(filtered_lines)
+        
+        # Apply the markdown-preserving cleanup
+        response = self._clean_preserving_markdown(response)
+        
+        return response.strip()
 
 class AIManager:
     def __init__(self):

@@ -1,0 +1,4 @@
+department,code,title,credits,description,prerequisites,grading_scheme
+Computer Science,COP 3502,Programming Fundamentals 1,3,Introduction to programming using Java.,MAC 1147 or equivalent,Letter
+Psychology,PSY 2012,General Psychology,3,Introduction to psychology.,None,Letter
+Engineering,EEL 3701,Digital Logic,3,Boolean algebra and digital logic.,MAC 2311,Letter

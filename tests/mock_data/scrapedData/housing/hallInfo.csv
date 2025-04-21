@@ -1,0 +1,3 @@
+name,hall_type,description,location,phone,features_str,room_types_str,nearby_locations_str,url,image_url,rental_rate_url
+Hume Hall,honors,Hume Hall is a residence hall for honors students,Museum Road,352-392-2171,Study lounges;Air conditioning;Suite-style rooms,Single;Double,Dining Hall;Library West,https://housing.ufl.edu/housing/hume,https://housing.ufl.edu/img/hume.jpg,https://housing.ufl.edu/rates/hume
+Broward Hall,traditional,Broward Hall is a traditional residence hall for first-year students,Broward Drive,352-392-2172,Community bathrooms;Air conditioning;Study areas,Single;Double;Triple,Dining Hall;Reitz Union,https://housing.ufl.edu/housing/broward,https://housing.ufl.edu/img/broward.jpg,https://housing.ufl.edu/rates/broward

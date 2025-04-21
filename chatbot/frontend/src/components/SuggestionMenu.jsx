@@ -312,12 +312,12 @@ const SuggestionMenu = ({ category, onBack }) => {
 
     return (
         <div className="flex flex-col w-full my-auto py-4">
-            {/* Debugging information */}
+            {/* Debugging information
             {process.env.NODE_ENV === "development" && (
                 <p className="text-xs text-red-500 mb-2">
                     Debug Path: {JSON.stringify(path)}
                 </p>
-            )}
+            )} */}
 
             {/* Header with title and back button */}
             <div className="flex items-center mb-4">

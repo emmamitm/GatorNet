@@ -627,12 +627,6 @@ class CoursesSystem:  # Renamed from CourseSystem to CoursesSystem for consisten
         # Create options for frontend
         option_list = [{"label": opt, "value": opt} for opt in options]
 
-        # Add navigation options
-        if question_id > 0:
-            option_list.append(
-                {"label": "« Previous Question", "value": f"prev_{question_id-1}"}
-            )
-
         return {
             "question": question,
             "options": option_list,
