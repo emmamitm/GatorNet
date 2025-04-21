@@ -1,7 +1,8 @@
-#database_tables.py
 from flask_sqlalchemy import SQLAlchemy
 import datetime
 import os
+from sqlalchemy.orm import relationship
+from sqlalchemy import event
 
 db = SQLAlchemy()
 
@@ -17,6 +18,9 @@ class User(db.Model):
     created_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
     avatar_path = db.Column(db.String(240), nullable=True)
 
+    conversations = relationship("Conversation", backref="user", cascade="all, delete-orphan")
+    messages = relationship("Message", backref="user", cascade="all, delete-orphan")
+
     @property
     def __repr__(self):
         return f"<User {self.email}>"
@@ -24,9 +28,15 @@ class User(db.Model):
 
 class Conversation(db.Model):
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("user.id", ondelete="CASCADE"),
+        nullable=False,
+    )
     started_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
     active = db.Column(db.Boolean, nullable=False, default=True)
+
+    messages = relationship("Message", backref="conversation", cascade="all, delete-orphan")
 
     def __repr__(self):
         return f"<Conversation {self.id}>"
@@ -35,9 +45,15 @@ class Conversation(db.Model):
 class Message(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     conversation_id = db.Column(
-        db.Integer, db.ForeignKey("conversation.id"), nullable=False
+        db.Integer,
+        db.ForeignKey("conversation.id", ondelete="CASCADE"),
+        nullable=False,
     )
-    user_id = db.Column(db.Integer, db.ForeignKey("user.id"), nullable=False)
+    user_id = db.Column(
+        db.Integer,
+        db.ForeignKey("user.id", ondelete="CASCADE"),
+        nullable=False,
+    )
     text = db.Column(db.String(500), nullable=False)
     sent_at = db.Column(db.DateTime, nullable=False, default=datetime.datetime.now())
 
