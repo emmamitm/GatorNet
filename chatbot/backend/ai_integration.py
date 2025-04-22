@@ -77,13 +77,16 @@ class AIWrapper:
         # Identify the end of markdown content
         # Looking for common markers that appear after the main content
         markdown_end_markers = [
-            "assistant",
             "Context Information",
+            "assistant:",
             "User Question:",
             "(Note:",
             "# UF",
             "**Response**",
+            "User Response:",
+            "Please provide a response",
             "**Output**"
+
         ]
         
         # Find the position of the earliest marker
